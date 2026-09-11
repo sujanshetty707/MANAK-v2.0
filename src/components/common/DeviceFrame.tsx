@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
 import { Smartphone, Monitor, Wifi, WifiOff, Shield } from 'lucide-react';
 import { Capacitor } from '@capacitor/core';
 
-const isNative = Capacitor.isNativePlatform();
-
 export const DeviceFrame: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // On a real phone (Capacitor), skip the demo shell entirely — render fullscreen
-  if (isNative) {
-    return (
-      <div className="w-full h-screen bg-[#F5F6F8] overflow-hidden flex flex-col">
-        {children}
-      </div>
-    );
-  }
+  const isNative = Capacitor.isNativePlatform();
+  const [isMobileScreen, setIsMobileScreen] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth < 768 || isNative;
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileScreen(window.innerWidth < 768 || isNative);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isNative]);
 
   const {
     deviceFrame,
@@ -22,15 +27,24 @@ export const DeviceFrame: React.FC<{ children: React.ReactNode }> = ({ children 
     toggleOffline,
     userRole,
     selectRole,
-    activeScreen,
     navigateTo,
     offlineQueueCount
   } = useApp();
 
+  // On a real phone or viewport < 768px, render clean edge-to-edge native interface
+  if (isNative || isMobileScreen) {
+    return (
+      <div className="w-full h-[100dvh] min-h-[100dvh] bg-[#F5F6F8] overflow-hidden flex flex-col select-none">
+        {children}
+      </div>
+    );
+  }
+
+  // On Desktop browser: render paired developer workstation frame
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col items-center justify-start p-0 md:p-6 select-none font-sans">
-      {/* Top Demo Bar & Diagnostics Bar */}
-      <aside aria-label="Demo diagnostics controls" className="w-full max-w-4xl mb-4 bg-slate-900/90 border border-slate-800 backdrop-blur-md rounded-2xl px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs shadow-xl hidden md:flex">
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col items-center justify-start p-4 md:p-6 select-none font-sans">
+      {/* Top Diagnostics Bar */}
+      <aside aria-label="Demo diagnostics controls" className="w-full max-w-4xl mb-4 bg-slate-900/90 border border-slate-800 backdrop-blur-md rounded-2xl px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs shadow-xl">
         <div className="flex items-center space-x-3">
           <div className="flex items-center space-x-2">
             <div className="w-7 h-7 rounded-lg bg-manak-navy flex items-center justify-center text-manak-orange border border-blue-400/30">
@@ -82,9 +96,8 @@ export const DeviceFrame: React.FC<{ children: React.ReactNode }> = ({ children 
           </div>
         </div>
 
-        {/* Action Controls: Network simulation, Device frame toggle, Screen quick jump */}
+        {/* Action Controls */}
         <div className="flex items-center space-x-2">
-          {/* Online / Offline Simulator */}
           <button
             onClick={toggleOffline}
             className={`flex items-center space-x-1.5 px-2.5 py-1 rounded-lg border transition-all ${
@@ -92,7 +105,7 @@ export const DeviceFrame: React.FC<{ children: React.ReactNode }> = ({ children 
                 ? 'bg-amber-950/60 border-amber-600/80 text-amber-300 animate-pulse'
                 : 'bg-emerald-950/40 border-emerald-600/60 text-emerald-300'
             }`}
-            title="Simulate Offline Store Conditions (IndexedDB queue fallback)"
+            title="Simulate Offline Store Conditions"
           >
             {isOffline ? <WifiOff className="w-3.5 h-3.5" /> : <Wifi className="w-3.5 h-3.5" />}
             <span className="font-semibold text-[11px]">
@@ -100,13 +113,12 @@ export const DeviceFrame: React.FC<{ children: React.ReactNode }> = ({ children 
             </span>
           </button>
 
-          {/* Device Frame View Toggle */}
           <button
             onClick={toggleDeviceFrame}
             className="flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 transition-colors"
           >
             {deviceFrame ? <Monitor className="w-3.5 h-3.5" /> : <Smartphone className="w-3.5 h-3.5" />}
-            <span className="text-[11px]">{deviceFrame ? 'Fullscreen' : 'Mobile 390px'}</span>
+            <span className="text-[11px]">{deviceFrame ? 'Fullscreen' : 'Mobile 400px'}</span>
           </button>
         </div>
       </aside>
@@ -115,13 +127,13 @@ export const DeviceFrame: React.FC<{ children: React.ReactNode }> = ({ children 
       <div
         className={`w-full transition-all duration-300 flex justify-center ${
           deviceFrame
-            ? 'max-w-[400px] h-[860px] bg-slate-900 border-[6px] border-slate-800 rounded-[38px] p-1.5 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] relative overflow-hidden ring-1 ring-slate-700/50'
-            : 'max-w-2xl min-h-[90vh] bg-slate-900 rounded-2xl shadow-2xl border border-slate-800 overflow-hidden'
+            ? 'max-w-[400px] h-[840px] max-h-[calc(100vh-80px)] bg-slate-900 border-[6px] border-slate-800 rounded-[38px] p-1.5 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] relative overflow-hidden ring-1 ring-slate-700/50'
+            : 'max-w-xl h-[86vh] bg-slate-900 rounded-2xl shadow-2xl border border-slate-800 overflow-hidden'
         }`}
       >
-        {/* Device Notch Bar (in Mobile mode) */}
+        {/* Device Notch Bar (in Mobile preview mode on desktop) */}
         {deviceFrame && (
-          <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-28 h-4 bg-slate-950 rounded-full z-50 flex items-center justify-end px-3">
+          <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-28 h-4 bg-slate-950 rounded-full z-50 flex items-center justify-end px-3 pointer-events-none">
             <div className="w-2.5 h-2.5 rounded-full bg-slate-800 border border-slate-700"></div>
           </div>
         )}

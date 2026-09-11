@@ -23,7 +23,7 @@ export const SplashScreen: React.FC = () => {
   return (
     <div className="relative w-full h-full bg-security-pattern text-slate-100 flex flex-col justify-between overflow-hidden">
       {/* Top Security Status Bar */}
-      <header className="w-full pt-10 px-6 flex justify-between items-center opacity-80 z-10">
+      <header className="w-full pt-[max(20px,env(safe-area-inset-top))] px-6 flex justify-between items-center opacity-80 z-10">
         <div className="flex items-center space-x-1.5">
           <span className="inline-block w-2 h-2 rounded-full bg-manak-green animate-ping"></span>
           <span className="text-[10px] uppercase font-mono tracking-wider text-slate-300">
@@ -91,7 +91,7 @@ export const SplashScreen: React.FC = () => {
       </main>
 
       {/* Bottom Loading Progress & Continue CTA */}
-      <footer className="w-full pb-8 px-8 flex flex-col items-center space-y-4 z-10">
+      <footer className="w-full pb-[max(24px,env(safe-area-inset-bottom))] px-8 flex flex-col items-center space-y-4 z-10">
         <div className="w-full max-w-[240px]">
           <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden border border-slate-700/50">
             <div

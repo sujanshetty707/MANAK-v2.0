@@ -22,7 +22,7 @@ export const OfficerProfileScreen: React.FC = () => {
     <div className="w-full h-full bg-[#F5F6F8] flex flex-col justify-between overflow-hidden">
       <Header title="Officer Profile & Settings" showLogo />
 
-      <main className="flex-1 overflow-y-auto px-4 py-4 space-y-4 hide-scrollbar">
+      <main className="flex-1 overflow-y-auto px-3.5 sm:px-4 pt-3 pb-8 space-y-4 hide-scrollbar">
 
         {/* Officer Identity Card */}
         <div className="bg-gradient-to-br from-manak-navy via-slate-900 to-[#142C52] rounded-2xl p-4 border border-blue-400/20 text-white relative overflow-hidden">

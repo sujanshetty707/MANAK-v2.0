@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { Header } from '../common/Header';
 import { SAMPLE_PRODUCTS } from '../../data/mockData';
-import { Camera, Zap, Upload, Check, Info, Scan, Sparkles, Layers, Aperture } from 'lucide-react';
+import { Camera, Zap, Upload, Check, Info, Scan, Sparkles, Layers, Aperture, ChevronLeft } from 'lucide-react';
 import { Camera as CapCamera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { Capacitor } from '@capacitor/core';
 
 export const CameraScanScreen: React.FC = () => {
-  const { navigateTo, setAnalysisData } = useApp();
+  const { navigateTo, setAnalysisData, goBack } = useApp();
   const [torch, setTorch] = useState(false);
   const [selectedSampleIdx, setSelectedSampleIdx] = useState<number>(1); // default to non-compliant for demo
   const [scaleCalibrated, setScaleCalibrated] = useState<boolean>(true);
@@ -66,13 +66,30 @@ export const CameraScanScreen: React.FC = () => {
 
   return (
     <div className="w-full h-full bg-slate-950 text-white flex flex-col justify-between overflow-hidden relative">
-      {/* Top Overlay Controls */}
-      <div className="absolute top-0 left-0 w-full z-30 bg-gradient-to-b from-black/80 via-black/40 to-transparent pt-4 pb-6 px-4 flex items-center justify-between">
-        <Header showBack title="Physical Label Scanner" showLogo={false} />
-        <div className="flex items-center space-x-2 -mt-1">
+      {/* Top Overlay Controls with Safe Area Inset */}
+      <div className="absolute top-0 left-0 w-full z-30 bg-gradient-to-b from-black/85 via-black/40 to-transparent pt-[max(14px,env(safe-area-inset-top))] pb-4 px-4 flex items-center justify-between">
+        <div className="flex items-center space-x-2.5">
+          <button
+            onClick={goBack}
+            className="p-2 rounded-xl bg-black/40 hover:bg-black/60 active:scale-95 text-white backdrop-blur-md border border-white/20 transition-all"
+            title="Go back"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <div>
+            <span className="text-[10px] text-amber-400 uppercase font-mono tracking-wider block font-bold">
+              PCR 2011 Scanner
+            </span>
+            <h1 className="text-xs sm:text-sm font-bold text-white tracking-wide">
+              Physical Package Audit
+            </h1>
+          </div>
+        </div>
+
+        <div className="flex items-center space-x-2">
           <button
             onClick={() => setTorch(!torch)}
-            className={`p-2 rounded-full backdrop-blur-md border transition-colors ${
+            className={`p-2 rounded-xl backdrop-blur-md border transition-all active:scale-95 ${
               torch
                 ? 'bg-amber-400 text-slate-950 border-amber-300 shadow-[0_0_15px_rgba(251,191,36,0.6)]'
                 : 'bg-black/40 text-white border-white/20 hover:bg-black/60'
@@ -131,7 +148,7 @@ export const CameraScanScreen: React.FC = () => {
       </div>
 
       {/* Bottom Controls Drawer */}
-      <div className="bg-slate-900/95 backdrop-blur-md border-t border-slate-800 p-4 space-y-3 z-30">
+      <div className="bg-slate-900/95 backdrop-blur-md border-t border-slate-800 p-4 pb-[max(16px,env(safe-area-inset-bottom))] space-y-3 z-30 transition-all">
         {/* Sample Pack Picker */}
         <div>
           <div className="flex items-center justify-between text-[11px] text-slate-300 mb-1.5">

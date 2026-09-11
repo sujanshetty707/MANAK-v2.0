@@ -2,11 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
 @layer base {
   body {
-    @apply bg-slate-950 text-slate-900 antialiased selection:bg-manak-navy selection:text-white font-sans;
+    @apply bg-[#F5F6F8] text-slate-900 antialiased selection:bg-manak-navy selection:text-white font-sans;
     font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   }
+}
+
+/* Safe area padding utilities */
+.pt-safe {
+  padding-top: max(16px, env(safe-area-inset-top, 0px));
+}
+
+.pb-safe {
+  padding-bottom: max(16px, env(safe-area-inset-bottom, 0px));
+}
+
+.pb-nav {
+  padding-bottom: calc(max(10px, env(safe-area-inset-bottom, 0px)) + 65px);
 }
 
 /* Guilloche & Security Backgrounds */

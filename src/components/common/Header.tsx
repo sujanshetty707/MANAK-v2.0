@@ -12,7 +12,7 @@ export const Header: React.FC<{
   const { goBack, officerProfile, isOffline, userRole, navigateTo } = useApp();
 
   return (
-    <header className="bg-[#1B3A6B] text-white pt-5 pb-3.5 px-4 shadow-md flex-shrink-0 relative z-20">
+    <header className="bg-[#1B3A6B] text-white pt-[max(14px,env(safe-area-inset-top))] pb-3 px-3.5 sm:px-4 shadow-md flex-shrink-0 relative z-20 transition-all">
       <div className="flex items-center justify-between">
         {/* Left Side: Back Button or Profile Avatar */}
         <div className="flex items-center space-x-2.5">

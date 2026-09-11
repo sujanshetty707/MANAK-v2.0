@@ -18,21 +18,21 @@
     "semantic_hash": ""
   },
   "src/components/common/BottomNav.tsx": {
-    "mtime": 1789154507.9202137,
-    "seen": 1789154664.663261,
-    "ast_hash": "5a3dd145b094903a10049944bd12d226",
+    "mtime": 1789149851.869662,
+    "seen": 1789150097.2574458,
+    "ast_hash": "b31273dc30d50e3c84fb317de3f672c9",
     "semantic_hash": ""
   },
   "src/components/common/DeviceFrame.tsx": {
-    "mtime": 1789154477.8823771,
-    "seen": 1789154664.6632626,
-    "ast_hash": "90280a76219e210d5977a8c74f564039",
+    "mtime": 1789149760.78597,
+    "seen": 1789150097.2574477,
+    "ast_hash": "db1a631cf8c33e98281006d74e7b79a7",
     "semantic_hash": ""
   },
   "src/components/common/Header.tsx": {
-    "mtime": 1789154489.961175,
-    "seen": 1789154664.6632643,
-    "ast_hash": "a087388b0f28ee8e4972c8bc28aacc31",
+    "mtime": 1789146886.7896008,
+    "seen": 1789147754.3219614,
+    "ast_hash": "b19d461d53f4db78d9e3e877d7c64fa9",
     "semantic_hash": ""
   },
   "src/components/screens/AnalysisResultsScreen.tsx": {
@@ -42,9 +42,9 @@
     "semantic_hash": ""
   },
   "src/components/screens/CameraScanScreen.tsx": {
-    "mtime": 1789154553.158896,
-    "seen": 1789154664.6632676,
-    "ast_hash": "19c00c7465085ec90be96e50ed1fbb45",
+    "mtime": 1789150472.358242,
+    "seen": 1789150588.6463952,
+    "ast_hash": "3cdcc9f361a6b108aef608f13ada1535",
     "semantic_hash": ""
   },
   "src/components/screens/CheckUrlScreen.tsx": {
@@ -66,9 +66,9 @@
     "semantic_hash": ""
   },
   "src/components/screens/ConsumerDashboardScreen.tsx": {
-    "mtime": 1789154625.344518,
-    "seen": 1789154664.663274,
-    "ast_hash": "f692d3f8e9fcc42d947d58d0ec406633",
+    "mtime": 1789147091.618739,
+    "seen": 1789147754.321991,
+    "ast_hash": "c4ac7072e9fa8cf207bfdebb85cae211",
     "semantic_hash": ""
   },
   "src/components/screens/ConsumerLoginScreen.tsx": {
@@ -102,9 +102,9 @@
     "semantic_hash": ""
   },
   "src/components/screens/InspectionHistoryScreen.tsx": {
-    "mtime": 1789154613.9462502,
-    "seen": 1789154664.663283,
-    "ast_hash": "abe685e5eb912ab8009c725bd0c0f0c2",
+    "mtime": 1789148439.2918274,
+    "seen": 1789150097.2574759,
+    "ast_hash": "1ba0b00317c2b30013a4bf995cb9f805",
     "semantic_hash": ""
   },
   "src/components/screens/InspectionReportScreen.tsx": {
@@ -114,9 +114,9 @@
     "semantic_hash": ""
   },
   "src/components/screens/OfficerDashboardScreen.tsx": {
-    "mtime": 1789154605.6979542,
-    "seen": 1789154664.663288,
-    "ast_hash": "0468a7044cfa3d394d191f62b45f01d7",
+    "mtime": 1789148462.9839675,
+    "seen": 1789150097.2574809,
+    "ast_hash": "93490ca7eb9900692833348b8db4a77c",
     "semantic_hash": ""
   },
   "src/components/screens/OfficerLoginScreen.tsx": {
@@ -126,15 +126,15 @@
     "semantic_hash": ""
   },
   "src/components/screens/RoleSelectionScreen.tsx": {
-    "mtime": 1789154573.4296315,
-    "seen": 1789154664.663293,
-    "ast_hash": "20b93d56229f6db80598fdd0c3373f90",
+    "mtime": 1789146923.7062056,
+    "seen": 1789147754.3220174,
+    "ast_hash": "2c20c5fa63cef345eba0b4415a1cea87",
     "semantic_hash": ""
   },
   "src/components/screens/SplashScreen.tsx": {
-    "mtime": 1789154597.1762116,
-    "seen": 1789154664.6632943,
-    "ast_hash": "876555687b39fbc437b105aeb0c61cd3",
+    "mtime": 1789146912.2029836,
+    "seen": 1789147754.322021,
+    "ast_hash": "a86f73058488fc301818a167d1a4a1d3",
     "semantic_hash": ""
   },
   "src/context/AppContext.tsx": {
@@ -372,8 +372,8 @@
     "semantic_hash": ""
   },
   "android/app/capacitor.build.gradle": {
-    "mtime": 1789154656.9005637,
-    "seen": 1789154664.6632314,
+    "mtime": 1789150581.2206225,
+    "seen": 1789150588.6463447,
     "ast_hash": "603ecca0fd2c534a84f2da02acd653bf",
     "semantic_hash": ""
   },
@@ -402,8 +402,8 @@
     "semantic_hash": ""
   },
   "android/capacitor.settings.gradle": {
-    "mtime": 1789154656.9005637,
-    "seen": 1789154664.663245,
+    "mtime": 1789150581.2194371,
+    "seen": 1789150588.6463628,
     "ast_hash": "67f6105f1f112255bf608817f5c31034",
     "semantic_hash": ""
   },
@@ -444,9 +444,9 @@
     "semantic_hash": ""
   },
   "src/components/screens/OfficerProfileScreen.tsx": {
-    "mtime": 1789154633.3356082,
-    "seen": 1789154664.6632915,
-    "ast_hash": "2250389ee978027f49bd7ba6e76bc994",
+    "mtime": 1789149813.7290447,
+    "seen": 1789150097.2574842,
+    "ast_hash": "7e59318f29d0bd54fa246dd258793ada",
     "semantic_hash": ""
   },
   "android/app/src/main/res/drawable-land-hdpi/splash.png": {
@@ -612,9 +612,9 @@
     "semantic_hash": ""
   },
   ".github/workflows/build-apk.yml": {
-    "mtime": 1789152233.1786184,
-    "seen": 1789154664.6633492,
-    "ast_hash": "b1d6f461fc3b37855d9641c60a131414",
+    "mtime": 1789150409.789423,
+    "seen": 1789150588.6465075,
+    "ast_hash": "c223f403963324b77cbb0b64b5d6c502",
     "semantic_hash": ""
   }
 }

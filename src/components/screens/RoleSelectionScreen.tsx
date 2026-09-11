@@ -8,7 +8,7 @@ export const RoleSelectionScreen: React.FC = () => {
   return (
     <div className="w-full h-full bg-[#F5F6F8] flex flex-col justify-between overflow-y-auto hide-scrollbar">
       {/* Top Navy Banner */}
-      <div className="bg-[#1B3A6B] text-white pt-8 pb-7 px-5 rounded-b-[24px] shadow-md relative overflow-hidden">
+      <div className="bg-[#1B3A6B] text-white pt-[max(20px,env(safe-area-inset-top))] pb-6 px-5 rounded-b-[24px] shadow-md relative overflow-hidden">
         <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-10 -mt-10 pointer-events-none"></div>
         <div className="flex items-center space-x-2 text-blue-200 text-xs font-semibold mono mb-1">
           <ShieldCheck className="w-4 h-4 text-manak-orange" />
@@ -88,7 +88,7 @@ export const RoleSelectionScreen: React.FC = () => {
       </div>
 
       {/* Footer Info */}
-      <div className="p-4 text-center">
+      <div className="p-4 pb-[max(16px,env(safe-area-inset-bottom))] text-center">
         <p className="text-[10px] text-slate-400 mono">
           Governed by GSR 202(E) • Ministry of Consumer Affairs
         </p>

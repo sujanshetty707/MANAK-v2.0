@@ -12,7 +12,7 @@ export const ConsumerDashboardScreen: React.FC = () => {
       <Header showConsumerBadge showLogo />
 
       {/* Main Content */}
-      <main className="flex-1 overflow-y-auto px-4 py-3.5 space-y-4 hide-scrollbar">
+      <main className="flex-1 overflow-y-auto px-3.5 sm:px-4 pt-3 pb-8 space-y-4 hide-scrollbar">
         {/* Hero Card: Check a Product (Primary Single Action) */}
         <section
           onClick={() => navigateTo('consumer_check')}

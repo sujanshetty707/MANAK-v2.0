@@ -1,18 +1,13 @@
-# Graph Report - MANAK  (2026-09-12)
+# Graph Report - MANAK  (2026-09-11)
 
 ## Corpus Check
-- 75 files · ~58,807 words
+- 75 files · ~58,701 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 367 nodes · 608 edges · 40 communities (25 shown, 7 thin omitted)
+- 368 nodes · 609 edges · 44 communities (27 shown, 9 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
-
-## Graph Freshness
-- Built from commit: `b047a9cf`
-- Run `git rev-parse HEAD` and compare to check if the graph is stale.
-- Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - Officer Flow
@@ -47,6 +42,10 @@
 - devDependencies
 - gradlew
 - MainActivity.java
+- dependencies
+- scripts
+- capacitor.config.ts
+- vite
 
 ## God Nodes (most connected - your core abstractions)
 1. `useApp()` - 46 edges
@@ -75,7 +74,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (40 total, 7 thin omitted)
+## Communities (44 total, 9 thin omitted)
 
 ### Community 0 - "Officer Flow"
 Cohesion: 0.24
@@ -83,15 +82,15 @@ Nodes (12): Consumer Flow, Deterministic Rule Engine, E-Commerce DOM Adapters, O
 
 ### Community 1 - "App.tsx"
 Cohesion: 0.15
-Nodes (28): @capacitor/core, lucide-react, react, App(), BottomNav(), DeviceFrame(), Header(), AnalysisResultsScreen() (+20 more)
+Nodes (29): @capacitor/core, lucide-react, react, App(), BottomNav(), DeviceFrame(), isNative, Header() (+21 more)
 
 ### Community 2 - "AppContext.tsx"
 Cohesion: 0.11
-Nodes (33): ExtractionProcessingScreen(), STATUS_META, AppContext, AppContextType, AppProvider(), MOCK_CONSUMER_REPORTS, MOCK_HISTORY, REPEAT_VIOLATOR_HEATMAP (+25 more)
+Nodes (34): jspdf, ExtractionProcessingScreen(), AppContext, AppContextType, AppProvider(), MOCK_CONSUMER_REPORTS, MOCK_HISTORY, REPEAT_VIOLATOR_HEATMAP (+26 more)
 
 ### Community 3 - "package.json"
-Cohesion: 0.05
-Nodes (40): config, dependencies, @capacitor/android, @capacitor/camera, @capacitor/cli, @capacitor/core, clsx, html2canvas (+32 more)
+Cohesion: 0.12
+Nodes (16): name, private, type, version, autoprefixer, @capacitor/android, @capacitor/camera, clsx (+8 more)
 
 ### Community 4 - "README.md"
 Cohesion: 0.07
@@ -177,10 +176,18 @@ Nodes (9): devDependencies, autoprefixer, postcss, tailwindcss, @types/react, @t
 Cohesion: 0.83
 Nodes (3): gradlew script, die(), warn()
 
+### Community 40 - "dependencies"
+Cohesion: 0.17
+Nodes (12): dependencies, @capacitor/android, @capacitor/camera, @capacitor/cli, @capacitor/core, clsx, html2canvas, jspdf (+4 more)
+
+### Community 41 - "scripts"
+Cohesion: 0.29
+Nodes (7): scripts, build, cap:add, cap:open, cap:sync, dev, preview
+
 ## Knowledge Gaps
-- **183 isolated node(s):** `config`, `name`, `private`, `version`, `type` (+178 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 211 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **184 isolated node(s):** `config`, `name`, `private`, `version`, `type` (+179 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 212 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -188,14 +195,14 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `react` connect `App.tsx` to `AppContext.tsx`, `package.json`?**
   _High betweenness centrality (0.044) - this node is a cross-community bridge._
 - **Why does `lucide-react` connect `App.tsx` to `AppContext.tsx`, `package.json`?**
-  _High betweenness centrality (0.024) - this node is a cross-community bridge._
+  _High betweenness centrality (0.025) - this node is a cross-community bridge._
+- **Why does `dependencies` connect `dependencies` to `package.json`?**
+  _High betweenness centrality (0.023) - this node is a cross-community bridge._
 - **What connects `config`, `name`, `private` to the rest of the system?**
-  _183 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _184 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `AppContext.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.11414141414141414 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.1072463768115942 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.047619047619047616 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.11764705882352941 - nodes in this community are weakly interconnected._
 - **Should `README.md` be split into smaller, more focused modules?**
   _Cohesion score 0.07407407407407407 - nodes in this community are weakly interconnected._
-- **Should `What You Must Do When Invoked` be split into smaller, more focused modules?**
-  _Cohesion score 0.08 - nodes in this community are weakly interconnected._

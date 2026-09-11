@@ -245,7 +245,7 @@
       "file_type": "code",
       "norm_label": "deviceframe()",
       "source_file": "src/components/common/DeviceFrame.tsx",
-      "source_location": "L6"
+      "source_location": "L8"
     },
     {
       "id": "src_components_common_header_header",
@@ -500,18 +500,6 @@
       "source_location": "L306"
     },
     {
-      "id": "src_services_pdfreportgenerator_generateinspectionpdf",
-      "label": "generateInspectionPDF()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "App.tsx",
-      "file_type": "code",
-      "norm_label": "generateinspectionpdf()",
-      "source_file": "src/services/pdfReportGenerator.ts",
-      "source_location": "L4"
-    },
-    {
       "id": "src_components_screens_extractionprocessingscreen_extractionprocessingscreen",
       "label": "ExtractionProcessingScreen()",
       "_callable": true,
@@ -656,6 +644,18 @@
       "source_location": "L74"
     },
     {
+      "id": "src_services_pdfreportgenerator_generateinspectionpdf",
+      "label": "generateInspectionPDF()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "AppContext.tsx",
+      "file_type": "code",
+      "norm_label": "generateinspectionpdf()",
+      "source_file": "src/services/pdfReportGenerator.ts",
+      "source_location": "L4"
+    },
+    {
       "id": "src_services_ruleengine_evaluateextractionagainstrules",
       "label": "evaluateExtractionAgainstRules()",
       "_callable": true,
@@ -739,6 +739,17 @@
       "norm_label": "deviceframe.tsx",
       "source_file": "src/components/common/DeviceFrame.tsx",
       "source_location": "L1"
+    },
+    {
+      "id": "src_components_common_deviceframe_isnative",
+      "label": "isNative",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "App.tsx",
+      "file_type": "code",
+      "norm_label": "isnative",
+      "source_file": "src/components/common/DeviceFrame.tsx",
+      "source_location": "L6"
     },
     {
       "id": "src_components_common_header",
@@ -884,6 +895,28 @@
       "source_location": "L1"
     },
     {
+      "id": "src_components_screens_officerconsumerreportsscreen",
+      "label": "OfficerConsumerReportsScreen.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "App.tsx",
+      "file_type": "code",
+      "norm_label": "officerconsumerreportsscreen.tsx",
+      "source_file": "src/components/screens/OfficerConsumerReportsScreen.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_screens_officerconsumerreportsscreen_status_meta",
+      "label": "STATUS_META",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "App.tsx",
+      "file_type": "code",
+      "norm_label": "status_meta",
+      "source_file": "src/components/screens/OfficerConsumerReportsScreen.tsx",
+      "source_location": "L12"
+    },
+    {
       "id": "src_components_screens_officerdashboardscreen",
       "label": "OfficerDashboardScreen.tsx",
       "_origin": "ast",
@@ -936,17 +969,6 @@
       "file_type": "code",
       "norm_label": "splashscreen.tsx",
       "source_file": "src/components/screens/SplashScreen.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_main",
-      "label": "main.tsx",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "App.tsx",
-      "file_type": "code",
-      "norm_label": "main.tsx",
-      "source_file": "src/main.tsx",
       "source_location": "L1"
     },
     {
@@ -1662,28 +1684,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_components_screens_officerconsumerreportsscreen",
-      "label": "OfficerConsumerReportsScreen.tsx",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "AppContext.tsx",
-      "file_type": "code",
-      "norm_label": "officerconsumerreportsscreen.tsx",
-      "source_file": "src/components/screens/OfficerConsumerReportsScreen.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_components_screens_officerconsumerreportsscreen_status_meta",
-      "label": "STATUS_META",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "AppContext.tsx",
-      "file_type": "code",
-      "norm_label": "status_meta",
-      "source_file": "src/components/screens/OfficerConsumerReportsScreen.tsx",
-      "source_location": "L12"
-    },
-    {
       "id": "src_context_appcontext",
       "label": "AppContext.tsx",
       "_origin": "ast",
@@ -1794,6 +1794,17 @@
       "source_location": "L94"
     },
     {
+      "id": "src_main",
+      "label": "main.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "AppContext.tsx",
+      "file_type": "code",
+      "norm_label": "main.tsx",
+      "source_file": "src/main.tsx",
+      "source_location": "L1"
+    },
+    {
       "id": "src_services_labelparser",
       "label": "labelParser.ts",
       "_origin": "ast",
@@ -1869,6 +1880,17 @@
       "norm_label": "index.ts",
       "source_file": "src/types/index.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "ref_jspdf",
+      "label": "jspdf",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "AppContext.tsx",
+      "file_type": "concept",
+      "norm_label": "jspdf",
+      "source_file": "package.json",
+      "source_location": "L21"
     },
     {
       "id": "agents_skills_ponytail_debt_skill",
@@ -2253,28 +2275,6 @@
       "source_location": "L9"
     },
     {
-      "id": "capacitor_config",
-      "label": "capacitor.config.ts",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "capacitor.config.ts",
-      "source_file": "capacitor.config.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "capacitor_config_config",
-      "label": "config",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "config",
-      "source_file": "capacitor.config.ts",
-      "source_location": "L3"
-    },
-    {
       "id": "package",
       "label": "package.json",
       "_origin": "ast",
@@ -2284,138 +2284,6 @@
       "norm_label": "package.json",
       "source_file": "package.json",
       "source_location": "L1"
-    },
-    {
-      "id": "package_dependencies",
-      "label": "dependencies",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "dependencies",
-      "source_file": "package.json",
-      "source_location": "L14"
-    },
-    {
-      "id": "package_dependencies_capacitor_android",
-      "label": "@capacitor/android",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "@capacitor/android",
-      "source_file": "package.json",
-      "source_location": "L15"
-    },
-    {
-      "id": "package_dependencies_capacitor_camera",
-      "label": "@capacitor/camera",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "@capacitor/camera",
-      "source_file": "package.json",
-      "source_location": "L16"
-    },
-    {
-      "id": "package_dependencies_capacitor_cli",
-      "label": "@capacitor/cli",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "@capacitor/cli",
-      "source_file": "package.json",
-      "source_location": "L17"
-    },
-    {
-      "id": "package_dependencies_capacitor_core",
-      "label": "@capacitor/core",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "@capacitor/core",
-      "source_file": "package.json",
-      "source_location": "L18"
-    },
-    {
-      "id": "package_dependencies_clsx",
-      "label": "clsx",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "clsx",
-      "source_file": "package.json",
-      "source_location": "L19"
-    },
-    {
-      "id": "package_dependencies_html2canvas",
-      "label": "html2canvas",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "html2canvas",
-      "source_file": "package.json",
-      "source_location": "L20"
-    },
-    {
-      "id": "package_dependencies_jspdf",
-      "label": "jspdf",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "jspdf",
-      "source_file": "package.json",
-      "source_location": "L21"
-    },
-    {
-      "id": "package_dependencies_lucide_react",
-      "label": "lucide-react",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "lucide-react",
-      "source_file": "package.json",
-      "source_location": "L22"
-    },
-    {
-      "id": "package_dependencies_react",
-      "label": "react",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "react",
-      "source_file": "package.json",
-      "source_location": "L23"
-    },
-    {
-      "id": "package_dependencies_react_dom",
-      "label": "react-dom",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "react-dom",
-      "source_file": "package.json",
-      "source_location": "L24"
-    },
-    {
-      "id": "package_dependencies_tailwind_merge",
-      "label": "tailwind-merge",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "tailwind-merge",
-      "source_file": "package.json",
-      "source_location": "L25"
     },
     {
       "id": "package_name",
@@ -2440,83 +2308,6 @@
       "source_location": "L3"
     },
     {
-      "id": "package_scripts",
-      "label": "scripts",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "scripts",
-      "source_file": "package.json",
-      "source_location": "L6"
-    },
-    {
-      "id": "package_scripts_build",
-      "label": "build",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "build",
-      "source_file": "package.json",
-      "source_location": "L8"
-    },
-    {
-      "id": "package_scripts_cap_add",
-      "label": "cap:add",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "cap:add",
-      "source_file": "package.json",
-      "source_location": "L10"
-    },
-    {
-      "id": "package_scripts_cap_open",
-      "label": "cap:open",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "cap:open",
-      "source_file": "package.json",
-      "source_location": "L12"
-    },
-    {
-      "id": "package_scripts_cap_sync",
-      "label": "cap:sync",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "cap:sync",
-      "source_file": "package.json",
-      "source_location": "L11"
-    },
-    {
-      "id": "package_scripts_dev",
-      "label": "dev",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "dev",
-      "source_file": "package.json",
-      "source_location": "L7"
-    },
-    {
-      "id": "package_scripts_preview",
-      "label": "preview",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "preview",
-      "source_file": "package.json",
-      "source_location": "L9"
-    },
-    {
       "id": "package_type",
       "label": "type",
       "_origin": "ast",
@@ -2537,17 +2328,6 @@
       "norm_label": "version",
       "source_file": "package.json",
       "source_location": "L4"
-    },
-    {
-      "id": "vite_config",
-      "label": "vite.config.ts",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "vite.config.ts",
-      "source_file": "vite.config.ts",
-      "source_location": "L1"
     },
     {
       "id": "ref_autoprefixer",
@@ -2583,17 +2363,6 @@
       "source_location": "L16"
     },
     {
-      "id": "ref_capacitor_cli",
-      "label": "@capacitor/cli",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "@capacitor/cli",
-      "source_file": "package.json",
-      "source_location": "L17"
-    },
-    {
       "id": "ref_clsx",
       "label": "clsx",
       "_origin": "ast",
@@ -2614,17 +2383,6 @@
       "norm_label": "html2canvas",
       "source_file": "package.json",
       "source_location": "L20"
-    },
-    {
-      "id": "ref_jspdf",
-      "label": "jspdf",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "jspdf",
-      "source_file": "package.json",
-      "source_location": "L21"
     },
     {
       "id": "ref_postcss",
@@ -2702,28 +2460,6 @@
       "norm_label": "typescript",
       "source_file": "package.json",
       "source_location": "L34"
-    },
-    {
-      "id": "ref_vite",
-      "label": "vite",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "vite",
-      "source_file": "package.json",
-      "source_location": "L35"
-    },
-    {
-      "id": "ref_vitejs_plugin_react",
-      "label": "@vitejs/plugin-react",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "@vitejs/plugin-react",
-      "source_file": "package.json",
-      "source_location": "L30"
     },
     {
       "id": "android_app_src_androidtest_java_com_getcapacitor_myapp_exampleinstrumentedtest",
@@ -3350,6 +3086,281 @@
       "norm_label": "what to contribute",
       "source_file": "README.md",
       "source_location": "L918"
+    },
+    {
+      "id": "package_dependencies",
+      "label": "dependencies",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "dependencies",
+      "source_file": "package.json",
+      "source_location": "L14"
+    },
+    {
+      "id": "package_dependencies_capacitor_android",
+      "label": "@capacitor/android",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "@capacitor/android",
+      "source_file": "package.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "package_dependencies_capacitor_camera",
+      "label": "@capacitor/camera",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "@capacitor/camera",
+      "source_file": "package.json",
+      "source_location": "L16"
+    },
+    {
+      "id": "package_dependencies_capacitor_cli",
+      "label": "@capacitor/cli",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "@capacitor/cli",
+      "source_file": "package.json",
+      "source_location": "L17"
+    },
+    {
+      "id": "package_dependencies_capacitor_core",
+      "label": "@capacitor/core",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "@capacitor/core",
+      "source_file": "package.json",
+      "source_location": "L18"
+    },
+    {
+      "id": "package_dependencies_clsx",
+      "label": "clsx",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "clsx",
+      "source_file": "package.json",
+      "source_location": "L19"
+    },
+    {
+      "id": "package_dependencies_html2canvas",
+      "label": "html2canvas",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "html2canvas",
+      "source_file": "package.json",
+      "source_location": "L20"
+    },
+    {
+      "id": "package_dependencies_jspdf",
+      "label": "jspdf",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "jspdf",
+      "source_file": "package.json",
+      "source_location": "L21"
+    },
+    {
+      "id": "package_dependencies_lucide_react",
+      "label": "lucide-react",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "lucide-react",
+      "source_file": "package.json",
+      "source_location": "L22"
+    },
+    {
+      "id": "package_dependencies_react",
+      "label": "react",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "react",
+      "source_file": "package.json",
+      "source_location": "L23"
+    },
+    {
+      "id": "package_dependencies_react_dom",
+      "label": "react-dom",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "react-dom",
+      "source_file": "package.json",
+      "source_location": "L24"
+    },
+    {
+      "id": "package_dependencies_tailwind_merge",
+      "label": "tailwind-merge",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "dependencies",
+      "file_type": "code",
+      "norm_label": "tailwind-merge",
+      "source_file": "package.json",
+      "source_location": "L25"
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "scripts",
+      "source_file": "package.json",
+      "source_location": "L6"
+    },
+    {
+      "id": "package_scripts_build",
+      "label": "build",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "build",
+      "source_file": "package.json",
+      "source_location": "L8"
+    },
+    {
+      "id": "package_scripts_cap_add",
+      "label": "cap:add",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "cap:add",
+      "source_file": "package.json",
+      "source_location": "L10"
+    },
+    {
+      "id": "package_scripts_cap_open",
+      "label": "cap:open",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "cap:open",
+      "source_file": "package.json",
+      "source_location": "L12"
+    },
+    {
+      "id": "package_scripts_cap_sync",
+      "label": "cap:sync",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "cap:sync",
+      "source_file": "package.json",
+      "source_location": "L11"
+    },
+    {
+      "id": "package_scripts_dev",
+      "label": "dev",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "dev",
+      "source_file": "package.json",
+      "source_location": "L7"
+    },
+    {
+      "id": "package_scripts_preview",
+      "label": "preview",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "preview",
+      "source_file": "package.json",
+      "source_location": "L9"
+    },
+    {
+      "id": "capacitor_config",
+      "label": "capacitor.config.ts",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "capacitor.config.ts",
+      "file_type": "code",
+      "norm_label": "capacitor.config.ts",
+      "source_file": "capacitor.config.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "capacitor_config_config",
+      "label": "config",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "capacitor.config.ts",
+      "file_type": "code",
+      "norm_label": "config",
+      "source_file": "capacitor.config.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "ref_capacitor_cli",
+      "label": "@capacitor/cli",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "capacitor.config.ts",
+      "file_type": "concept",
+      "norm_label": "@capacitor/cli",
+      "source_file": "package.json",
+      "source_location": "L17"
+    },
+    {
+      "id": "vite_config",
+      "label": "vite.config.ts",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "vite",
+      "file_type": "code",
+      "norm_label": "vite.config.ts",
+      "source_file": "vite.config.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "ref_vite",
+      "label": "vite",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "vite",
+      "file_type": "concept",
+      "norm_label": "vite",
+      "source_file": "package.json",
+      "source_location": "L35"
+    },
+    {
+      "id": "ref_vitejs_plugin_react",
+      "label": "@vitejs/plugin-react",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "vite",
+      "file_type": "concept",
+      "norm_label": "@vitejs/plugin-react",
+      "source_file": "package.json",
+      "source_location": "L30"
     },
     {
       "id": "agents_skills_graphify_skill",
@@ -4451,7 +4462,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/common/DeviceFrame.tsx",
-      "source_location": "L32",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -10224,13 +10235,24 @@
     },
     {
       "source": "src_components_common_deviceframe",
-      "target": "src_components_common_deviceframe_deviceframe",
+      "target": "src_components_common_deviceframe_isnative",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/common/DeviceFrame.tsx",
       "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_common_deviceframe",
+      "target": "src_components_common_deviceframe_deviceframe",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/common/DeviceFrame.tsx",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -11333,6 +11355,5 @@
       "source_file": "MANAK-Technical-Architecture.md"
     }
   ],
-  "hyperedges": [],
-  "built_at_commit": "b047a9cf04edc5ec128b80bf15aeccc93d5d1882"
+  "hyperedges": []
 }

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">MANAK</string>
+    <string name="title_activity_main">MANAK</string>
+    <string name="package_name">in.gov.manak.compliance</string>
+    <string name="custom_url_scheme">in.gov.manak.compliance</string>
+</resources>

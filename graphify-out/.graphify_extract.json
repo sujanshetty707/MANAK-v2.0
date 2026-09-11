@@ -1,0 +1,189 @@
+{
+  "nodes": [
+    {
+      "id": "MANAK_App",
+      "label": "MANAK Compliance System",
+      "type": "System",
+      "source_file": "MANAK-PRD (1).md",
+      "description": "Legal Metrology Compliance Checker App for Smart India Hackathon 2026 (SIH26034)"
+    },
+    {
+      "id": "Legal_Metrology_Rules_2011",
+      "label": "Packaged Commodities Rules 2011",
+      "type": "Regulation",
+      "source_file": "MANAK-PRD (1).md",
+      "description": "The Legal Metrology (Packaged Commodities) Rules, 2011 (GSR 202(E))"
+    },
+    {
+      "id": "Officer_Flow",
+      "label": "Officer Flow",
+      "type": "UserFlow",
+      "source_file": "manak-app-flow.md",
+      "description": "Govt ID Login -> Dashboard -> Scan / Check URL -> Analysis -> Compliance Result -> Report Preview & Gen -> Inspection History"
+    },
+    {
+      "id": "Consumer_Flow",
+      "label": "Consumer Flow",
+      "type": "UserFlow",
+      "source_file": "manak-app-flow.md",
+      "description": "Mobile OTP Login -> Consumer Dashboard -> Check Product (Scan / Paste URL) -> Analysis -> Result -> Report Violation -> Confirmation"
+    },
+    {
+      "id": "Extraction_Service",
+      "label": "OCR & Extraction Pipeline",
+      "type": "Service",
+      "source_file": "MANAK-Technical-Architecture.md",
+      "description": "Gemini Vision OCR + entity parsing into structured declarations object"
+    },
+    {
+      "id": "Deterministic_Rule_Engine",
+      "label": "Deterministic Rule Engine",
+      "type": "CoreModule",
+      "source_file": "MANAK-Technical-Architecture.md",
+      "description": "Pure TS/JS evaluation of declarations against 2011 Rules lookup table (no LLM in pass/fail)"
+    },
+    {
+      "id": "RAG_Explanation_Service",
+      "label": "RAG Explanation Service",
+      "type": "Service",
+      "source_file": "MANAK-Technical-Architecture.md",
+      "description": "Generates human-readable 'why this is a violation' citations after rule decision"
+    },
+    {
+      "id": "Offline_Sync_Engine",
+      "label": "IndexedDB Offline Sync",
+      "type": "Module",
+      "source_file": "MANAK-Technical-Architecture.md",
+      "description": "Provisional on-device results, background sync queue, idempotency with client UUIDs"
+    },
+    {
+      "id": "Report_Generator",
+      "label": "Report & Digital Signature",
+      "type": "Service",
+      "source_file": "MANAK-Technical-Architecture.md",
+      "description": "Generates audit-ready evidence PDF with geo-tag, timestamp, Documenso/DigiLocker eSign"
+    },
+    {
+      "id": "Ecommerce_DOM_Adapter",
+      "label": "E-Commerce DOM Adapters",
+      "type": "Adapter",
+      "source_file": "MANAK-Technical-Architecture.md",
+      "description": "Amazon/Flipkart content script DOM extractor for marketplace compliance checks"
+    },
+    {
+      "id": "Stitch_Design_System",
+      "label": "MANAK Stitch UI Design",
+      "type": "UI",
+      "source_file": "manak-app-flow.md",
+      "description": "Deep Navy #1B3A6B / #142450, Safety Orange #E8622C, Green #2A9D5C, Inter font, 390px mobile-first PWA"
+    },
+    {
+      "id": "Inspection_Repository",
+      "label": "Inspection & Violation Repository",
+      "type": "Database",
+      "source_file": "MANAK-Technical-Architecture.md",
+      "description": "Supabase Postgres database tracking inspections, violations, evidence images, and consumer reports"
+    }
+  ],
+  "edges": [
+    {
+      "source": "MANAK_App",
+      "target": "Legal_Metrology_Rules_2011",
+      "label": "governed_by",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "MANAK_App",
+      "target": "Officer_Flow",
+      "label": "implements",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "MANAK_App",
+      "target": "Consumer_Flow",
+      "label": "implements",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "Officer_Flow",
+      "target": "Extraction_Service",
+      "label": "triggers",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "Consumer_Flow",
+      "target": "Extraction_Service",
+      "label": "triggers",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "Extraction_Service",
+      "target": "Deterministic_Rule_Engine",
+      "label": "feeds_structured_data_to",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "Deterministic_Rule_Engine",
+      "target": "Legal_Metrology_Rules_2011",
+      "label": "validates_against",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "Deterministic_Rule_Engine",
+      "target": "RAG_Explanation_Service",
+      "label": "triggers_explanations_from",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "Deterministic_Rule_Engine",
+      "target": "Inspection_Repository",
+      "label": "persists_results_to",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "Officer_Flow",
+      "target": "Report_Generator",
+      "label": "initiates",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "Officer_Flow",
+      "target": "Offline_Sync_Engine",
+      "label": "uses_offline_mode",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "Consumer_Flow",
+      "target": "Ecommerce_DOM_Adapter",
+      "label": "checks_links_with",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "Officer_Flow",
+      "target": "Ecommerce_DOM_Adapter",
+      "label": "checks_links_with",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "Officer_Flow",
+      "target": "Stitch_Design_System",
+      "label": "styled_with",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "Consumer_Flow",
+      "target": "Stitch_Design_System",
+      "label": "styled_with",
+      "confidence": "EXTRACTED"
+    },
+    {
+      "source": "Report_Generator",
+      "target": "Inspection_Repository",
+      "label": "stores_signed_report_in",
+      "confidence": "EXTRACTED"
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 1200,
+  "output_tokens": 800
+}

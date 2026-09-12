@@ -151,7 +151,7 @@ export const InspectionReportScreen: React.FC = () => {
       </main>
 
       {/* Action Footer */}
-      <footer className="bg-white border-t border-slate-200/90 p-3.5 shadow-nav flex items-center space-x-2.5 z-20 flex-shrink-0">
+      <footer className="bg-white border-t border-slate-200/90 p-3.5 pb-[calc(max(14px,env(safe-area-inset-bottom,0px))+4px)] shadow-nav flex items-center space-x-2.5 z-20 flex-shrink-0">
         <button
           onClick={() => navigateTo('officer_dashboard')}
           className="p-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors"

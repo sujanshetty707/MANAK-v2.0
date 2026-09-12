@@ -1,8 +1,8 @@
 {
   "package.json": {
-    "mtime": 1789237194.6981158,
-    "seen": 1789239465.6312165,
-    "ast_hash": "c5b4b53d76180c6b5e979ae3a8a73f5a",
+    "mtime": 1789150442.7015111,
+    "seen": 1789150588.6463754,
+    "ast_hash": "62176b4ccbf393557936ff354e2a516d",
     "semantic_hash": ""
   },
   "postcss.config.js": {
@@ -12,15 +12,15 @@
     "semantic_hash": ""
   },
   "src/App.tsx": {
-    "mtime": 1789236090.8218715,
-    "seen": 1789239465.6312227,
-    "ast_hash": "a4f767ad4af8b57a62c6cb0812a0ed4c",
+    "mtime": 1789149929.0023575,
+    "seen": 1789150097.2574437,
+    "ast_hash": "3c19ca40b0055e7d2f8f00493ac07fd2",
     "semantic_hash": ""
   },
   "src/components/common/BottomNav.tsx": {
-    "mtime": 1789236082.8926947,
-    "seen": 1789239465.6312244,
-    "ast_hash": "4ab862ace7124259742a4c6e82572b92",
+    "mtime": 1789154507.9202137,
+    "seen": 1789154664.663261,
+    "ast_hash": "5a3dd145b094903a10049944bd12d226",
     "semantic_hash": ""
   },
   "src/components/common/DeviceFrame.tsx": {
@@ -30,15 +30,15 @@
     "semantic_hash": ""
   },
   "src/components/common/Header.tsx": {
-    "mtime": 1789236077.6196327,
-    "seen": 1789239465.6312282,
-    "ast_hash": "1989f9f408bc3b0e7c086043a329f78e",
+    "mtime": 1789154489.961175,
+    "seen": 1789154664.6632643,
+    "ast_hash": "a087388b0f28ee8e4972c8bc28aacc31",
     "semantic_hash": ""
   },
   "src/components/screens/AnalysisResultsScreen.tsx": {
-    "mtime": 1789236167.4728026,
-    "seen": 1789239465.6312296,
-    "ast_hash": "de18b613486a77b66620710c68884653",
+    "mtime": 1789147015.0192807,
+    "seen": 1789147754.3219643,
+    "ast_hash": "8d975cbd2fc3d9e58291c510ef7a8305",
     "semantic_hash": ""
   },
   "src/components/screens/CameraScanScreen.tsx": {
@@ -48,9 +48,9 @@
     "semantic_hash": ""
   },
   "src/components/screens/CheckUrlScreen.tsx": {
-    "mtime": 1789236131.235863,
-    "seen": 1789239465.631233,
-    "ast_hash": "9a6c912d5391876eabe086d647804702",
+    "mtime": 1789149961.976865,
+    "seen": 1789150097.257458,
+    "ast_hash": "74a0861b114121ba64ed0dd8b687ad4b",
     "semantic_hash": ""
   },
   "src/components/screens/ComplianceChatScreen.tsx": {
@@ -60,9 +60,9 @@
     "semantic_hash": ""
   },
   "src/components/screens/ConsumerCheckProductScreen.tsx": {
-    "mtime": 1789236186.150949,
-    "seen": 1789239465.6312366,
-    "ast_hash": "9d80d3b9358c098dc43173d2bd63b66d",
+    "mtime": 1789147105.072546,
+    "seen": 1789147754.321984,
+    "ast_hash": "74fc62b5867daf61b2f4c1f411f84075",
     "semantic_hash": ""
   },
   "src/components/screens/ConsumerDashboardScreen.tsx": {
@@ -72,9 +72,9 @@
     "semantic_hash": ""
   },
   "src/components/screens/ConsumerLoginScreen.tsx": {
-    "mtime": 1789236144.3387737,
-    "seen": 1789239465.63124,
-    "ast_hash": "1f99a5f31defecdde89758914eaec7fd",
+    "mtime": 1789147077.3123662,
+    "seen": 1789147754.321994,
+    "ast_hash": "24420a5ffe2cd2f886d2b5a0dbd95a97",
     "semantic_hash": ""
   },
   "src/components/screens/ConsumerMyReportsScreen.tsx": {
@@ -84,21 +84,21 @@
     "semantic_hash": ""
   },
   "src/components/screens/ConsumerReportConfirmationScreen.tsx": {
-    "mtime": 1789236159.860572,
-    "seen": 1789239465.6312435,
-    "ast_hash": "dd4aa1e668e580c513ee6cf45bc6b181",
+    "mtime": 1789147135.8436382,
+    "seen": 1789147754.3219988,
+    "ast_hash": "3ede5e8952500a70e44ba9d6c79fd15c",
     "semantic_hash": ""
   },
   "src/components/screens/ConsumerReportViolationScreen.tsx": {
-    "mtime": 1789236151.4790668,
-    "seen": 1789239465.631245,
-    "ast_hash": "e9727c888fc2d61c379b4d88aefa6227",
+    "mtime": 1789147119.3523512,
+    "seen": 1789147754.3220017,
+    "ast_hash": "081c5146621021c466942e677abb7b61",
     "semantic_hash": ""
   },
   "src/components/screens/ExtractionProcessingScreen.tsx": {
-    "mtime": 1789236100.8532064,
-    "seen": 1789239465.6312463,
-    "ast_hash": "1f8dee6d92f87b9a66655307bc9f012d",
+    "mtime": 1789150045.2318473,
+    "seen": 1789150097.2574744,
+    "ast_hash": "55d03c10ccacdc8e172633ece25362e1",
     "semantic_hash": ""
   },
   "src/components/screens/InspectionHistoryScreen.tsx": {
@@ -108,9 +108,9 @@
     "semantic_hash": ""
   },
   "src/components/screens/InspectionReportScreen.tsx": {
-    "mtime": 1789236174.5931685,
-    "seen": 1789239465.6312501,
-    "ast_hash": "9aace846a6836f5ede3196ea765db6bb",
+    "mtime": 1789147030.2473178,
+    "seen": 1789147754.32201,
+    "ast_hash": "f959e501533b37026ebd28517b0966a8",
     "semantic_hash": ""
   },
   "src/components/screens/OfficerDashboardScreen.tsx": {
@@ -120,9 +120,9 @@
     "semantic_hash": ""
   },
   "src/components/screens/OfficerLoginScreen.tsx": {
-    "mtime": 1789236136.9892418,
-    "seen": 1789239465.6312559,
-    "ast_hash": "6da8680f945d96f4dfa5162d48a1712e",
+    "mtime": 1789146937.6631894,
+    "seen": 1789147754.322015,
+    "ast_hash": "5e574aaa6e4e8850fb9e7c7ad32e7f2a",
     "semantic_hash": ""
   },
   "src/components/screens/RoleSelectionScreen.tsx": {
@@ -372,8 +372,8 @@
     "semantic_hash": ""
   },
   "android/app/capacitor.build.gradle": {
-    "mtime": 1789239450.379021,
-    "seen": 1789239465.6311884,
+    "mtime": 1789154656.9005637,
+    "seen": 1789154664.6632314,
     "ast_hash": "603ecca0fd2c534a84f2da02acd653bf",
     "semantic_hash": ""
   },
@@ -384,9 +384,9 @@
     "semantic_hash": ""
   },
   "android/app/src/main/java/in/gov/manak/compliance/MainActivity.java": {
-    "mtime": 1789236067.026589,
-    "seen": 1789239465.6311972,
-    "ast_hash": "d1ee5a5b604547390c955b19b29120b5",
+    "mtime": 1789149253.079621,
+    "seen": 1789150097.2574193,
+    "ast_hash": "ab50383b8d1a9a55baf04591966ef55b",
     "semantic_hash": ""
   },
   "android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java": {
@@ -402,8 +402,8 @@
     "semantic_hash": ""
   },
   "android/capacitor.settings.gradle": {
-    "mtime": 1789239450.3773706,
-    "seen": 1789239465.631205,
+    "mtime": 1789154656.9005637,
+    "seen": 1789154664.663245,
     "ast_hash": "67f6105f1f112255bf608817f5c31034",
     "semantic_hash": ""
   },
@@ -426,9 +426,9 @@
     "semantic_hash": ""
   },
   "capacitor.config.ts": {
-    "mtime": 1789238981.1499517,
-    "seen": 1789239465.6312144,
-    "ast_hash": "3ed34755db7d6f1b0933f92c6c0d00f3",
+    "mtime": 1789149138.5385728,
+    "seen": 1789150097.2574308,
+    "ast_hash": "634c25ec96e44a54f9fbaa799fbd4035",
     "semantic_hash": ""
   },
   "public/manifest.json": {

@@ -203,7 +203,7 @@ export const AnalysisResultsScreen: React.FC = () => {
       </main>
 
       {/* Bottom Sticky Action Bar */}
-      <footer className="bg-white border-t border-slate-200/90 p-3.5 shadow-nav relative z-20 flex-shrink-0">
+      <footer className="bg-white border-t border-slate-200/90 p-3.5 pb-[calc(max(14px,env(safe-area-inset-bottom,0px))+4px)] shadow-nav relative z-20 flex-shrink-0">
         <button
           onClick={handleGenerateReport}
           className="w-full py-3.5 px-4 rounded-xl bg-manak-navy hover:bg-slate-900 active:scale-98 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow-md transition-all"

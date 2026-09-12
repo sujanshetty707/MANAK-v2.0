@@ -9,7 +9,9 @@
     "preview": "vite preview",
     "cap:add": "cap add android",
     "cap:sync": "tsc && vite build && cap sync android",
-    "cap:open": "cap open android"
+    "cap:open": "cap open android",
+    "cap:live": "cap run android -l --port 3000 --forwardPorts 3000:3000",
+    "adb:reverse": "%LOCALAPPDATA%\\Android\\Sdk\\platform-tools\\adb.exe reverse tcp:3000 tcp:3000"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.2",

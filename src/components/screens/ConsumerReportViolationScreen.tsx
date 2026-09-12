@@ -106,7 +106,7 @@ export const ConsumerReportViolationScreen: React.FC = () => {
         </form>
       </main>
 
-      <footer className="p-3 text-center">
+      <footer className="p-3 pb-[max(16px,env(safe-area-inset-bottom,0px))] text-center">
         <p className="text-[10px] text-slate-400 mono">
           Your report will be automatically routed to Zone 4 Delhi Enforcement Queue
         </p>

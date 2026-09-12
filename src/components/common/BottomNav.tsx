@@ -18,7 +18,7 @@ export const BottomNav: React.FC = () => {
     ];
 
     return (
-      <nav className="bg-white border-t border-slate-200/90 pt-2 pb-[max(10px,env(safe-area-inset-bottom))] px-2 sm:px-4 flex items-center justify-around shadow-nav relative z-20 flex-shrink-0 transition-all">
+      <nav className="bg-white border-t border-slate-200/90 pt-2 pb-[calc(max(10px,env(safe-area-inset-bottom,0px))+4px)] px-2 sm:px-4 flex items-center justify-around shadow-nav relative z-20 flex-shrink-0 transition-all">
         {navItems.map(item => {
           const Icon = item.icon;
           const isActive = activeScreen === item.id;
@@ -73,7 +73,7 @@ export const BottomNav: React.FC = () => {
   ];
 
   return (
-    <nav className="bg-white border-t border-slate-200/90 pt-2 pb-[max(10px,env(safe-area-inset-bottom))] px-6 flex items-center justify-around shadow-nav relative z-20 flex-shrink-0 transition-all">
+    <nav className="bg-white border-t border-slate-200/90 pt-2 pb-[calc(max(10px,env(safe-area-inset-bottom,0px))+4px)] px-6 flex items-center justify-around shadow-nav relative z-20 flex-shrink-0 transition-all">
       {consumerNavItems.map(item => {
         const Icon = item.icon;
         const isActive = activeScreen === item.id;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { Header } from '../common/Header';
+import { BottomNav } from '../common/BottomNav';
 import { SAMPLE_PRODUCTS } from '../../data/mockData';
 import { Link2, Globe, ArrowRight, Sparkles, ShieldCheck, CheckCircle2, AlertCircle } from 'lucide-react';
 
@@ -48,10 +49,10 @@ export const CheckUrlScreen: React.FC = () => {
   };
 
   return (
-    <div className="w-full h-full bg-[#F5F6F8] flex flex-col justify-between overflow-y-auto hide-scrollbar">
+    <div className="w-full h-full bg-[#F5F6F8] flex flex-col justify-between overflow-hidden">
       <Header title="E-Commerce Compliance Check" showBack showLogo />
 
-      <main className="p-4 space-y-4 my-auto">
+      <main className="flex-1 overflow-y-auto px-4 py-3 space-y-4 hide-scrollbar">
         <div className="space-y-1">
           <div className="flex items-center space-x-2">
             <span className="text-[10px] font-bold uppercase tracking-wider text-manak-navy mono bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-md">
@@ -151,13 +152,15 @@ export const CheckUrlScreen: React.FC = () => {
             Direct DOM extraction prevents anti-scraping fragility by inspecting live marketplace seller metadata and primary image OCR.
           </p>
         </div>
+
+        <footer className="pt-2 pb-1 text-center">
+          <p className="text-[10px] text-slate-400 mono">
+            Governed by Rule 6(10) of Legal Metrology (Packaged Commodities) Rules
+          </p>
+        </footer>
       </main>
 
-      <footer className="p-4 text-center">
-        <p className="text-[10px] text-slate-400 mono">
-          Governed by Rule 6(10) of Legal Metrology (Packaged Commodities) Rules
-        </p>
-      </footer>
+      <BottomNav />
     </div>
   );
 };

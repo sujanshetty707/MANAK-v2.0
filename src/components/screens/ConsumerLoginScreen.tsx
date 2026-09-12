@@ -112,7 +112,7 @@ export const ConsumerLoginScreen: React.FC = () => {
         </div>
       </main>
 
-      <footer className="p-4 text-center">
+      <footer className="p-4 pb-[max(16px,env(safe-area-inset-bottom,0px))] text-center">
         <p className="text-[10px] text-slate-400 mono">
           Ministry of Consumer Affairs, Food &amp; Public Distribution
         </p>

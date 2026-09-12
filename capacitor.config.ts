@@ -5,7 +5,8 @@ const config: CapacitorConfig = {
   appName: 'MANAK',
   webDir: 'dist',
   server: {
-    androidScheme: 'https'
+    androidScheme: 'https',
+    cleartext: true
   },
   android: {
     buildOptions: {

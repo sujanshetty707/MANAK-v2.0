@@ -48,7 +48,7 @@ export const ConsumerCheckProductScreen: React.FC = () => {
       <Header title="Check a Packaged Product" showBack showLogo />
 
       {/* Main Content */}
-      <main className="flex-1 overflow-y-auto p-4 space-y-4 hide-scrollbar flex flex-col justify-between">
+      <main className="flex-1 overflow-y-auto p-4 pb-[calc(max(16px,env(safe-area-inset-bottom,0px))+4px)] space-y-4 hide-scrollbar flex flex-col justify-between">
         {/* Segmented Mode Switcher */}
         <div className="flex bg-slate-200/80 p-1 rounded-2xl shadow-inner">
           <button

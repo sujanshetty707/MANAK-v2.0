@@ -209,7 +209,7 @@
       "file_type": "code",
       "norm_label": "mainactivity",
       "source_file": "android/app/src/main/java/in/gov/manak/compliance/MainActivity.java",
-      "source_location": "L7"
+      "source_location": "L5"
     },
     {
       "id": "src_app_app",
@@ -293,7 +293,7 @@
       "file_type": "code",
       "norm_label": "checkurlscreen()",
       "source_file": "src/components/screens/CheckUrlScreen.tsx",
-      "source_location": "L8"
+      "source_location": "L7"
     },
     {
       "id": "src_components_screens_compliancechatscreen_compliancechatscreen",
@@ -380,18 +380,6 @@
       "source_location": "L6"
     },
     {
-      "id": "src_components_screens_extractionprocessingscreen_extractionprocessingscreen",
-      "label": "ExtractionProcessingScreen()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "App.tsx",
-      "file_type": "code",
-      "norm_label": "extractionprocessingscreen()",
-      "source_file": "src/components/screens/ExtractionProcessingScreen.tsx",
-      "source_location": "L6"
-    },
-    {
       "id": "src_components_screens_inspectionhistoryscreen_inspectionhistoryscreen",
       "label": "InspectionHistoryScreen()",
       "_callable": true,
@@ -402,6 +390,18 @@
       "norm_label": "inspectionhistoryscreen()",
       "source_file": "src/components/screens/InspectionHistoryScreen.tsx",
       "source_location": "L8"
+    },
+    {
+      "id": "src_components_screens_inspectionreportscreen_inspectionreportscreen",
+      "label": "InspectionReportScreen()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "App.tsx",
+      "file_type": "code",
+      "norm_label": "inspectionreportscreen()",
+      "source_file": "src/components/screens/InspectionReportScreen.tsx",
+      "source_location": "L7"
     },
     {
       "id": "src_components_screens_officerconsumerreportsscreen_officerconsumerreportsscreen",
@@ -498,6 +498,30 @@
       "norm_label": "useapp()",
       "source_file": "src/context/AppContext.tsx",
       "source_location": "L306"
+    },
+    {
+      "id": "src_services_pdfreportgenerator_generateinspectionpdf",
+      "label": "generateInspectionPDF()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "App.tsx",
+      "file_type": "code",
+      "norm_label": "generateinspectionpdf()",
+      "source_file": "src/services/pdfReportGenerator.ts",
+      "source_location": "L4"
+    },
+    {
+      "id": "src_components_screens_extractionprocessingscreen_extractionprocessingscreen",
+      "label": "ExtractionProcessingScreen()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "AppContext.tsx",
+      "file_type": "code",
+      "norm_label": "extractionprocessingscreen()",
+      "source_file": "src/components/screens/ExtractionProcessingScreen.tsx",
+      "source_location": "L6"
     },
     {
       "id": "src_context_appcontext_appprovider",
@@ -644,30 +668,6 @@
       "source_location": "L4"
     },
     {
-      "id": "src_components_screens_inspectionreportscreen_inspectionreportscreen",
-      "label": "InspectionReportScreen()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "inspectionreportscreen()",
-      "source_file": "src/components/screens/InspectionReportScreen.tsx",
-      "source_location": "L7"
-    },
-    {
-      "id": "src_services_pdfreportgenerator_generateinspectionpdf",
-      "label": "generateInspectionPDF()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "generateinspectionpdf()",
-      "source_file": "src/services/pdfReportGenerator.ts",
-      "source_location": "L4"
-    },
-    {
       "id": "android_app_src_androidtest_java_com_getcapacitor_myapp_exampleinstrumentedtest_exampleinstrumentedtest_useappcontext",
       "label": ".useAppContext()",
       "_callable": true,
@@ -706,28 +706,6 @@
       "norm_label": ".addition_iscorrect()",
       "source_file": "android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java",
       "source_location": "L14"
-    },
-    {
-      "id": "android_app_src_main_java_in_gov_manak_compliance_mainactivity_mainactivity_oncreate",
-      "label": ".onCreate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 33,
-      "community_name": "MainActivity.java",
-      "file_type": "code",
-      "metadata": {
-        "unresolved_calls": [
-          {
-            "callee": "setDecorFitsSystemWindows",
-            "receiver_type": "WindowCompat",
-            "lang": "java",
-            "line": "L11"
-          }
-        ]
-      },
-      "norm_label": ".oncreate()",
-      "source_file": "android/app/src/main/java/in/gov/manak/compliance/MainActivity.java",
-      "source_location": "L8"
     },
     {
       "id": "src_app",
@@ -895,26 +873,15 @@
       "source_location": "L1"
     },
     {
-      "id": "src_components_screens_officerconsumerreportsscreen",
-      "label": "OfficerConsumerReportsScreen.tsx",
+      "id": "src_components_screens_inspectionreportscreen",
+      "label": "InspectionReportScreen.tsx",
       "_origin": "ast",
       "community": 1,
       "community_name": "App.tsx",
       "file_type": "code",
-      "norm_label": "officerconsumerreportsscreen.tsx",
-      "source_file": "src/components/screens/OfficerConsumerReportsScreen.tsx",
+      "norm_label": "inspectionreportscreen.tsx",
+      "source_file": "src/components/screens/InspectionReportScreen.tsx",
       "source_location": "L1"
-    },
-    {
-      "id": "src_components_screens_officerconsumerreportsscreen_status_meta",
-      "label": "STATUS_META",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "App.tsx",
-      "file_type": "code",
-      "norm_label": "status_meta",
-      "source_file": "src/components/screens/OfficerConsumerReportsScreen.tsx",
-      "source_location": "L12"
     },
     {
       "id": "src_components_screens_officerdashboardscreen",
@@ -991,7 +958,7 @@
       "file_type": "concept",
       "norm_label": "@capacitor/core",
       "source_file": "package.json",
-      "source_location": "L20"
+      "source_location": "L18"
     },
     {
       "id": "ref_lucide_react",
@@ -1002,7 +969,7 @@
       "file_type": "concept",
       "norm_label": "lucide-react",
       "source_file": "package.json",
-      "source_location": "L24"
+      "source_location": "L22"
     },
     {
       "id": "ref_react",
@@ -1013,7 +980,7 @@
       "file_type": "concept",
       "norm_label": "react",
       "source_file": "package.json",
-      "source_location": "L25"
+      "source_location": "L23"
     },
     {
       "id": "agents_skills_ponytail_help_skill",
@@ -1695,6 +1662,28 @@
       "source_location": "L1"
     },
     {
+      "id": "src_components_screens_officerconsumerreportsscreen",
+      "label": "OfficerConsumerReportsScreen.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "AppContext.tsx",
+      "file_type": "code",
+      "norm_label": "officerconsumerreportsscreen.tsx",
+      "source_file": "src/components/screens/OfficerConsumerReportsScreen.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_screens_officerconsumerreportsscreen_status_meta",
+      "label": "STATUS_META",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "AppContext.tsx",
+      "file_type": "code",
+      "norm_label": "status_meta",
+      "source_file": "src/components/screens/OfficerConsumerReportsScreen.tsx",
+      "source_location": "L12"
+    },
+    {
       "id": "src_context_appcontext",
       "label": "AppContext.tsx",
       "_origin": "ast",
@@ -1846,6 +1835,17 @@
       "file_type": "code",
       "norm_label": "offlinestorage.ts",
       "source_file": "src/services/offlineStorage.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_services_pdfreportgenerator",
+      "label": "pdfReportGenerator.ts",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "AppContext.tsx",
+      "file_type": "code",
+      "norm_label": "pdfreportgenerator.ts",
+      "source_file": "src/services/pdfReportGenerator.ts",
       "source_location": "L1"
     },
     {
@@ -2286,6 +2286,138 @@
       "source_location": "L1"
     },
     {
+      "id": "package_dependencies",
+      "label": "dependencies",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "dependencies",
+      "source_file": "package.json",
+      "source_location": "L14"
+    },
+    {
+      "id": "package_dependencies_capacitor_android",
+      "label": "@capacitor/android",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "@capacitor/android",
+      "source_file": "package.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "package_dependencies_capacitor_camera",
+      "label": "@capacitor/camera",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "@capacitor/camera",
+      "source_file": "package.json",
+      "source_location": "L16"
+    },
+    {
+      "id": "package_dependencies_capacitor_cli",
+      "label": "@capacitor/cli",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "@capacitor/cli",
+      "source_file": "package.json",
+      "source_location": "L17"
+    },
+    {
+      "id": "package_dependencies_capacitor_core",
+      "label": "@capacitor/core",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "@capacitor/core",
+      "source_file": "package.json",
+      "source_location": "L18"
+    },
+    {
+      "id": "package_dependencies_clsx",
+      "label": "clsx",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "clsx",
+      "source_file": "package.json",
+      "source_location": "L19"
+    },
+    {
+      "id": "package_dependencies_html2canvas",
+      "label": "html2canvas",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "html2canvas",
+      "source_file": "package.json",
+      "source_location": "L20"
+    },
+    {
+      "id": "package_dependencies_jspdf",
+      "label": "jspdf",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "jspdf",
+      "source_file": "package.json",
+      "source_location": "L21"
+    },
+    {
+      "id": "package_dependencies_lucide_react",
+      "label": "lucide-react",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "lucide-react",
+      "source_file": "package.json",
+      "source_location": "L22"
+    },
+    {
+      "id": "package_dependencies_react",
+      "label": "react",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "react",
+      "source_file": "package.json",
+      "source_location": "L23"
+    },
+    {
+      "id": "package_dependencies_react_dom",
+      "label": "react-dom",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "react-dom",
+      "source_file": "package.json",
+      "source_location": "L24"
+    },
+    {
+      "id": "package_dependencies_tailwind_merge",
+      "label": "tailwind-merge",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "code",
+      "norm_label": "tailwind-merge",
+      "source_file": "package.json",
+      "source_location": "L25"
+    },
+    {
       "id": "package_name",
       "label": "name",
       "_origin": "ast",
@@ -2319,17 +2451,6 @@
       "source_location": "L6"
     },
     {
-      "id": "package_scripts_adb_reverse",
-      "label": "adb:reverse",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "adb:reverse",
-      "source_file": "package.json",
-      "source_location": "L14"
-    },
-    {
       "id": "package_scripts_build",
       "label": "build",
       "_origin": "ast",
@@ -2350,17 +2471,6 @@
       "norm_label": "cap:add",
       "source_file": "package.json",
       "source_location": "L10"
-    },
-    {
-      "id": "package_scripts_cap_live",
-      "label": "cap:live",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "cap:live",
-      "source_file": "package.json",
-      "source_location": "L13"
     },
     {
       "id": "package_scripts_cap_open",
@@ -2429,28 +2539,6 @@
       "source_location": "L4"
     },
     {
-      "id": "src_components_screens_inspectionreportscreen",
-      "label": "InspectionReportScreen.tsx",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "inspectionreportscreen.tsx",
-      "source_file": "src/components/screens/InspectionReportScreen.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_services_pdfreportgenerator",
-      "label": "pdfReportGenerator.ts",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "pdfreportgenerator.ts",
-      "source_file": "src/services/pdfReportGenerator.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "vite_config",
       "label": "vite.config.ts",
       "_origin": "ast",
@@ -2470,7 +2558,7 @@
       "file_type": "concept",
       "norm_label": "autoprefixer",
       "source_file": "package.json",
-      "source_location": "L33"
+      "source_location": "L31"
     },
     {
       "id": "ref_capacitor_android",
@@ -2481,7 +2569,7 @@
       "file_type": "concept",
       "norm_label": "@capacitor/android",
       "source_file": "package.json",
-      "source_location": "L17"
+      "source_location": "L15"
     },
     {
       "id": "ref_capacitor_camera",
@@ -2492,7 +2580,7 @@
       "file_type": "concept",
       "norm_label": "@capacitor/camera",
       "source_file": "package.json",
-      "source_location": "L18"
+      "source_location": "L16"
     },
     {
       "id": "ref_capacitor_cli",
@@ -2503,7 +2591,7 @@
       "file_type": "concept",
       "norm_label": "@capacitor/cli",
       "source_file": "package.json",
-      "source_location": "L19"
+      "source_location": "L17"
     },
     {
       "id": "ref_clsx",
@@ -2514,7 +2602,7 @@
       "file_type": "concept",
       "norm_label": "clsx",
       "source_file": "package.json",
-      "source_location": "L21"
+      "source_location": "L19"
     },
     {
       "id": "ref_html2canvas",
@@ -2525,7 +2613,7 @@
       "file_type": "concept",
       "norm_label": "html2canvas",
       "source_file": "package.json",
-      "source_location": "L22"
+      "source_location": "L20"
     },
     {
       "id": "ref_jspdf",
@@ -2536,7 +2624,7 @@
       "file_type": "concept",
       "norm_label": "jspdf",
       "source_file": "package.json",
-      "source_location": "L23"
+      "source_location": "L21"
     },
     {
       "id": "ref_postcss",
@@ -2547,7 +2635,7 @@
       "file_type": "concept",
       "norm_label": "postcss",
       "source_file": "package.json",
-      "source_location": "L34"
+      "source_location": "L32"
     },
     {
       "id": "ref_react_dom",
@@ -2558,7 +2646,7 @@
       "file_type": "concept",
       "norm_label": "react-dom",
       "source_file": "package.json",
-      "source_location": "L26"
+      "source_location": "L24"
     },
     {
       "id": "ref_tailwind_merge",
@@ -2569,7 +2657,7 @@
       "file_type": "concept",
       "norm_label": "tailwind-merge",
       "source_file": "package.json",
-      "source_location": "L27"
+      "source_location": "L25"
     },
     {
       "id": "ref_tailwindcss",
@@ -2580,7 +2668,7 @@
       "file_type": "concept",
       "norm_label": "tailwindcss",
       "source_file": "package.json",
-      "source_location": "L35"
+      "source_location": "L33"
     },
     {
       "id": "ref_types_react",
@@ -2591,7 +2679,7 @@
       "file_type": "concept",
       "norm_label": "@types/react",
       "source_file": "package.json",
-      "source_location": "L30"
+      "source_location": "L28"
     },
     {
       "id": "ref_types_react_dom",
@@ -2602,7 +2690,7 @@
       "file_type": "concept",
       "norm_label": "@types/react-dom",
       "source_file": "package.json",
-      "source_location": "L31"
+      "source_location": "L29"
     },
     {
       "id": "ref_typescript",
@@ -2613,7 +2701,7 @@
       "file_type": "concept",
       "norm_label": "typescript",
       "source_file": "package.json",
-      "source_location": "L36"
+      "source_location": "L34"
     },
     {
       "id": "ref_vite",
@@ -2624,7 +2712,7 @@
       "file_type": "concept",
       "norm_label": "vite",
       "source_file": "package.json",
-      "source_location": "L37"
+      "source_location": "L35"
     },
     {
       "id": "ref_vitejs_plugin_react",
@@ -2635,7 +2723,7 @@
       "file_type": "concept",
       "norm_label": "@vitejs/plugin-react",
       "source_file": "package.json",
-      "source_location": "L32"
+      "source_location": "L30"
     },
     {
       "id": "android_app_src_androidtest_java_com_getcapacitor_myapp_exampleinstrumentedtest",
@@ -2701,7 +2789,7 @@
       "file_type": "code",
       "norm_label": "devdependencies",
       "source_file": "package.json",
-      "source_location": "L29"
+      "source_location": "L27"
     },
     {
       "id": "package_devdependencies_autoprefixer",
@@ -2712,7 +2800,7 @@
       "file_type": "code",
       "norm_label": "autoprefixer",
       "source_file": "package.json",
-      "source_location": "L33"
+      "source_location": "L31"
     },
     {
       "id": "package_devdependencies_postcss",
@@ -2723,7 +2811,7 @@
       "file_type": "code",
       "norm_label": "postcss",
       "source_file": "package.json",
-      "source_location": "L34"
+      "source_location": "L32"
     },
     {
       "id": "package_devdependencies_tailwindcss",
@@ -2734,7 +2822,7 @@
       "file_type": "code",
       "norm_label": "tailwindcss",
       "source_file": "package.json",
-      "source_location": "L35"
+      "source_location": "L33"
     },
     {
       "id": "package_devdependencies_types_react",
@@ -2745,7 +2833,7 @@
       "file_type": "code",
       "norm_label": "@types/react",
       "source_file": "package.json",
-      "source_location": "L30"
+      "source_location": "L28"
     },
     {
       "id": "package_devdependencies_types_react_dom",
@@ -2756,7 +2844,7 @@
       "file_type": "code",
       "norm_label": "@types/react-dom",
       "source_file": "package.json",
-      "source_location": "L31"
+      "source_location": "L29"
     },
     {
       "id": "package_devdependencies_typescript",
@@ -2767,7 +2855,7 @@
       "file_type": "code",
       "norm_label": "typescript",
       "source_file": "package.json",
-      "source_location": "L36"
+      "source_location": "L34"
     },
     {
       "id": "package_devdependencies_vite",
@@ -2778,7 +2866,7 @@
       "file_type": "code",
       "norm_label": "vite",
       "source_file": "package.json",
-      "source_location": "L37"
+      "source_location": "L35"
     },
     {
       "id": "package_devdependencies_vitejs_plugin_react",
@@ -2789,7 +2877,7 @@
       "file_type": "code",
       "norm_label": "@vitejs/plugin-react",
       "source_file": "package.json",
-      "source_location": "L32"
+      "source_location": "L30"
     },
     {
       "id": "android_gradlew",
@@ -2863,17 +2951,6 @@
       "source_location": "L1"
     },
     {
-      "id": "android_os_bundle",
-      "label": "android.os.Bundle",
-      "_origin": "ast",
-      "community": 33,
-      "community_name": "MainActivity.java",
-      "file_type": "code",
-      "norm_label": "android.os.bundle",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
       "id": "com_getcapacitor_bridgeactivity",
       "label": "com.getcapacitor.BridgeActivity",
       "_origin": "ast",
@@ -2881,17 +2958,6 @@
       "community_name": "MainActivity.java",
       "file_type": "code",
       "norm_label": "com.getcapacitor.bridgeactivity",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
-      "id": "override",
-      "label": "Override",
-      "_origin": "ast",
-      "community": 33,
-      "community_name": "MainActivity.java",
-      "file_type": "code",
-      "norm_label": "override",
       "source_file": "",
       "source_location": ""
     },
@@ -3284,138 +3350,6 @@
       "norm_label": "what to contribute",
       "source_file": "README.md",
       "source_location": "L918"
-    },
-    {
-      "id": "package_dependencies",
-      "label": "dependencies",
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "dependencies",
-      "source_file": "package.json",
-      "source_location": "L16"
-    },
-    {
-      "id": "package_dependencies_capacitor_android",
-      "label": "@capacitor/android",
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "@capacitor/android",
-      "source_file": "package.json",
-      "source_location": "L17"
-    },
-    {
-      "id": "package_dependencies_capacitor_camera",
-      "label": "@capacitor/camera",
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "@capacitor/camera",
-      "source_file": "package.json",
-      "source_location": "L18"
-    },
-    {
-      "id": "package_dependencies_capacitor_cli",
-      "label": "@capacitor/cli",
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "@capacitor/cli",
-      "source_file": "package.json",
-      "source_location": "L19"
-    },
-    {
-      "id": "package_dependencies_capacitor_core",
-      "label": "@capacitor/core",
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "@capacitor/core",
-      "source_file": "package.json",
-      "source_location": "L20"
-    },
-    {
-      "id": "package_dependencies_clsx",
-      "label": "clsx",
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "clsx",
-      "source_file": "package.json",
-      "source_location": "L21"
-    },
-    {
-      "id": "package_dependencies_html2canvas",
-      "label": "html2canvas",
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "html2canvas",
-      "source_file": "package.json",
-      "source_location": "L22"
-    },
-    {
-      "id": "package_dependencies_jspdf",
-      "label": "jspdf",
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "jspdf",
-      "source_file": "package.json",
-      "source_location": "L23"
-    },
-    {
-      "id": "package_dependencies_lucide_react",
-      "label": "lucide-react",
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "lucide-react",
-      "source_file": "package.json",
-      "source_location": "L24"
-    },
-    {
-      "id": "package_dependencies_react",
-      "label": "react",
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "react",
-      "source_file": "package.json",
-      "source_location": "L25"
-    },
-    {
-      "id": "package_dependencies_react_dom",
-      "label": "react-dom",
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "react-dom",
-      "source_file": "package.json",
-      "source_location": "L26"
-    },
-    {
-      "id": "package_dependencies_tailwind_merge",
-      "label": "tailwind-merge",
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "tailwind-merge",
-      "source_file": "package.json",
-      "source_location": "L27"
     },
     {
       "id": "agents_skills_graphify_skill",
@@ -4449,18 +4383,6 @@
       "weight": 1.0
     },
     {
-      "source": "android_app_src_main_java_in_gov_manak_compliance_mainactivity_mainactivity_oncreate",
-      "target": "override",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "attribute",
-      "source_file": "android/app/src/main/java/in/gov/manak/compliance/MainActivity.java",
-      "source_location": "L8",
-      "weight": 1.0
-    },
-    {
       "source": "android_app_src_test_java_com_getcapacitor_myapp_exampleunittest_exampleunittest_addition_iscorrect",
       "target": "org_junit_test",
       "relation": "references",
@@ -4577,7 +4499,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/screens/CheckUrlScreen.tsx",
-      "source_location": "L9",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -5074,18 +4996,6 @@
     },
     {
       "source": "android_app_src_main_java_in_gov_manak_compliance_mainactivity",
-      "target": "android_os_bundle",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "android/app/src/main/java/in/gov/manak/compliance/MainActivity.java",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "android_app_src_main_java_in_gov_manak_compliance_mainactivity",
       "target": "com_getcapacitor_bridgeactivity",
       "relation": "imports",
       "_origin": "ast",
@@ -5093,7 +5003,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "android/app/src/main/java/in/gov/manak/compliance/MainActivity.java",
-      "source_location": "L5",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -5117,7 +5027,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L17",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -5129,7 +5039,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L18",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -5141,7 +5051,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L19",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -5153,7 +5063,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L20",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -5165,7 +5075,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L21",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -5177,7 +5087,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L22",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -5189,7 +5099,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L23",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -5201,7 +5111,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L24",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -5213,7 +5123,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L25",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -5225,7 +5135,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L26",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -5237,7 +5147,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L27",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -5249,7 +5159,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L30",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -5261,7 +5171,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L31",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -5273,7 +5183,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L32",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -5285,7 +5195,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L33",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -5297,7 +5207,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L34",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -5309,7 +5219,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L35",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -5321,7 +5231,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L36",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -5333,7 +5243,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L37",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -5710,18 +5620,6 @@
     },
     {
       "source": "src_components_screens_checkurlscreen",
-      "target": "src_components_common_bottomnav_bottomnav",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/screens/CheckUrlScreen.tsx",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_screens_checkurlscreen",
       "target": "src_data_mockdata_sample_products",
       "relation": "imports",
       "_origin": "ast",
@@ -5729,7 +5627,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/screens/CheckUrlScreen.tsx",
-      "source_location": "L5",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -7270,7 +7168,7 @@
     },
     {
       "source": "src_components_screens_checkurlscreen",
-      "target": "src_components_common_bottomnav",
+      "target": "src_data_mockdata",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -7282,18 +7180,6 @@
     },
     {
       "source": "src_components_screens_checkurlscreen",
-      "target": "src_data_mockdata",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "src/components/screens/CheckUrlScreen.tsx",
-      "source_location": "L5",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_screens_checkurlscreen",
       "target": "ref_lucide_react",
       "relation": "imports_from",
       "_origin": "ast",
@@ -7301,7 +7187,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/components/screens/CheckUrlScreen.tsx",
-      "source_location": "L6",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -8445,18 +8331,6 @@
       "weight": 1.0
     },
     {
-      "source": "android_app_src_main_java_in_gov_manak_compliance_mainactivity_mainactivity_oncreate",
-      "target": "android_os_bundle",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "parameter_type",
-      "source_file": "android/app/src/main/java/in/gov/manak/compliance/MainActivity.java",
-      "source_location": "L8",
-      "weight": 1.0
-    },
-    {
       "source": "agents",
       "target": "agents_manak_project_guidelines_skills",
       "relation": "contains",
@@ -9454,7 +9328,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "android/app/src/main/java/in/gov/manak/compliance/MainActivity.java",
-      "source_location": "L7",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -9498,7 +9372,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L16",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -9520,7 +9394,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L29",
+      "source_location": "L27",
       "weight": 1.0
     },
     {
@@ -9575,7 +9449,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L17",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -9586,7 +9460,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L18",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -9597,7 +9471,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L19",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -9608,7 +9482,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L20",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -9619,7 +9493,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L21",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -9630,7 +9504,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L22",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -9641,7 +9515,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L23",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -9652,7 +9526,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L24",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -9663,7 +9537,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L25",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -9674,7 +9548,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L26",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -9685,7 +9559,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L27",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -9696,7 +9570,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L30",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -9707,7 +9581,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L31",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -9718,7 +9592,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L32",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -9729,7 +9603,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L33",
+      "source_location": "L31",
       "weight": 1.0
     },
     {
@@ -9740,7 +9614,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L34",
+      "source_location": "L32",
       "weight": 1.0
     },
     {
@@ -9751,7 +9625,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L35",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -9762,7 +9636,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L36",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -9773,7 +9647,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L37",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -9807,28 +9681,6 @@
       "confidence_score": 1.0,
       "source_file": "package.json",
       "source_location": "L12",
-      "weight": 1.0
-    },
-    {
-      "source": "package_scripts",
-      "target": "package_scripts_cap_live",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "package.json",
-      "source_location": "L13",
-      "weight": 1.0
-    },
-    {
-      "source": "package_scripts",
-      "target": "package_scripts_adb_reverse",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "package.json",
-      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -10422,7 +10274,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/screens/CheckUrlScreen.tsx",
-      "source_location": "L8",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -11311,7 +11163,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "android/app/src/main/java/in/gov/manak/compliance/MainActivity.java",
-      "source_location": "L7",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -11323,17 +11175,6 @@
       "confidence_score": 1.0,
       "source_file": "android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java",
       "source_location": "L19",
-      "weight": 1.0
-    },
-    {
-      "source": "android_app_src_main_java_in_gov_manak_compliance_mainactivity_mainactivity",
-      "target": "android_app_src_main_java_in_gov_manak_compliance_mainactivity_mainactivity_oncreate",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "android/app/src/main/java/in/gov/manak/compliance/MainActivity.java",
-      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -11493,5 +11334,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "4c40c619d52ec9c6b42986e1c0833330b48c6628"
+  "built_at_commit": "b047a9cf04edc5ec128b80bf15aeccc93d5d1882"
 }

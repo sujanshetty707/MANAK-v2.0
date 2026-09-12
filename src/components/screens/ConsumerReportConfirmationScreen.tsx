@@ -101,7 +101,7 @@ export const ConsumerReportConfirmationScreen: React.FC = () => {
         </div>
       </main>
 
-      <footer className="p-3 text-center">
+      <footer className="p-3 pb-[max(16px,env(safe-area-inset-bottom,0px))] text-center">
         <p className="text-[10px] text-slate-400 mono">
           Updates will be notified to +91 98765 43210
         </p>

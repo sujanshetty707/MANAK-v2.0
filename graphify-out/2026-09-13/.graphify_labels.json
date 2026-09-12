@@ -38,6 +38,5 @@
   "36": "android/build.gradle",
   "37": "capacitor.settings.gradle",
   "38": "settings.gradle",
-  "39": "variables.gradle",
-  "40": "dependencies"
+  "39": "variables.gradle"
 }

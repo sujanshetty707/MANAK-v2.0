@@ -47,7 +47,7 @@ export const ExtractionProcessingScreen: React.FC = () => {
 
   if (failed) {
     return (
-      <div className="w-full h-full bg-[#1B3A6B] text-white flex flex-col justify-between p-6 relative overflow-hidden select-none">
+      <div className="w-full h-full bg-[#1B3A6B] text-white flex flex-col justify-between px-6 pt-[calc(max(20px,env(safe-area-inset-top,0px))+6px)] pb-[calc(max(20px,env(safe-area-inset-bottom,0px))+6px)] relative overflow-hidden select-none">
         {/* Background Glows */}
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-red-500/20 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -104,7 +104,7 @@ export const ExtractionProcessingScreen: React.FC = () => {
   }
 
   return (
-    <div className="w-full h-full bg-[#1B3A6B] text-white flex flex-col justify-between p-6 relative overflow-hidden select-none">
+    <div className="w-full h-full bg-[#1B3A6B] text-white flex flex-col justify-between px-6 pt-[calc(max(20px,env(safe-area-inset-top,0px))+6px)] pb-[calc(max(20px,env(safe-area-inset-bottom,0px))+6px)] relative overflow-hidden select-none">
       {/* Background Glows */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute bottom-10 right-0 w-48 h-48 bg-manak-orange/20 rounded-full blur-3xl pointer-events-none"></div>

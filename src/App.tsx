@@ -98,7 +98,7 @@ export const App: React.FC = () => {
     <DeviceFrame>
       {/* Offline Banner — overlays current screen when device has no internet */}
       {isReallyOffline && (
-        <div className="absolute top-0 inset-x-0 z-[100] bg-amber-500 text-white text-[11px] font-bold px-3 py-2 flex items-center justify-center gap-2 shadow-lg animate-pulse">
+        <div className="absolute top-0 inset-x-0 z-[100] bg-amber-500 text-white text-[11px] font-bold px-3 pt-[calc(max(8px,env(safe-area-inset-top,0px))+4px)] pb-2 flex items-center justify-center gap-2 shadow-lg animate-pulse">
           <WifiOff className="w-3.5 h-3.5 flex-shrink-0" />
           <span>No Internet Connection — Working in Offline Mode</span>
         </div>

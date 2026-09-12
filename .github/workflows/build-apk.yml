@@ -7,9 +7,12 @@ on:
     branches: [ main, master ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build-apk:
-    name: Build Android Debug APK
+    name: Build Android APK
     runs-on: ubuntu-latest
 
     steps:
@@ -43,15 +46,30 @@ jobs:
       - name: Grant Execute Permission to Gradlew
         run: chmod +x android/gradlew
 
-      - name: Build Android Debug APK
+      - name: Build Android APK
         run: |
           cd android
           ./gradlew assembleDebug --no-daemon
+          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/MANAK-Compliance.apk
 
-      - name: Upload Debug APK Artifact
+      - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: manak-compliance-debug-apk
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          name: MANAK-Compliance-apk
+          path: android/app/build/outputs/apk/debug/MANAK-Compliance.apk
           if-no-files-found: error
           retention-days: 14
+
+      - name: Create or Update GitHub Release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.0
+          name: "MANAK Compliance App v1.0.0"
+          body: |
+            ### Automated Build - MANAK Compliance Android App
+            Direct standalone APK ready to install on Android devices.
+            - **Direct APK download** (no zip extraction needed).
+          files: android/app/build/outputs/apk/debug/MANAK-Compliance.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

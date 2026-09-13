@@ -12,11 +12,11 @@ export interface PipelineStage {
 }
 
 export const PIPELINE_STAGES: PipelineStage[] = [
-  { id: 'preprocess', name: 'Image Preprocessing & Edge Detection', detail: 'Normalizing perspective, anti-glare filtering, and reference scale calibration...', progress: 20 },
-  { id: 'ocr', name: 'Gemini Vision OCR Multi-region Scan', detail: 'Extracting multilingual text bounding boxes across principal display panel...', progress: 45 },
-  { id: 'entities', name: 'Structured Entity Normalization', detail: 'Parsing Manufacturer, Net Quantity, MRP format, Dates, and Consumer Care...', progress: 70 },
-  { id: 'rules', name: 'Deterministic 2011 Rules Engine', detail: 'Evaluating statutory declarations against Gazette Notification GSR 202(E)...', progress: 88 },
-  { id: 'rag', name: 'RAG Statutory Citation Retrieval', detail: 'Assembling legal clauses and audit-ready verification hashes...', progress: 100 }
+  { id: 'ingest', name: 'Ingesting Verified Declarations', detail: 'Validating verified packaging data payload and metadata...', progress: 20 },
+  { id: 'rules', name: 'PCR 2011 Rule Engine Evaluation', detail: 'Evaluating 8 statutory clauses against Gazette Notification GSR 202(E)...', progress: 45 },
+  { id: 'penalties', name: 'Legal Citations & Fine Calculation', detail: 'Mapping non-compliances to statutory sections & Rule 32 penalties...', progress: 70 },
+  { id: 'hash', name: 'Cryptographic Hashing & DSC Verification', detail: 'Generating SHA-256 evidence hash and digital signature token...', progress: 90 },
+  { id: 'report', name: 'Audit Report Assembly', detail: 'Finalizing legal metrology inspection report for record...', progress: 100 }
 ];
 
 export async function simulateExtractionPipeline(

@@ -1,72 +1,108 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Header } from '../common/Header';
-import { SAMPLE_PRODUCTS } from '../../data/mockData';
-import { Camera, Zap, Upload, Check, Info, Scan, Sparkles, Layers, Aperture, ChevronLeft } from 'lucide-react';
+import { Camera, Zap, Upload, Sparkles, Aperture, ChevronLeft, Loader2, AlertCircle, Plus, X, Layers } from 'lucide-react';
 import { Camera as CapCamera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { Capacitor } from '@capacitor/core';
+import { compressImage } from '../../utils/imageUtils';
 
 export const CameraScanScreen: React.FC = () => {
-  const { navigateTo, setAnalysisData, goBack } = useApp();
+  const { startScanExtraction, goBack } = useApp();
   const [torch, setTorch] = useState(false);
-  const [selectedSampleIdx, setSelectedSampleIdx] = useState<number>(1); // default to non-compliant for demo
   const [scaleCalibrated, setScaleCalibrated] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [rawText, setRawText] = useState<string>('');
+  const [selectedImages, setSelectedImages] = useState<string[]>([]);
+  const [activeImageIdx, setActiveImageIdx] = useState<number>(0);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
   const isNative = Capacitor.isNativePlatform();
 
-  const handleCapture = () => {
-    const sample = SAMPLE_PRODUCTS[selectedSampleIdx];
-    setAnalysisData(sample.product, sample.extraction);
-    navigateTo('ocr_processing');
+  const runScan = async (imagesList?: string[], textContent?: string) => {
+    const imagesToScan = imagesList || selectedImages;
+    const textToScan = textContent !== undefined ? textContent : rawText;
+
+    if (imagesToScan.length === 0 && !textToScan.trim()) {
+      setErrorMsg('Please capture/upload at least 1 product photo (Front & Back panels recommended for complete legal metrology declarations).');
+      return;
+    }
+
+    setErrorMsg(null);
+    setIsLoading(true);
+
+    startScanExtraction({
+      image_base64: imagesToScan[0] || undefined,
+      images_base64: imagesToScan.length > 0 ? imagesToScan : undefined,
+      raw_text: textToScan
+    });
   };
 
   const handleNativeOrShutter = async () => {
     if (isNative) {
       try {
         const photo = await CapCamera.getPhoto({
-          quality: 90,
+          quality: 95,
           allowEditing: false,
           resultType: CameraResultType.DataUrl,
           source: CameraSource.Camera
         });
 
         if (photo.dataUrl) {
-          const sample = SAMPLE_PRODUCTS[selectedSampleIdx];
-          const customProduct = {
-            ...sample.product,
-            image_url: photo.dataUrl
-          };
-          setAnalysisData(customProduct, sample.extraction);
-          navigateTo('ocr_processing');
+          // Compress high resolution 3K
+          const compressed = await compressImage(photo.dataUrl, 3072, 0.95).catch(() => photo.dataUrl);
+          setSelectedImages(prev => {
+            const next = [...prev, compressed];
+            setActiveImageIdx(next.length - 1);
+            return next;
+          });
           return;
         }
       } catch (e) {
-        console.warn('Native camera capture dismissed or failed:', e);
+        console.warn('Native camera cancelled:', e);
       }
     }
-    // Fallback to demo sample capture
-    handleCapture();
+    await runScan();
   };
 
-  const handleCustomUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      const file = e.target.files[0];
-      const sample = SAMPLE_PRODUCTS[selectedSampleIdx];
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const customProduct = {
-          ...sample.product,
-          image_url: (event.target?.result as string) || sample.product.image_url
+  const handleCustomUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const files = Array.from(e.target.files);
+      setErrorMsg(null);
+
+      for (const file of files) {
+        const reader = new FileReader();
+        reader.onload = async (event) => {
+          const raw = event.target?.result as string;
+          if (raw) {
+            // Full 3K resolution compression for Gemini Vision API (3072px max, 95% JPEG quality)
+            const compressed = await compressImage(raw, 3072, 0.95).catch(() => raw);
+            setSelectedImages(prev => {
+              const next = [...prev, compressed];
+              setActiveImageIdx(next.length - 1);
+              return next;
+            });
+          }
         };
-        setAnalysisData(customProduct, sample.extraction);
-        navigateTo('ocr_processing');
-      };
-      reader.readAsDataURL(file);
+        reader.readAsDataURL(file);
+      }
+      e.target.value = '';
     }
   };
+
+  const removeImage = (indexToRemove: number) => {
+    setSelectedImages(prev => {
+      const next = prev.filter((_, idx) => idx !== indexToRemove);
+      if (activeImageIdx >= next.length) {
+        setActiveImageIdx(Math.max(0, next.length - 1));
+      }
+      return next;
+    });
+  };
+
+  const currentViewImage = selectedImages[activeImageIdx] || null;
 
   return (
     <div className="w-full h-full bg-slate-950 text-white flex flex-col justify-between overflow-hidden relative">
-      {/* Top Overlay Controls with Safe Area Inset */}
+      {/* Top Overlay Controls */}
       <div className="absolute top-0 left-0 w-full z-30 bg-gradient-to-b from-black/85 via-black/40 to-transparent pt-[max(14px,env(safe-area-inset-top))] pb-4 px-4 flex items-center justify-between">
         <div className="flex items-center space-x-2.5">
           <button
@@ -78,7 +114,7 @@ export const CameraScanScreen: React.FC = () => {
           </button>
           <div>
             <span className="text-[10px] text-amber-400 uppercase font-mono tracking-wider block font-bold">
-              PCR 2011 Scanner
+              PCR 2011 Multi-Panel Scanner
             </span>
             <h1 className="text-xs sm:text-sm font-bold text-white tracking-wide">
               Physical Package Audit
@@ -87,6 +123,12 @@ export const CameraScanScreen: React.FC = () => {
         </div>
 
         <div className="flex items-center space-x-2">
+          {selectedImages.length > 0 && (
+            <div className="px-2.5 py-1 rounded-xl bg-amber-500/20 border border-amber-400/40 text-amber-300 text-[10px] font-mono font-bold flex items-center gap-1">
+              <Layers className="w-3.5 h-3.5" />
+              <span>{selectedImages.length} {selectedImages.length === 1 ? 'Panel' : 'Panels'}</span>
+            </div>
+          )}
           <button
             onClick={() => setTorch(!torch)}
             className={`p-2 rounded-xl backdrop-blur-md border transition-all active:scale-95 ${
@@ -101,37 +143,46 @@ export const CameraScanScreen: React.FC = () => {
         </div>
       </div>
 
-      {/* Main Camera Viewfinder with Realistic Live Elements */}
-      <div className="flex-1 relative flex items-center justify-center overflow-hidden">
-        {/* Background Image / Live Stream Simulation */}
-        <img
-          src={SAMPLE_PRODUCTS[selectedSampleIdx].product.image_url}
-          alt="Product Label"
-          className="w-full h-full object-cover filter brightness-[0.88] contrast-105"
-        />
+      {/* Main Viewfinder Frame */}
+      <div className="flex-1 relative flex items-center justify-center overflow-hidden bg-slate-900">
+        {currentViewImage ? (
+          <img
+            src={currentViewImage}
+            alt={`Captured Package Panel ${activeImageIdx + 1}`}
+            className="w-full h-full object-cover filter brightness-[0.95]"
+          />
+        ) : (
+          <div className="text-center p-6 space-y-3">
+            <div className="w-16 h-16 rounded-full bg-slate-800 border border-slate-700 mx-auto flex items-center justify-center text-slate-400">
+              <Camera className="w-8 h-8" />
+            </div>
+            <p className="text-xs text-slate-300 max-w-xs font-medium">
+              Upload Front, Back &amp; Side product photos for complete Legal Metrology verification
+            </p>
+            <p className="text-[11px] text-slate-500 max-w-xs">
+              Multiple photos can be uploaded together to detect MRP, Net Qty, Dates &amp; Addresses across panels
+            </p>
+          </div>
+        )}
 
-        {/* Dark Vignette Overlay */}
         <div className="absolute inset-0 bg-radial-vignette pointer-events-none"></div>
 
-        {/* Viewfinder Bounding Box with Corner Accents */}
-        <div className="absolute w-[82%] h-[68%] border-2 border-dashed border-white/60 rounded-2xl flex flex-col justify-between p-3 pointer-events-none shadow-[0_0_0_9999px_rgba(0,0,0,0.45)]">
-          {/* Top Corners */}
+        {/* Viewfinder Frame */}
+        <div className="absolute w-[82%] h-[60%] border-2 border-dashed border-white/60 rounded-2xl flex flex-col justify-between p-3 pointer-events-none shadow-[0_0_0_9999px_rgba(0,0,0,0.45)]">
           <div className="flex justify-between">
             <div className="w-6 h-6 border-t-4 border-l-4 border-manak-orange -mt-3.5 -ml-3.5 rounded-tl-lg"></div>
             <div className="w-6 h-6 border-t-4 border-r-4 border-manak-orange -mt-3.5 -mr-3.5 rounded-tr-lg"></div>
           </div>
 
-          {/* Animated Laser Scan Line */}
           <div className="w-full h-1 bg-gradient-to-r from-transparent via-manak-orange to-transparent relative animate-scan-line shadow-[0_0_12px_#E8622C]"></div>
 
-          {/* Bottom Corners */}
           <div className="flex justify-between">
             <div className="w-6 h-6 border-b-4 border-l-4 border-manak-orange -mb-3.5 -ml-3.5 rounded-bl-lg"></div>
             <div className="w-6 h-6 border-b-4 border-r-4 border-manak-orange -mb-3.5 -mr-3.5 rounded-br-lg"></div>
           </div>
         </div>
 
-        {/* Rule 7 Scale Reference Coin/Card Indicator Badge */}
+        {/* Scale Calibrated Badge */}
         <div className="absolute top-20 left-1/2 -translate-x-1/2 z-20">
           <div
             onClick={() => setScaleCalibrated(!scaleCalibrated)}
@@ -145,55 +196,130 @@ export const CameraScanScreen: React.FC = () => {
             <span>{scaleCalibrated ? 'Rule 7 Scale: 1mm Ref Calibrated' : 'Tap to Calibrate Scale'}</span>
           </div>
         </div>
+
+        {/* Active Panel Pill (if multiple images) */}
+        {selectedImages.length > 1 && (
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20">
+            <div className="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-[10px] font-mono text-white flex items-center gap-1.5 shadow-lg">
+              <span>Viewing Panel {activeImageIdx + 1} of {selectedImages.length}</span>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Bottom Controls Drawer */}
       <div className="bg-slate-900/95 backdrop-blur-md border-t border-slate-800 p-4 pb-[max(16px,env(safe-area-inset-bottom))] space-y-3 z-30 transition-all">
-        {/* Sample Pack Picker */}
-        <div>
-          <div className="flex items-center justify-between text-[11px] text-slate-300 mb-1.5">
-            <span className="font-semibold flex items-center gap-1">
-              <Layers className="w-3.5 h-3.5 text-manak-orange" />
-              Demo Test Packaging:
-            </span>
-            <span className="mono text-[10px] text-slate-400">
-              {SAMPLE_PRODUCTS[selectedSampleIdx].expectedStatus === 'compliant' ? '✓ Compliant' : '⚠ Violations'}
-            </span>
+        {errorMsg && (
+          <div className="p-2.5 rounded-xl bg-red-950/80 border border-red-500/50 text-red-200 text-xs flex items-center gap-2">
+            <AlertCircle className="w-4 h-4 text-red-400 flex-shrink-0" />
+            <span>{errorMsg}</span>
           </div>
+        )}
 
-          <div className="grid grid-cols-3 gap-1.5">
-            {SAMPLE_PRODUCTS.slice(0, 3).map((item, idx) => (
-              <button
-                key={item.product.id}
-                onClick={() => setSelectedSampleIdx(idx)}
-                className={`py-1.5 px-2 rounded-xl text-[10px] font-medium truncate border transition-all text-left ${
-                  selectedSampleIdx === idx
-                    ? 'bg-manak-navy border-blue-400 text-white shadow-sm ring-1 ring-blue-400'
-                    : 'bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-750'
-                }`}
-              >
-                <span className="block font-bold truncate">{item.product.brand}</span>
-                <span className="text-[9px] text-slate-400 block truncate">{item.product.title}</span>
-              </button>
-            ))}
+        {/* Multi-Panel Image Strip / Thumbnails */}
+        {selectedImages.length > 0 && (
+          <div className="space-y-1.5">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] font-bold text-slate-300 flex items-center gap-1">
+                <Layers className="w-3.5 h-3.5 text-amber-400" />
+                <span>Captured Panels ({selectedImages.length}): Front, Back &amp; Sides</span>
+              </span>
+              <span className="text-[10px] text-slate-400 font-mono">Tap to switch view</span>
+            </div>
+            <div className="flex items-center gap-2 overflow-x-auto pb-1 hide-scrollbar">
+              {selectedImages.map((img, idx) => (
+                <div
+                  key={idx}
+                  onClick={() => setActiveImageIdx(idx)}
+                  className={`relative flex-shrink-0 w-16 h-16 rounded-xl overflow-hidden cursor-pointer border-2 transition-all ${
+                    activeImageIdx === idx
+                      ? 'border-amber-400 ring-2 ring-amber-400/40 scale-105'
+                      : 'border-slate-700 opacity-75 hover:opacity-100'
+                  }`}
+                >
+                  <img src={img} alt={`Panel ${idx + 1}`} className="w-full h-full object-cover" />
+                  <span className="absolute bottom-0 inset-x-0 bg-black/75 text-[8.5px] font-mono text-center text-white py-0.5 font-bold truncate">
+                    {idx === 0 ? 'P1: Front' : idx === 1 ? 'P2: Back' : `P${idx + 1}: Side`}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      removeImage(idx);
+                    }}
+                    className="absolute top-0.5 right-0.5 w-4 h-4 bg-red-600/90 hover:bg-red-700 text-white rounded-full flex items-center justify-center shadow"
+                    title="Remove photo"
+                  >
+                    <X className="w-2.5 h-2.5" />
+                  </button>
+                </div>
+              ))}
+
+              {/* Add More Panels Button in Thumbnail Strip */}
+              <label className="flex-shrink-0 w-16 h-16 rounded-xl border-2 border-dashed border-slate-700 hover:border-amber-400/70 bg-slate-800/60 hover:bg-slate-800 flex flex-col items-center justify-center text-slate-400 hover:text-amber-300 cursor-pointer transition-all">
+                <Plus className="w-5 h-5" />
+                <span className="text-[8.5px] font-bold mt-0.5">+ Panel</span>
+                <input
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  onChange={handleCustomUpload}
+                  className="hidden"
+                />
+              </label>
+            </div>
           </div>
+        )}
+
+        <div>
+          <label className="text-[11px] font-medium text-slate-300 block mb-1">
+            Optional Label Text / Printed Declaration Notes
+          </label>
+          <textarea
+            value={rawText}
+            rows={2}
+            onChange={(e) => setRawText(e.target.value)}
+            placeholder="Optional: Type or paste printed text declarations if photo is partially obscured..."
+            className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-manak-orange"
+          />
         </div>
 
-        {/* Actions: Custom Upload & Primary Capture Button */}
-        <div className="flex items-center space-x-3 pt-1">
-          {/* File Upload Button */}
-          <label className="p-3 rounded-2xl bg-slate-800 hover:bg-slate-700 active:scale-95 border border-slate-700 cursor-pointer text-slate-200 transition-colors flex items-center justify-center">
+        <div className="flex items-center space-x-2.5 pt-1">
+          <label
+            className="p-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 active:scale-95 border border-slate-700 cursor-pointer text-slate-200 transition-colors flex items-center justify-center"
+            title="Upload multiple package photos (Front, Back, Sides)"
+          >
             <Upload className="w-5 h-5 text-slate-300" />
-            <input type="file" accept="image/*" onChange={handleCustomUpload} className="hidden" />
+            <input
+              type="file"
+              accept="image/*"
+              multiple
+              onChange={handleCustomUpload}
+              className="hidden"
+            />
           </label>
 
-          {/* Capture & Run OCR Engine Button */}
           <button
             onClick={handleNativeOrShutter}
-            className="flex-1 py-3.5 px-4 rounded-2xl bg-gradient-to-r from-manak-orange to-orange-600 hover:from-orange-500 hover:to-orange-700 active:scale-[0.98] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow-lg transition-all"
+            disabled={isLoading}
+            className="flex-1 py-3.5 px-4 rounded-2xl bg-gradient-to-r from-manak-orange to-orange-600 hover:from-orange-500 hover:to-orange-700 active:scale-[0.98] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow-lg transition-all disabled:opacity-50"
           >
-            {isNative ? <Aperture className="w-5 h-5 animate-spin-slow" /> : <Camera className="w-5 h-5" />}
-            <span>{isNative ? 'Take Photo & Run OCR' : 'Capture & Run 2011 Rules OCR'}</span>
+            {isLoading ? (
+              <Loader2 className="w-5 h-5 animate-spin" />
+            ) : isNative ? (
+              <Aperture className="w-5 h-5" />
+            ) : (
+              <Camera className="w-5 h-5" />
+            )}
+            <span>
+              {isLoading
+                ? 'Analyzing Declarations...'
+                : selectedImages.length === 0
+                ? 'Upload / Capture Package Photos'
+                : selectedImages.length === 1
+                ? 'Scan 1 Panel & Review Declarations'
+                : `Scan ${selectedImages.length} Panels (Front + Back) & Review`}
+            </span>
           </button>
         </div>
       </div>

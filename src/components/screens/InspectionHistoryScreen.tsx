@@ -146,7 +146,7 @@ export const InspectionHistoryScreen: React.FC = () => {
                 <div
                   key={record.id}
                   onClick={() => {
-                    setAnalysisData(record.product, record.extraction);
+                    setAnalysisData(record.product, record.extraction, record.evaluations, record.id);
                     navigateTo('inspection_report');
                   }}
                   className="bg-white rounded-xl p-3.5 border border-slate-200/90 shadow-subtle hover:border-manak-navy cursor-pointer transition-all active:scale-[0.99] group"

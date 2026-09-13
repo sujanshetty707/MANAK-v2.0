@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { Header } from '../common/Header';
-import { Lock, KeyRound, Fingerprint, ShieldCheck, ArrowRight, User } from 'lucide-react';
+import { Lock, KeyRound, ArrowRight, User } from 'lucide-react';
 
 export const OfficerLoginScreen: React.FC = () => {
-  const { loginOfficer, officerProfile } = useApp();
-  const [badgeId, setBadgeId] = useState('LM-DL-2024-8849');
-  const [password, setPassword] = useState('SecurePass@2026');
+  const { loginOfficer } = useApp();
+  const [badgeId, setBadgeId] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!badgeId.trim() || !password.trim()) return;
     setLoading(true);
     setTimeout(() => {
       loginOfficer(badgeId, password);
-    }, 400);
+    }, 300);
   };
 
   return (
@@ -43,7 +44,7 @@ export const OfficerLoginScreen: React.FC = () => {
                 onChange={e => setBadgeId(e.target.value)}
                 required
                 className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 font-mono focus:outline-none focus:border-manak-navy"
-                placeholder="e.g. LM-DL-2024-8849"
+                placeholder="Enter Official Badge / Employee ID"
               />
             </div>
           </div>
@@ -60,50 +61,25 @@ export const OfficerLoginScreen: React.FC = () => {
                 onChange={e => setPassword(e.target.value)}
                 required
                 className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 font-mono focus:outline-none focus:border-manak-navy"
-                placeholder="Enter password"
+                placeholder="Enter Password"
               />
             </div>
           </div>
 
-          <div className="p-2.5 rounded-xl bg-blue-50/80 border border-blue-100 flex items-center justify-between text-xs">
-            <div className="flex items-center space-x-2">
-              <ShieldCheck className="w-4 h-4 text-manak-navy" />
-              <div>
-                <span className="font-semibold text-slate-900 block text-[11px]">{officerProfile.name}</span>
-                <span className="text-[9.5px] text-slate-500 mono">{officerProfile.zone}</span>
-              </div>
-            </div>
-            <span className="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded mono">
-              Verified DSC
-            </span>
-          </div>
-
           <button
             type="submit"
-            disabled={loading}
-            className="w-full py-3 px-4 rounded-xl bg-manak-navy hover:bg-slate-900 active:scale-98 text-white font-semibold text-xs tracking-wider uppercase flex items-center justify-center space-x-2 shadow-md transition-all"
+            disabled={loading || !badgeId.trim()}
+            className="w-full py-3 px-4 rounded-xl bg-manak-navy hover:bg-slate-900 active:scale-98 text-white font-semibold text-xs tracking-wider uppercase flex items-center justify-center space-x-2 shadow-md transition-all disabled:opacity-50"
           >
             <span>{loading ? 'Authenticating...' : 'Access Enforcement Terminal'}</span>
             <ArrowRight className="w-4 h-4 text-manak-orange" />
           </button>
         </form>
-
-        {/* Biometric Quick Login */}
-        <div className="text-center">
-          <button
-            type="button"
-            onClick={() => loginOfficer(badgeId, password)}
-            className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-slate-200/80 hover:bg-slate-300 text-slate-700 text-xs font-medium transition-colors"
-          >
-            <Fingerprint className="w-4 h-4 text-manak-navy" />
-            <span>Quick Login with Biometric / Smart Token</span>
-          </button>
-        </div>
       </main>
 
       <footer className="p-4 pb-[max(16px,env(safe-area-inset-bottom,0px))] text-center">
         <p className="text-[10px] text-slate-400 mono">
-          Secured by NIC & National Informatics Centre Infrastructure
+          Secured by National Informatics Centre Infrastructure
         </p>
       </footer>
     </div>

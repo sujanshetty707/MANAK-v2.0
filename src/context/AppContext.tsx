@@ -6,10 +6,12 @@ import {
   getStoredConsumerReports,
   saveConsumerReport,
   getOfflineQueue,
-  syncOfflineQueueToServer
+  syncOfflineQueueToServer,
+  saveStoredInspections,
+  saveStoredConsumerReports
 } from '../services/offlineStorage';
-import { SAMPLE_PRODUCTS } from '../data/mockData';
 import { evaluateExtractionAgainstRules } from '../services/ruleEngine';
+import { fetchHistoryApi, fetchConsumerReportsApi, loginApi, submitConsumerReportApi } from '../services/api';
 
 interface AppContextType {
   userRole: UserRole;
@@ -42,13 +44,19 @@ interface AppContextType {
   navigateTo: (screen: AppScreen) => void;
   goBack: () => void;
   selectRole: (role: UserRole) => void;
-  loginOfficer: (id: string, pass: string) => void;
-  loginConsumer: (phone: string, otp: string) => void;
+  loginOfficer: (id: string, pass: string) => Promise<void>;
+  loginConsumer: (phone: string, otp: string) => Promise<void>;
   logout: () => void;
-  setAnalysisData: (product: Product, extraction: ExtractionResult) => void;
+  pendingScanPayload: { image_base64?: string; images_base64?: string[]; raw_text?: string } | null;
+  startScanExtraction: (payload: { image_base64?: string; images_base64?: string[]; raw_text?: string }) => void;
+  setCurrentExtraction: React.Dispatch<React.SetStateAction<ExtractionResult | null>>;
+  setCurrentProduct: React.Dispatch<React.SetStateAction<Product | null>>;
+  setExtractionReviewData: (product: Product, extraction: ExtractionResult) => void;
+  setAnalysisData: (product: Product, extraction: ExtractionResult, overrideEvaluations?: RuleEvaluation[], overrideInspectionId?: string) => void;
   finalizeInspection: (signDoc?: boolean) => InspectionRecord;
-  submitNewConsumerReport: (note?: string) => ConsumerReport;
+  submitNewConsumerReport: (note?: string) => Promise<ConsumerReport>;
   syncOfflineQueue: () => void;
+  refreshDataFromBackend: () => Promise<void>;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -64,55 +72,71 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [inspections, setInspections] = useState<InspectionRecord[]>([]);
   const [consumerReports, setConsumerReports] = useState<ConsumerReport[]>([]);
 
-  // Current analysis state
-  const [currentProduct, setCurrentProduct] = useState<Product | null>(SAMPLE_PRODUCTS[1].product);
-  const [currentExtraction, setCurrentExtraction] = useState<ExtractionResult | null>(SAMPLE_PRODUCTS[1].extraction);
+  // Pending OCR scan payload
+  const [pendingScanPayload, setPendingScanPayload] = useState<{ image_base64?: string; raw_text?: string } | null>(null);
+
+  // Current analysis state initialized to null
+  const [currentProduct, setCurrentProduct] = useState<Product | null>(null);
+  const [currentExtraction, setCurrentExtraction] = useState<ExtractionResult | null>(null);
   const [currentEvaluations, setCurrentEvaluations] = useState<RuleEvaluation[]>([]);
   const [isCompliant, setIsCompliant] = useState<boolean>(false);
   const [totalViolations, setTotalViolations] = useState<number>(0);
   const [totalPenalty, setTotalPenalty] = useState<number>(0);
   const [currentInspectionId, setCurrentInspectionId] = useState<string | null>(null);
 
-  const officerProfile = {
-    name: 'Insp. R. Kumar',
-    badge_id: 'LM-DL-2024-8849',
-    zone: 'Zone 4 • Delhi Central',
-    avatar: 'RK'
+  const [officerProfile, setOfficerProfile] = useState({
+    name: 'Enforcement Official',
+    badge_id: 'LM-OFFICER-01',
+    zone: 'Legal Metrology Division',
+    avatar: 'LM'
+  });
+
+  const [consumerProfile, setConsumerProfile] = useState({
+    name: 'Citizen User',
+    phone: ''
+  });
+
+  const refreshDataFromBackend = async () => {
+    try {
+      const apiInspections = await fetchHistoryApi();
+      if (apiInspections && apiInspections.length > 0) {
+        setInspections(apiInspections);
+        saveStoredInspections(apiInspections);
+      } else {
+        setInspections(getStoredInspections());
+      }
+
+      const apiReports = await fetchConsumerReportsApi();
+      if (apiReports && apiReports.length > 0) {
+        setConsumerReports(apiReports);
+        saveStoredConsumerReports(apiReports);
+      } else {
+        setConsumerReports(getStoredConsumerReports());
+      }
+    } catch {
+      setInspections(getStoredInspections());
+      setConsumerReports(getStoredConsumerReports());
+    }
   };
 
-  const consumerProfile = {
-    name: 'Ananya Sharma',
-    phone: '+91 98765 43210'
-  };
-
-  // Load storage on initial mount
+  // Load data on initial mount
   useEffect(() => {
-    const loadedInspections = getStoredInspections();
-    const loadedReports = getStoredConsumerReports();
-    setInspections(loadedInspections);
-    setConsumerReports(loadedReports);
-
-    // Load initial queue count
+    setInspections(getStoredInspections());
+    setConsumerReports(getStoredConsumerReports());
     setOfflineQueueCount(getOfflineQueue().length);
 
-    // Listen to queue mutations & sync events
+    refreshDataFromBackend();
+
     const handleQueueUpdated = (e: any) => {
       setOfflineQueueCount(e.detail?.count ?? getOfflineQueue().length);
     };
     const handleQueueSynced = () => {
-      setInspections(getStoredInspections());
+      refreshDataFromBackend();
       setOfflineQueueCount(0);
     };
 
     window.addEventListener('manak:queue-updated', handleQueueUpdated);
     window.addEventListener('manak:queue-synced', handleQueueSynced);
-
-    // Initial evaluation for default sample
-    const evalRes = evaluateExtractionAgainstRules(SAMPLE_PRODUCTS[1].extraction);
-    setCurrentEvaluations(evalRes.evaluations);
-    setIsCompliant(evalRes.is_compliant);
-    setTotalViolations(evalRes.total_violations);
-    setTotalPenalty(evalRes.total_penalty);
 
     return () => {
       window.removeEventListener('manak:queue-updated', handleQueueUpdated);
@@ -148,14 +172,32 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   };
 
-  const loginOfficer = (_id: string, _pass: string) => {
+  const loginOfficer = async (id: string, pass: string) => {
+    const res = await loginApi('officer', id, pass);
+    if (res?.user) {
+      setOfficerProfile(prev => ({
+        ...prev,
+        name: res.user.name || prev.name,
+        badge_id: id || res.user.badge_id || prev.badge_id
+      }));
+    }
     setUserRole('officer');
     navigateTo('officer_dashboard');
+    refreshDataFromBackend();
   };
 
-  const loginConsumer = (_phone: string, _otp: string) => {
+  const loginConsumer = async (phone: string, otp: string) => {
+    const res = await loginApi('consumer', phone, otp);
+    if (res?.user) {
+      setConsumerProfile(prev => ({
+        ...prev,
+        name: res.user.name || prev.name,
+        phone: phone || res.user.phone || prev.phone
+      }));
+    }
     setUserRole('consumer');
     navigateTo('consumer_dashboard');
+    refreshDataFromBackend();
   };
 
   const logout = () => {
@@ -163,22 +205,63 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     navigateTo('role_select');
   };
 
-  const setAnalysisData = (product: Product, extraction: ExtractionResult) => {
+  const startScanExtraction = (payload: { image_base64?: string; images_base64?: string[]; raw_text?: string }) => {
+    setPendingScanPayload(payload);
+    const primaryImg = payload.images_base64?.[0] || payload.image_base64;
+    const allImages = payload.images_base64 || (primaryImg ? [primaryImg] : []);
+
+    if (primaryImg) {
+      setCurrentProduct({
+        id: `prod-${Date.now().toString().slice(-6)}`,
+        title: 'Scanning Package...',
+        brand: 'Declared Manufacturer',
+        category: 'Packaged Retail Commodity',
+        source_type: 'store',
+        image_url: primaryImg,
+        images: allImages
+      });
+    }
+    navigateTo('ocr_extracting');
+  };
+
+  const setExtractionReviewData = (product: Product, extraction: ExtractionResult) => {
     setCurrentProduct(product);
     setCurrentExtraction(extraction);
-    const evalRes = evaluateExtractionAgainstRules(extraction);
-    setCurrentEvaluations(evalRes.evaluations);
-    setIsCompliant(evalRes.is_compliant);
-    setTotalViolations(evalRes.total_violations);
-    setTotalPenalty(evalRes.total_penalty);
-    setCurrentInspectionId(`insp-${Date.now().toString().slice(-6)}`);
+  };
+
+  const setAnalysisData = (
+    product: Product,
+    extraction: ExtractionResult,
+    overrideEvaluations?: RuleEvaluation[],
+    overrideInspectionId?: string
+  ) => {
+    setCurrentProduct(product);
+    setCurrentExtraction(extraction);
+
+    const evaluations = overrideEvaluations || evaluateExtractionAgainstRules(extraction).evaluations;
+    const violations = evaluations.filter(e => e.status === 'violation');
+    const totalPen = evaluations.reduce((acc, curr) => acc + curr.penalty, 0);
+
+    setCurrentEvaluations(evaluations);
+    setIsCompliant(violations.length === 0);
+    setTotalViolations(violations.length);
+    setTotalPenalty(totalPen);
+    setCurrentInspectionId(overrideInspectionId || `insp-${Date.now().toString().slice(-6)}`);
   };
 
   const finalizeInspection = (signDoc: boolean = true): InspectionRecord => {
     const id = currentInspectionId || `insp-${Date.now().toString().slice(-6)}`;
+    setCurrentInspectionId(id);
     const newRecord: InspectionRecord = {
       id,
-      product: currentProduct || SAMPLE_PRODUCTS[0].product,
+      product: currentProduct || {
+        id: `prod-${Date.now().toString().slice(-6)}`,
+        source_type: 'store',
+        title: 'Inspected Packaged Product',
+        brand: 'Generic Manufacturer',
+        category: 'Retail Commodity',
+        image_url: 'https://images.unsplash.com/photo-1553456558-aff63285bdd1?w=600&auto=format&fit=crop&q=80'
+      },
       performed_by: {
         id: 'usr-officer-01',
         name: officerProfile.name,
@@ -194,9 +277,19 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         address: 'Connaught Place, New Delhi - 110001'
       },
       timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19),
-      evidence_image: currentProduct?.image_url || SAMPLE_PRODUCTS[0].product.image_url,
-      evidence_hash: `sha256-${Math.random().toString(36).substring(2, 15)}${Math.random().toString(36).substring(2, 15)}`,
-      extraction: currentExtraction || SAMPLE_PRODUCTS[0].extraction,
+      evidence_image: currentProduct?.image_url || 'https://images.unsplash.com/photo-1553456558-aff63285bdd1?w=600&auto=format&fit=crop&q=80',
+      evidence_hash: `sha256-${Math.random().toString(36).substring(2, 15)}`,
+      extraction: currentExtraction || {
+        manufacturer: { value: 'Manufacturer Declared', source: 'ocr', confidence: 0.9 },
+        generic_name: { value: 'Commodity Pack', source: 'ocr', confidence: 0.9 },
+        net_quantity: { value: { amount: 500, unit: 'g' }, source: 'ocr', confidence: 0.9 },
+        mrp: { value: { amount: 100, raw_text: 'MRP Rs. 100.00 (incl. of all taxes)', is_inclusive_taxes: true }, source: 'ocr', confidence: 0.9 },
+        mfg_date: { value: '01/2026', source: 'ocr', confidence: 0.9 },
+        consumer_care: { value: { phone: '1800-000-0000' }, source: 'ocr', confidence: 0.9 },
+        country_of_origin: { value: 'India', source: 'ocr', confidence: 0.9 },
+        numeral_height_mm: { value: 3.0, reference_detected: true, note: 'Sufficient' },
+        raw_ocr_text: 'Declared Product Package Text'
+      },
       evaluations: currentEvaluations,
       is_compliant: isCompliant,
       total_violations: totalViolations,
@@ -222,34 +315,53 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     return newRecord;
   };
 
-  const submitNewConsumerReport = (note?: string): ConsumerReport => {
+  const submitNewConsumerReport = async (note?: string): Promise<ConsumerReport> => {
     const refId = `MANAK-CR-2026-${Math.floor(1000 + Math.random() * 9000)}`;
     const violations = currentEvaluations
       .filter(e => e.status === 'violation')
       .map(e => `${e.requirement_name} (${e.rule_source})`);
 
-    const newReport: ConsumerReport = {
-      id: `cr-${Date.now()}`,
+    const reportPayload: Partial<ConsumerReport> = {
       reference_id: refId,
       inspection_id: currentInspectionId || `insp-cr-${Date.now()}`,
-      product_name: currentProduct?.title || 'Unknown Product',
+      product_name: currentProduct?.title || 'Reported Product',
       brand: currentProduct?.brand || 'Generic',
-      product_image: currentProduct?.image_url || SAMPLE_PRODUCTS[1].product.image_url,
+      product_image: currentProduct?.image_url || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80',
       violations_summary: violations.length > 0 ? violations : ['Suspected labeling discrepancy'],
       consumer_note: note || 'Reported via MANAK Consumer Self-Check.',
       submitted_at: new Date().toISOString().replace('T', ' ').substring(0, 19),
       status: 'submitted',
-      assigned_officer: 'Insp. R. Kumar (Delhi Central Zone 4)'
+      assigned_officer: 'Legal Metrology Division'
     };
 
-    saveConsumerReport(newReport);
-    setConsumerReports(prev => [newReport, ...prev]);
-    return newReport;
+    try {
+      const created = await submitConsumerReportApi(reportPayload);
+      saveConsumerReport(created);
+      setConsumerReports(prev => [created, ...prev]);
+      return created;
+    } catch {
+      const fallbackReport: ConsumerReport = {
+        id: `cr-${Date.now()}`,
+        reference_id: refId,
+        inspection_id: reportPayload.inspection_id!,
+        product_name: reportPayload.product_name!,
+        brand: reportPayload.brand!,
+        product_image: reportPayload.product_image!,
+        violations_summary: reportPayload.violations_summary!,
+        consumer_note: reportPayload.consumer_note!,
+        submitted_at: reportPayload.submitted_at!,
+        status: 'submitted',
+        assigned_officer: reportPayload.assigned_officer!
+      };
+      saveConsumerReport(fallbackReport);
+      setConsumerReports(prev => [fallbackReport, ...prev]);
+      return fallbackReport;
+    }
   };
 
   const syncOfflineQueue = async () => {
     await syncOfflineQueueToServer();
-    setInspections(getStoredInspections());
+    await refreshDataFromBackend();
     setOfflineQueueCount(0);
   };
 
@@ -292,10 +404,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         loginOfficer,
         loginConsumer,
         logout,
+        pendingScanPayload,
+        startScanExtraction,
+        setCurrentExtraction,
+        setCurrentProduct,
+        setExtractionReviewData,
         setAnalysisData,
         finalizeInspection,
         submitNewConsumerReport,
-        syncOfflineQueue
+        syncOfflineQueue,
+        refreshDataFromBackend
       }}
     >
       {children}

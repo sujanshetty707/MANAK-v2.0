@@ -1,5 +1,5 @@
 import { InspectionRecord, ConsumerReport } from '../types';
-import { MOCK_HISTORY, MOCK_CONSUMER_REPORTS } from '../data/mockData';
+import { syncQueueApi } from './api';
 
 const INSPECTIONS_STORAGE_KEY = 'manak_inspections_v1';
 const CONSUMER_REPORTS_KEY = 'manak_consumer_reports_v1';
@@ -8,14 +8,10 @@ const OFFLINE_QUEUE_KEY = 'manak_offline_queue_v1';
 export function getStoredInspections(): InspectionRecord[] {
   try {
     const raw = localStorage.getItem(INSPECTIONS_STORAGE_KEY);
-    if (!raw) {
-      localStorage.setItem(INSPECTIONS_STORAGE_KEY, JSON.stringify(MOCK_HISTORY));
-      return MOCK_HISTORY;
-    }
-    return JSON.parse(raw);
+    return raw ? JSON.parse(raw) : [];
   } catch (e) {
     console.error('Failed to load stored inspections:', e);
-    return MOCK_HISTORY;
+    return [];
   }
 }
 
@@ -25,17 +21,17 @@ export function saveInspection(inspection: InspectionRecord): void {
   localStorage.setItem(INSPECTIONS_STORAGE_KEY, JSON.stringify(updated));
 }
 
+export function saveStoredInspections(inspections: InspectionRecord[]): void {
+  localStorage.setItem(INSPECTIONS_STORAGE_KEY, JSON.stringify(inspections));
+}
+
 export function getStoredConsumerReports(): ConsumerReport[] {
   try {
     const raw = localStorage.getItem(CONSUMER_REPORTS_KEY);
-    if (!raw) {
-      localStorage.setItem(CONSUMER_REPORTS_KEY, JSON.stringify(MOCK_CONSUMER_REPORTS));
-      return MOCK_CONSUMER_REPORTS;
-    }
-    return JSON.parse(raw);
+    return raw ? JSON.parse(raw) : [];
   } catch (e) {
     console.error('Failed to load consumer reports:', e);
-    return MOCK_CONSUMER_REPORTS;
+    return [];
   }
 }
 
@@ -43,6 +39,10 @@ export function saveConsumerReport(report: ConsumerReport): void {
   const current = getStoredConsumerReports();
   const updated = [report, ...current.filter(r => r.id !== report.id)];
   localStorage.setItem(CONSUMER_REPORTS_KEY, JSON.stringify(updated));
+}
+
+export function saveStoredConsumerReports(reports: ConsumerReport[]): void {
+  localStorage.setItem(CONSUMER_REPORTS_KEY, JSON.stringify(reports));
 }
 
 export function getOfflineQueue(): InspectionRecord[] {
@@ -67,9 +67,7 @@ export function clearOfflineQueue(): void {
 }
 
 /**
- * Sync Engine: Drains pending offline inspections to the server.
- * When real API is configured via VITE_API_BASE_URL, sends POST requests.
- * Otherwise simulates network transmission with guaranteed delivery.
+ * Sync Engine: Drains pending offline inspections to the backend API server.
  */
 export async function syncOfflineQueueToServer(
   onProgress?: (syncedCount: number, total: number) => void
@@ -79,44 +77,25 @@ export async function syncOfflineQueueToServer(
     return { success: true, syncedCount: 0 };
   }
 
-  const apiBase = (import.meta as any).env?.VITE_API_BASE_URL;
-  let synced = 0;
-
-  for (const record of queue) {
-    if (apiBase) {
-      try {
-        await fetch(`${apiBase}/api/inspections`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(record)
-        });
-      } catch (err) {
-        console.warn(`Sync failed for ${record.id}, will retry on next connection`, err);
-        continue;
-      }
-    } else {
-      // Simulate network request latency
-      await new Promise(r => setTimeout(r, 120));
+  try {
+    const result = await syncQueueApi(queue);
+    if (result?.success) {
+      const history = getStoredInspections();
+      const syncedIds = new Set(queue.map(q => q.id));
+      const updatedHistory = history.map(h =>
+        syncedIds.has(h.id) ? { ...h, synced: true, status: 'verified' as const } : h
+      );
+      localStorage.setItem(INSPECTIONS_STORAGE_KEY, JSON.stringify(updatedHistory));
+      clearOfflineQueue();
+      window.dispatchEvent(new CustomEvent('manak:queue-synced', { detail: { syncedCount: result.syncedCount } }));
+      if (onProgress) onProgress(result.syncedCount, queue.length);
+      return { success: true, syncedCount: result.syncedCount };
     }
-
-    // Mark record as synced in local history
-    const history = getStoredInspections();
-    const updatedHistory = history.map(h =>
-      h.id === record.id ? { ...h, synced: true, status: 'verified' as const } : h
-    );
-    localStorage.setItem(INSPECTIONS_STORAGE_KEY, JSON.stringify(updatedHistory));
-
-    synced++;
-    if (onProgress) {
-      onProgress(synced, queue.length);
-    }
+  } catch (err) {
+    console.warn('Sync failed, will retry on next connection:', err);
   }
 
-  // Clear or prune queue
-  clearOfflineQueue();
-  window.dispatchEvent(new CustomEvent('manak:queue-synced', { detail: { syncedCount: synced } }));
-
-  return { success: true, syncedCount: synced };
+  return { success: false, syncedCount: 0 };
 }
 
 // Auto-sync listener when browser reconnects to internet

@@ -4,6 +4,8 @@ export type AppScreen =
   // Shared
   | 'splash'
   | 'role_select'
+  | 'ocr_extracting'
+  | 'review_extraction'
   // Officer
   | 'officer_login'
   | 'officer_dashboard'
@@ -33,7 +35,8 @@ export interface Product {
   brand: string;
   category: string;
   barcode?: string;
-  image_url: string;
+  image_url?: string;
+  images?: string[];
   ecommerce_platform?: 'amazon' | 'flipkart' | 'blinkit' | 'zepto' | null;
   ecommerce_url?: string;
   manufacturer_raw?: string;
@@ -122,7 +125,7 @@ export interface InspectionRecord {
   signature_details?: {
     signed_by: string;
     timestamp: string;
-    provider: 'documenso' | 'digilocker';
+    provider: 'documenso' | 'digilocker' | 'local';
     certificate_id: string;
   };
   report_id?: string;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { Header } from '../common/Header';
+import { generateInspectionPDF } from '../../services/pdfReportGenerator';
 import { CheckCircle2, AlertTriangle, HelpCircle, FileText, ChevronDown, ChevronUp, Scale, ShieldAlert, ArrowRight } from 'lucide-react';
 
 export const AnalysisResultsScreen: React.FC = () => {
@@ -17,7 +18,12 @@ export const AnalysisResultsScreen: React.FC = () => {
   const [expandedRule, setExpandedRule] = useState<string | null>(null);
 
   const handleGenerateReport = () => {
-    finalizeInspection(true);
+    const record = finalizeInspection(true);
+    try {
+      generateInspectionPDF(record);
+    } catch (e) {
+      console.error('Failed to auto-download PDF:', e);
+    }
     navigateTo('inspection_report');
   };
 

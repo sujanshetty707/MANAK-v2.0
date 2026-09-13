@@ -4,12 +4,12 @@ import { Header } from '../common/Header';
 import { CheckCircle2, ShieldCheck, Clock, User, ArrowRight, Home, FileCheck } from 'lucide-react';
 
 export const ConsumerReportConfirmationScreen: React.FC = () => {
-  const { navigateTo, consumerReports } = useApp();
+  const { navigateTo, consumerReports, consumerProfile } = useApp();
   const latestReport = consumerReports[0] || {
-    reference_id: 'MANAK-CR-2026-9812',
-    submitted_at: '2026-09-11 11:32 IST',
-    assigned_officer: 'Insp. R. Kumar (Delhi Central Zone 4)',
-    product_name: 'Desi Swad Special Garam Masala 100g'
+    reference_id: `MANAK-CR-${new Date().getFullYear()}-0000`,
+    submitted_at: new Date().toISOString().replace('T', ' ').substring(0, 16) + ' IST',
+    assigned_officer: 'Legal Metrology Division',
+    product_name: 'Reported Product'
   };
 
   return (
@@ -53,7 +53,7 @@ export const ConsumerReportConfirmationScreen: React.FC = () => {
             </div>
             <div className="flex justify-between">
               <span className="text-slate-400">Assigned Officer:</span>
-              <span className="font-semibold text-manak-navy">Insp. R. Kumar (Zone 4)</span>
+              <span className="font-semibold text-manak-navy">{latestReport.assigned_officer || 'Legal Metrology Division'}</span>
             </div>
             <div className="flex justify-between">
               <span className="text-slate-400">Jurisdiction:</span>
@@ -103,7 +103,7 @@ export const ConsumerReportConfirmationScreen: React.FC = () => {
 
       <footer className="p-3 pb-[max(16px,env(safe-area-inset-bottom,0px))] text-center">
         <p className="text-[10px] text-slate-400 mono">
-          Updates will be notified to +91 98765 43210
+          Updates will be notified{consumerProfile.phone ? ` to ${consumerProfile.phone}` : ' via MANAK'}
         </p>
       </footer>
     </div>

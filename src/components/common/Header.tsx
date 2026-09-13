@@ -9,7 +9,7 @@ export const Header: React.FC<{
   showConsumerBadge?: boolean;
   showLogo?: boolean;
 }> = ({ title, showBack = false, showOfficerBadge = false, showConsumerBadge = false, showLogo = true }) => {
-  const { goBack, officerProfile, isOffline, userRole, navigateTo } = useApp();
+  const { goBack, officerProfile, consumerProfile, isOffline, userRole, navigateTo } = useApp();
 
   return (
     <header className="bg-[#1B3A6B] text-white pt-[calc(max(14px,env(safe-area-inset-top,0px))+6px)] pb-3 px-3.5 sm:px-4 shadow-md flex-shrink-0 relative z-20 transition-all">
@@ -54,13 +54,13 @@ export const Header: React.FC<{
           {showConsumerBadge && (
             <div className="flex items-center space-x-2">
               <div className="w-9 h-9 rounded-full bg-emerald-600/90 border border-white/50 flex items-center justify-center font-bold text-white text-xs shadow-sm">
-                AS
+              {(consumerProfile.name?.charAt(0) || 'C').toUpperCase()}{(consumerProfile.name?.split(' ')[1]?.charAt(0) || 'U').toUpperCase()}
               </div>
               <div>
                 <span className="text-[10px] uppercase text-emerald-200 font-semibold tracking-wider block">
                   Citizen Portal
                 </span>
-                <span className="text-xs font-bold text-white">Ananya Sharma</span>
+                <span className="text-xs font-bold text-white">{consumerProfile.name || 'Citizen User'}</span>
               </div>
             </div>
           )}

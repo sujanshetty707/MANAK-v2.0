@@ -1,26 +1,28 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { Header } from '../common/Header';
-import { Smartphone, ShieldCheck, ArrowRight, UserCheck, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, UserCheck, CheckCircle2 } from 'lucide-react';
 
 export const ConsumerLoginScreen: React.FC = () => {
-  const { loginConsumer, consumerProfile } = useApp();
-  const [phone, setPhone] = useState('9876543210');
-  const [otp, setOtp] = useState('4821');
+  const { loginConsumer } = useApp();
+  const [phone, setPhone] = useState('');
+  const [otp, setOtp] = useState('');
   const [otpSent, setOtpSent] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleSendOtp = (e: React.FormEvent) => {
     e.preventDefault();
+    if (phone.length < 10) return;
     setOtpSent(true);
   };
 
   const handleVerifyOtp = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!otp.trim()) return;
     setLoading(true);
     setTimeout(() => {
       loginConsumer(phone, otp);
-    }, 400);
+    }, 300);
   };
 
   return (
@@ -33,7 +35,7 @@ export const ConsumerLoginScreen: React.FC = () => {
             <UserCheck className="w-6 h-6" />
           </div>
           <h2 className="text-lg font-bold text-slate-900">Consumer Verification</h2>
-          <p className="text-xs text-slate-500">Low-friction Mobile Access • No Password Required</p>
+          <p className="text-xs text-slate-500">Mobile Verification • Legal Metrology Self-Check</p>
         </div>
 
         {!otpSent ? (
@@ -60,7 +62,8 @@ export const ConsumerLoginScreen: React.FC = () => {
 
             <button
               type="submit"
-              className="w-full py-3 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 active:scale-98 text-white font-semibold text-xs tracking-wider uppercase flex items-center justify-center space-x-2 shadow-md transition-all"
+              disabled={phone.length < 10}
+              className="w-full py-3 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 active:scale-98 text-white font-semibold text-xs tracking-wider uppercase flex items-center justify-center space-x-2 shadow-md transition-all disabled:opacity-50"
             >
               <span>Get Verification OTP</span>
               <ArrowRight className="w-4 h-4" />
@@ -71,7 +74,7 @@ export const ConsumerLoginScreen: React.FC = () => {
             <div>
               <div className="flex items-center justify-between mb-1">
                 <label className="text-[11px] font-bold text-slate-700 uppercase tracking-wider">
-                  Enter 4-Digit OTP
+                  Enter Verification OTP
                 </label>
                 <span className="text-[10px] text-emerald-600 font-semibold mono">Sent to +91 {phone}</span>
               </div>
@@ -79,16 +82,17 @@ export const ConsumerLoginScreen: React.FC = () => {
                 type="text"
                 value={otp}
                 onChange={e => setOtp(e.target.value)}
-                maxLength={4}
+                maxLength={6}
                 required
+                placeholder="Enter OTP"
                 className="w-full text-center py-2.5 rounded-xl border border-slate-200 text-base font-mono tracking-widest text-slate-900 focus:outline-none focus:border-emerald-600"
               />
             </div>
 
             <button
               type="submit"
-              disabled={loading}
-              className="w-full py-3 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 active:scale-98 text-white font-semibold text-xs tracking-wider uppercase flex items-center justify-center space-x-2 shadow-md transition-all"
+              disabled={loading || !otp.trim()}
+              className="w-full py-3 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 active:scale-98 text-white font-semibold text-xs tracking-wider uppercase flex items-center justify-center space-x-2 shadow-md transition-all disabled:opacity-50"
             >
               <span>{loading ? 'Verifying...' : 'Verify & Enter Portal'}</span>
               <CheckCircle2 className="w-4 h-4" />
@@ -103,13 +107,6 @@ export const ConsumerLoginScreen: React.FC = () => {
             </button>
           </form>
         )}
-
-        <div className="p-3 bg-emerald-50 rounded-xl border border-emerald-200/80 flex items-center space-x-2 text-xs text-emerald-900">
-          <ShieldCheck className="w-4 h-4 text-emerald-700 flex-shrink-0" />
-          <p className="text-[11px]">
-            Empowering citizens under the Consumer Protection Act &amp; Legal Metrology Act 2009.
-          </p>
-        </div>
       </main>
 
       <footer className="p-4 pb-[max(16px,env(safe-area-inset-bottom,0px))] text-center">

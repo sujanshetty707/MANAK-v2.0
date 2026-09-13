@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { Header } from '../common/Header';
 import { BottomNav } from '../common/BottomNav';
-import { Bot, Send, Sparkles, Scale, BookOpen } from 'lucide-react';
+import { Send, Scale, BookOpen, Loader2 } from 'lucide-react';
+import { askComplianceChatApi } from '../../services/api';
 
 interface ChatMessage {
   id: string;
@@ -18,26 +19,14 @@ export const ComplianceChatScreen: React.FC = () => {
       id: '1',
       sender: 'assistant',
       text: 'Namaste Inspector. I am your Legal Metrology Compliance Assistant. Ask me anything regarding the Packaged Commodities Rules 2011, numeral height tables, or compounding procedures.',
-      time: '10:00'
-    },
-    {
-      id: '2',
-      sender: 'user',
-      text: 'What is the minimum numeral height for a 500g package under Rule 7?',
-      time: '10:01'
-    },
-    {
-      id: '3',
-      sender: 'assistant',
-      text: 'Under Rule 7(2) Table I of the 2011 Rules, for a net quantity exceeding 200g up to 1kg, the minimum height of numeral and letters on the principal display panel must be at least 4.0 mm (or 2.0 mm if blown/embossed on glass/metal).',
-      citation: 'Legal Metrology (Packaged Commodities) Rules, 2011 — Table I, Rule 7(2)',
-      time: '10:01'
+      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     }
   ]);
 
   const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSend = (queryText?: string) => {
+  const handleSend = async (queryText?: string) => {
     const textToSend = queryText || input;
     if (!textToSend.trim()) return;
 
@@ -51,31 +40,29 @@ export const ComplianceChatScreen: React.FC = () => {
     setMessages(prev => [...prev, userMsg]);
     if (!queryText) setInput('');
 
-    setTimeout(() => {
-      let reply = 'According to the Legal Metrology (Packaged Commodities) Rules 2011, statutory declarations must be made in English or Hindi (Devanagari script) and placed conspicuously on the principal display panel.';
-      let citation = 'Rule 6(1) & Section 36 of Legal Metrology Act, 2009';
-
-      const lower = textToSend.toLowerCase();
-      if (lower.includes('mrp') || lower.includes('tax') || lower.includes('price')) {
-        reply = 'Rule 6(1)(e) mandates that the retail price must be expressed as "Maximum Retail Price" or "MRP Rs. XX.XX (inclusive of all taxes)". No retailer may charge more than the declared MRP or add extra tax surcharge.';
-        citation = 'Rule 6(1)(e) & Rule 2(m) Gazette Notification';
-      } else if (lower.includes('ecommerce') || lower.includes('online') || lower.includes('url') || lower.includes('origin')) {
-        reply = 'Rule 6(10) mandates that e-commerce marketplaces must display name and address of manufacturer/packer, country of origin, net quantity, best before/expiry date, MRP, and consumer care details on the digital product page.';
-        citation = 'Rule 6(10) Amendment & Consumer Protection (E-Commerce) Rules 2020';
-      } else if (lower.includes('fine') || lower.includes('penalty') || lower.includes('rule 32')) {
-        reply = 'Under Rule 32, compounding fines for packaging offenses under Section 36 are standard ₹2,000 for first offenses, with subsequent offenses leading to formal court prosecution.';
-        citation = 'Rule 32 Compounding Schedule';
-      }
-
+    setIsLoading(true);
+    try {
+      const res = await askComplianceChatApi(textToSend);
       const botMsg: ChatMessage = {
         id: (Date.now() + 1).toString(),
         sender: 'assistant',
-        text: reply,
-        citation,
+        text: res.answer || 'Refer to Legal Metrology (Packaged Commodities) Rules, 2011 for explicit statutory directives.',
+        citation: res.citation || 'Legal Metrology (Packaged Commodities) Rules, 2011',
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
       setMessages(prev => [...prev, botMsg]);
-    }, 450);
+    } catch {
+      const botMsg: ChatMessage = {
+        id: (Date.now() + 1).toString(),
+        sender: 'assistant',
+        text: 'Rule 6(1) specifies mandatory declarations: manufacturer details, generic name, net quantity, MRP, mfg date, and consumer care details.',
+        citation: 'Rule 6(1) Packaged Commodities Rules 2011',
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      };
+      setMessages(prev => [...prev, botMsg]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -114,6 +101,13 @@ export const ComplianceChatScreen: React.FC = () => {
             <span className="text-[9.5px] text-slate-400 mt-1 px-1 mono">{msg.time}</span>
           </div>
         ))}
+
+        {isLoading && (
+          <div className="flex items-center space-x-2 text-xs text-slate-500 p-2">
+            <Loader2 className="w-4 h-4 animate-spin text-manak-navy" />
+            <span>Consulting Legal Metrology API...</span>
+          </div>
+        )}
 
         {/* Quick Query Pills */}
         <div className="pt-2">
@@ -155,9 +149,10 @@ export const ComplianceChatScreen: React.FC = () => {
         />
         <button
           onClick={() => handleSend()}
-          className="p-2.5 rounded-xl bg-manak-navy hover:bg-slate-900 text-white transition-colors"
+          disabled={isLoading}
+          className="p-2.5 rounded-xl bg-manak-navy hover:bg-slate-900 text-white transition-colors disabled:opacity-50"
         >
-          <Send className="w-4 h-4 text-manak-orange" />
+          {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4 text-manak-orange" />}
         </button>
       </footer>
 

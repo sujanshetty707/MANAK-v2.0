@@ -6,6 +6,8 @@ import { DeviceFrame } from './components/common/DeviceFrame';
 // Shared Screens
 import { SplashScreen } from './components/screens/SplashScreen';
 import { RoleSelectionScreen } from './components/screens/RoleSelectionScreen';
+import { OcrExtractionScreen } from './components/screens/OcrExtractionScreen';
+import { ExtractedTextReviewScreen } from './components/screens/ExtractedTextReviewScreen';
 
 // Officer Screens
 import { OfficerLoginScreen } from './components/screens/OfficerLoginScreen';
@@ -50,6 +52,10 @@ export const App: React.FC = () => {
         return <SplashScreen />;
       case 'role_select':
         return <RoleSelectionScreen />;
+      case 'ocr_extracting':
+        return <OcrExtractionScreen />;
+      case 'review_extraction':
+        return <ExtractedTextReviewScreen />;
 
       // Officer Flow
       case 'officer_login':

@@ -213,7 +213,7 @@ Rules:
 - net_quantity.amount must be a plain number, e.g. 500.
 - country_of_origin is MANDATORY for Indian e-commerce — null only if completely absent.`;
 
-  const models = ['models/gemini-flash-lite-latest', 'models/gemini-3.5-flash-lite', 'models/gemini-3.6-flash', 'models/gemini-3.7-flash'];
+  const models = ['models/gemini-3.6-flash', 'models/gemini-flash-lite-latest'];
   let rawResponseText = '';
 
   for (const model of models) {
@@ -227,7 +227,7 @@ Rules:
         body.generationConfig.response_mime_type = 'application/json';
       } else {
         // Enable search grounding when page text unavailable
-        body.tools = [{ googleSearch: {} }];
+        body.tools = [{ google_search: {} }];
         console.log(`[Gemini] Thin text — enabling Google Search grounding with ${model}`);
       }
       const res = await fetch(apiUrl, {

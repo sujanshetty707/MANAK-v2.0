@@ -6,7 +6,7 @@ import { extractLabelApi, checkUrlApi } from '../../services/api';
 import { compressImage } from '../../utils/imageUtils';
 
 export const ConsumerCheckProductScreen: React.FC = () => {
-  const { navigateTo, startScanExtraction, setExtractionReviewData, consumerProfile } = useApp();
+  const { navigateTo, startScanExtraction, setExtractionReviewData, setAnalysisData, consumerProfile } = useApp();
   const [activeMode, setActiveMode] = useState<'scan' | 'url'>('scan');
   const [urlInput, setUrlInput] = useState('');
   const [customText, setCustomText] = useState('');
@@ -43,9 +43,14 @@ export const ConsumerCheckProductScreen: React.FC = () => {
         performed_by: consumerProfile
       });
       if (res?.record) {
-        setExtractionReviewData(res.record.product, res.record.extraction);
+        setAnalysisData(
+          res.record.product,
+          res.record.extraction,
+          res.record.evaluations,
+          res.record.id
+        );
+        navigateTo('ocr_processing');
       }
-      navigateTo('review_extraction');
     } catch (err) {
       console.warn('Consumer check API error:', err);
       setErrorMsg('Extraction request failed. Please check your network connection.');

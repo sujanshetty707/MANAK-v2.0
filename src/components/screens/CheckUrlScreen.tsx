@@ -19,7 +19,7 @@ const AUDIT_STEPS = [
 ];
 
 export const CheckUrlScreen: React.FC = () => {
-  const { navigateTo, setExtractionReviewData, officerProfile } = useApp();
+  const { navigateTo, setExtractionReviewData, setAnalysisData, officerProfile } = useApp();
   const [url, setUrl] = useState('');
   const [platform, setPlatform] = useState<'amazon' | 'flipkart' | 'blinkit' | 'zepto' | 'other'>('other');
   const [urlError, setUrlError] = useState<string | null>(null);
@@ -77,13 +77,15 @@ export const CheckUrlScreen: React.FC = () => {
       });
 
       if (res?.record) {
-        setExtractionReviewData(
+        setAnalysisData(
           res.record.product,
-          res.record.extraction
+          res.record.extraction,
+          res.record.evaluations,
+          res.record.id
         );
-        navigateTo('review_extraction');
+        navigateTo('ocr_processing');
       } else {
-        setUrlError('No compliance record returned from service. Please retry.');
+        setUrlError('No compliance record returned from audit service. Please retry.');
       }
     } catch (apiErr) {
       console.warn('API URL check error:', apiErr);

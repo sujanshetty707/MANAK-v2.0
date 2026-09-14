@@ -1,7 +1,7 @@
 {
   "0": "Officer Flow",
-  "1": "App.tsx",
-  "2": "server/index.ts",
+  "1": "AppContext.tsx",
+  "2": "@supabase/supabase-js",
   "3": "package.json",
   "4": "README.md",
   "5": "What You Must Do When Invoked",
@@ -30,7 +30,7 @@
   "28": "postcss.config.js",
   "29": "manifest.json",
   "30": "ExampleInstrumentedTest.java",
-  "31": "AppContext.tsx",
+  "31": "api.ts",
   "32": "gradlew",
   "33": "MainActivity.java",
   "34": "app/build.gradle",
@@ -42,7 +42,10 @@
   "40": "dependencies",
   "41": "devDependencies",
   "42": "MANAK — API Keys & Backend Environment Setup Guide",
-  "43": "labelParser.ts",
+  "43": "types/index.ts",
   "44": "Product Requirements Document (PRD)",
+  "45": "scripts",
+  "46": "capacitor.config.ts",
+  "47": "vite",
   "49": "pdfReportGenerator.ts"
 }

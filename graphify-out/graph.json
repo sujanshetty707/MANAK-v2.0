@@ -6311,7 +6311,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/screens/ConsumerCheckProductScreen.tsx",
-      "source_location": "L67",
+      "source_location": "L72",
       "weight": 1.0
     },
     {
@@ -16448,5 +16448,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "99f74002b7cb716ca6ca16ffb4c88685e4b2858c"
+  "built_at_commit": "cca13128b3e7648403de79ed1e730036d77bd660"
 }

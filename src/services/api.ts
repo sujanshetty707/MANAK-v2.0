@@ -3,6 +3,12 @@ import { parseLabelText } from './labelParser';
 import { evaluateExtractionAgainstRules } from './ruleEngine';
 import { extractLabelClientSide } from './clientGeminiVision';
 import { checkUrlClientSide } from './clientUrlCheck';
+import {
+  saveInspectionDirectToSupabase,
+  saveConsumerReportDirectToSupabase,
+  fetchHistoryDirectFromSupabase,
+  fetchConsumerReportsDirectFromSupabase
+} from './supabaseService';
 
 export function getApiBaseUrl(): string {
   if (typeof localStorage !== 'undefined') {
@@ -33,7 +39,6 @@ export async function loginApi(role: 'officer' | 'consumer', idOrPhone: string, 
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return await res.json();
   } catch {
-    // Fallback: accept any login credentials locally
     return {
       success: true,
       user: role === 'officer'
@@ -83,13 +88,17 @@ export async function evaluateComplianceApi(payload: {
       signal: AbortSignal.timeout(15000)
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return await res.json();
+    const data = await res.json();
+    if (data?.record) {
+      saveInspectionDirectToSupabase(data.record);
+    }
+    return data;
   } catch {
     console.log('[MANAK] Backend evaluate unreachable — running client-side rule evaluation.');
     const evalResult = evaluateExtractionAgainstRules(payload.extraction);
-    const inspectionId = `insp-${Date.now().toString().slice(-6)}`;
+    const inspectionId = crypto.randomUUID();
     const finalProduct: Product = payload.product || {
-      id: `prod-${Date.now().toString().slice(-6)}`,
+      id: crypto.randomUUID(),
       title: payload.extraction.generic_name?.value ? `${payload.extraction.generic_name.value} Pack` : 'Packaged Commodity',
       brand: payload.extraction.manufacturer?.value ? payload.extraction.manufacturer.value.split(',')[0].trim() : 'Declared Manufacturer',
       category: payload.mode === 'url_check' ? 'E-Commerce Commodity' : 'Packaged Retail Commodity',
@@ -129,11 +138,12 @@ export async function evaluateComplianceApi(payload: {
       synced: false
     };
 
+    saveInspectionDirectToSupabase(record);
     return { success: true, record };
   }
 }
 
-// ─── Scan (with client-side fallback) ────────────────────────────────────────
+// ─── Scan ────────────────────────────────────────────────────────────────────
 
 export async function scanProductApi(payload: {
   image_base64?: string;
@@ -149,14 +159,20 @@ export async function scanProductApi(payload: {
       signal: AbortSignal.timeout(15000)
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return await res.json();
+    const data = await res.json();
+    if (data?.record) {
+      saveInspectionDirectToSupabase(data.record);
+    }
+    return data;
   } catch {
     console.log('[MANAK] Backend unreachable — running client-side label analysis.');
-    return buildLocalScanRecord(payload.raw_text || '', payload.image_base64, payload.performed_by, 'scan', payload.geo);
+    const result = buildLocalScanRecord(payload.raw_text || '', payload.image_base64, payload.performed_by, 'scan', payload.geo);
+    saveInspectionDirectToSupabase(result.record);
+    return result;
   }
 }
 
-// ─── URL Check (with client-side fallback) ───────────────────────────────────
+// ─── URL Check ───────────────────────────────────────────────────────────────
 
 export async function checkUrlApi(payload: {
   platform?: string;
@@ -175,10 +191,18 @@ export async function checkUrlApi(payload: {
       const errJson = await res.json().catch(() => ({}));
       throw new Error(errJson.error || `HTTP ${res.status}`);
     }
-    return await res.json();
+    const data = await res.json();
+    if (data?.record) {
+      saveInspectionDirectToSupabase(data.record);
+    }
+    return data;
   } catch (err) {
     console.warn('[MANAK] Backend checkUrl unreachable — running direct client-side URL check:', (err as Error).message);
-    return await checkUrlClientSide(payload);
+    const result = await checkUrlClientSide(payload);
+    if (result?.record) {
+      saveInspectionDirectToSupabase(result.record);
+    }
+    return result;
   }
 }
 
@@ -189,10 +213,13 @@ export async function fetchHistoryApi(): Promise<InspectionRecord[]> {
     const res = await fetch(`${getApiBaseUrl()}/api/history`, { signal: AbortSignal.timeout(5000) });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    return data.inspections || [];
+    if (data?.inspections && data.inspections.length > 0) {
+      return data.inspections;
+    }
   } catch {
-    return [];
+    // Fall back to direct Supabase query
   }
+  return await fetchHistoryDirectFromSupabase();
 }
 
 // ─── Consumer Reports ─────────────────────────────────────────────────────────
@@ -202,13 +229,17 @@ export async function fetchConsumerReportsApi(): Promise<ConsumerReport[]> {
     const res = await fetch(`${getApiBaseUrl()}/api/consumer-reports`, { signal: AbortSignal.timeout(5000) });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    return data.reports || [];
+    if (data?.reports && data.reports.length > 0) {
+      return data.reports;
+    }
   } catch {
-    return [];
+    // Fall back to direct Supabase query
   }
+  return await fetchConsumerReportsDirectFromSupabase();
 }
 
 export async function submitConsumerReportApi(report: Partial<ConsumerReport>): Promise<ConsumerReport> {
+  let createdReport: ConsumerReport;
   try {
     const res = await fetch(`${getApiBaseUrl()}/api/consumer-report`, {
       method: 'POST',
@@ -218,11 +249,10 @@ export async function submitConsumerReportApi(report: Partial<ConsumerReport>): 
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    return data.report;
+    createdReport = data.report;
   } catch {
-    // Return a locally generated report
-    return {
-      id: `cr-${Date.now()}`,
+    createdReport = {
+      id: crypto.randomUUID(),
       reference_id: report.reference_id || `MANAK-CR-2026-${Math.floor(1000 + Math.random() * 9000)}`,
       inspection_id: report.inspection_id || `insp-cr-${Date.now()}`,
       product_name: report.product_name || 'Reported Product',
@@ -235,19 +265,33 @@ export async function submitConsumerReportApi(report: Partial<ConsumerReport>): 
       assigned_officer: 'Legal Metrology Division'
     } as ConsumerReport;
   }
+
+  saveConsumerReportDirectToSupabase(createdReport);
+  return createdReport;
 }
 
 // ─── Sync ─────────────────────────────────────────────────────────────────────
 
 export async function syncQueueApi(queuedInspections: InspectionRecord[]) {
-  const res = await fetch(`${getApiBaseUrl()}/api/sync`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ queued_inspections: queuedInspections }),
-    signal: AbortSignal.timeout(10000)
-  });
-  if (!res.ok) throw new Error(`HTTP error ${res.status}`);
-  return await res.json();
+  try {
+    const res = await fetch(`${getApiBaseUrl()}/api/sync`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ queued_inspections: queuedInspections }),
+      signal: AbortSignal.timeout(10000)
+    });
+    if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+    const data = await res.json();
+    for (const item of queuedInspections) {
+      saveInspectionDirectToSupabase({ ...item, status: 'verified', synced: true });
+    }
+    return data;
+  } catch {
+    for (const item of queuedInspections) {
+      saveInspectionDirectToSupabase({ ...item, status: 'verified', synced: true });
+    }
+    return { success: true, syncedCount: queuedInspections.length };
+  }
 }
 
 // ─── Compliance Chat ──────────────────────────────────────────────────────────
@@ -280,10 +324,10 @@ function buildLocalScanRecord(
 ) {
   const extraction = parseLabelText(rawText);
   const evalResult = evaluateExtractionAgainstRules(extraction);
-  const inspectionId = `insp-${Date.now().toString().slice(-6)}`;
+  const inspectionId = crypto.randomUUID();
 
   const product: Product = {
-    id: `prod-${Date.now().toString().slice(-6)}`,
+    id: crypto.randomUUID(),
     title: extraction.generic_name.value ? `${extraction.generic_name.value} Pack` : 'Packaged Commodity',
     brand: extraction.manufacturer.value ? extraction.manufacturer.value.split(',')[0].trim() : 'Declared Manufacturer',
     category: mode === 'url_check' ? 'E-Commerce Commodity' : 'Packaged Retail Commodity',
@@ -293,7 +337,7 @@ function buildLocalScanRecord(
     image_url: imageBase64 || undefined
   };
 
-  const record = {
+  const record: InspectionRecord = {
     id: inspectionId,
     product,
     performed_by: performedBy || { name: 'Enforcement Official', badge_id: 'LM-OFFICER-01' },
@@ -312,7 +356,7 @@ function buildLocalScanRecord(
     signature_details: {
       signed_by: `${performedBy?.name || 'Officer'} (Local DSC)`,
       timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19),
-      provider: 'local',
+      provider: 'local' as const,
       certificate_id: `DSC-LCL-${Date.now().toString().slice(-6)}`
     },
     report_id: `MANAK-REP-2026-${Date.now().toString().slice(-5)}`,

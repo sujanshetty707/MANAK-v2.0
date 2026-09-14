@@ -1,0 +1,1 @@
+feat: complete real-time Supabase database persistence for products, inspections, violations, and consumer reports

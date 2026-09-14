@@ -12,6 +12,7 @@ import {
 } from '../services/offlineStorage';
 import { evaluateExtractionAgainstRules } from '../services/ruleEngine';
 import { fetchHistoryApi, fetchConsumerReportsApi, loginApi, submitConsumerReportApi } from '../services/api';
+import { saveInspectionDirectToSupabase } from '../services/supabaseService';
 
 interface AppContextType {
   userRole: UserRole;
@@ -306,6 +307,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
 
     saveInspection(newRecord);
+    saveInspectionDirectToSupabase(newRecord);
     setInspections(prev => [newRecord, ...prev.filter(i => i.id !== id)]);
 
     if (isOffline) {

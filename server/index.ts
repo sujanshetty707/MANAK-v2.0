@@ -15,11 +15,110 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 
-// In-memory store (Supabase is primary, this is fallback)
+// In-memory store (Supabase Postgres is primary, this is fallback)
 const db: { inspections: any[]; consumerReports: any[] } = {
   inspections: [],
   consumerReports: []
 };
+
+// ─── UUID Helper ─────────────────────────────────────────────────────────────
+
+function ensureUUID(id?: string): string {
+  if (!id) return crypto.randomUUID();
+  const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+  if (uuidRegex.test(id)) return id;
+
+  let hash = 0;
+  for (let i = 0; i < id.length; i++) {
+    hash = ((hash << 5) - hash) + id.charCodeAt(i);
+    hash |= 0;
+  }
+  const hex = Math.abs(hash).toString(16).padStart(8, '0');
+  return `${hex.slice(0, 8)}-4000-8000-0000-${hex.padEnd(12, '0').slice(0, 12)}`;
+}
+
+// ─── Supabase Persistence Helper ──────────────────────────────────────────────
+
+async function saveInspectionToSupabase(record: any): Promise<boolean> {
+  try {
+    const productId = ensureUUID(record.product?.id);
+    const inspectionId = ensureUUID(record.id);
+
+    // 1. Upsert product
+    if (record.product) {
+      await supabaseAdmin.from('products').upsert({
+        id: productId,
+        source_type: record.product.source_type || (record.mode === 'url_check' ? 'ecommerce' : 'store'),
+        ecommerce_platform: record.product.ecommerce_platform || null,
+        ecommerce_url: record.product.ecommerce_url || null,
+        title: record.product.title || 'Packaged Product',
+        brand: record.product.brand || null,
+        category: record.product.category || 'Retail Commodity',
+        image_url: record.product.image_url?.length && record.product.image_url.length < 1000 ? record.product.image_url : null
+      });
+    }
+
+    // 2. Upsert inspection
+    const { error: inspErr } = await supabaseAdmin.from('inspections').upsert({
+      id: inspectionId,
+      product_id: productId,
+      mode: record.mode || 'scan',
+      status: record.status || 'verified',
+      geo_lat: record.geo?.lat || null,
+      geo_lng: record.geo?.lng || null,
+      address: record.geo?.address || null,
+      evidence_image: record.evidence_image?.length && record.evidence_image.length < 1000 ? record.evidence_image : null,
+      evidence_hash: record.evidence_hash || null,
+      extraction_result: record.extraction || {},
+      compliance_result: {
+        evaluations: record.evaluations || [],
+        is_compliant: record.is_compliant,
+        total_violations: record.total_violations,
+        total_penalty: record.total_penalty
+      },
+      is_compliant: record.is_compliant ?? false,
+      total_violations: record.total_violations || 0,
+      total_penalty: record.total_penalty || 0,
+      is_signed: record.is_signed ?? true,
+      report_id: record.report_id || null,
+      synced_at: new Date().toISOString()
+    });
+
+    if (inspErr) {
+      console.warn('[Supabase Server] Inspection upsert warning:', inspErr.message);
+      return false;
+    }
+
+    // 3. Insert Violations breakdown
+    if (record.evaluations && Array.isArray(record.evaluations)) {
+      const violationRows = record.evaluations
+        .filter((e: any) => e.status === 'violation')
+        .map((e: any) => ({
+          id: crypto.randomUUID(),
+          inspection_id: inspectionId,
+          rule_id: e.rule_id,
+          requirement_name: e.requirement_name,
+          severity: e.severity || 'major',
+          status: e.status,
+          expected: e.expected || null,
+          found: e.found || null,
+          explanation: e.explanation || null,
+          rule_citation: e.legal_citation || null,
+          penalty: e.penalty || 2000
+        }));
+
+      if (violationRows.length > 0) {
+        await supabaseAdmin.from('violations').insert(violationRows);
+      }
+    }
+
+    console.log(`[Supabase Server] Successfully saved inspection ${inspectionId} to Postgres DB`);
+    return true;
+  } catch (err) {
+    console.error('[Supabase Server] Error saving inspection:', (err as Error).message);
+    return false;
+  }
+}
 
 // ─── Health Check ────────────────────────────────────────────────────────────
 
@@ -74,10 +173,9 @@ app.post('/api/auth/login', (req, res) => {
   res.status(400).json({ error: 'Invalid user role' });
 });
 
-// ─── Dashboard Stats (backend-driven violation summary) ──────────────────────
+// ─── Dashboard Stats ─────────────────────────────────────────────────────────
 
 app.get('/api/dashboard/stats', async (_req, res) => {
-  // Try Supabase first
   try {
     const { data, error } = await supabaseAdmin
       .from('inspections')
@@ -86,26 +184,20 @@ app.get('/api/dashboard/stats', async (_req, res) => {
     if (!error && data && data.length > 0) {
       const total = data.length;
       const violations = data.filter((i: any) => !i.is_compliant);
-      const totalPenalty = violations.reduce((sum: number, i: any) => sum + (i.total_penalty || 0), 0);
+      const totalPenalty = violations.reduce((sum: number, i: any) => sum + (Number(i.total_penalty) || 0), 0);
       const unsigned = data.filter((i: any) => i.status === 'provisional').length;
       const scanCount = data.filter((i: any) => i.mode === 'scan').length;
       const urlCount = data.filter((i: any) => i.mode === 'url_check').length;
 
-      // Top violation rules across all inspections
       const { data: violationData } = await supabaseAdmin
-        .from('inspections')
-        .select('compliance_result')
-        .eq('is_compliant', false)
-        .limit(20);
+        .from('violations')
+        .select('requirement_name');
 
       const ruleCounts: Record<string, number> = {};
       if (violationData) {
         for (const row of violationData) {
-          const evals = (row as any).compliance_result?.evaluations || [];
-          for (const e of evals) {
-            if (e.status === 'violation') {
-              ruleCounts[e.requirement_name] = (ruleCounts[e.requirement_name] || 0) + 1;
-            }
+          if (row.requirement_name) {
+            ruleCounts[row.requirement_name] = (ruleCounts[row.requirement_name] || 0) + 1;
           }
         }
       }
@@ -129,8 +221,8 @@ app.get('/api/dashboard/stats', async (_req, res) => {
         }
       });
     }
-  } catch {
-    // fallback to in-memory
+  } catch (err) {
+    console.warn('[Supabase Stats] Fallback to in-memory store:', (err as Error).message);
   }
 
   // In-memory fallback
@@ -153,11 +245,10 @@ app.get('/api/dashboard/stats', async (_req, res) => {
   });
 });
 
-// ─── Extract Label (Google Vision OCR & Product Categorization) ─────────────
+// ─── Extract Label (Google Vision OCR & Categorization) ───────────────────────
 
 app.post('/api/extract', async (req, res) => {
   const body = req.body || {};
-  // Accept both single image and array of images (for multi-panel packaging)
   const images_base64 = body.images_base64 || body.imagesBase64 || body.images || body.image_base64 || body.imageBase64;
   const raw_text = body.raw_text || body.rawText;
 
@@ -173,7 +264,7 @@ app.post('/api/extract', async (req, res) => {
     const ocrResult = await extractLabelFromImage(images_base64, raw_text);
     const extraction = ocrResult.extraction;
     const product = {
-      id: `prod-${Date.now().toString().slice(-6)}`,
+      id: crypto.randomUUID(),
       title: extraction.generic_name?.value ? `${extraction.generic_name.value} Pack` : 'Packaged Commodity',
       brand: extraction.manufacturer?.value ? extraction.manufacturer.value.split(',')[0].trim() : 'Declared Manufacturer',
       category: ocrResult.category || 'Packaged Retail Commodity',
@@ -195,7 +286,7 @@ app.post('/api/extract', async (req, res) => {
       success: true,
       extraction: fallbackExtraction,
       product: {
-        id: `prod-${Date.now().toString().slice(-6)}`,
+        id: crypto.randomUUID(),
         title: fallbackExtraction.generic_name.value || 'Packaged Commodity',
         brand: fallbackExtraction.manufacturer.value ? fallbackExtraction.manufacturer.value.split(',')[0].trim() : 'Declared Manufacturer',
         category: 'Packaged Retail Commodity',
@@ -207,7 +298,7 @@ app.post('/api/extract', async (req, res) => {
   }
 });
 
-// ─── Evaluate Compliance (Runs Rule Engine & Saves Record) ───────────────────
+// ─── Evaluate Compliance (Runs Rule Engine & Persists to Supabase DB) ────────
 
 app.post('/api/evaluate', async (req, res) => {
   const body = req.body || {};
@@ -218,9 +309,9 @@ app.post('/api/evaluate', async (req, res) => {
   }
 
   const evalResult = evaluateExtractionAgainstRules(extraction);
-  const inspectionId = `insp-${Date.now().toString().slice(-6)}`;
+  const inspectionId = ensureUUID(body.id || `insp-${Date.now().toString().slice(-6)}`);
   const finalProduct = product || {
-    id: `prod-${Date.now().toString().slice(-6)}`,
+    id: crypto.randomUUID(),
     title: extraction.generic_name?.value ? `${extraction.generic_name.value} Pack` : 'Packaged Commodity',
     brand: extraction.manufacturer?.value ? extraction.manufacturer.value.split(',')[0].trim() : 'Declared Manufacturer',
     category: 'Packaged Retail Commodity',
@@ -234,7 +325,7 @@ app.post('/api/evaluate', async (req, res) => {
     performed_by: performed_by || { name: 'Enforcement Official', badge_id: 'LM-OFFICER-01' },
     mode: mode || 'scan',
     status: 'verified',
-    geo: geo || { lat: 0, lng: 0, address: 'Field Audit Location' },
+    geo: geo || { lat: 28.6139, lng: 77.2090, address: 'Field Audit Location' },
     timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19),
     evidence_image: image_base64 || finalProduct.image_url || '',
     evidence_hash: `sha256-${Math.random().toString(36).substring(2, 15)}`,
@@ -254,34 +345,14 @@ app.post('/api/evaluate', async (req, res) => {
     synced: true
   };
 
-  // Persist to Supabase
-  try {
-    await supabaseAdmin.from('inspections').insert({
-      id: record.id,
-      mode: record.mode,
-      status: 'verified',
-      geo_lat: record.geo.lat,
-      geo_lng: record.geo.lng,
-      address: record.geo.address,
-      evidence_image: record.evidence_image.length < 500 ? record.evidence_image : '',
-      evidence_hash: record.evidence_hash,
-      extraction_result: extraction,
-      compliance_result: evalResult,
-      is_compliant: evalResult.is_compliant,
-      total_violations: evalResult.total_violations,
-      total_penalty: evalResult.total_penalty,
-      is_signed: true,
-      report_id: record.report_id
-    });
-  } catch (err) {
-    console.warn('[Supabase] Insert failed, using local store:', (err as Error).message);
-  }
-
+  // Persist to Supabase Postgres
+  await saveInspectionToSupabase(record);
   db.inspections.unshift(record);
+
   res.json({ success: true, record });
 });
 
-// ─── Scan Label (All-in-one endpoint maintained for backward compatibility) ──
+// ─── Scan Label (All-in-one endpoint) ─────────────────────────────────────────
 
 app.post('/api/scan', async (req, res) => {
   const body = req.body || {};
@@ -300,11 +371,13 @@ app.post('/api/scan', async (req, res) => {
   const extraction = ocrRes.extraction;
   const evalResult = evaluateExtractionAgainstRules(extraction);
 
-  const inspectionId = `insp-${Date.now().toString().slice(-6)}`;
+  const inspectionId = crypto.randomUUID();
+  const productId = crypto.randomUUID();
+
   const record = {
     id: inspectionId,
     product: {
-      id: `prod-${Date.now().toString().slice(-6)}`,
+      id: productId,
       title: extraction.generic_name?.value ? `${extraction.generic_name.value} Pack` : 'Packaged Commodity',
       brand: extraction.manufacturer?.value ? extraction.manufacturer.value.split(',')[0].trim() : 'Declared Manufacturer',
       category: ocrRes.category || 'Packaged Retail Commodity',
@@ -315,9 +388,9 @@ app.post('/api/scan', async (req, res) => {
     performed_by: performed_by || { name: 'Enforcement Official', badge_id: 'LM-OFFICER-01' },
     mode: 'scan',
     status: 'verified',
-    geo: geo || { lat: 0, lng: 0, address: 'Field Audit Location' },
+    geo: geo || { lat: 28.6139, lng: 77.2090, address: 'Field Audit Location' },
     timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19),
-    evidence_image: image_base64 || '',
+    evidence_image: primaryImage,
     evidence_hash: `sha256-${Math.random().toString(36).substring(2, 15)}`,
     extraction,
     evaluations: evalResult.evaluations,
@@ -335,30 +408,10 @@ app.post('/api/scan', async (req, res) => {
     synced: true
   };
 
-  // Persist to Supabase
-  try {
-    await supabaseAdmin.from('inspections').insert({
-      id: record.id,
-      mode: 'scan',
-      status: 'verified',
-      geo_lat: record.geo.lat,
-      geo_lng: record.geo.lng,
-      address: record.geo.address,
-      evidence_image: record.evidence_image.length < 500 ? record.evidence_image : '', // Don't store base64 blobs
-      evidence_hash: record.evidence_hash,
-      extraction_result: extraction,
-      compliance_result: evalResult,
-      is_compliant: evalResult.is_compliant,
-      total_violations: evalResult.total_violations,
-      total_penalty: evalResult.total_penalty,
-      is_signed: true,
-      report_id: record.report_id
-    });
-  } catch (err) {
-    console.warn('[Supabase] Insert failed, using local store:', (err as Error).message);
-  }
-
+  // Persist to Supabase Postgres
+  await saveInspectionToSupabase(record);
   db.inspections.unshift(record);
+
   res.json({ success: true, record });
 });
 
@@ -381,7 +434,7 @@ app.post('/api/url-check', async (req, res) => {
       const rawText = `${dom_extract.title || ''} ${dom_extract.mrp_text || ''} ${dom_extract.net_quantity_text || ''} ${dom_extract.manufacturer_text || ''}`;
       extraction = parseLabelText(rawText);
       product = {
-        id: `prod-url-${Date.now().toString().slice(-6)}`,
+        id: crypto.randomUUID(),
         title,
         brand: dom_extract?.manufacturer_text ? dom_extract.manufacturer_text.split(',')[0] : 'Online Marketplace Listing',
         category: 'E-Commerce Commodity',
@@ -391,14 +444,13 @@ app.post('/api/url-check', async (req, res) => {
         image_url: dom_extract?.images?.[0] || ''
       };
     } else {
-      // End-to-end Fetch & Gemini Statutory Extraction Pipeline
       const auditResult = await auditEcommerceUrl({ url, platform, performed_by });
       product = auditResult.product;
       extraction = auditResult.extraction;
     }
 
     const evalResult = evaluateExtractionAgainstRules(extraction);
-    const inspectionId = `insp-url-${Date.now().toString().slice(-6)}`;
+    const inspectionId = crypto.randomUUID();
 
     const record = {
       id: inspectionId,
@@ -406,7 +458,7 @@ app.post('/api/url-check', async (req, res) => {
       performed_by: performed_by || { name: 'Enforcement Official', badge_id: 'LM-OFFICER-01' },
       mode: 'url_check',
       status: 'verified',
-      geo: { lat: 0, lng: 0, address: 'Online Audit Session' },
+      geo: { lat: 28.6139, lng: 77.2090, address: 'Online Audit Session' },
       timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19),
       evidence_image: product.image_url || '',
       evidence_hash: `sha256-url-${Math.random().toString(36).substring(2, 15)}`,
@@ -426,7 +478,10 @@ app.post('/api/url-check', async (req, res) => {
       synced: true
     };
 
+    // Persist to Supabase Postgres
+    await saveInspectionToSupabase(record);
     db.inspections.unshift(record);
+
     return res.json({ success: true, record });
   } catch (err) {
     console.error('[url-check] Error during e-commerce audit:', err);
@@ -445,13 +500,76 @@ app.get('/api/history', async (req, res) => {
   try {
     const { data, error } = await supabaseAdmin
       .from('inspections')
-      .select('*')
+      .select('*, product:products(*)')
       .order('device_timestamp', { ascending: false });
+
     if (!error && data && data.length > 0) {
-      return res.json({ success: true, count: data.length, inspections: data });
+      const mapped = data.map((row: any) => {
+        const prod = row.product || {};
+        const extraction = row.extraction_result || {};
+        const compliance = row.compliance_result || {};
+        return {
+          id: row.id,
+          product: {
+            id: prod.id || row.product_id,
+            source_type: prod.source_type || (row.mode === 'url_check' ? 'ecommerce' : 'store'),
+            title: prod.title || extraction.generic_name?.value || 'Inspected Commodity',
+            brand: prod.brand || extraction.manufacturer?.value?.split(',')[0] || 'Manufacturer',
+            category: prod.category || 'Retail Commodity',
+            ecommerce_platform: prod.ecommerce_platform || undefined,
+            ecommerce_url: prod.ecommerce_url || undefined,
+            image_url: prod.image_url || row.evidence_image || undefined
+          },
+          performed_by: {
+            id: 'usr-officer-01',
+            name: 'Enforcement Official',
+            badge_id: 'LM-OFFICER-01',
+            role: 'officer',
+            zone: 'Legal Metrology Division'
+          },
+          mode: row.mode || 'scan',
+          status: row.status || 'verified',
+          geo: {
+            lat: Number(row.geo_lat) || 28.6139,
+            lng: Number(row.geo_lng) || 77.2090,
+            address: row.address || 'Field Audit Location'
+          },
+          timestamp: row.device_timestamp ? new Date(row.device_timestamp).toISOString().replace('T', ' ').substring(0, 19) : new Date().toISOString(),
+          evidence_image: row.evidence_image || prod.image_url || '',
+          evidence_hash: row.evidence_hash || `sha256-${row.id.slice(0, 8)}`,
+          extraction,
+          evaluations: compliance.evaluations || [],
+          is_compliant: row.is_compliant ?? true,
+          total_violations: row.total_violations || 0,
+          total_penalty: Number(row.total_penalty) || 0,
+          is_signed: row.is_signed ?? true,
+          signature_details: {
+            signed_by: 'Officer (Digital DSC)',
+            timestamp: row.synced_at || new Date().toISOString(),
+            provider: 'documenso',
+            certificate_id: `DSC-IN-LM-${row.id.slice(0, 6)}`
+          },
+          report_id: row.report_id || `MANAK-REP-2026-${row.id.slice(0, 5)}`,
+          synced: true
+        };
+      });
+
+      let filtered = mapped;
+      if (status) filtered = filtered.filter((i: any) => i.status === status);
+      if (mode) filtered = filtered.filter((i: any) => i.mode === mode);
+      if (q) {
+        const query = String(q).toLowerCase();
+        filtered = filtered.filter((i: any) =>
+          i.product.title.toLowerCase().includes(query) ||
+          i.product.brand.toLowerCase().includes(query) ||
+          i.id.toLowerCase().includes(query)
+        );
+      }
+
+      return res.json({ success: true, count: filtered.length, inspections: filtered });
     }
-  } catch {
-    // fallback
+  } catch (err) {
+    console.warn('[Supabase History] Fallback to local store:', (err as Error).message);
   }
 
   let filtered = [...db.inspections];
@@ -471,14 +589,41 @@ app.get('/api/history', async (req, res) => {
 
 // ─── Consumer Reports ────────────────────────────────────────────────────────
 
-app.get('/api/consumer-reports', (_req, res) => {
+app.get('/api/consumer-reports', async (_req, res) => {
+  try {
+    const { data, error } = await supabaseAdmin
+      .from('consumer_reports')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (!error && data && data.length > 0) {
+      const reports = data.map((row: any) => ({
+        id: row.id,
+        reference_id: row.reference_id,
+        inspection_id: row.inspection_id || `insp-${row.id.slice(0, 6)}`,
+        product_name: row.product_name,
+        brand: row.brand || 'Generic',
+        product_image: row.product_image || '',
+        violations_summary: row.violations_summary || [],
+        consumer_note: row.consumer_note || '',
+        submitted_at: row.created_at ? new Date(row.created_at).toISOString().replace('T', ' ').substring(0, 19) : new Date().toISOString(),
+        status: row.status || 'submitted',
+        assigned_officer: row.assigned_officer || 'Legal Metrology Division'
+      }));
+      return res.json({ success: true, count: reports.length, reports });
+    }
+  } catch (err) {
+    console.warn('[Supabase Consumer Reports] Fallback to in-memory:', (err as Error).message);
+  }
+
   res.json({ success: true, count: db.consumerReports.length, reports: db.consumerReports });
 });
 
-app.post('/api/consumer-report', (req, res) => {
+app.post('/api/consumer-report', async (req, res) => {
   const body = req.body || {};
+  const reportId = ensureUUID(body.id);
   const newReport = {
-    id: `cr-${Date.now()}`,
+    id: reportId,
     reference_id: body.reference_id || `MANAK-CR-2026-${Math.floor(1000 + Math.random() * 9000)}`,
     inspection_id: body.inspection_id || `insp-cr-${Date.now()}`,
     product_name: body.product_name || 'Reported Commodity',
@@ -491,13 +636,30 @@ app.post('/api/consumer-report', (req, res) => {
     assigned_officer: 'Legal Metrology Division'
   };
 
+  try {
+    await supabaseAdmin.from('consumer_reports').upsert({
+      id: reportId,
+      reference_id: newReport.reference_id,
+      product_name: newReport.product_name,
+      brand: newReport.brand,
+      product_image: newReport.product_image.length < 1000 ? newReport.product_image : null,
+      violations_summary: newReport.violations_summary,
+      consumer_note: newReport.consumer_note,
+      status: newReport.status,
+      assigned_officer: newReport.assigned_officer
+    });
+    console.log(`[Supabase Server] Saved consumer report ${newReport.reference_id} to DB`);
+  } catch (err) {
+    console.warn('[Supabase Server] Consumer report insert failed:', (err as Error).message);
+  }
+
   db.consumerReports.unshift(newReport);
   res.json({ success: true, report: newReport });
 });
 
 // ─── Offline Sync ────────────────────────────────────────────────────────────
 
-app.post('/api/sync', (req, res) => {
+app.post('/api/sync', async (req, res) => {
   const body = req.body || {};
   const queued = body.queued_inspections;
   if (!Array.isArray(queued) || queued.length === 0) {
@@ -507,6 +669,7 @@ app.post('/api/sync', (req, res) => {
   const results: any[] = [];
   for (const item of queued) {
     const verified = { ...item, status: 'verified', synced: true, synced_at: new Date().toISOString() };
+    await saveInspectionToSupabase(verified);
     db.inspections.unshift(verified);
     results.push({ local_id: item.id, inspection_id: item.id, status: 'verified' });
   }

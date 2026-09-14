@@ -213,7 +213,7 @@ Rules:
 - net_quantity.amount must be a plain number, e.g. 500.
 - country_of_origin is MANDATORY for Indian e-commerce — null only if completely absent.`;
 
-  const models = ['models/gemini-3.6-flash', 'models/gemini-flash-lite-latest'];
+  const models = ['models/gemini-flash-lite-latest', 'models/gemini-2.0-flash'];
   let rawResponseText = '';
 
   for (const model of models) {
@@ -305,7 +305,7 @@ export async function auditEcommerceUrl(input: EcommerceAuditInput): Promise<{ p
       source: 'ocr', confidence: extracted.net_quantity.amount > 0 ? 0.92 : 0
     },
     mrp: {
-      value: extracted.mrp.amount > 0 ? { amount: extracted.mrp.amount, currency: 'INR', is_inclusive_of_all_taxes: extracted.mrp.is_inclusive_taxes, raw_text: extracted.mrp.raw_text } : null,
+      value: extracted.mrp.amount > 0 ? { amount: extracted.mrp.amount, raw_text: extracted.mrp.raw_text, is_inclusive_taxes: extracted.mrp.is_inclusive_taxes } : null,
       source: 'ocr', confidence: extracted.mrp.amount > 0 ? 0.95 : 0
     },
     mfg_date: { value: extracted.mfg_date || null, source: 'ocr', confidence: extracted.mfg_date ? 0.90 : 0 },

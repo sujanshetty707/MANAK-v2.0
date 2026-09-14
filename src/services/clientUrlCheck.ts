@@ -14,142 +14,155 @@ export async function checkUrlClientSide(payload: {
     try {
       console.log(`[MANAK Mobile] Running client-side URL check with Gemini Grounding for: ${targetUrl}`);
 
-      const prompt = `You are Legal Metrology E-Commerce Compliance Audit System for India under PCR 2011 & GSR 202(E).
+      const prompt = `You are a Legal Metrology Compliance Auditor for India under Packaged Commodities Rules 2011.
 
-Perform web search & analysis for this exact product URL: ${targetUrl}
+Perform an audit and web search for this exact product URL: ${targetUrl}
 
-Extract all mandatory legal metrology declarations shown on this e-commerce listing:
-1. Generic Name of commodity (Rule 6(1)(b))
+Extract all statutory legal metrology declarations required by law:
+1. Generic Name of commodity (Rule 6(1)(b)) e.g. "Tea", "Shampoo", "Wheat Flour"
 2. Brand Name
-3. Name & full address of Manufacturer / Packer / Importer with PIN Code (Rule 6(1)(a))
-4. Maximum Retail Price (MRP) in ₹ inclusive of all taxes (Rule 6(1)(e))
-5. Net Quantity & unit (Rule 6(1)(c))
-6. Country of Origin (Rule 6(10))
-7. Customer Care helpline / email / address (Rule 6(1)(n))
+3. Name & complete address of Manufacturer / Packer / Importer with PIN Code (Rule 6(1)(a))
+4. Maximum Retail Price (MRP) in ₹ (Rule 6(1)(e))
+5. Net Quantity amount & unit (Rule 6(1)(c)) e.g. 500 g, 1 kg, 250 ml
+6. Country of Origin (Rule 6(10)) e.g. "India"
+7. Customer Care helpline phone / email / address (Rule 6(2))
 8. Product Image URL (if found)
 
-Return ONLY pure JSON without markdown:
+Return ONLY pure JSON matching this exact structure:
 {
   "generic_name": "Generic name",
   "brand": "Brand name",
-  "manufacturer": "Manufacturer name & address with PIN",
-  "mrp": 250,
+  "manufacturer": "Full manufacturer name & address with PIN code",
+  "mrp": 299,
   "net_quantity_amount": 500,
   "net_quantity_unit": "g",
   "country_of_origin": "India",
-  "consumer_care": { "phone": "1800-11-2233", "email": "care@brand.com", "address": "" },
+  "consumer_care": { "phone": "1800-11-2233", "email": "care@brand.com", "address": "Address" },
   "image_url": "https://..."
 }`;
 
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${apiKey}`;
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          tools: [{ google_search: {} }],
-          generationConfig: { temperature: 0.1 }
-        })
-      });
+      // Use valid Gemini 1.5 Flash or Gemini Flash Lite Latest model
+      const models = ['models/gemini-flash-lite-latest', 'models/gemini-2.0-flash'];
+      let parsed: any = null;
 
-      if (res.ok) {
-        const data = await res.json();
-        const textOut = data.candidates?.[0]?.content?.parts?.[0]?.text;
-        if (textOut) {
-          const jsonMatch = textOut.match(/\{[\s\S]*\}/);
-          const cleanJson = jsonMatch ? jsonMatch[0] : textOut.replace(/```json/gi, '').replace(/```/g, '').trim();
-          const parsed = JSON.parse(cleanJson);
+      for (const model of models) {
+        try {
+          const apiUrl = `https://generativelanguage.googleapis.com/v1beta/${model}:generateContent?key=${apiKey}`;
+          const res = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              contents: [{ parts: [{ text: prompt }] }],
+              tools: [{ google_search: {} }],
+              generationConfig: { temperature: 0.1 }
+            })
+          });
 
-          const extraction: ExtractionResult = {
-            generic_name: { value: parsed.generic_name || '', source: 'dom', confidence: 0.95 },
-            manufacturer: { value: parsed.manufacturer || '', source: 'dom', confidence: 0.94 },
-            mrp: {
-              value: {
-                amount: typeof parsed.mrp === 'number' ? parsed.mrp : parseFloat(parsed.mrp || '0'),
-                raw_text: parsed.mrp ? `MRP ₹${parsed.mrp} (Incl. of all taxes)` : '',
-                is_inclusive_taxes: true
-              },
-              source: 'dom',
-              confidence: 0.96
-            },
-            net_quantity: {
-              value: {
-                amount: typeof parsed.net_quantity_amount === 'number' ? parsed.net_quantity_amount : parseFloat(parsed.net_quantity_amount || '0'),
-                unit: parsed.net_quantity_unit || 'g'
-              },
-              source: 'dom',
-              confidence: 0.95
-            },
-            mfg_date: { value: '', source: 'dom', confidence: 0.8 },
-            country_of_origin: { value: parsed.country_of_origin || 'India', source: 'dom', confidence: 0.98 },
-            consumer_care: {
-              value: {
-                phone: parsed.consumer_care?.phone || '',
-                email: parsed.consumer_care?.email || '',
-                address: parsed.consumer_care?.address || ''
-              },
-              source: 'dom',
-              confidence: 0.92
-            },
-            numeral_height_mm: { value: null, reference_detected: false, note: 'E-Commerce PDP Audit' },
-            raw_ocr_text: `E-Commerce Listing Audit for ${targetUrl}\nGeneric Name: ${parsed.generic_name || ''}\nManufacturer: ${parsed.manufacturer || ''}\nMRP: ₹${parsed.mrp || ''}\nNet Qty: ${parsed.net_quantity_amount || ''}${parsed.net_quantity_unit || ''}`
-          };
-
-          const evalResult = evaluateExtractionAgainstRules(extraction);
-          const product: Product = {
-            id: `prod-${Date.now().toString().slice(-6)}`,
-            title: parsed.generic_name ? `${parsed.generic_name} (E-Commerce PDP)` : 'E-Commerce Commodity',
-            brand: parsed.brand || 'Declared Brand',
-            category: 'E-Commerce Commodity',
-            source_type: 'ecommerce',
-            ecommerce_url: targetUrl,
-            image_url: parsed.image_url || undefined
-          };
-
-          const record: InspectionRecord = {
-            id: `insp-${Date.now().toString().slice(-6)}`,
-            product,
-            performed_by: payload.performed_by || { name: 'Enforcement Official', badge_id: 'LM-OFFICER-01', role: 'officer' },
-            mode: 'url_check',
-            status: 'verified',
-            geo: { lat: 28.6139, lng: 77.2090, address: 'E-Commerce PDP Audit' },
-            timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19),
-            evidence_image: product.image_url || '',
-            evidence_hash: `sha256-${Math.random().toString(36).substring(2, 15)}`,
-            extraction,
-            evaluations: evalResult.evaluations,
-            is_compliant: evalResult.is_compliant,
-            total_violations: evalResult.total_violations,
-            total_penalty: evalResult.total_penalty,
-            is_signed: true,
-            signature_details: {
-              signed_by: `${payload.performed_by?.name || 'Officer'} (Digital DSC)`,
-              timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19),
-              provider: 'local',
-              certificate_id: `DSC-ECOM-${Date.now().toString().slice(-6)}`
-            },
-            report_id: `MANAK-REP-2026-${Date.now().toString().slice(-5)}`,
-            synced: false
-          };
-
-          return { success: true, record };
+          if (res.ok) {
+            const data = await res.json();
+            const textOut = data.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (textOut) {
+              const jsonMatch = textOut.match(/\{[\s\S]*\}/);
+              const cleanJson = jsonMatch ? jsonMatch[0] : textOut.replace(/```json/gi, '').replace(/```/g, '').trim();
+              parsed = JSON.parse(cleanJson);
+              if (parsed) break;
+            }
+          }
+        } catch (e) {
+          console.warn(`[MANAK Mobile] ${model} search grounding attempt failed:`, e);
         }
+      }
+
+      if (parsed) {
+        const extraction: ExtractionResult = {
+          generic_name: { value: parsed.generic_name || null, source: 'dom', confidence: parsed.generic_name ? 0.95 : 0 },
+          manufacturer: { value: parsed.manufacturer || null, source: 'dom', confidence: parsed.manufacturer ? 0.94 : 0 },
+          mrp: {
+            value: parsed.mrp ? {
+              amount: typeof parsed.mrp === 'number' ? parsed.mrp : parseFloat(parsed.mrp || '0'),
+              raw_text: `MRP ₹${parsed.mrp} (Incl. of all taxes)`,
+              is_inclusive_taxes: true
+            } : null,
+            source: 'dom',
+            confidence: parsed.mrp ? 0.96 : 0
+          },
+          net_quantity: {
+            value: parsed.net_quantity_amount ? {
+              amount: typeof parsed.net_quantity_amount === 'number' ? parsed.net_quantity_amount : parseFloat(parsed.net_quantity_amount || '0'),
+              unit: parsed.net_quantity_unit || 'g'
+            } : null,
+            source: 'dom',
+            confidence: parsed.net_quantity_amount ? 0.95 : 0
+          },
+          mfg_date: { value: null, source: 'dom', confidence: 0 },
+          country_of_origin: { value: parsed.country_of_origin || 'India', source: 'dom', confidence: 0.98 },
+          consumer_care: {
+            value: (parsed.consumer_care?.phone || parsed.consumer_care?.email || parsed.consumer_care?.address) ? {
+              phone: parsed.consumer_care?.phone || undefined,
+              email: parsed.consumer_care?.email || undefined,
+              address: parsed.consumer_care?.address || undefined
+            } : null,
+            source: 'dom',
+            confidence: 0.92
+          },
+          numeral_height_mm: { value: null, reference_detected: false, note: 'E-Commerce PDP Audit' },
+          raw_ocr_text: `E-Commerce Audit for ${targetUrl}\nGeneric Name: ${parsed.generic_name || ''}\nManufacturer: ${parsed.manufacturer || ''}\nMRP: ₹${parsed.mrp || ''}\nNet Qty: ${parsed.net_quantity_amount || ''}${parsed.net_quantity_unit || ''}`
+        };
+
+        const evalResult = evaluateExtractionAgainstRules(extraction);
+        const product: Product = {
+          id: `prod-${Date.now().toString().slice(-6)}`,
+          title: parsed.generic_name ? `${parsed.generic_name} (E-Commerce PDP)` : 'E-Commerce Commodity',
+          brand: parsed.brand || 'Declared Brand',
+          category: 'E-Commerce Commodity',
+          source_type: 'ecommerce',
+          ecommerce_url: targetUrl,
+          image_url: parsed.image_url || undefined
+        };
+
+        const record: InspectionRecord = {
+          id: `insp-${Date.now().toString().slice(-6)}`,
+          product,
+          performed_by: payload.performed_by || { name: 'Enforcement Official', badge_id: 'LM-OFFICER-01', role: 'officer' },
+          mode: 'url_check',
+          status: 'verified',
+          geo: { lat: 28.6139, lng: 77.2090, address: 'E-Commerce PDP Audit' },
+          timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19),
+          evidence_image: product.image_url || '',
+          evidence_hash: `sha256-${Math.random().toString(36).substring(2, 15)}`,
+          extraction,
+          evaluations: evalResult.evaluations,
+          is_compliant: evalResult.is_compliant,
+          total_violations: evalResult.total_violations,
+          total_penalty: evalResult.total_penalty,
+          is_signed: true,
+          signature_details: {
+            signed_by: `${payload.performed_by?.name || 'Officer'} (Digital DSC)`,
+            timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19),
+            provider: 'local',
+            certificate_id: `DSC-ECOM-${Date.now().toString().slice(-6)}`
+          },
+          report_id: `MANAK-REP-2026-${Date.now().toString().slice(-5)}`,
+          synced: false
+        };
+
+        return { success: true, record };
       }
     } catch (e) {
       console.warn('[MANAK Mobile] Client URL check failed:', e);
     }
   }
 
-  // Local fallback if no key or search failed
+  // Fallback structure
   const extraction: ExtractionResult = {
-    generic_name: { value: 'E-Commerce Commodity', source: 'ocr', confidence: 0.9 },
-    manufacturer: { value: '', source: 'ocr', confidence: 0.9 },
-    mrp: { value: { amount: 0, raw_text: '', is_inclusive_taxes: false }, source: 'ocr', confidence: 0.9 },
-    net_quantity: { value: { amount: 0, unit: '' }, source: 'ocr', confidence: 0.9 },
-    mfg_date: { value: '', source: 'ocr', confidence: 0.9 },
-    country_of_origin: { value: 'India', source: 'ocr', confidence: 0.9 },
-    consumer_care: { value: { phone: '', email: '', address: '' }, source: 'ocr', confidence: 0.9 },
-    numeral_height_mm: { value: null, reference_detected: false, note: 'Not detected' },
+    generic_name: { value: null, source: 'ocr', confidence: 0 },
+    manufacturer: { value: null, source: 'ocr', confidence: 0 },
+    mrp: { value: null, source: 'ocr', confidence: 0 },
+    net_quantity: { value: null, source: 'ocr', confidence: 0 },
+    mfg_date: { value: null, source: 'ocr', confidence: 0 },
+    country_of_origin: { value: null, source: 'ocr', confidence: 0 },
+    consumer_care: { value: null, source: 'ocr', confidence: 0 },
+    numeral_height_mm: { value: null, reference_detected: false, note: 'E-Commerce Listing' },
     raw_ocr_text: `E-Commerce URL: ${targetUrl}`
   };
 
@@ -158,8 +171,8 @@ Return ONLY pure JSON without markdown:
     id: `insp-${Date.now().toString().slice(-6)}`,
     product: {
       id: `prod-${Date.now().toString().slice(-6)}`,
-      title: 'E-Commerce Listing',
-      brand: 'Declared Brand',
+      title: 'E-Commerce Product Listing',
+      brand: 'Unbranded',
       category: 'E-Commerce Commodity',
       source_type: 'ecommerce',
       ecommerce_url: targetUrl

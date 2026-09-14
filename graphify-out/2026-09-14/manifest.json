@@ -48,9 +48,9 @@
     "semantic_hash": ""
   },
   "src/components/screens/CheckUrlScreen.tsx": {
-    "mtime": 1789376695.771898,
-    "seen": 1789376880.0401895,
-    "ast_hash": "31191131ee10863b39ef9cdce2beada1",
+    "mtime": 1789389477.4236534,
+    "seen": 1789389602.0929487,
+    "ast_hash": "18122c474bf72540c415eaa777acd92e",
     "semantic_hash": ""
   },
   "src/components/screens/ComplianceChatScreen.tsx": {
@@ -60,9 +60,9 @@
     "semantic_hash": ""
   },
   "src/components/screens/ConsumerCheckProductScreen.tsx": {
-    "mtime": 1789323597.07505,
-    "seen": 1789323688.490047,
-    "ast_hash": "f622cd12448877016d553882aa9e6153",
+    "mtime": 1789389446.3791947,
+    "seen": 1789389602.0933356,
+    "ast_hash": "024844aab1d1c64ed916810e6055afe5",
     "semantic_hash": ""
   },
   "src/components/screens/ConsumerDashboardScreen.tsx": {
@@ -366,14 +366,14 @@
     "semantic_hash": ""
   },
   "android/app/build.gradle": {
-    "mtime": 1789149253.0811899,
-    "seen": 1789150097.2574074,
-    "ast_hash": "ef7dccc17c23963a32264e5239229a8c",
+    "mtime": 1789386193.6270654,
+    "seen": 1789389602.083686,
+    "ast_hash": "215dcda5a7b9a3f69198988284244032",
     "semantic_hash": ""
   },
   "android/app/capacitor.build.gradle": {
-    "mtime": 1789244624.2914493,
-    "seen": 1789244675.0421999,
+    "mtime": 1789389523.8622346,
+    "seen": 1789389602.083701,
     "ast_hash": "603ecca0fd2c534a84f2da02acd653bf",
     "semantic_hash": ""
   },
@@ -396,14 +396,14 @@
     "semantic_hash": ""
   },
   "android/build.gradle": {
-    "mtime": 1789138888.0,
-    "seen": 1789150097.2574232,
-    "ast_hash": "682315a426653617c6a74fc12bef55b6",
+    "mtime": 1789386203.0663328,
+    "seen": 1789389602.0850983,
+    "ast_hash": "13f664ee46d3c88cb7b265e918b10dcf",
     "semantic_hash": ""
   },
   "android/capacitor.settings.gradle": {
-    "mtime": 1789244624.289903,
-    "seen": 1789244675.0422282,
+    "mtime": 1789389523.8601997,
+    "seen": 1789389602.085103,
     "ast_hash": "67f6105f1f112255bf608817f5c31034",
     "semantic_hash": ""
   },
@@ -702,9 +702,9 @@
     "semantic_hash": ""
   },
   "server/services/ecommerceAuditService.ts": {
-    "mtime": 1789377839.1541264,
-    "seen": 1789380327.9885807,
-    "ast_hash": "458d0472037fc8f0bd45849f19528b16",
+    "mtime": 1789389417.9444664,
+    "seen": 1789389602.088469,
+    "ast_hash": "93a6b9bfc9e57996f05ce885ce5ab735",
     "semantic_hash": ""
   },
   "src/components/common/ServerSettingsModal.tsx": {

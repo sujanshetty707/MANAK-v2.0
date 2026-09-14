@@ -1,1 +1,1 @@
-feat: complete real-time Supabase database persistence for products, inspections, violations, and consumer reports
+fix(navigation & url-check): add Home button to Header and fix Gemini models for e-commerce URL audits

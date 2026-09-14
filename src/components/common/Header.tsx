@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { ChevronLeft, Shield, Bell, WifiOff, Settings } from 'lucide-react';
+import { ChevronLeft, Home, Shield, Bell, WifiOff, Settings } from 'lucide-react';
 import { ServerSettingsModal } from './ServerSettingsModal';
 
 export const Header: React.FC<{
@@ -13,20 +13,35 @@ export const Header: React.FC<{
   const { goBack, officerProfile, consumerProfile, isOffline, userRole, navigateTo } = useApp();
   const [showSettings, setShowSettings] = useState(false);
 
+  const goHome = () => {
+    if (userRole === 'officer') navigateTo('officer_dashboard');
+    else if (userRole === 'consumer') navigateTo('consumer_dashboard');
+    else navigateTo('role_select');
+  };
+
   return (
     <>
       <header className="bg-[#1B3A6B] text-white pt-[calc(max(14px,env(safe-area-inset-top,0px))+6px)] pb-3 px-3.5 sm:px-4 shadow-md flex-shrink-0 relative z-20 transition-all">
         <div className="flex items-center justify-between">
-          {/* Left Side: Back Button or Profile Avatar */}
+          {/* Left Side: Back & Home Buttons or Profile Avatar */}
           <div className="flex items-center space-x-2.5">
             {showBack && (
-              <button
-                onClick={goBack}
-                className="p-1.5 -ml-1 rounded-lg bg-white/10 hover:bg-white/20 active:bg-white/30 text-white transition-colors"
-                title="Go back"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
+              <div className="flex items-center space-x-1 -ml-1">
+                <button
+                  onClick={goBack}
+                  className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 active:bg-white/30 text-white transition-colors"
+                  title="Go back"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={goHome}
+                  className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 active:bg-white/30 text-white transition-colors"
+                  title="Dashboard Home"
+                >
+                  <Home className="w-4 h-4 text-amber-300" />
+                </button>
+              </div>
             )}
 
             {showOfficerBadge && (

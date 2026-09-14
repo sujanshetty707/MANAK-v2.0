@@ -82,19 +82,6 @@
       "source_location": "L18"
     },
     {
-      "id": "src_services_ocrsimulation_pipelinestage",
-      "label": "PipelineStage",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "pipelinestage",
-      "source_file": "src/services/ocrSimulation.ts",
-      "source_location": "L7"
-    },
-    {
       "id": "src_types_index_appscreen",
       "label": "AppScreen",
       "_callable": true,
@@ -132,19 +119,6 @@
       "norm_label": "consumerreport",
       "source_file": "src/types/index.ts",
       "source_location": "L135"
-    },
-    {
-      "id": "src_types_index_extractionresult",
-      "label": "ExtractionResult",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "extractionresult",
-      "source_file": "src/types/index.ts",
-      "source_location": "L51"
     },
     {
       "id": "src_types_index_inspectionrecord",
@@ -264,6 +238,19 @@
       "source_location": "L7"
     },
     {
+      "id": "src_services_ocrsimulation_pipelinestage",
+      "label": "PipelineStage",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "code",
+      "norm_label": "pipelinestage",
+      "source_file": "src/services/ocrSimulation.ts",
+      "source_location": "L7"
+    },
+    {
       "id": "src_types_index_extractionfield",
       "label": "ExtractionField",
       "_callable": true,
@@ -275,6 +262,19 @@
       "norm_label": "extractionfield",
       "source_file": "src/types/index.ts",
       "source_location": "L45"
+    },
+    {
+      "id": "src_types_index_extractionresult",
+      "label": "ExtractionResult",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "code",
+      "norm_label": "extractionresult",
+      "source_file": "src/types/index.ts",
+      "source_location": "L51"
     },
     {
       "id": "src_app_app",
@@ -637,18 +637,6 @@
       "source_location": "L7"
     },
     {
-      "id": "vite_config_transformindexhtml",
-      "label": "transformIndexHtml()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "transformindexhtml()",
-      "source_file": "vite.config.ts",
-      "source_location": "L9"
-    },
-    {
       "id": "android_app_src_androidtest_java_com_getcapacitor_myapp_exampleinstrumentedtest_exampleinstrumentedtest_useappcontext",
       "label": ".useAppContext()",
       "_callable": true,
@@ -699,6 +687,18 @@
       "norm_label": "serversettingsmodal()",
       "source_file": "src/components/common/ServerSettingsModal.tsx",
       "source_location": "L11"
+    },
+    {
+      "id": "src_context_appcontext_appprovider",
+      "label": "AppProvider()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "appprovider()",
+      "source_file": "src/context/AppContext.tsx",
+      "source_location": "L66"
     },
     {
       "id": "src_services_api_askcompliancechatapi",
@@ -893,16 +893,124 @@
       "source_location": "L5"
     },
     {
-      "id": "src_services_ocrsimulation_simulateextractionpipeline",
-      "label": "simulateExtractionPipeline()",
+      "id": "src_services_offlinestorage_addtoofflinequeue",
+      "label": "addToOfflineQueue()",
       "_callable": true,
       "_origin": "ast",
       "community": 31,
       "community_name": "api.ts",
       "file_type": "code",
-      "norm_label": "simulateextractionpipeline()",
-      "source_file": "src/services/ocrSimulation.ts",
-      "source_location": "L22"
+      "norm_label": "addtoofflinequeue()",
+      "source_file": "src/services/offlineStorage.ts",
+      "source_location": "L57"
+    },
+    {
+      "id": "src_services_offlinestorage_clearofflinequeue",
+      "label": "clearOfflineQueue()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "clearofflinequeue()",
+      "source_file": "src/services/offlineStorage.ts",
+      "source_location": "L64"
+    },
+    {
+      "id": "src_services_offlinestorage_getofflinequeue",
+      "label": "getOfflineQueue()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "getofflinequeue()",
+      "source_file": "src/services/offlineStorage.ts",
+      "source_location": "L48"
+    },
+    {
+      "id": "src_services_offlinestorage_getstoredconsumerreports",
+      "label": "getStoredConsumerReports()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "getstoredconsumerreports()",
+      "source_file": "src/services/offlineStorage.ts",
+      "source_location": "L28"
+    },
+    {
+      "id": "src_services_offlinestorage_getstoredinspections",
+      "label": "getStoredInspections()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "getstoredinspections()",
+      "source_file": "src/services/offlineStorage.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "src_services_offlinestorage_saveconsumerreport",
+      "label": "saveConsumerReport()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "saveconsumerreport()",
+      "source_file": "src/services/offlineStorage.ts",
+      "source_location": "L38"
+    },
+    {
+      "id": "src_services_offlinestorage_saveinspection",
+      "label": "saveInspection()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "saveinspection()",
+      "source_file": "src/services/offlineStorage.ts",
+      "source_location": "L18"
+    },
+    {
+      "id": "src_services_offlinestorage_savestoredconsumerreports",
+      "label": "saveStoredConsumerReports()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "savestoredconsumerreports()",
+      "source_file": "src/services/offlineStorage.ts",
+      "source_location": "L44"
+    },
+    {
+      "id": "src_services_offlinestorage_savestoredinspections",
+      "label": "saveStoredInspections()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "savestoredinspections()",
+      "source_file": "src/services/offlineStorage.ts",
+      "source_location": "L24"
+    },
+    {
+      "id": "src_services_offlinestorage_syncofflinequeuetoserver",
+      "label": "syncOfflineQueueToServer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "syncofflinequeuetoserver()",
+      "source_file": "src/services/offlineStorage.ts",
+      "source_location": "L72"
     },
     {
       "id": "src_services_ruleengine_evaluateextractionagainstrules",
@@ -1009,138 +1117,6 @@
       "norm_label": ".oncreate()",
       "source_file": "android/app/src/main/java/in/gov/manak/compliance/MainActivity.java",
       "source_location": "L8"
-    },
-    {
-      "id": "src_context_appcontext_appprovider",
-      "label": "AppProvider()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "appprovider()",
-      "source_file": "src/context/AppContext.tsx",
-      "source_location": "L66"
-    },
-    {
-      "id": "src_services_offlinestorage_addtoofflinequeue",
-      "label": "addToOfflineQueue()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "addtoofflinequeue()",
-      "source_file": "src/services/offlineStorage.ts",
-      "source_location": "L57"
-    },
-    {
-      "id": "src_services_offlinestorage_clearofflinequeue",
-      "label": "clearOfflineQueue()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "clearofflinequeue()",
-      "source_file": "src/services/offlineStorage.ts",
-      "source_location": "L64"
-    },
-    {
-      "id": "src_services_offlinestorage_getofflinequeue",
-      "label": "getOfflineQueue()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "getofflinequeue()",
-      "source_file": "src/services/offlineStorage.ts",
-      "source_location": "L48"
-    },
-    {
-      "id": "src_services_offlinestorage_getstoredconsumerreports",
-      "label": "getStoredConsumerReports()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "getstoredconsumerreports()",
-      "source_file": "src/services/offlineStorage.ts",
-      "source_location": "L28"
-    },
-    {
-      "id": "src_services_offlinestorage_getstoredinspections",
-      "label": "getStoredInspections()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "getstoredinspections()",
-      "source_file": "src/services/offlineStorage.ts",
-      "source_location": "L8"
-    },
-    {
-      "id": "src_services_offlinestorage_saveconsumerreport",
-      "label": "saveConsumerReport()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "saveconsumerreport()",
-      "source_file": "src/services/offlineStorage.ts",
-      "source_location": "L38"
-    },
-    {
-      "id": "src_services_offlinestorage_saveinspection",
-      "label": "saveInspection()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "saveinspection()",
-      "source_file": "src/services/offlineStorage.ts",
-      "source_location": "L18"
-    },
-    {
-      "id": "src_services_offlinestorage_savestoredconsumerreports",
-      "label": "saveStoredConsumerReports()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "savestoredconsumerreports()",
-      "source_file": "src/services/offlineStorage.ts",
-      "source_location": "L44"
-    },
-    {
-      "id": "src_services_offlinestorage_savestoredinspections",
-      "label": "saveStoredInspections()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "savestoredinspections()",
-      "source_file": "src/services/offlineStorage.ts",
-      "source_location": "L24"
-    },
-    {
-      "id": "src_services_offlinestorage_syncofflinequeuetoserver",
-      "label": "syncOfflineQueueToServer()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "syncofflinequeuetoserver()",
-      "source_file": "src/services/offlineStorage.ts",
-      "source_location": "L72"
     },
     {
       "id": "server_index_ensureuuid",
@@ -1453,6 +1429,18 @@
       "norm_label": "parselabeltext()",
       "source_file": "src/services/labelParser.ts",
       "source_location": "L280"
+    },
+    {
+      "id": "src_services_ocrsimulation_simulateextractionpipeline",
+      "label": "simulateExtractionPipeline()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "code",
+      "norm_label": "simulateextractionpipeline()",
+      "source_file": "src/services/ocrSimulation.ts",
+      "source_location": "L22"
     },
     {
       "id": "src_services_pdfreportgenerator_generateinspectionpdf",
@@ -3115,28 +3103,6 @@
       "source_location": "L9"
     },
     {
-      "id": "capacitor_config",
-      "label": "capacitor.config.ts",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "capacitor.config.ts",
-      "source_file": "capacitor.config.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "capacitor_config_config",
-      "label": "config",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "config",
-      "source_file": "capacitor.config.ts",
-      "source_location": "L3"
-    },
-    {
       "id": "package",
       "label": "package.json",
       "_origin": "ast",
@@ -3170,127 +3136,6 @@
       "source_location": "L3"
     },
     {
-      "id": "package_scripts",
-      "label": "scripts",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "scripts",
-      "source_file": "package.json",
-      "source_location": "L6"
-    },
-    {
-      "id": "package_scripts_adb_reverse",
-      "label": "adb:reverse",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "adb:reverse",
-      "source_file": "package.json",
-      "source_location": "L16"
-    },
-    {
-      "id": "package_scripts_build",
-      "label": "build",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "build",
-      "source_file": "package.json",
-      "source_location": "L10"
-    },
-    {
-      "id": "package_scripts_cap_add",
-      "label": "cap:add",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "cap:add",
-      "source_file": "package.json",
-      "source_location": "L12"
-    },
-    {
-      "id": "package_scripts_cap_live",
-      "label": "cap:live",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "cap:live",
-      "source_file": "package.json",
-      "source_location": "L15"
-    },
-    {
-      "id": "package_scripts_cap_open",
-      "label": "cap:open",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "cap:open",
-      "source_file": "package.json",
-      "source_location": "L14"
-    },
-    {
-      "id": "package_scripts_cap_sync",
-      "label": "cap:sync",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "cap:sync",
-      "source_file": "package.json",
-      "source_location": "L13"
-    },
-    {
-      "id": "package_scripts_dev",
-      "label": "dev",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "dev",
-      "source_file": "package.json",
-      "source_location": "L7"
-    },
-    {
-      "id": "package_scripts_preview",
-      "label": "preview",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "preview",
-      "source_file": "package.json",
-      "source_location": "L11"
-    },
-    {
-      "id": "package_scripts_server",
-      "label": "server",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "server",
-      "source_file": "package.json",
-      "source_location": "L8"
-    },
-    {
-      "id": "package_scripts_start",
-      "label": "start",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "start",
-      "source_file": "package.json",
-      "source_location": "L9"
-    },
-    {
       "id": "package_type",
       "label": "type",
       "_origin": "ast",
@@ -3313,39 +3158,6 @@
       "source_location": "L4"
     },
     {
-      "id": "src_lib_supabase",
-      "label": "supabase.ts",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "supabase.ts",
-      "source_file": "src/lib/supabase.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_lib_supabase_supabase",
-      "label": "supabase",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "supabase",
-      "source_file": "src/lib/supabase.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "vite_config",
-      "label": "vite.config.ts",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "vite.config.ts",
-      "source_file": "vite.config.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "ref_autoprefixer",
       "label": "autoprefixer",
       "_origin": "ast",
@@ -3366,17 +3178,6 @@
       "norm_label": "@capacitor/android",
       "source_file": "package.json",
       "source_location": "L19"
-    },
-    {
-      "id": "ref_capacitor_cli",
-      "label": "@capacitor/cli",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "@capacitor/cli",
-      "source_file": "package.json",
-      "source_location": "L21"
     },
     {
       "id": "ref_clsx",
@@ -3445,17 +3246,6 @@
       "source_location": "L35"
     },
     {
-      "id": "ref_supabase_supabase_js",
-      "label": "@supabase/supabase-js",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "@supabase/supabase-js",
-      "source_file": "package.json",
-      "source_location": "L24"
-    },
-    {
       "id": "ref_tailwind_merge",
       "label": "tailwind-merge",
       "_origin": "ast",
@@ -3476,6 +3266,17 @@
       "norm_label": "tailwindcss",
       "source_file": "package.json",
       "source_location": "L46"
+    },
+    {
+      "id": "ref_tesseract_js",
+      "label": "tesseract.js",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "tesseract.js",
+      "source_file": "package.json",
+      "source_location": "L37"
     },
     {
       "id": "ref_tsx",
@@ -3542,28 +3343,6 @@
       "norm_label": "typescript",
       "source_file": "package.json",
       "source_location": "L48"
-    },
-    {
-      "id": "ref_vite",
-      "label": "vite",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "vite",
-      "source_file": "package.json",
-      "source_location": "L49"
-    },
-    {
-      "id": "ref_vitejs_plugin_react",
-      "label": "@vitejs/plugin-react",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "@vitejs/plugin-react",
-      "source_file": "package.json",
-      "source_location": "L42"
     },
     {
       "id": "android_app_src_androidtest_java_com_getcapacitor_myapp_exampleinstrumentedtest",
@@ -3676,17 +3455,6 @@
       "source_location": "L14"
     },
     {
-      "id": "src_data_mockdata_sample_products",
-      "label": "SAMPLE_PRODUCTS",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "sample_products",
-      "source_file": "src/data/mockData.ts",
-      "source_location": "L3"
-    },
-    {
       "id": "src_data_rules",
       "label": "rules.ts",
       "_origin": "ast",
@@ -3753,26 +3521,15 @@
       "source_location": "L1"
     },
     {
-      "id": "src_services_ocrsimulation",
-      "label": "ocrSimulation.ts",
+      "id": "src_services_offlinestorage",
+      "label": "offlineStorage.ts",
       "_origin": "ast",
       "community": 31,
       "community_name": "api.ts",
       "file_type": "code",
-      "norm_label": "ocrsimulation.ts",
-      "source_file": "src/services/ocrSimulation.ts",
+      "norm_label": "offlinestorage.ts",
+      "source_file": "src/services/offlineStorage.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "src_services_ocrsimulation_pipeline_stages",
-      "label": "PIPELINE_STAGES",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "api.ts",
-      "file_type": "code",
-      "norm_label": "pipeline_stages",
-      "source_file": "src/services/ocrSimulation.ts",
-      "source_location": "L14"
     },
     {
       "id": "src_services_ruleengine",
@@ -4654,15 +4411,125 @@
       "source_location": "L26"
     },
     {
-      "id": "src_services_offlinestorage",
-      "label": "offlineStorage.ts",
+      "id": "package_scripts",
+      "label": "scripts",
       "_origin": "ast",
       "community": 41,
-      "community_name": "AppProvider",
+      "community_name": "scripts",
       "file_type": "code",
-      "norm_label": "offlinestorage.ts",
-      "source_file": "src/services/offlineStorage.ts",
-      "source_location": "L1"
+      "norm_label": "scripts",
+      "source_file": "package.json",
+      "source_location": "L6"
+    },
+    {
+      "id": "package_scripts_adb_reverse",
+      "label": "adb:reverse",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "adb:reverse",
+      "source_file": "package.json",
+      "source_location": "L16"
+    },
+    {
+      "id": "package_scripts_build",
+      "label": "build",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "build",
+      "source_file": "package.json",
+      "source_location": "L10"
+    },
+    {
+      "id": "package_scripts_cap_add",
+      "label": "cap:add",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "cap:add",
+      "source_file": "package.json",
+      "source_location": "L12"
+    },
+    {
+      "id": "package_scripts_cap_live",
+      "label": "cap:live",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "cap:live",
+      "source_file": "package.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "package_scripts_cap_open",
+      "label": "cap:open",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "cap:open",
+      "source_file": "package.json",
+      "source_location": "L14"
+    },
+    {
+      "id": "package_scripts_cap_sync",
+      "label": "cap:sync",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "cap:sync",
+      "source_file": "package.json",
+      "source_location": "L13"
+    },
+    {
+      "id": "package_scripts_dev",
+      "label": "dev",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "dev",
+      "source_file": "package.json",
+      "source_location": "L7"
+    },
+    {
+      "id": "package_scripts_preview",
+      "label": "preview",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "preview",
+      "source_file": "package.json",
+      "source_location": "L11"
+    },
+    {
+      "id": "package_scripts_server",
+      "label": "server",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "server",
+      "source_file": "package.json",
+      "source_location": "L8"
+    },
+    {
+      "id": "package_scripts_start",
+      "label": "start",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "start",
+      "source_file": "package.json",
+      "source_location": "L9"
     },
     {
       "id": "api_keys_and_setup",
@@ -4905,6 +4772,39 @@
       "source_location": "L9"
     },
     {
+      "id": "src_data_mockdata_sample_products",
+      "label": "SAMPLE_PRODUCTS",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "code",
+      "norm_label": "sample_products",
+      "source_file": "src/data/mockData.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "src_lib_supabase",
+      "label": "supabase.ts",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "code",
+      "norm_label": "supabase.ts",
+      "source_file": "src/lib/supabase.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_lib_supabase_supabase",
+      "label": "supabase",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "code",
+      "norm_label": "supabase",
+      "source_file": "src/lib/supabase.ts",
+      "source_location": "L6"
+    },
+    {
       "id": "src_services_labelparser",
       "label": "labelParser.ts",
       "_origin": "ast",
@@ -4914,6 +4814,28 @@
       "norm_label": "labelparser.ts",
       "source_file": "src/services/labelParser.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "src_services_ocrsimulation",
+      "label": "ocrSimulation.ts",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "code",
+      "norm_label": "ocrsimulation.ts",
+      "source_file": "src/services/ocrSimulation.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_services_ocrsimulation_pipeline_stages",
+      "label": "PIPELINE_STAGES",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "code",
+      "norm_label": "pipeline_stages",
+      "source_file": "src/services/ocrSimulation.ts",
+      "source_location": "L14"
     },
     {
       "id": "ref_cors",
@@ -4949,15 +4871,15 @@
       "source_location": "L30"
     },
     {
-      "id": "ref_tesseract_js",
-      "label": "tesseract.js",
+      "id": "ref_supabase_supabase_js",
+      "label": "@supabase/supabase-js",
       "_origin": "ast",
       "community": 43,
       "community_name": "labelParser.ts",
       "file_type": "concept",
-      "norm_label": "tesseract.js",
+      "norm_label": "@supabase/supabase-js",
       "source_file": "package.json",
-      "source_location": "L37"
+      "source_location": "L24"
     },
     {
       "id": "prd",
@@ -5090,6 +5012,72 @@
       "norm_label": "product requirements document (prd)",
       "source_file": "prd.md",
       "source_location": "L1"
+    },
+    {
+      "id": "capacitor_config",
+      "label": "capacitor.config.ts",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "capacitor.config.ts",
+      "file_type": "code",
+      "norm_label": "capacitor.config.ts",
+      "source_file": "capacitor.config.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "capacitor_config_config",
+      "label": "config",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "capacitor.config.ts",
+      "file_type": "code",
+      "norm_label": "config",
+      "source_file": "capacitor.config.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "ref_capacitor_cli",
+      "label": "@capacitor/cli",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "capacitor.config.ts",
+      "file_type": "concept",
+      "norm_label": "@capacitor/cli",
+      "source_file": "package.json",
+      "source_location": "L21"
+    },
+    {
+      "id": "vite_config",
+      "label": "vite.config.ts",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "vite",
+      "file_type": "code",
+      "norm_label": "vite.config.ts",
+      "source_file": "vite.config.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "ref_vite",
+      "label": "vite",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "vite",
+      "file_type": "concept",
+      "norm_label": "vite",
+      "source_file": "package.json",
+      "source_location": "L49"
+    },
+    {
+      "id": "ref_vitejs_plugin_react",
+      "label": "@vitejs/plugin-react",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "vite",
+      "file_type": "concept",
+      "norm_label": "@vitejs/plugin-react",
+      "source_file": "package.json",
+      "source_location": "L42"
     },
     {
       "id": "src_services_pdfreportgenerator",
@@ -16971,17 +16959,6 @@
       "weight": 1.0
     },
     {
-      "source": "vite_config",
-      "target": "vite_config_transformindexhtml",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "vite.config.ts",
-      "source_location": "L9",
-      "weight": 1.0
-    },
-    {
       "source": "android_gradlew",
       "target": "android_gradlew_warn",
       "relation": "defines",
@@ -17213,5 +17190,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "18819aed7e27945d7d6be4b79f10c63f5961118e"
+  "built_at_commit": "77bf6bed09df74382879bfa4a21d3adb442baa89"
 }

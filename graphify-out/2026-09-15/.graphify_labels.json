@@ -40,9 +40,11 @@
   "38": "settings.gradle",
   "39": "variables.gradle",
   "40": "dependencies",
-  "41": "AppProvider",
+  "41": "scripts",
   "42": "MANAK — API Keys & Backend Environment Setup Guide",
   "43": "labelParser.ts",
   "44": "Product Requirements Document (PRD)",
+  "45": "capacitor.config.ts",
+  "46": "vite",
   "49": "pdfReportGenerator.ts"
 }

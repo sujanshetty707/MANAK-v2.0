@@ -1,13 +1,13 @@
 /**
  * Compress and resize an image for Gemini Vision OCR.
- * - Max 1600px on longest side (higher res = better OCR accuracy)
- * - JPEG quality 0.9 (high quality for text detection)
+ * - Max 2048px on longest side (optimal resolution for text OCR within HTTP payload bounds)
+ * - JPEG quality 0.90 (high text crispness)
  * Returns a data URL.
  */
 export function compressImage(
   dataUrl: string,
-  maxDim = 3072,
-  quality = 0.95
+  maxDim = 1600,
+  quality = 0.85
 ): Promise<string> {
   return new Promise((resolve, reject) => {
     const img = new Image();

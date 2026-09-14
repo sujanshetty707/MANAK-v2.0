@@ -573,7 +573,7 @@
       "file_type": "code",
       "norm_label": "useapp()",
       "source_file": "src/context/AppContext.tsx",
-      "source_location": "L426"
+      "source_location": "L430"
     },
     {
       "id": "src_utils_imageutils_compressimage",
@@ -1235,7 +1235,7 @@
       "file_type": "code",
       "norm_label": "extractconsumeraddress()",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L165"
+      "source_location": "L185"
     },
     {
       "id": "src_services_labelparser_extractdate",
@@ -1247,7 +1247,7 @@
       "file_type": "code",
       "norm_label": "extractdate()",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L63"
+      "source_location": "L20"
     },
     {
       "id": "src_services_labelparser_extractemail",
@@ -1259,7 +1259,7 @@
       "file_type": "code",
       "norm_label": "extractemail()",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L116"
+      "source_location": "L180"
     },
     {
       "id": "src_services_labelparser_extractexpdate",
@@ -1271,19 +1271,19 @@
       "file_type": "code",
       "norm_label": "extractexpdate()",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L93"
+      "source_location": "L61"
     },
     {
-      "id": "src_services_labelparser_extractgenericname",
-      "label": "extractGenericName()",
+      "id": "src_services_labelparser_extractgenericnameandbrand",
+      "label": "extractGenericNameAndBrand()",
       "_callable": true,
       "_origin": "ast",
       "community": 43,
       "community_name": "labelParser.ts",
       "file_type": "code",
-      "norm_label": "extractgenericname()",
+      "norm_label": "extractgenericnameandbrand()",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L129"
+      "source_location": "L226"
     },
     {
       "id": "src_services_labelparser_extractmanufacturer",
@@ -1295,7 +1295,7 @@
       "file_type": "code",
       "norm_label": "extractmanufacturer()",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L121"
+      "source_location": "L206"
     },
     {
       "id": "src_services_labelparser_extractmfgdate",
@@ -1307,7 +1307,7 @@
       "file_type": "code",
       "norm_label": "extractmfgdate()",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L84"
+      "source_location": "L45"
     },
     {
       "id": "src_services_labelparser_extractmrp",
@@ -1319,7 +1319,7 @@
       "file_type": "code",
       "norm_label": "extractmrp()",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L20"
+      "source_location": "L77"
     },
     {
       "id": "src_services_labelparser_extractnetqty",
@@ -1331,7 +1331,7 @@
       "file_type": "code",
       "norm_label": "extractnetqty()",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L43"
+      "source_location": "L129"
     },
     {
       "id": "src_services_labelparser_extractorigin",
@@ -1343,7 +1343,7 @@
       "file_type": "code",
       "norm_label": "extractorigin()",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L153"
+      "source_location": "L269"
     },
     {
       "id": "src_services_labelparser_extractphone",
@@ -1355,7 +1355,7 @@
       "file_type": "code",
       "norm_label": "extractphone()",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L102"
+      "source_location": "L165"
     },
     {
       "id": "src_services_labelparser_makefield",
@@ -1391,7 +1391,7 @@
       "file_type": "code",
       "norm_label": "parselabeltext()",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L180"
+      "source_location": "L280"
     },
     {
       "id": "src_services_ocrsimulation_simulateextractionpipeline",
@@ -6358,7 +6358,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/screens/CameraScanScreen.tsx",
-      "source_location": "L51",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -6507,18 +6507,6 @@
     },
     {
       "source": "src_components_screens_extractedtextreviewscreen_extractedtextreviewscreen",
-      "target": "src_services_labelparser_parselabeltext",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/components/screens/ExtractedTextReviewScreen.tsx",
-      "source_location": "L105",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_screens_extractedtextreviewscreen_extractedtextreviewscreen",
       "target": "src_services_api_evaluatecomplianceapi",
       "relation": "calls",
       "_origin": "ast",
@@ -6526,7 +6514,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/screens/ExtractedTextReviewScreen.tsx",
-      "source_location": "L202",
+      "source_location": "L219",
       "weight": 1.0
     },
     {
@@ -6539,6 +6527,18 @@
       "context": "call",
       "source_file": "src/components/screens/ExtractedTextReviewScreen.tsx",
       "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_screens_extractedtextreviewscreen_extractedtextreviewscreen",
+      "target": "src_services_labelparser_parselabeltext",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/components/screens/ExtractedTextReviewScreen.tsx",
+      "source_location": "L91",
       "weight": 1.0
     },
     {
@@ -6802,7 +6802,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/context/AppContext.tsx",
-      "source_location": "L309",
+      "source_location": "L311",
       "weight": 1.0
     },
     {
@@ -6814,7 +6814,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/context/AppContext.tsx",
-      "source_location": "L310",
+      "source_location": "L312",
       "weight": 1.0
     },
     {
@@ -6826,7 +6826,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/context/AppContext.tsx",
-      "source_location": "L340",
+      "source_location": "L344",
       "weight": 1.0
     },
     {
@@ -6838,7 +6838,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/context/AppContext.tsx",
-      "source_location": "L341",
+      "source_location": "L345",
       "weight": 1.0
     },
     {
@@ -6850,7 +6850,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/context/AppContext.tsx",
-      "source_location": "L365",
+      "source_location": "L369",
       "weight": 1.0
     },
     {
@@ -7143,6 +7143,18 @@
     },
     {
       "source": "src_services_clientgeminivision_extractlabelclientside",
+      "target": "src_services_labelparser_parselabeltext",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/services/clientGeminiVision.ts",
+      "source_location": "L131",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_clientgeminivision_extractlabelclientside",
       "target": "src_services_clientgeminivision_getgeminiapikey",
       "relation": "calls",
       "_origin": "ast",
@@ -7151,18 +7163,6 @@
       "context": "call",
       "source_file": "src/services/clientGeminiVision.ts",
       "source_location": "L15",
-      "weight": 1.0
-    },
-    {
-      "source": "src_services_clientgeminivision_extractlabelclientside",
-      "target": "src_services_labelparser_parselabeltext",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/services/clientGeminiVision.ts",
-      "source_location": "L182",
       "weight": 1.0
     },
     {
@@ -7186,7 +7186,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/clientUrlCheck.ts",
-      "source_location": "L98",
+      "source_location": "L112",
       "weight": 1.0
     },
     {
@@ -7198,7 +7198,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L94",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
@@ -7210,7 +7210,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L85",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -7222,7 +7222,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L181",
+      "source_location": "L281",
       "weight": 1.0
     },
     {
@@ -7234,7 +7234,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L183",
+      "source_location": "L283",
       "weight": 1.0
     },
     {
@@ -7246,7 +7246,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L184",
+      "source_location": "L284",
       "weight": 1.0
     },
     {
@@ -7258,7 +7258,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L185",
+      "source_location": "L285",
       "weight": 1.0
     },
     {
@@ -7270,7 +7270,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L186",
+      "source_location": "L286",
       "weight": 1.0
     },
     {
@@ -7282,7 +7282,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L187",
+      "source_location": "L287",
       "weight": 1.0
     },
     {
@@ -7294,43 +7294,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L188",
-      "weight": 1.0
-    },
-    {
-      "source": "src_services_labelparser_parselabeltext",
-      "target": "src_services_labelparser_extractmanufacturer",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/services/labelParser.ts",
-      "source_location": "L189",
-      "weight": 1.0
-    },
-    {
-      "source": "src_services_labelparser_parselabeltext",
-      "target": "src_services_labelparser_extractgenericname",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/services/labelParser.ts",
-      "source_location": "L190",
-      "weight": 1.0
-    },
-    {
-      "source": "src_services_labelparser_parselabeltext",
-      "target": "src_services_labelparser_extractorigin",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/services/labelParser.ts",
-      "source_location": "L191",
+      "source_location": "L288",
       "weight": 1.0
     },
     {
@@ -7342,7 +7306,43 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L192",
+      "source_location": "L289",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_labelparser_parselabeltext",
+      "target": "src_services_labelparser_extractmanufacturer",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/services/labelParser.ts",
+      "source_location": "L290",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_labelparser_parselabeltext",
+      "target": "src_services_labelparser_extractgenericnameandbrand",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/services/labelParser.ts",
+      "source_location": "L291",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_labelparser_parselabeltext",
+      "target": "src_services_labelparser_extractorigin",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/services/labelParser.ts",
+      "source_location": "L292",
       "weight": 1.0
     },
     {
@@ -7354,7 +7354,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L195",
+      "source_location": "L295",
       "weight": 1.0
     },
     {
@@ -15632,7 +15632,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/context/AppContext.tsx",
-      "source_location": "L426",
+      "source_location": "L430",
       "weight": 1.0
     },
     {
@@ -15912,40 +15912,7 @@
     },
     {
       "source": "src_services_labelparser",
-      "target": "src_services_labelparser_extractphone",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/services/labelParser.ts",
-      "source_location": "L102",
-      "weight": 1.0
-    },
-    {
-      "source": "src_services_labelparser",
-      "target": "src_services_labelparser_extractemail",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/services/labelParser.ts",
-      "source_location": "L116",
-      "weight": 1.0
-    },
-    {
-      "source": "src_services_labelparser",
-      "target": "src_services_labelparser_extractmanufacturer",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/services/labelParser.ts",
-      "source_location": "L121",
-      "weight": 1.0
-    },
-    {
-      "source": "src_services_labelparser",
-      "target": "src_services_labelparser_extractgenericname",
+      "target": "src_services_labelparser_extractnetqty",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15956,18 +15923,7 @@
     },
     {
       "source": "src_services_labelparser",
-      "target": "src_services_labelparser_extractorigin",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/services/labelParser.ts",
-      "source_location": "L153",
-      "weight": 1.0
-    },
-    {
-      "source": "src_services_labelparser",
-      "target": "src_services_labelparser_extractconsumeraddress",
+      "target": "src_services_labelparser_extractphone",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15978,7 +15934,7 @@
     },
     {
       "source": "src_services_labelparser",
-      "target": "src_services_labelparser_parselabeltext",
+      "target": "src_services_labelparser_extractemail",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15989,13 +15945,68 @@
     },
     {
       "source": "src_services_labelparser",
-      "target": "src_services_labelparser_extractmrp",
+      "target": "src_services_labelparser_extractconsumeraddress",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/services/labelParser.ts",
+      "source_location": "L185",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_labelparser",
+      "target": "src_services_labelparser_extractdate",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/labelParser.ts",
       "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_labelparser",
+      "target": "src_services_labelparser_extractmanufacturer",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/services/labelParser.ts",
+      "source_location": "L206",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_labelparser",
+      "target": "src_services_labelparser_extractgenericnameandbrand",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/services/labelParser.ts",
+      "source_location": "L226",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_labelparser",
+      "target": "src_services_labelparser_extractorigin",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/services/labelParser.ts",
+      "source_location": "L269",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_labelparser",
+      "target": "src_services_labelparser_parselabeltext",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/services/labelParser.ts",
+      "source_location": "L280",
       "weight": 1.0
     },
     {
@@ -16011,35 +16022,35 @@
     },
     {
       "source": "src_services_labelparser",
-      "target": "src_services_labelparser_extractnetqty",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/services/labelParser.ts",
-      "source_location": "L43",
-      "weight": 1.0
-    },
-    {
-      "source": "src_services_labelparser",
-      "target": "src_services_labelparser_extractdate",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/services/labelParser.ts",
-      "source_location": "L63",
-      "weight": 1.0
-    },
-    {
-      "source": "src_services_labelparser",
       "target": "src_services_labelparser_extractmfgdate",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L84",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_labelparser",
+      "target": "src_services_labelparser_extractexpdate",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/services/labelParser.ts",
+      "source_location": "L61",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_labelparser",
+      "target": "src_services_labelparser_extractmrp",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/services/labelParser.ts",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
@@ -16051,17 +16062,6 @@
       "confidence_score": 1.0,
       "source_file": "src/services/labelParser.ts",
       "source_location": "L9",
-      "weight": 1.0
-    },
-    {
-      "source": "src_services_labelparser",
-      "target": "src_services_labelparser_extractexpdate",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/services/labelParser.ts",
-      "source_location": "L93",
       "weight": 1.0
     },
     {
@@ -16967,5 +16967,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "96fb2943bfa1263e3f898c138aabaa1f561972fb"
+  "built_at_commit": "1c5ff1e950c1dd8704cba53ebfe095851861430f"
 }

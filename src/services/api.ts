@@ -60,12 +60,12 @@ export async function extractLabelApi(payload: {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(30000)
+      signal: AbortSignal.timeout(5000)
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return await res.json();
   } catch (err) {
-    console.log('[MANAK] Backend extract unreachable — running direct client-side extraction:', (err as Error).message);
+    console.log('[MANAK] Backend extract unreachable/timeout — running direct client-side extraction:', (err as Error).message);
     return await extractLabelClientSide(payload);
   }
 }

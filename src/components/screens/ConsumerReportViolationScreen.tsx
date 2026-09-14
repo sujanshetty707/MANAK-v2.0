@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
 import { Header } from '../common/Header';
 import { AlertTriangle, CheckCircle2, Send, Upload, Camera, ShieldCheck, MapPin } from 'lucide-react';
+import { getCurrentGeoLocation, GeoLocationResult } from '../../services/locationService';
 
 export const ConsumerReportViolationScreen: React.FC = () => {
   const { navigateTo, currentProduct, currentEvaluations, isCompliant, submitNewConsumerReport } = useApp();
   const [note, setNote] = useState('Store was selling this pack above printed MRP with no tax disclaimer.');
-  const [extraPhoto, setExtraPhoto] = useState<string | null>(null);
+  const [geoLoc, setGeoLoc] = useState<GeoLocationResult | null>(null);
+
+  useEffect(() => {
+    getCurrentGeoLocation().then(res => setGeoLoc(res));
+  }, []);
 
   const violations = currentEvaluations.filter(e => e.status === 'violation');
 
@@ -87,12 +92,12 @@ export const ConsumerReportViolationScreen: React.FC = () => {
           </div>
 
           <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between text-xs">
-            <span className="text-slate-600 text-[11px] flex items-center gap-1">
-              <MapPin className="w-3.5 h-3.5 text-emerald-700" />
-              Geo-Tagging: Khan Market, New Delhi
+            <span className="text-slate-600 text-[11px] flex items-center gap-1 font-medium truncate pr-2">
+              <MapPin className="w-3.5 h-3.5 text-emerald-700 flex-shrink-0" />
+              <span>Geo-Tagging: {geoLoc?.address || 'GPS Coordinates Acquired'}</span>
             </span>
-            <span className="text-[9px] bg-emerald-100 text-emerald-800 font-mono font-bold px-1.5 py-0.5 rounded">
-              Auto-Tagged
+            <span className="text-[9px] bg-emerald-100 text-emerald-800 font-mono font-bold px-1.5 py-0.5 rounded flex-shrink-0">
+              GPS Verified
             </span>
           </div>
 

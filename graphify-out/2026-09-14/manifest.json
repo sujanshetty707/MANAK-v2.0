@@ -138,9 +138,9 @@
     "semantic_hash": ""
   },
   "src/context/AppContext.tsx": {
-    "mtime": 1789323497.0667799,
-    "seen": 1789323688.495734,
-    "ast_hash": "914934f0f35d4de13725975813eb953b",
+    "mtime": 1789391020.8689811,
+    "seen": 1789391673.764251,
+    "ast_hash": "3d7121ba69044e63b69e461dfaf7e537",
     "semantic_hash": ""
   },
   "src/data/mockData.ts": {
@@ -372,8 +372,8 @@
     "semantic_hash": ""
   },
   "android/app/capacitor.build.gradle": {
-    "mtime": 1789389523.8622346,
-    "seen": 1789389602.083701,
+    "mtime": 1789391133.689152,
+    "seen": 1789391673.7528172,
     "ast_hash": "603ecca0fd2c534a84f2da02acd653bf",
     "semantic_hash": ""
   },
@@ -402,8 +402,8 @@
     "semantic_hash": ""
   },
   "android/capacitor.settings.gradle": {
-    "mtime": 1789389523.8601997,
-    "seen": 1789389602.085103,
+    "mtime": 1789391133.686104,
+    "seen": 1789391673.7539024,
     "ast_hash": "67f6105f1f112255bf608817f5c31034",
     "semantic_hash": ""
   },
@@ -624,15 +624,15 @@
     "semantic_hash": ""
   },
   "server/index.ts": {
-    "mtime": 1789376665.8335953,
-    "seen": 1789376880.038922,
-    "ast_hash": "09a00277e678d7fdb6bb1b67875e4edc",
+    "mtime": 1789391001.010706,
+    "seen": 1789391673.7556455,
+    "ast_hash": "c490dd9745aafc13dfa037fcdb001bfd",
     "semantic_hash": ""
   },
   "src/services/api.ts": {
-    "mtime": 1789382266.115749,
-    "seen": 1789382341.1587424,
-    "ast_hash": "12472f00d71872cc21d1794fe0007fa7",
+    "mtime": 1789391104.593903,
+    "seen": 1789391673.7657275,
+    "ast_hash": "0e652ed8719ceb2d756b6eacde413e8c",
     "semantic_hash": ""
   },
   "server/services/geminiExtraction.ts": {
@@ -729,6 +729,12 @@
     "mtime": 1789382740.8376892,
     "seen": 1789382760.683984,
     "ast_hash": "f22dcb4a0ad659f8b1b4993905c15bcb",
+    "semantic_hash": ""
+  },
+  "src/services/supabaseService.ts": {
+    "mtime": 1789391091.524668,
+    "seen": 1789391673.768379,
+    "ast_hash": "58787962d4da072fbda05ea8c369e22b",
     "semantic_hash": ""
   }
 }

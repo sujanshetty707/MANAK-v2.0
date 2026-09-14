@@ -255,12 +255,12 @@ Rules:
   const finalExtraction: ExtractionResult = {
     generic_name: {
       value: geminiExtracted?.generic_name || regexExtraction.generic_name.value || '',
-      source: geminiExtracted?.generic_name ? 'google_lens' : regexExtraction.generic_name.source,
+      source: 'ocr',
       confidence: geminiExtracted?.generic_name ? 0.96 : regexExtraction.generic_name.confidence
     },
     manufacturer: {
       value: geminiExtracted?.manufacturer || regexExtraction.manufacturer.value || '',
-      source: geminiExtracted?.manufacturer ? 'google_lens' : regexExtraction.manufacturer.source,
+      source: 'ocr',
       confidence: geminiExtracted?.manufacturer ? 0.95 : regexExtraction.manufacturer.confidence
     },
     mrp: {
@@ -269,7 +269,7 @@ Rules:
         raw_text: geminiExtracted?.mrp?.raw_text || (extractedMrpAmount ? `MRP Rs. ${extractedMrpAmount.toFixed(2)} (Incl. of all taxes)` : '') || regexExtraction.mrp.value.raw_text || '',
         is_inclusive_taxes: geminiExtracted?.mrp?.is_inclusive_taxes ?? regexExtraction.mrp.value.is_inclusive_taxes
       },
-      source: (extractedMrpAmount > 0 || geminiExtracted?.mrp?.raw_text) ? 'google_lens' : regexExtraction.mrp.source,
+      source: 'ocr',
       confidence: extractedMrpAmount > 0 ? 0.98 : regexExtraction.mrp.confidence
     },
     net_quantity: {
@@ -277,22 +277,22 @@ Rules:
         amount: extractedNetQtyAmount || regexExtraction.net_quantity.value.amount || 0,
         unit: extractedNetQtyUnit || regexExtraction.net_quantity.value.unit || 'g'
       },
-      source: (extractedNetQtyAmount > 0 || extractedNetQtyUnit) ? 'google_lens' : regexExtraction.net_quantity.source,
+      source: 'ocr',
       confidence: extractedNetQtyAmount > 0 ? 0.97 : regexExtraction.net_quantity.confidence
     },
     mfg_date: {
       value: geminiExtracted?.mfg_date || regexExtraction.mfg_date.value || '',
-      source: geminiExtracted?.mfg_date ? 'google_lens' : regexExtraction.mfg_date.source,
+      source: 'ocr',
       confidence: geminiExtracted?.mfg_date ? 0.95 : regexExtraction.mfg_date.confidence
     },
     expiry_date: (geminiExtracted?.expiry_date || regexExtraction.expiry_date?.value) ? {
       value: geminiExtracted?.expiry_date || regexExtraction.expiry_date?.value || '',
-      source: geminiExtracted?.expiry_date ? 'google_lens' : (regexExtraction.expiry_date?.source || 'ocr'),
+      source: 'ocr',
       confidence: geminiExtracted?.expiry_date ? 0.95 : (regexExtraction.expiry_date?.confidence || 0.9)
     } : undefined,
     country_of_origin: {
       value: geminiExtracted?.country_of_origin || regexExtraction.country_of_origin.value || 'India',
-      source: geminiExtracted?.country_of_origin ? 'google_lens' : regexExtraction.country_of_origin.source,
+      source: 'ocr',
       confidence: geminiExtracted?.country_of_origin ? 0.98 : regexExtraction.country_of_origin.confidence
     },
     consumer_care: {
@@ -301,7 +301,7 @@ Rules:
         email: geminiExtracted?.consumer_care?.email || regexExtraction.consumer_care.value.email || '',
         address: geminiExtracted?.consumer_care?.address || regexExtraction.consumer_care.value.address || ''
       },
-      source: (geminiExtracted?.consumer_care?.phone || geminiExtracted?.consumer_care?.email || geminiExtracted?.consumer_care?.address) ? 'google_lens' : regexExtraction.consumer_care.source,
+      source: 'ocr',
       confidence: 0.94
     },
     numeral_height_mm: {

@@ -1,7 +1,7 @@
 # Graph Report - MANAK  (2026-09-14)
 
 ## Corpus Check
-- 97 files · ~77,313 words
+- 97 files · ~78,141 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `96fb2943`
+- Built from commit: `1c5ff1e9`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

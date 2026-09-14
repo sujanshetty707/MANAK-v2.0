@@ -1,1 +1,1 @@
-fix(navigation & url-check): add Home button to Header and fix Gemini models for e-commerce URL audits
+fix(camera-scan): trigger auto-scan on 1st photo capture & enable 3K 98% high-res image quality for OCR

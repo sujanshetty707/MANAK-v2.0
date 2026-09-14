@@ -110,8 +110,8 @@ Rules:
 4. Keep raw_ocr_text complete and comprehensive from all panels.
 5. Return ONLY pure JSON without markdown tags or backticks.`;
 
-      // Models list: gemini-3.6-flash (fast, standard Vision) -> gemini-flash-lite-latest (lite fallback)
-      const models = ['models/gemini-3.6-flash', 'models/gemini-flash-lite-latest'];
+      // Models list: gemini-flash-lite-latest (fast, standard Vision) -> gemini-2.0-flash (lite fallback)
+      const models = ['models/gemini-flash-lite-latest', 'models/gemini-2.0-flash'];
       let response: Response | null = null;
 
       // Build image parts for all provided images

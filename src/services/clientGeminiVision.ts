@@ -82,7 +82,7 @@ Return ONLY a single valid JSON object:
   "raw_ocr_text": "Verbatim text"
 }`;
 
-      const models = ['models/gemini-3.6-flash', 'models/gemini-flash-lite-latest'];
+      const models = ['models/gemini-flash-lite-latest', 'models/gemini-2.0-flash'];
       let response: Response | null = null;
 
       for (const model of models) {

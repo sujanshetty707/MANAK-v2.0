@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Camera, Zap, Upload, Sparkles, Aperture, ChevronLeft, Loader2, AlertCircle, Plus, X, Layers } from 'lucide-react';
+import { Camera, Zap, Upload, Sparkles, Aperture, ChevronLeft, Loader2, AlertCircle, Plus, X, Layers, ArrowRight } from 'lucide-react';
 import { Camera as CapCamera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { Capacitor } from '@capacitor/core';
 import { compressImage } from '../../utils/imageUtils';
@@ -18,11 +18,11 @@ export const CameraScanScreen: React.FC = () => {
   const isNative = Capacitor.isNativePlatform();
 
   const runScan = async (imagesList?: string[], textContent?: string) => {
-    const imagesToScan = imagesList || selectedImages;
+    const imagesToScan = imagesList !== undefined ? imagesList : selectedImages;
     const textToScan = textContent !== undefined ? textContent : rawText;
 
     if (imagesToScan.length === 0 && !textToScan.trim()) {
-      setErrorMsg('Please capture/upload at least 1 product photo (Front & Back panels recommended for complete legal metrology declarations).');
+      setErrorMsg('Please capture or upload at least 1 product photo (Front & Back panels recommended for complete legal metrology declarations).');
       return;
     }
 
@@ -36,53 +36,65 @@ export const CameraScanScreen: React.FC = () => {
     });
   };
 
-  const handleNativeOrShutter = async () => {
-    if (isNative) {
-      try {
-        const photo = await CapCamera.getPhoto({
-          quality: 95,
-          allowEditing: false,
-          resultType: CameraResultType.DataUrl,
-          source: CameraSource.Camera
-        });
+  const handleCaptureNativePhoto = async (autoAnalyze = true) => {
+    if (!isNative) return;
+    try {
+      setErrorMsg(null);
+      const photo = await CapCamera.getPhoto({
+        quality: 100,
+        allowEditing: false,
+        resultType: CameraResultType.DataUrl,
+        source: CameraSource.Camera,
+        correctOrientation: true
+      });
 
-        if (photo.dataUrl) {
-          // Compress high resolution 3K
-          const compressed = await compressImage(photo.dataUrl, 3072, 0.95).catch(() => photo.dataUrl);
-          setSelectedImages(prev => {
-            const next = [...prev, compressed];
-            setActiveImageIdx(next.length - 1);
-            return next;
-          });
-          return;
+      if (photo.dataUrl) {
+        // High quality crisp 3K image compression for Gemini Vision API (3072px max, 98% JPEG quality)
+        const compressed = await compressImage(photo.dataUrl, 3072, 0.98).catch(() => photo.dataUrl!);
+        const next = [...selectedImages, compressed];
+        setSelectedImages(next);
+        setActiveImageIdx(next.length - 1);
+
+        // Immediately trigger scan on first capture
+        if (autoAnalyze) {
+          await runScan(next);
         }
-      } catch (e) {
-        console.warn('Native camera cancelled:', e);
       }
+    } catch (e) {
+      console.warn('Native camera cancelled or unavailable:', e);
     }
-    await runScan();
   };
 
   const handleCustomUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const files = Array.from(e.target.files);
       setErrorMsg(null);
+      const newCompressed: string[] = [];
 
       for (const file of files) {
-        const reader = new FileReader();
-        reader.onload = async (event) => {
-          const raw = event.target?.result as string;
-          if (raw) {
-            // Full 3K resolution compression for Gemini Vision API (3072px max, 95% JPEG quality)
-            const compressed = await compressImage(raw, 3072, 0.95).catch(() => raw);
-            setSelectedImages(prev => {
-              const next = [...prev, compressed];
-              setActiveImageIdx(next.length - 1);
-              return next;
-            });
-          }
-        };
-        reader.readAsDataURL(file);
+        await new Promise<void>((resolve) => {
+          const reader = new FileReader();
+          reader.onload = async (event) => {
+            const raw = event.target?.result as string;
+            if (raw) {
+              const compressed = await compressImage(raw, 3072, 0.98).catch(() => raw);
+              newCompressed.push(compressed);
+            }
+            resolve();
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+
+      if (newCompressed.length > 0) {
+        const next = [...selectedImages, ...newCompressed];
+        setSelectedImages(next);
+        setActiveImageIdx(next.length - 1);
+
+        // Auto run scan if first upload
+        if (selectedImages.length === 0) {
+          await runScan(next);
+        }
       }
       e.target.value = '';
     }
@@ -149,18 +161,18 @@ export const CameraScanScreen: React.FC = () => {
           <img
             src={currentViewImage}
             alt={`Captured Package Panel ${activeImageIdx + 1}`}
-            className="w-full h-full object-cover filter brightness-[0.95]"
+            className="w-full h-full object-cover filter brightness-[0.98]"
           />
         ) : (
-          <div className="text-center p-6 space-y-3">
-            <div className="w-16 h-16 rounded-full bg-slate-800 border border-slate-700 mx-auto flex items-center justify-center text-slate-400">
+          <div className="text-center p-6 space-y-3 z-10">
+            <div className="w-16 h-16 rounded-full bg-slate-800/90 border border-slate-700 mx-auto flex items-center justify-center text-amber-400 shadow-lg">
               <Camera className="w-8 h-8" />
             </div>
-            <p className="text-xs text-slate-300 max-w-xs font-medium">
+            <p className="text-xs text-slate-200 max-w-xs font-semibold">
               Upload Front, Back &amp; Side product photos for complete Legal Metrology verification
             </p>
-            <p className="text-[11px] text-slate-500 max-w-xs">
-              Multiple photos can be uploaded together to detect MRP, Net Qty, Dates &amp; Addresses across panels
+            <p className="text-[11px] text-slate-400 max-w-xs">
+              Crisp high-resolution photos detect MRP, Net Qty, Dates &amp; Addresses across panels on the 1st try
             </p>
           </div>
         )}
@@ -224,7 +236,7 @@ export const CameraScanScreen: React.FC = () => {
                 <Layers className="w-3.5 h-3.5 text-amber-400" />
                 <span>Captured Panels ({selectedImages.length}): Front, Back &amp; Sides</span>
               </span>
-              <span className="text-[10px] text-slate-400 font-mono">Tap to switch view</span>
+              <span className="text-[10px] text-slate-400 font-mono">Tap panel to view</span>
             </div>
             <div className="flex items-center gap-2 overflow-x-auto pb-1 hide-scrollbar">
               {selectedImages.map((img, idx) => (
@@ -255,25 +267,37 @@ export const CameraScanScreen: React.FC = () => {
                 </div>
               ))}
 
-              {/* Add More Panels Button in Thumbnail Strip */}
-              <label className="flex-shrink-0 w-16 h-16 rounded-xl border-2 border-dashed border-slate-700 hover:border-amber-400/70 bg-slate-800/60 hover:bg-slate-800 flex flex-col items-center justify-center text-slate-400 hover:text-amber-300 cursor-pointer transition-all">
-                <Plus className="w-5 h-5" />
-                <span className="text-[8.5px] font-bold mt-0.5">+ Panel</span>
-                <input
-                  type="file"
-                  accept="image/*"
-                  multiple
-                  onChange={handleCustomUpload}
-                  className="hidden"
-                />
-              </label>
+              {/* Add More Panels Button */}
+              {isNative ? (
+                <button
+                  type="button"
+                  onClick={() => handleCaptureNativePhoto(false)}
+                  className="flex-shrink-0 w-16 h-16 rounded-xl border-2 border-dashed border-slate-700 hover:border-amber-400/70 bg-slate-800/60 hover:bg-slate-800 flex flex-col items-center justify-center text-slate-400 hover:text-amber-300 transition-all"
+                  title="Snap another panel"
+                >
+                  <Plus className="w-5 h-5" />
+                  <span className="text-[8.5px] font-bold mt-0.5">+ Panel</span>
+                </button>
+              ) : (
+                <label className="flex-shrink-0 w-16 h-16 rounded-xl border-2 border-dashed border-slate-700 hover:border-amber-400/70 bg-slate-800/60 hover:bg-slate-800 flex flex-col items-center justify-center text-slate-400 hover:text-amber-300 cursor-pointer transition-all">
+                  <Plus className="w-5 h-5" />
+                  <span className="text-[8.5px] font-bold mt-0.5">+ Panel</span>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handleCustomUpload}
+                    className="hidden"
+                  />
+                </label>
+              )}
             </div>
           </div>
         )}
 
         <div>
           <label className="text-[11px] font-medium text-slate-300 block mb-1">
-            Optional Label Text / Printed Declaration Notes
+            Optional Printed Declarations / Additional Text Notes
           </label>
           <textarea
             value={rawText}
@@ -287,9 +311,9 @@ export const CameraScanScreen: React.FC = () => {
         <div className="flex items-center space-x-2.5 pt-1">
           <label
             className="p-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 active:scale-95 border border-slate-700 cursor-pointer text-slate-200 transition-colors flex items-center justify-center"
-            title="Upload multiple package photos (Front, Back, Sides)"
+            title="Upload high-res package photos from gallery"
           >
-            <Upload className="w-5 h-5 text-slate-300" />
+            <Upload className="w-5 h-5 text-amber-300" />
             <input
               type="file"
               accept="image/*"
@@ -299,26 +323,41 @@ export const CameraScanScreen: React.FC = () => {
             />
           </label>
 
+          {isNative && (
+            <button
+              onClick={() => handleCaptureNativePhoto(selectedImages.length === 0)}
+              disabled={isLoading}
+              className="p-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 active:scale-95 border border-slate-700 text-amber-400 transition-colors flex items-center justify-center"
+              title="Snap another panel with camera"
+            >
+              <Aperture className="w-5 h-5" />
+            </button>
+          )}
+
           <button
-            onClick={handleNativeOrShutter}
+            onClick={() => {
+              if (isNative && selectedImages.length === 0) {
+                handleCaptureNativePhoto(true);
+              } else {
+                runScan();
+              }
+            }}
             disabled={isLoading}
             className="flex-1 py-3.5 px-4 rounded-2xl bg-gradient-to-r from-manak-orange to-orange-600 hover:from-orange-500 hover:to-orange-700 active:scale-[0.98] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow-lg transition-all disabled:opacity-50"
           >
             {isLoading ? (
               <Loader2 className="w-5 h-5 animate-spin" />
-            ) : isNative ? (
-              <Aperture className="w-5 h-5" />
             ) : (
-              <Camera className="w-5 h-5" />
+              <Sparkles className="w-5 h-5 text-amber-200" />
             )}
             <span>
               {isLoading
                 ? 'Analyzing Declarations...'
                 : selectedImages.length === 0
-                ? 'Upload / Capture Package Photos'
+                ? 'Capture / Select High-Res Photos'
                 : selectedImages.length === 1
-                ? 'Scan 1 Panel & Review Declarations'
-                : `Scan ${selectedImages.length} Panels (Front + Back) & Review`}
+                ? 'Scan 1 Panel & Review Declarations →'
+                : `Scan ${selectedImages.length} Panels (Front + Back) →`}
             </span>
           </button>
         </div>

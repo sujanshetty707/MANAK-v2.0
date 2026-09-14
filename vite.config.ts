@@ -2,7 +2,15 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    {
+      name: 'remove-crossorigin',
+      transformIndexHtml(html: string) {
+        return html.replace(/ crossorigin(=["']?[^"'\s>]*["']?)?/g, '');
+      }
+    }
+  ],
   base: './',
   server: {
     port: 3000,
@@ -10,6 +18,7 @@ export default defineConfig({
     open: false
   },
   build: {
+    modulePreload: false,
     chunkSizeWarningLimit: 600,
     rollupOptions: {
       output: {
@@ -23,3 +32,4 @@ export default defineConfig({
     }
   }
 });
+

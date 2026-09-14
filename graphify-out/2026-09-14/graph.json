@@ -17,19 +17,6 @@
       "source_location": "L8"
     },
     {
-      "id": "src_services_ocrsimulation_pipelinestage",
-      "label": "PipelineStage",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "mockData.ts",
-      "file_type": "code",
-      "norm_label": "pipelinestage",
-      "source_file": "src/services/ocrSimulation.ts",
-      "source_location": "L7"
-    },
-    {
       "id": "android_app_src_androidtest_java_com_getcapacitor_myapp_exampleinstrumentedtest_exampleinstrumentedtest",
       "label": "ExampleInstrumentedTest",
       "_callable": true,
@@ -69,6 +56,19 @@
       "source_location": "L16"
     },
     {
+      "id": "src_services_ocrsimulation_pipelinestage",
+      "label": "PipelineStage",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "AppContext.tsx",
+      "file_type": "code",
+      "norm_label": "pipelinestage",
+      "source_file": "src/services/ocrSimulation.ts",
+      "source_location": "L7"
+    },
+    {
       "id": "src_types_index_appscreen",
       "label": "AppScreen",
       "_callable": true,
@@ -106,6 +106,19 @@
       "norm_label": "consumerreport",
       "source_file": "src/types/index.ts",
       "source_location": "L135"
+    },
+    {
+      "id": "src_types_index_extractionfield",
+      "label": "ExtractionField",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "AppContext.tsx",
+      "file_type": "code",
+      "norm_label": "extractionfield",
+      "source_file": "src/types/index.ts",
+      "source_location": "L45"
     },
     {
       "id": "src_types_index_inspectionrecord",
@@ -186,6 +199,32 @@
       "source_location": "L7"
     },
     {
+      "id": "server_services_ecommerceauditservice_ecommerceauditinput",
+      "label": "EcommerceAuditInput",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "code",
+      "norm_label": "ecommerceauditinput",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "server_services_ecommerceauditservice_extractedlistingdata",
+      "label": "ExtractedListingData",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "code",
+      "norm_label": "extractedlistingdata",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L12"
+    },
+    {
       "id": "server_services_googlevisionocr_googlevisionocrresult",
       "label": "GoogleVisionOcrResult",
       "_callable": true,
@@ -197,19 +236,6 @@
       "norm_label": "googlevisionocrresult",
       "source_file": "server/services/googleVisionOcr.ts",
       "source_location": "L7"
-    },
-    {
-      "id": "src_types_index_extractionfield",
-      "label": "ExtractionField",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "extractionfield",
-      "source_file": "src/types/index.ts",
-      "source_location": "L45"
     },
     {
       "id": "src_types_index_extractionresult",
@@ -306,7 +332,7 @@
       "file_type": "code",
       "norm_label": "checkurlscreen()",
       "source_file": "src/components/screens/CheckUrlScreen.tsx",
-      "source_location": "L8"
+      "source_location": "L21"
     },
     {
       "id": "src_components_screens_compliancechatscreen_compliancechatscreen",
@@ -391,6 +417,18 @@
       "norm_label": "consumerreportviolationscreen()",
       "source_file": "src/components/screens/ConsumerReportViolationScreen.tsx",
       "source_location": "L6"
+    },
+    {
+      "id": "src_components_screens_extractedtextreviewscreen_extractedtextreviewscreen",
+      "label": "ExtractedTextReviewScreen()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "App.tsx",
+      "file_type": "code",
+      "norm_label": "extractedtextreviewscreen()",
+      "source_file": "src/components/screens/ExtractedTextReviewScreen.tsx",
+      "source_location": "L31"
     },
     {
       "id": "src_components_screens_extractionprocessingscreen_extractionprocessingscreen",
@@ -573,18 +611,6 @@
       "source_location": "L7"
     },
     {
-      "id": "src_services_ocrsimulation_simulateextractionpipeline",
-      "label": "simulateExtractionPipeline()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "mockData.ts",
-      "file_type": "code",
-      "norm_label": "simulateextractionpipeline()",
-      "source_file": "src/services/ocrSimulation.ts",
-      "source_location": "L22"
-    },
-    {
       "id": "android_app_src_androidtest_java_com_getcapacitor_myapp_exampleinstrumentedtest_exampleinstrumentedtest_useappcontext",
       "label": ".useAppContext()",
       "_callable": true,
@@ -625,18 +651,6 @@
       "source_location": "L14"
     },
     {
-      "id": "src_components_screens_extractedtextreviewscreen_extractedtextreviewscreen",
-      "label": "ExtractedTextReviewScreen()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "AppContext.tsx",
-      "file_type": "code",
-      "norm_label": "extractedtextreviewscreen()",
-      "source_file": "src/components/screens/ExtractedTextReviewScreen.tsx",
-      "source_location": "L31"
-    },
-    {
       "id": "src_context_appcontext_appprovider",
       "label": "AppProvider()",
       "_callable": true,
@@ -658,7 +672,7 @@
       "file_type": "code",
       "norm_label": "askcompliancechatapi()",
       "source_file": "src/services/api.ts",
-      "source_location": "L259"
+      "source_location": "L262"
     },
     {
       "id": "src_services_api_buildlocalscanrecord",
@@ -670,7 +684,7 @@
       "file_type": "code",
       "norm_label": "buildlocalscanrecord()",
       "source_file": "src/services/api.ts",
-      "source_location": "L276"
+      "source_location": "L279"
     },
     {
       "id": "src_services_api_evaluatecomplianceapi",
@@ -694,7 +708,7 @@
       "file_type": "code",
       "norm_label": "fetchconsumerreportsapi()",
       "source_file": "src/services/api.ts",
-      "source_location": "L204"
+      "source_location": "L207"
     },
     {
       "id": "src_services_api_fetchhistoryapi",
@@ -706,7 +720,7 @@
       "file_type": "code",
       "norm_label": "fetchhistoryapi()",
       "source_file": "src/services/api.ts",
-      "source_location": "L191"
+      "source_location": "L194"
     },
     {
       "id": "src_services_api_getlocalchatanswer",
@@ -718,7 +732,7 @@
       "file_type": "code",
       "norm_label": "getlocalchatanswer()",
       "source_file": "src/services/api.ts",
-      "source_location": "L329"
+      "source_location": "L332"
     },
     {
       "id": "src_services_api_loginapi",
@@ -754,7 +768,7 @@
       "file_type": "code",
       "norm_label": "submitconsumerreportapi()",
       "source_file": "src/services/api.ts",
-      "source_location": "L215"
+      "source_location": "L218"
     },
     {
       "id": "src_services_api_syncqueueapi",
@@ -766,7 +780,19 @@
       "file_type": "code",
       "norm_label": "syncqueueapi()",
       "source_file": "src/services/api.ts",
-      "source_location": "L246"
+      "source_location": "L249"
+    },
+    {
+      "id": "src_services_ocrsimulation_simulateextractionpipeline",
+      "label": "simulateExtractionPipeline()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "AppContext.tsx",
+      "file_type": "code",
+      "norm_label": "simulateextractionpipeline()",
+      "source_file": "src/services/ocrSimulation.ts",
+      "source_location": "L22"
     },
     {
       "id": "src_services_offlinestorage_addtoofflinequeue",
@@ -923,112 +949,52 @@
       "source_location": "L8"
     },
     {
-      "id": "scratch_test_api_key_run",
-      "label": "run()",
+      "id": "server_services_ecommerceauditservice_auditecommerceurl",
+      "label": "auditEcommerceUrl()",
       "_callable": true,
       "_origin": "ast",
       "community": 43,
       "community_name": "labelParser.ts",
       "file_type": "code",
-      "norm_label": "run()",
-      "source_file": "scratch/test_api_key.mjs",
-      "source_location": "L23"
+      "norm_label": "auditecommerceurl()",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L336"
     },
     {
-      "id": "scratch_test_api_key_testmodel",
-      "label": "testModel()",
+      "id": "server_services_ecommerceauditservice_extractdeclarationswithgemini",
+      "label": "extractDeclarationsWithGemini()",
       "_callable": true,
       "_origin": "ast",
       "community": 43,
       "community_name": "labelParser.ts",
       "file_type": "code",
-      "norm_label": "testmodel()",
-      "source_file": "scratch/test_api_key.mjs",
-      "source_location": "L6"
+      "norm_label": "extractdeclarationswithgemini()",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L186"
     },
     {
-      "id": "scratch_test_backend_extract_mjs_scratch_test_backend_extract_testbackendextract",
-      "label": "testBackendExtract()",
+      "id": "server_services_ecommerceauditservice_fetchlistingcontent",
+      "label": "fetchListingContent()",
       "_callable": true,
       "_origin": "ast",
       "community": 43,
       "community_name": "labelParser.ts",
       "file_type": "code",
-      "norm_label": "testbackendextract()",
-      "source_file": "scratch/test_backend_extract.mjs",
-      "source_location": "L6"
+      "norm_label": "fetchlistingcontent()",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L81"
     },
     {
-      "id": "scratch_test_backend_extract_ts_scratch_test_backend_extract_testbackendextract",
-      "label": "testBackendExtract()",
+      "id": "server_services_ecommerceauditservice_normalizeecommerceurl",
+      "label": "normalizeEcommerceUrl()",
       "_callable": true,
       "_origin": "ast",
       "community": 43,
       "community_name": "labelParser.ts",
       "file_type": "code",
-      "norm_label": "testbackendextract()",
-      "source_file": "scratch/test_backend_extract.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "scratch_test_backend_multi_testbackendmultiimage",
-      "label": "testBackendMultiImage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "testbackendmultiimage()",
-      "source_file": "scratch/test_backend_multi.mjs",
-      "source_location": "L7"
-    },
-    {
-      "id": "scratch_test_gemini_models_run",
-      "label": "run()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "run()",
-      "source_file": "scratch/test_gemini_models.mjs",
-      "source_location": "L29"
-    },
-    {
-      "id": "scratch_test_gemini_models_testmodel",
-      "label": "testModel()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "testmodel()",
-      "source_file": "scratch/test_gemini_models.mjs",
-      "source_location": "L6"
-    },
-    {
-      "id": "scratch_test_gemini_vision_testgeminivisionwithsample",
-      "label": "testGeminiVisionWithSample()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "testgeminivisionwithsample()",
-      "source_file": "scratch/test_gemini_vision.mjs",
-      "source_location": "L6"
-    },
-    {
-      "id": "scratch_test_multi_image_testwithfallback",
-      "label": "testWithFallback()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "testwithfallback()",
-      "source_file": "scratch/test_multi_image.mjs",
-      "source_location": "L11"
+      "norm_label": "normalizeecommerceurl()",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L41"
     },
     {
       "id": "server_services_geminiextraction_extractlabelwithgemini",
@@ -1259,78 +1225,6 @@
       "source_location": "L173"
     },
     {
-      "id": "scratch_test_api_extract_real_downloadimage",
-      "label": "downloadImage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 45,
-      "community_name": "downloadImage",
-      "file_type": "code",
-      "norm_label": "downloadimage()",
-      "source_file": "scratch/test_api_extract_real.mjs",
-      "source_location": "L8"
-    },
-    {
-      "id": "scratch_test_api_extract_real_testwithrealimage",
-      "label": "testWithRealImage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 45,
-      "community_name": "downloadImage",
-      "file_type": "code",
-      "norm_label": "testwithrealimage()",
-      "source_file": "scratch/test_api_extract_real.mjs",
-      "source_location": "L28"
-    },
-    {
-      "id": "scratch_test_real_image_fetchimageasbase64",
-      "label": "fetchImageAsBase64()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 46,
-      "community_name": "fetchImageAsBase64",
-      "file_type": "code",
-      "norm_label": "fetchimageasbase64()",
-      "source_file": "scratch/test_real_image.mjs",
-      "source_location": "L12"
-    },
-    {
-      "id": "scratch_test_real_image_testwithrealproductimage",
-      "label": "testWithRealProductImage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 46,
-      "community_name": "fetchImageAsBase64",
-      "file_type": "code",
-      "norm_label": "testwithrealproductimage()",
-      "source_file": "scratch/test_real_image.mjs",
-      "source_location": "L35"
-    },
-    {
-      "id": "scratch_test_api_extract_testextractapi",
-      "label": "testExtractApi()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 47,
-      "community_name": "test_api_extract.mjs",
-      "file_type": "code",
-      "norm_label": "testextractapi()",
-      "source_file": "scratch/test_api_extract.mjs",
-      "source_location": "L3"
-    },
-    {
-      "id": "scratch_test_health_checkhealth",
-      "label": "checkHealth()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 48,
-      "community_name": "test_health.mjs",
-      "file_type": "code",
-      "norm_label": "checkhealth()",
-      "source_file": "scratch/test_health.mjs",
-      "source_location": "L1"
-    },
-    {
       "id": "src_services_pdfreportgenerator_generateinspectionpdf",
       "label": "generateInspectionPDF()",
       "_callable": true,
@@ -1389,30 +1283,6 @@
       "norm_label": "sanitizetext()",
       "source_file": "src/services/pdfReportGenerator.ts",
       "source_location": "L4"
-    },
-    {
-      "id": "scratch_test_real_product_image_downloadimage",
-      "label": "downloadImage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 50,
-      "community_name": "downloadImage",
-      "file_type": "code",
-      "norm_label": "downloadimage()",
-      "source_file": "scratch/test_real_product_image.mjs",
-      "source_location": "L11"
-    },
-    {
-      "id": "scratch_test_real_product_image_testwithproductimage",
-      "label": "testWithProductImage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 50,
-      "community_name": "downloadImage",
-      "file_type": "code",
-      "norm_label": "testwithproductimage()",
-      "source_file": "scratch/test_real_product_image.mjs",
-      "source_location": "L28"
     },
     {
       "id": "src_app",
@@ -1492,6 +1362,28 @@
       "source_location": "L1"
     },
     {
+      "id": "src_components_screens_checkurlscreen_audit_steps",
+      "label": "AUDIT_STEPS",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "App.tsx",
+      "file_type": "code",
+      "norm_label": "audit_steps",
+      "source_file": "src/components/screens/CheckUrlScreen.tsx",
+      "source_location": "L14"
+    },
+    {
+      "id": "src_components_screens_checkurlscreen_sample_links",
+      "label": "SAMPLE_LINKS",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "App.tsx",
+      "file_type": "code",
+      "norm_label": "sample_links",
+      "source_file": "src/components/screens/CheckUrlScreen.tsx",
+      "source_location": "L8"
+    },
+    {
       "id": "src_components_screens_compliancechatscreen",
       "label": "ComplianceChatScreen.tsx",
       "_origin": "ast",
@@ -1566,6 +1458,17 @@
       "file_type": "code",
       "norm_label": "consumerreportviolationscreen.tsx",
       "source_file": "src/components/screens/ConsumerReportViolationScreen.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_components_screens_extractedtextreviewscreen",
+      "label": "ExtractedTextReviewScreen.tsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "App.tsx",
+      "file_type": "code",
+      "norm_label": "extractedtextreviewscreen.tsx",
+      "source_file": "src/components/screens/ExtractedTextReviewScreen.tsx",
       "source_location": "L1"
     },
     {
@@ -2413,94 +2316,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_components_screens_extractionprocessingscreen",
-      "label": "ExtractionProcessingScreen.tsx",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "mockData.ts",
-      "file_type": "code",
-      "norm_label": "extractionprocessingscreen.tsx",
-      "source_file": "src/components/screens/ExtractionProcessingScreen.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_mockdata",
-      "label": "mockData.ts",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "mockData.ts",
-      "file_type": "code",
-      "norm_label": "mockdata.ts",
-      "source_file": "src/data/mockData.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_mockdata_mock_consumer_reports",
-      "label": "MOCK_CONSUMER_REPORTS",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "mockData.ts",
-      "file_type": "code",
-      "norm_label": "mock_consumer_reports",
-      "source_file": "src/data/mockData.ts",
-      "source_location": "L12"
-    },
-    {
-      "id": "src_data_mockdata_mock_history",
-      "label": "MOCK_HISTORY",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "mockData.ts",
-      "file_type": "code",
-      "norm_label": "mock_history",
-      "source_file": "src/data/mockData.ts",
-      "source_location": "L10"
-    },
-    {
-      "id": "src_data_mockdata_repeat_violator_heatmap",
-      "label": "REPEAT_VIOLATOR_HEATMAP",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "mockData.ts",
-      "file_type": "code",
-      "norm_label": "repeat_violator_heatmap",
-      "source_file": "src/data/mockData.ts",
-      "source_location": "L14"
-    },
-    {
-      "id": "src_data_mockdata_sample_products",
-      "label": "SAMPLE_PRODUCTS",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "mockData.ts",
-      "file_type": "code",
-      "norm_label": "sample_products",
-      "source_file": "src/data/mockData.ts",
-      "source_location": "L3"
-    },
-    {
-      "id": "src_services_ocrsimulation",
-      "label": "ocrSimulation.ts",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "mockData.ts",
-      "file_type": "code",
-      "norm_label": "ocrsimulation.ts",
-      "source_file": "src/services/ocrSimulation.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_services_ocrsimulation_pipeline_stages",
-      "label": "PIPELINE_STAGES",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "mockData.ts",
-      "file_type": "code",
-      "norm_label": "pipeline_stages",
-      "source_file": "src/services/ocrSimulation.ts",
-      "source_location": "L14"
-    },
-    {
       "id": "agents_skills_ponytail_debt_skill",
       "label": "ponytail-debt/SKILL.md",
       "_origin": "ast",
@@ -3081,61 +2896,6 @@
       "source_location": "L4"
     },
     {
-      "id": "server_index_js_server_index",
-      "label": "index.js",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "index.js",
-      "source_file": "server/index.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "server_index_js_server_index_app",
-      "label": "app",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "app",
-      "source_file": "server/index.js",
-      "source_location": "L6"
-    },
-    {
-      "id": "server_index_js_server_index_db",
-      "label": "db",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "db",
-      "source_file": "server/index.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "src_lib_supabase",
-      "label": "supabase.ts",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "supabase.ts",
-      "source_file": "src/lib/supabase.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_lib_supabase_supabase",
-      "label": "supabase",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "supabase",
-      "source_file": "src/lib/supabase.ts",
-      "source_location": "L6"
-    },
-    {
       "id": "vite_config",
       "label": "vite.config.ts",
       "_origin": "ast",
@@ -3213,28 +2973,6 @@
       "source_location": "L44"
     },
     {
-      "id": "ref_cors",
-      "label": "cors",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "cors",
-      "source_file": "package.json",
-      "source_location": "L28"
-    },
-    {
-      "id": "ref_express",
-      "label": "express",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "express",
-      "source_file": "package.json",
-      "source_location": "L30"
-    },
-    {
       "id": "ref_google_genai",
       "label": "@google/genai",
       "_origin": "ast",
@@ -3279,17 +3017,6 @@
       "source_location": "L35"
     },
     {
-      "id": "ref_supabase_supabase_js",
-      "label": "@supabase/supabase-js",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "@supabase/supabase-js",
-      "source_file": "package.json",
-      "source_location": "L24"
-    },
-    {
       "id": "ref_tailwind_merge",
       "label": "tailwind-merge",
       "_origin": "ast",
@@ -3310,17 +3037,6 @@
       "norm_label": "tailwindcss",
       "source_file": "package.json",
       "source_location": "L46"
-    },
-    {
-      "id": "ref_tesseract_js",
-      "label": "tesseract.js",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "tesseract.js",
-      "source_file": "package.json",
-      "source_location": "L37"
     },
     {
       "id": "ref_tsx",
@@ -3466,14 +3182,14 @@
       "source_location": ""
     },
     {
-      "id": "src_components_screens_extractedtextreviewscreen",
-      "label": "ExtractedTextReviewScreen.tsx",
+      "id": "src_components_screens_extractionprocessingscreen",
+      "label": "ExtractionProcessingScreen.tsx",
       "_origin": "ast",
       "community": 31,
       "community_name": "AppContext.tsx",
       "file_type": "code",
-      "norm_label": "extractedtextreviewscreen.tsx",
-      "source_file": "src/components/screens/ExtractedTextReviewScreen.tsx",
+      "norm_label": "extractionprocessingscreen.tsx",
+      "source_file": "src/components/screens/ExtractionProcessingScreen.tsx",
       "source_location": "L1"
     },
     {
@@ -3497,6 +3213,61 @@
       "norm_label": "appcontext",
       "source_file": "src/context/AppContext.tsx",
       "source_location": "L62"
+    },
+    {
+      "id": "src_data_mockdata",
+      "label": "mockData.ts",
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "AppContext.tsx",
+      "file_type": "code",
+      "norm_label": "mockdata.ts",
+      "source_file": "src/data/mockData.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_mockdata_mock_consumer_reports",
+      "label": "MOCK_CONSUMER_REPORTS",
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "AppContext.tsx",
+      "file_type": "code",
+      "norm_label": "mock_consumer_reports",
+      "source_file": "src/data/mockData.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "src_data_mockdata_mock_history",
+      "label": "MOCK_HISTORY",
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "AppContext.tsx",
+      "file_type": "code",
+      "norm_label": "mock_history",
+      "source_file": "src/data/mockData.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "src_data_mockdata_repeat_violator_heatmap",
+      "label": "REPEAT_VIOLATOR_HEATMAP",
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "AppContext.tsx",
+      "file_type": "code",
+      "norm_label": "repeat_violator_heatmap",
+      "source_file": "src/data/mockData.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "src_data_mockdata_sample_products",
+      "label": "SAMPLE_PRODUCTS",
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "AppContext.tsx",
+      "file_type": "code",
+      "norm_label": "sample_products",
+      "source_file": "src/data/mockData.ts",
+      "source_location": "L3"
     },
     {
       "id": "src_data_rules",
@@ -3541,6 +3312,28 @@
       "norm_label": "api.ts",
       "source_file": "src/services/api.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "src_services_ocrsimulation",
+      "label": "ocrSimulation.ts",
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "AppContext.tsx",
+      "file_type": "code",
+      "norm_label": "ocrsimulation.ts",
+      "source_file": "src/services/ocrSimulation.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_services_ocrsimulation_pipeline_stages",
+      "label": "PIPELINE_STAGES",
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "AppContext.tsx",
+      "file_type": "code",
+      "norm_label": "pipeline_stages",
+      "source_file": "src/services/ocrSimulation.ts",
+      "source_location": "L14"
     },
     {
       "id": "src_services_offlinestorage",
@@ -4651,92 +4444,37 @@
       "source_location": "L1"
     },
     {
-      "id": "scratch_test_api_key",
-      "label": "test_api_key.mjs",
+      "id": "server_index_js_server_index",
+      "label": "index.js",
       "_origin": "ast",
       "community": 43,
       "community_name": "labelParser.ts",
       "file_type": "code",
-      "norm_label": "test_api_key.mjs",
-      "source_file": "scratch/test_api_key.mjs",
+      "norm_label": "index.js",
+      "source_file": "server/index.js",
       "source_location": "L1"
     },
     {
-      "id": "scratch_test_backend_extract_mjs_scratch_test_backend_extract",
-      "label": "test_backend_extract.mjs",
+      "id": "server_index_js_server_index_app",
+      "label": "app",
       "_origin": "ast",
       "community": 43,
       "community_name": "labelParser.ts",
       "file_type": "code",
-      "norm_label": "test_backend_extract.mjs",
-      "source_file": "scratch/test_backend_extract.mjs",
-      "source_location": "L1"
+      "norm_label": "app",
+      "source_file": "server/index.js",
+      "source_location": "L6"
     },
     {
-      "id": "scratch_test_backend_extract_ts_scratch_test_backend_extract",
-      "label": "test_backend_extract.ts",
+      "id": "server_index_js_server_index_db",
+      "label": "db",
       "_origin": "ast",
       "community": 43,
       "community_name": "labelParser.ts",
       "file_type": "code",
-      "norm_label": "test_backend_extract.ts",
-      "source_file": "scratch/test_backend_extract.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "scratch_test_backend_multi",
-      "label": "test_backend_multi.mjs",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "test_backend_multi.mjs",
-      "source_file": "scratch/test_backend_multi.mjs",
-      "source_location": "L1"
-    },
-    {
-      "id": "scratch_test_gemini_models",
-      "label": "test_gemini_models.mjs",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "test_gemini_models.mjs",
-      "source_file": "scratch/test_gemini_models.mjs",
-      "source_location": "L1"
-    },
-    {
-      "id": "scratch_test_gemini_vision",
-      "label": "test_gemini_vision.mjs",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "test_gemini_vision.mjs",
-      "source_file": "scratch/test_gemini_vision.mjs",
-      "source_location": "L1"
-    },
-    {
-      "id": "scratch_test_multi_image",
-      "label": "test_multi_image.mjs",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "test_multi_image.mjs",
-      "source_file": "scratch/test_multi_image.mjs",
-      "source_location": "L1"
-    },
-    {
-      "id": "scratch_test_multi_image_models",
-      "label": "models",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "models",
-      "source_file": "scratch/test_multi_image.mjs",
-      "source_location": "L9"
+      "norm_label": "db",
+      "source_file": "server/index.js",
+      "source_location": "L13"
     },
     {
       "id": "server_index_ts_server_index",
@@ -4758,7 +4496,7 @@
       "file_type": "code",
       "norm_label": "app",
       "source_file": "server/index.ts",
-      "source_location": "L11"
+      "source_location": "L12"
     },
     {
       "id": "server_index_ts_server_index_db",
@@ -4769,7 +4507,18 @@
       "file_type": "code",
       "norm_label": "db",
       "source_file": "server/index.ts",
-      "source_location": "L18"
+      "source_location": "L19"
+    },
+    {
+      "id": "server_services_ecommerceauditservice",
+      "label": "ecommerceAuditService.ts",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "code",
+      "norm_label": "ecommerceauditservice.ts",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L1"
     },
     {
       "id": "server_services_geminiextraction",
@@ -4827,6 +4576,28 @@
       "source_location": "L9"
     },
     {
+      "id": "src_lib_supabase",
+      "label": "supabase.ts",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "code",
+      "norm_label": "supabase.ts",
+      "source_file": "src/lib/supabase.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_lib_supabase_supabase",
+      "label": "supabase",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "code",
+      "norm_label": "supabase",
+      "source_file": "src/lib/supabase.ts",
+      "source_location": "L6"
+    },
+    {
       "id": "src_services_labelparser",
       "label": "labelParser.ts",
       "_origin": "ast",
@@ -4838,6 +4609,17 @@
       "source_location": "L1"
     },
     {
+      "id": "ref_cors",
+      "label": "cors",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "concept",
+      "norm_label": "cors",
+      "source_file": "package.json",
+      "source_location": "L28"
+    },
+    {
       "id": "ref_dotenv",
       "label": "dotenv",
       "_origin": "ast",
@@ -4847,6 +4629,39 @@
       "norm_label": "dotenv",
       "source_file": "package.json",
       "source_location": "L29"
+    },
+    {
+      "id": "ref_express",
+      "label": "express",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "concept",
+      "norm_label": "express",
+      "source_file": "package.json",
+      "source_location": "L30"
+    },
+    {
+      "id": "ref_supabase_supabase_js",
+      "label": "@supabase/supabase-js",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "concept",
+      "norm_label": "@supabase/supabase-js",
+      "source_file": "package.json",
+      "source_location": "L24"
+    },
+    {
+      "id": "ref_tesseract_js",
+      "label": "tesseract.js",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "concept",
+      "norm_label": "tesseract.js",
+      "source_file": "package.json",
+      "source_location": "L37"
     },
     {
       "id": "prd",
@@ -4978,50 +4793,6 @@
       "node_kind": "heading",
       "norm_label": "product requirements document (prd)",
       "source_file": "prd.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "scratch_test_api_extract_real",
-      "label": "test_api_extract_real.mjs",
-      "_origin": "ast",
-      "community": 45,
-      "community_name": "downloadImage",
-      "file_type": "code",
-      "norm_label": "test_api_extract_real.mjs",
-      "source_file": "scratch/test_api_extract_real.mjs",
-      "source_location": "L1"
-    },
-    {
-      "id": "scratch_test_real_image",
-      "label": "test_real_image.mjs",
-      "_origin": "ast",
-      "community": 46,
-      "community_name": "fetchImageAsBase64",
-      "file_type": "code",
-      "norm_label": "test_real_image.mjs",
-      "source_file": "scratch/test_real_image.mjs",
-      "source_location": "L1"
-    },
-    {
-      "id": "scratch_test_api_extract",
-      "label": "test_api_extract.mjs",
-      "_origin": "ast",
-      "community": 47,
-      "community_name": "test_api_extract.mjs",
-      "file_type": "code",
-      "norm_label": "test_api_extract.mjs",
-      "source_file": "scratch/test_api_extract.mjs",
-      "source_location": "L1"
-    },
-    {
-      "id": "scratch_test_health",
-      "label": "test_health.mjs",
-      "_origin": "ast",
-      "community": 48,
-      "community_name": "test_health.mjs",
-      "file_type": "code",
-      "norm_label": "test_health.mjs",
-      "source_file": "scratch/test_health.mjs",
       "source_location": "L1"
     },
     {
@@ -5349,17 +5120,6 @@
       "norm_label": "what you must do when invoked",
       "source_file": ".agents/skills/graphify/SKILL.md",
       "source_location": "L49"
-    },
-    {
-      "id": "scratch_test_real_product_image",
-      "label": "test_real_product_image.mjs",
-      "_origin": "ast",
-      "community": 50,
-      "community_name": "downloadImage",
-      "file_type": "code",
-      "norm_label": "test_real_product_image.mjs",
-      "source_file": "scratch/test_real_product_image.mjs",
-      "source_location": "L1"
     },
     {
       "id": "tsconfig",
@@ -6137,123 +5897,39 @@
       "weight": 1.0
     },
     {
-      "source": "scratch_test_api_extract_real_downloadimage",
-      "target": "scratch_test_api_extract_real_downloadimage",
+      "source": "server_services_ecommerceauditservice_auditecommerceurl",
+      "target": "server_services_ecommerceauditservice_normalizeecommerceurl",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
-      "source_file": "scratch/test_api_extract_real.mjs",
-      "source_location": "L14",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L340",
       "weight": 1.0
     },
     {
-      "source": "scratch_test_api_extract_real_testwithrealimage",
-      "target": "scratch_test_api_extract_real_downloadimage",
+      "source": "server_services_ecommerceauditservice_auditecommerceurl",
+      "target": "server_services_ecommerceauditservice_fetchlistingcontent",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
-      "source_file": "scratch/test_api_extract_real.mjs",
-      "source_location": "L31",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L345",
       "weight": 1.0
     },
     {
-      "source": "scratch_test_api_key_run",
-      "target": "scratch_test_api_key_testmodel",
+      "source": "server_services_ecommerceauditservice_auditecommerceurl",
+      "target": "server_services_ecommerceauditservice_extractdeclarationswithgemini",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "call",
-      "source_file": "scratch/test_api_key.mjs",
-      "source_location": "L24",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_backend_extract_mjs_scratch_test_backend_extract_testbackendextract",
-      "target": "server_services_ocrservice_extractlabelfromimage",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "scratch/test_backend_extract.mjs",
-      "source_location": "L8",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_backend_extract_ts_scratch_test_backend_extract_testbackendextract",
-      "target": "server_services_ocrservice_extractlabelfromimage",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "scratch/test_backend_extract.ts",
-      "source_location": "L8",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_gemini_models_run",
-      "target": "scratch_test_gemini_models_testmodel",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "scratch/test_gemini_models.mjs",
-      "source_location": "L30",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_real_image_fetchimageasbase64",
-      "target": "scratch_test_real_image_fetchimageasbase64",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "scratch/test_real_image.mjs",
-      "source_location": "L20",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_real_image_testwithrealproductimage",
-      "target": "scratch_test_real_image_fetchimageasbase64",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "scratch/test_real_image.mjs",
-      "source_location": "L40",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_real_product_image_downloadimage",
-      "target": "scratch_test_real_product_image_downloadimage",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "scratch/test_real_product_image.mjs",
-      "source_location": "L15",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_real_product_image_testwithproductimage",
-      "target": "scratch_test_real_product_image_downloadimage",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "scratch/test_real_product_image.mjs",
-      "source_location": "L35",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L348",
       "weight": 1.0
     },
     {
@@ -6426,18 +6102,6 @@
     },
     {
       "source": "src_components_screens_checkurlscreen_checkurlscreen",
-      "target": "src_services_api_checkurlapi",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/components/screens/CheckUrlScreen.tsx",
-      "source_location": "L39",
-      "weight": 1.0
-    },
-    {
-      "source": "src_components_screens_checkurlscreen_checkurlscreen",
       "target": "src_context_appcontext_useapp",
       "relation": "calls",
       "_origin": "ast",
@@ -6445,7 +6109,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/screens/CheckUrlScreen.tsx",
-      "source_location": "L9",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_screens_checkurlscreen_checkurlscreen",
+      "target": "src_services_api_checkurlapi",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/components/screens/CheckUrlScreen.tsx",
+      "source_location": "L73",
       "weight": 1.0
     },
     {
@@ -6901,7 +6577,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L270",
+      "source_location": "L273",
       "weight": 1.0
     },
     {
@@ -6913,7 +6589,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L285",
+      "source_location": "L288",
       "weight": 1.0
     },
     {
@@ -6925,7 +6601,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L286",
+      "source_location": "L289",
       "weight": 1.0
     },
     {
@@ -6937,7 +6613,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L185",
+      "source_location": "L188",
       "weight": 1.0
     },
     {
@@ -7853,30 +7529,6 @@
       "weight": 1.0
     },
     {
-      "source": "scratch_test_backend_extract_mjs_scratch_test_backend_extract",
-      "target": "server_services_ocrservice_extractlabelfromimage",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "scratch/test_backend_extract.mjs",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_backend_extract_ts_scratch_test_backend_extract",
-      "target": "server_services_ocrservice_extractlabelfromimage",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "scratch/test_backend_extract.ts",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
       "source": "server_index_js_server_index",
       "target": "src_services_ruleengine_evaluateextractionagainstrules",
       "relation": "imports",
@@ -7934,6 +7586,42 @@
       "context": "import",
       "source_file": "server/index.ts",
       "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "server_index_ts_server_index",
+      "target": "server_services_ecommerceauditservice_auditecommerceurl",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "server/index.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "server_services_ecommerceauditservice",
+      "target": "src_types_index_extractionresult",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_services_ecommerceauditservice",
+      "target": "src_types_index_product",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L2",
       "weight": 1.0
     },
     {
@@ -9677,150 +9365,6 @@
       "weight": 1.0
     },
     {
-      "source": "scratch_test_api_extract_real",
-      "target": "ref_dotenv",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "scratch/test_api_extract_real.mjs",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_api_key",
-      "target": "ref_dotenv",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "scratch/test_api_key.mjs",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_backend_extract_mjs_scratch_test_backend_extract",
-      "target": "ref_dotenv",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "scratch/test_backend_extract.mjs",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_backend_extract_mjs_scratch_test_backend_extract",
-      "target": "server_services_ocrservice",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "scratch/test_backend_extract.mjs",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_backend_extract_ts_scratch_test_backend_extract",
-      "target": "ref_dotenv",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "scratch/test_backend_extract.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_backend_extract_ts_scratch_test_backend_extract",
-      "target": "server_services_ocrservice",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "scratch/test_backend_extract.ts",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_backend_multi",
-      "target": "ref_dotenv",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "scratch/test_backend_multi.mjs",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_gemini_models",
-      "target": "ref_dotenv",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "scratch/test_gemini_models.mjs",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_gemini_vision",
-      "target": "ref_dotenv",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "scratch/test_gemini_vision.mjs",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_multi_image",
-      "target": "ref_dotenv",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "scratch/test_multi_image.mjs",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_real_image",
-      "target": "ref_dotenv",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "scratch/test_real_image.mjs",
-      "source_location": "L5",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_real_product_image",
-      "target": "ref_dotenv",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "scratch/test_real_product_image.mjs",
-      "source_location": "L5",
-      "weight": 1.0
-    },
-    {
       "source": "server_index_js_server_index",
       "target": "ref_express",
       "relation": "imports_from",
@@ -9950,6 +9494,42 @@
       "context": "import",
       "source_file": "server/index.ts",
       "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "server_index_ts_server_index",
+      "target": "server_services_ecommerceauditservice",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "server/index.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "server_services_ecommerceauditservice",
+      "target": "ref_dotenv",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_services_ecommerceauditservice",
+      "target": "src_types_index",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L2",
       "weight": 1.0
     },
     {
@@ -14321,204 +13901,6 @@
       "weight": 1.0
     },
     {
-      "source": "scratch_test_api_extract",
-      "target": "scratch_test_api_extract_testextractapi",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "scratch/test_api_extract.mjs",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_api_extract_real",
-      "target": "scratch_test_api_extract_real_testwithrealimage",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "scratch/test_api_extract_real.mjs",
-      "source_location": "L28",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_api_extract_real",
-      "target": "scratch_test_api_extract_real_downloadimage",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "scratch/test_api_extract_real.mjs",
-      "source_location": "L8",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_api_key",
-      "target": "scratch_test_api_key_run",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "scratch/test_api_key.mjs",
-      "source_location": "L23",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_api_key",
-      "target": "scratch_test_api_key_testmodel",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "scratch/test_api_key.mjs",
-      "source_location": "L6",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_backend_extract_mjs_scratch_test_backend_extract",
-      "target": "scratch_test_backend_extract_mjs_scratch_test_backend_extract_testbackendextract",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "scratch/test_backend_extract.mjs",
-      "source_location": "L6",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_backend_extract_ts_scratch_test_backend_extract",
-      "target": "scratch_test_backend_extract_ts_scratch_test_backend_extract_testbackendextract",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "scratch/test_backend_extract.ts",
-      "source_location": "L6",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_backend_multi",
-      "target": "scratch_test_backend_multi_testbackendmultiimage",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "scratch/test_backend_multi.mjs",
-      "source_location": "L7",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_gemini_models",
-      "target": "scratch_test_gemini_models_run",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "scratch/test_gemini_models.mjs",
-      "source_location": "L29",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_gemini_models",
-      "target": "scratch_test_gemini_models_testmodel",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "scratch/test_gemini_models.mjs",
-      "source_location": "L6",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_gemini_vision",
-      "target": "scratch_test_gemini_vision_testgeminivisionwithsample",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "scratch/test_gemini_vision.mjs",
-      "source_location": "L6",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_health",
-      "target": "scratch_test_health_checkhealth",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "scratch/test_health.mjs",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_multi_image",
-      "target": "scratch_test_multi_image_testwithfallback",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "scratch/test_multi_image.mjs",
-      "source_location": "L11",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_multi_image",
-      "target": "scratch_test_multi_image_models",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "scratch/test_multi_image.mjs",
-      "source_location": "L9",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_real_image",
-      "target": "scratch_test_real_image_fetchimageasbase64",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "scratch/test_real_image.mjs",
-      "source_location": "L12",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_real_image",
-      "target": "scratch_test_real_image_testwithrealproductimage",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "scratch/test_real_image.mjs",
-      "source_location": "L35",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_real_product_image",
-      "target": "scratch_test_real_product_image_downloadimage",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "scratch/test_real_product_image.mjs",
-      "source_location": "L11",
-      "weight": 1.0
-    },
-    {
-      "source": "scratch_test_real_product_image",
-      "target": "scratch_test_real_product_image_testwithproductimage",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "scratch/test_real_product_image.mjs",
-      "source_location": "L28",
-      "weight": 1.0
-    },
-    {
       "source": "server_index_js_server_index",
       "target": "server_index_js_server_index_db",
       "relation": "contains",
@@ -14548,7 +13930,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server/index.ts",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -14559,7 +13941,73 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server/index.ts",
-      "source_location": "L18",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "server_services_ecommerceauditservice",
+      "target": "server_services_ecommerceauditservice_extractedlistingdata",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "server_services_ecommerceauditservice",
+      "target": "server_services_ecommerceauditservice_extractdeclarationswithgemini",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L186",
+      "weight": 1.0
+    },
+    {
+      "source": "server_services_ecommerceauditservice",
+      "target": "server_services_ecommerceauditservice_auditecommerceurl",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L336",
+      "weight": 1.0
+    },
+    {
+      "source": "server_services_ecommerceauditservice",
+      "target": "server_services_ecommerceauditservice_normalizeecommerceurl",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "server_services_ecommerceauditservice",
+      "target": "server_services_ecommerceauditservice_ecommerceauditinput",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "server_services_ecommerceauditservice",
+      "target": "server_services_ecommerceauditservice_fetchlistingcontent",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L81",
       "weight": 1.0
     },
     {
@@ -14795,7 +14243,29 @@
     },
     {
       "source": "src_components_screens_checkurlscreen",
+      "target": "src_components_screens_checkurlscreen_audit_steps",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/screens/CheckUrlScreen.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_screens_checkurlscreen",
       "target": "src_components_screens_checkurlscreen_checkurlscreen",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/screens/CheckUrlScreen.tsx",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "src_components_screens_checkurlscreen",
+      "target": "src_components_screens_checkurlscreen_sample_links",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -15186,7 +14656,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L191",
+      "source_location": "L194",
       "weight": 1.0
     },
     {
@@ -15197,7 +14667,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L204",
+      "source_location": "L207",
       "weight": 1.0
     },
     {
@@ -15208,7 +14678,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L215",
+      "source_location": "L218",
       "weight": 1.0
     },
     {
@@ -15219,7 +14689,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L246",
+      "source_location": "L249",
       "weight": 1.0
     },
     {
@@ -15230,7 +14700,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L259",
+      "source_location": "L262",
       "weight": 1.0
     },
     {
@@ -15241,7 +14711,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L276",
+      "source_location": "L279",
       "weight": 1.0
     },
     {
@@ -15252,7 +14722,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L329",
+      "source_location": "L332",
       "weight": 1.0
     },
     {
@@ -16279,5 +15749,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "dea0e0f2d844e9bac92f648971dc170323622f88"
+  "built_at_commit": "4a56158b37e766f2709d2d97c1fd52c35212a5fe"
 }

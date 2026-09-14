@@ -606,9 +606,9 @@
     "semantic_hash": ""
   },
   "src/services/labelParser.ts": {
-    "mtime": 1789310343.361219,
-    "seen": 1789314509.1558285,
-    "ast_hash": "81a8d0c6436635e5917d5d95a576310f",
+    "mtime": 1789378965.0974228,
+    "seen": 1789380327.9957507,
+    "ast_hash": "ead89bf2ad6a50f6f0d1ea5d3dfb1022",
     "semantic_hash": ""
   },
   ".github/workflows/build-apk.yml": {
@@ -630,9 +630,9 @@
     "semantic_hash": ""
   },
   "src/services/api.ts": {
-    "mtime": 1789376675.5035982,
-    "seen": 1789376880.043053,
-    "ast_hash": "af0bbe1413904d948832acb524847588",
+    "mtime": 1789378975.5550573,
+    "seen": 1789380327.9957473,
+    "ast_hash": "c50e8aeee947f35c9972208bbd29ec56",
     "semantic_hash": ""
   },
   "server/services/geminiExtraction.ts": {
@@ -660,15 +660,15 @@
     "semantic_hash": ""
   },
   "server/services/googleVisionOcr.ts": {
-    "mtime": 1789323390.6632807,
-    "seen": 1789323688.4875922,
-    "ast_hash": "780a27b28a8f3c572db5398f3755976f",
+    "mtime": 1789378928.5062826,
+    "seen": 1789380327.9888175,
+    "ast_hash": "b5c0ea4c57a6998612376c304e3d478c",
     "semantic_hash": ""
   },
   "server/services/ocrService.ts": {
-    "mtime": 1789323401.3799763,
-    "seen": 1789323688.4875953,
-    "ast_hash": "7a685d1b1f584abab54b23527293b2d7",
+    "mtime": 1789378937.5735664,
+    "seen": 1789380327.9888206,
+    "ast_hash": "47cfb804ad0d921ea3d00f376c69b43a",
     "semantic_hash": ""
   },
   "src/components/screens/ExtractedTextReviewScreen.tsx": {
@@ -702,9 +702,9 @@
     "semantic_hash": ""
   },
   "server/services/ecommerceAuditService.ts": {
-    "mtime": 1789376848.097432,
-    "seen": 1789376880.0389247,
-    "ast_hash": "77fe5618cdb7023024da6ba622421bab",
+    "mtime": 1789377839.1541264,
+    "seen": 1789380327.9885807,
+    "ast_hash": "458d0472037fc8f0bd45849f19528b16",
     "semantic_hash": ""
   }
 }

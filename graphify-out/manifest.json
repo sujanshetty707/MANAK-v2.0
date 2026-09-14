@@ -30,9 +30,9 @@
     "semantic_hash": ""
   },
   "src/components/common/Header.tsx": {
-    "mtime": 1789382218.3745878,
-    "seen": 1789382341.1515539,
-    "ast_hash": "a42bfdeb97c85377f2862c3b4f942759",
+    "mtime": 1789393464.5788157,
+    "seen": 1789397529.8932204,
+    "ast_hash": "936ec978aaf5bf0c14b5da57660f56e6",
     "semantic_hash": ""
   },
   "src/components/screens/AnalysisResultsScreen.tsx": {
@@ -42,9 +42,9 @@
     "semantic_hash": ""
   },
   "src/components/screens/CameraScanScreen.tsx": {
-    "mtime": 1789323548.60603,
-    "seen": 1789323688.4894495,
-    "ast_hash": "1556cc2399e5d38843cbcc94bb45e4de",
+    "mtime": 1789395717.9227169,
+    "seen": 1789397529.8936498,
+    "ast_hash": "8a243e8dd71a1716801bec44cd66a251",
     "semantic_hash": ""
   },
   "src/components/screens/CheckUrlScreen.tsx": {
@@ -138,9 +138,9 @@
     "semantic_hash": ""
   },
   "src/context/AppContext.tsx": {
-    "mtime": 1789391020.8689811,
-    "seen": 1789391673.764251,
-    "ast_hash": "3d7121ba69044e63b69e461dfaf7e537",
+    "mtime": 1789395763.7645226,
+    "seen": 1789397529.8975086,
+    "ast_hash": "3c5a1beb1e783d1f3abcd2e6f46b7b62",
     "semantic_hash": ""
   },
   "src/data/mockData.ts": {
@@ -366,14 +366,14 @@
     "semantic_hash": ""
   },
   "android/app/build.gradle": {
-    "mtime": 1789386193.6270654,
-    "seen": 1789389602.083686,
-    "ast_hash": "215dcda5a7b9a3f69198988284244032",
+    "mtime": 1789395939.4472618,
+    "seen": 1789397529.888084,
+    "ast_hash": "cbab8c5e36af8889425b022d376e52e4",
     "semantic_hash": ""
   },
   "android/app/capacitor.build.gradle": {
-    "mtime": 1789391133.689152,
-    "seen": 1789391673.7528172,
+    "mtime": 1789397481.9227533,
+    "seen": 1789397529.888094,
     "ast_hash": "603ecca0fd2c534a84f2da02acd653bf",
     "semantic_hash": ""
   },
@@ -402,8 +402,8 @@
     "semantic_hash": ""
   },
   "android/capacitor.settings.gradle": {
-    "mtime": 1789391133.686104,
-    "seen": 1789391673.7539024,
+    "mtime": 1789397481.9227533,
+    "seen": 1789397529.8894138,
     "ast_hash": "67f6105f1f112255bf608817f5c31034",
     "semantic_hash": ""
   },
@@ -606,9 +606,9 @@
     "semantic_hash": ""
   },
   "src/services/labelParser.ts": {
-    "mtime": 1789378965.0974228,
-    "seen": 1789380327.9957507,
-    "ast_hash": "ead89bf2ad6a50f6f0d1ea5d3dfb1022",
+    "mtime": 1789397454.5692644,
+    "seen": 1789397529.8985126,
+    "ast_hash": "f866fe8cd604e53776f4f61a0847d7cf",
     "semantic_hash": ""
   },
   ".github/workflows/build-apk.yml": {
@@ -630,9 +630,9 @@
     "semantic_hash": ""
   },
   "src/services/api.ts": {
-    "mtime": 1789391104.593903,
-    "seen": 1789391673.7657275,
-    "ast_hash": "0e652ed8719ceb2d756b6eacde413e8c",
+    "mtime": 1789397411.4924595,
+    "seen": 1789397529.8984983,
+    "ast_hash": "df92e1d7567d7087c509dba4d7fa7b24",
     "semantic_hash": ""
   },
   "server/services/geminiExtraction.ts": {
@@ -660,9 +660,9 @@
     "semantic_hash": ""
   },
   "server/services/googleVisionOcr.ts": {
-    "mtime": 1789378928.5062826,
-    "seen": 1789380327.9888175,
-    "ast_hash": "b5c0ea4c57a6998612376c304e3d478c",
+    "mtime": 1789395825.1557622,
+    "seen": 1789397529.8920975,
+    "ast_hash": "044846842969f35f025223e663e5d2c8",
     "semantic_hash": ""
   },
   "server/services/ocrService.ts": {
@@ -672,21 +672,21 @@
     "semantic_hash": ""
   },
   "src/components/screens/ExtractedTextReviewScreen.tsx": {
-    "mtime": 1789323633.702286,
-    "seen": 1789323688.4918447,
-    "ast_hash": "f04a8b3115f779de0797e642f7d8824b",
+    "mtime": 1789395752.4764566,
+    "seen": 1789397529.895349,
+    "ast_hash": "17102e3a56970f8d496e27e38612f470",
     "semantic_hash": ""
   },
   "src/components/screens/OcrExtractionScreen.tsx": {
-    "mtime": 1789323513.9466956,
-    "seen": 1789323688.493061,
-    "ast_hash": "d01eb3e9600bfcead578c31767d4758a",
+    "mtime": 1789397404.1769679,
+    "seen": 1789397529.8959403,
+    "ast_hash": "760fdb54e9ea0934167ace6c17df8d93",
     "semantic_hash": ""
   },
   "src/utils/imageUtils.ts": {
-    "mtime": 1789314436.6171958,
-    "seen": 1789314509.1562116,
-    "ast_hash": "7ee7bb28b13e9f9a7ef76dc920162b28",
+    "mtime": 1789395700.4491358,
+    "seen": 1789397529.9000943,
+    "ast_hash": "c2500e7fd058fe5c6b8a0cb246bf1583",
     "semantic_hash": ""
   },
   "architecture.md": {
@@ -702,9 +702,9 @@
     "semantic_hash": ""
   },
   "server/services/ecommerceAuditService.ts": {
-    "mtime": 1789389417.9444664,
-    "seen": 1789389602.088469,
-    "ast_hash": "93a6b9bfc9e57996f05ce885ce5ab735",
+    "mtime": 1789393415.950678,
+    "seen": 1789397529.8918111,
+    "ast_hash": "dab1454715eebbc2d7189a3bab24b443",
     "semantic_hash": ""
   },
   "src/components/common/ServerSettingsModal.tsx": {
@@ -714,15 +714,15 @@
     "semantic_hash": ""
   },
   "src/services/clientGeminiVision.ts": {
-    "mtime": 1789382279.712669,
-    "seen": 1789382341.1587493,
-    "ast_hash": "28e651db097ea7368441c0df381094ee",
+    "mtime": 1789395816.9045546,
+    "seen": 1789397529.898504,
+    "ast_hash": "3a57d3bf01af69d26fcfe8624af60105",
     "semantic_hash": ""
   },
   "src/services/clientUrlCheck.ts": {
-    "mtime": 1789382292.6734755,
-    "seen": 1789382341.1587548,
-    "ast_hash": "1f5e6e6b0970c8a1779ce33bfcf59ce7",
+    "mtime": 1789393423.8688095,
+    "seen": 1789397529.8985078,
+    "ast_hash": "134fda39f219e3caa7f4239f0763ebc0",
     "semantic_hash": ""
   },
   "render.yaml": {

@@ -1,23 +1,23 @@
 # Graph Report - MANAK  (2026-09-14)
 
 ## Corpus Check
-- 95 files · ~75,490 words
+- 97 files · ~77,313 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 502 nodes · 911 edges · 49 communities (32 shown, 9 thin omitted)
+- 511 nodes · 946 edges · 45 communities (31 shown, 6 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `cca13128`
+- Built from commit: `96fb2943`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - Officer Flow
-- AppContext.tsx
-- @supabase/supabase-js
+- App.tsx
+- server/index.ts
 - package.json
 - README.md
 - What You Must Do When Invoked
@@ -44,17 +44,13 @@
 - workflows/graphify.md
 - manifest.json
 - ExampleInstrumentedTest.java
-- api.ts
+- AppContext.tsx
 - gradlew
 - MainActivity.java
 - dependencies
-- devDependencies
 - MANAK — API Keys & Backend Environment Setup Guide
-- types/index.ts
+- labelParser.ts
 - Product Requirements Document (PRD)
-- scripts
-- capacitor.config.ts
-- vite
 - pdfReportGenerator.ts
 
 ## God Nodes (most connected - your core abstractions)
@@ -63,9 +59,9 @@
 3. `lucide-react` - 27 edges
 4. `parseLabelText()` - 25 edges
 5. `Header()` - 18 edges
-6. `ExtractionResult` - 16 edges
-7. `compilerOptions` - 16 edges
-8. `AppProvider()` - 15 edges
+6. `ExtractionResult` - 17 edges
+7. `AppProvider()` - 16 edges
+8. `compilerOptions` - 16 edges
 9. `getApiBaseUrl()` - 13 edges
 10. `What You Must Do When Invoked` - 12 edges
 
@@ -84,19 +80,23 @@
 ## Import Cycles
 - None detected.
 
-## Communities (49 total, 9 thin omitted)
+## Communities (45 total, 6 thin omitted)
 
 ### Community 0 - "Officer Flow"
 Cohesion: 0.24
 Nodes (12): Consumer Flow, Deterministic Rule Engine, E-Commerce DOM Adapters, OCR & Extraction Pipeline, Inspection & Violation Repository, Packaged Commodities Rules 2011, MANAK Compliance System, Officer Flow (+4 more)
 
-### Community 1 - "AppContext.tsx"
+### Community 1 - "App.tsx"
 Cohesion: 0.13
-Nodes (36): @capacitor/camera, @capacitor/core, lucide-react, react, App(), BottomNav(), DeviceFrame(), Header() (+28 more)
+Nodes (34): @capacitor/camera, @capacitor/core, lucide-react, react, App(), BottomNav(), DeviceFrame(), Header() (+26 more)
+
+### Community 2 - "server/index.ts"
+Cohesion: 0.12
+Nodes (19): cors, dotenv, express, @supabase/supabase-js, ensureUUID(), app, db, saveInspectionToSupabase() (+11 more)
 
 ### Community 3 - "package.json"
-Cohesion: 0.09
-Nodes (21): name, private, type, version, autoprefixer, @capacitor/android, clsx, concurrently (+13 more)
+Cohesion: 0.04
+Nodes (46): config, devDependencies, autoprefixer, concurrently, postcss, tailwindcss, tsx, @types/react (+38 more)
 
 ### Community 4 - "README.md"
 Cohesion: 0.05
@@ -174,9 +174,9 @@ Nodes (10): background_color, categories, description, display, icons, name, ori
 Cohesion: 0.33
 Nodes (5): ExampleInstrumentedTest, ExampleUnitTest, androidx.test.ext.junit.runners.AndroidJUnit4, org.junit.runner.RunWith, org.junit.Test
 
-### Community 31 - "api.ts"
-Cohesion: 0.13
-Nodes (31): Props, ServerSettingsModal(), OCR_STAGES, OcrExtractionScreen(), AppProvider(), askComplianceChatApi(), buildLocalScanRecord(), evaluateComplianceApi() (+23 more)
+### Community 31 - "AppContext.tsx"
+Cohesion: 0.09
+Nodes (54): Props, ServerSettingsModal(), OCR_STAGES, OcrExtractionScreen(), AppContext, AppContextType, AppProvider(), MOCK_CONSUMER_REPORTS (+46 more)
 
 ### Community 32 - "gradlew"
 Cohesion: 0.83
@@ -190,49 +190,41 @@ Nodes (4): MainActivity, android.os.Bundle, com.getcapacitor.BridgeActivity, Ove
 Cohesion: 0.10
 Nodes (20): dependencies, @capacitor/android, @capacitor/camera, @capacitor/cli, @capacitor/core, clsx, cors, dotenv (+12 more)
 
-### Community 41 - "devDependencies"
-Cohesion: 0.18
-Nodes (11): devDependencies, autoprefixer, concurrently, postcss, tailwindcss, tsx, @types/react, @types/react-dom (+3 more)
-
 ### Community 42 - "MANAK — API Keys & Backend Environment Setup Guide"
 Cohesion: 0.22
 Nodes (8): 1. Summary of Required Credentials, 2. Step-by-Step Instructions to Obtain Each Key, 3. Database & Storage Initialization Checklist, 4. Verification, A. Supabase Credentials (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`), B. Google Gemini API Key (`GEMINI_API_KEY`), C. Digital Signature Token (`DOCUMENSO_API_KEY`), MANAK — API Keys & Backend Environment Setup Guide
 
-### Community 43 - "types/index.ts"
-Cohesion: 0.06
-Nodes (54): cors, dotenv, express, app, db, app, db, auditEcommerceUrl() (+46 more)
+### Community 43 - "labelParser.ts"
+Cohesion: 0.12
+Nodes (25): tesseract.js, extractLabelWithGemini(), GoogleVisionOcrResult, processGoogleVisionOcr(), API_KEY(), extractLabelFromImage(), tesseractOcr(), SAMPLE_PRODUCTS (+17 more)
 
 ### Community 44 - "Product Requirements Document (PRD)"
 Cohesion: 0.18
 Nodes (10): 1. Problem Statement, 2. Updated 4-Phase System Pipeline, 3. Core Functional Requirements, 4. Non-Functional Requirements, MANAK — Legal Metrology Compliance Checker App, Phase 1: Product Capture & Scan, Phase 2: Google Vision OCR & Product Categorization, Phase 3: Human Review & Verification Interface (`ExtractedTextReviewScreen`) (+2 more)
-
-### Community 45 - "scripts"
-Cohesion: 0.18
-Nodes (11): scripts, adb:reverse, build, cap:add, cap:live, cap:open, cap:sync, dev (+3 more)
 
 ### Community 49 - "pdfReportGenerator.ts"
 Cohesion: 0.62
 Nodes (6): jspdf, generateInspectionPDF(), getMrpStr(), getNetQtyStr(), safeNum(), sanitizeText()
 
 ## Knowledge Gaps
-- **236 isolated node(s):** `config`, `name`, `private`, `version`, `type` (+231 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 267 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **235 isolated node(s):** `config`, `name`, `private`, `version`, `type` (+230 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 266 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **6 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `react` connect `AppContext.tsx` to `package.json`, `api.ts`?**
+- **Why does `react` connect `App.tsx` to `labelParser.ts`, `package.json`, `AppContext.tsx`?**
   _High betweenness centrality (0.044) - this node is a cross-community bridge._
 - **Why does `dependencies` connect `dependencies` to `package.json`?**
   _High betweenness centrality (0.036) - this node is a cross-community bridge._
-- **Why does `lucide-react` connect `AppContext.tsx` to `package.json`, `api.ts`?**
-  _High betweenness centrality (0.029) - this node is a cross-community bridge._
+- **Why does `lucide-react` connect `App.tsx` to `labelParser.ts`, `package.json`, `AppContext.tsx`?**
+  _High betweenness centrality (0.028) - this node is a cross-community bridge._
 - **What connects `config`, `name`, `private` to the rest of the system?**
-  _236 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `AppContext.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.1284722222222222 - nodes in this community are weakly interconnected._
+  _235 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `App.tsx` be split into smaller, more focused modules?**
+  _Cohesion score 0.12542372881355932 - nodes in this community are weakly interconnected._
+- **Should `server/index.ts` be split into smaller, more focused modules?**
+  _Cohesion score 0.11956521739130435 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.09090909090909091 - nodes in this community are weakly interconnected._
-- **Should `README.md` be split into smaller, more focused modules?**
-  _Cohesion score 0.05263157894736842 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.041666666666666664 - nodes in this community are weakly interconnected._

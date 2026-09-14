@@ -13,6 +13,7 @@ import {
 import { evaluateExtractionAgainstRules } from '../services/ruleEngine';
 import { fetchHistoryApi, fetchConsumerReportsApi, loginApi, submitConsumerReportApi } from '../services/api';
 import { saveInspectionDirectToSupabase } from '../services/supabaseService';
+import { requestAllPermissionsDirectly, getCurrentGeoLocation } from '../services/locationService';
 
 interface AppContextType {
   userRole: UserRole;
@@ -126,6 +127,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setConsumerReports(getStoredConsumerReports());
     setOfflineQueueCount(getOfflineQueue().length);
 
+    requestAllPermissionsDirectly();
     refreshDataFromBackend();
 
     const handleQueueUpdated = (e: any) => {
@@ -166,6 +168,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const selectRole = (role: UserRole) => {
     setUserRole(role);
+    requestAllPermissionsDirectly();
     if (role === 'officer') {
       navigateTo('officer_login');
     } else if (role === 'consumer') {
@@ -253,6 +256,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const finalizeInspection = (signDoc: boolean = true): InspectionRecord => {
     const id = currentInspectionId || `insp-${Date.now().toString().slice(-6)}`;
     setCurrentInspectionId(id);
+    const primaryImg = currentProduct?.images?.[0] || currentProduct?.image_url || '';
     const newRecord: InspectionRecord = {
       id,
       product: currentProduct || {
@@ -261,7 +265,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         title: 'Inspected Packaged Product',
         brand: 'Generic Manufacturer',
         category: 'Retail Commodity',
-        image_url: 'https://images.unsplash.com/photo-1553456558-aff63285bdd1?w=600&auto=format&fit=crop&q=80'
+        image_url: primaryImg,
+        images: currentProduct?.images
       },
       performed_by: {
         id: 'usr-officer-01',
@@ -278,7 +283,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         address: 'Connaught Place, New Delhi - 110001'
       },
       timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19),
-      evidence_image: currentProduct?.image_url || 'https://images.unsplash.com/photo-1553456558-aff63285bdd1?w=600&auto=format&fit=crop&q=80',
+      evidence_image: primaryImg,
       evidence_hash: `sha256-${Math.random().toString(36).substring(2, 15)}`,
       extraction: currentExtraction || {
         manufacturer: { value: 'Manufacturer Declared', source: 'ocr', confidence: 0.9 },
@@ -323,12 +328,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       .filter(e => e.status === 'violation')
       .map(e => `${e.requirement_name} (${e.rule_source})`);
 
+    const primaryImg = currentProduct?.images?.[0] || currentProduct?.image_url || '';
+
     const reportPayload: Partial<ConsumerReport> = {
       reference_id: refId,
       inspection_id: currentInspectionId || `insp-cr-${Date.now()}`,
       product_name: currentProduct?.title || 'Reported Product',
       brand: currentProduct?.brand || 'Generic',
-      product_image: currentProduct?.image_url || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80',
+      product_image: primaryImg,
       violations_summary: violations.length > 0 ? violations : ['Suspected labeling discrepancy'],
       consumer_note: note || 'Reported via MANAK Consumer Self-Check.',
       submitted_at: new Date().toISOString().replace('T', ' ').substring(0, 19),

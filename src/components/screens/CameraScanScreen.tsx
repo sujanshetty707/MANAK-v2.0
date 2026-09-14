@@ -36,12 +36,12 @@ export const CameraScanScreen: React.FC = () => {
     });
   };
 
-  const handleCaptureNativePhoto = async (autoAnalyze = true) => {
+  const handleCaptureNativePhoto = async () => {
     if (!isNative) return;
     try {
       setErrorMsg(null);
       const photo = await CapCamera.getPhoto({
-        quality: 100,
+        quality: 90,
         allowEditing: false,
         resultType: CameraResultType.DataUrl,
         source: CameraSource.Camera,
@@ -49,16 +49,12 @@ export const CameraScanScreen: React.FC = () => {
       });
 
       if (photo.dataUrl) {
-        // High quality crisp 3K image compression for Gemini Vision API (3072px max, 98% JPEG quality)
-        const compressed = await compressImage(photo.dataUrl, 3072, 0.98).catch(() => photo.dataUrl!);
-        const next = [...selectedImages, compressed];
-        setSelectedImages(next);
-        setActiveImageIdx(next.length - 1);
-
-        // Immediately trigger scan on first capture
-        if (autoAnalyze) {
-          await runScan(next);
-        }
+        const compressed = await compressImage(photo.dataUrl, 1600, 0.85).catch(() => photo.dataUrl!);
+        setSelectedImages(prev => {
+          const next = [...prev, compressed];
+          setActiveImageIdx(next.length - 1);
+          return next;
+        });
       }
     } catch (e) {
       console.warn('Native camera cancelled or unavailable:', e);
@@ -77,7 +73,7 @@ export const CameraScanScreen: React.FC = () => {
           reader.onload = async (event) => {
             const raw = event.target?.result as string;
             if (raw) {
-              const compressed = await compressImage(raw, 3072, 0.98).catch(() => raw);
+              const compressed = await compressImage(raw, 1600, 0.85).catch(() => raw);
               newCompressed.push(compressed);
             }
             resolve();
@@ -87,14 +83,11 @@ export const CameraScanScreen: React.FC = () => {
       }
 
       if (newCompressed.length > 0) {
-        const next = [...selectedImages, ...newCompressed];
-        setSelectedImages(next);
-        setActiveImageIdx(next.length - 1);
-
-        // Auto run scan if first upload
-        if (selectedImages.length === 0) {
-          await runScan(next);
-        }
+        setSelectedImages(prev => {
+          const next = [...prev, ...newCompressed];
+          setActiveImageIdx(next.length - 1);
+          return next;
+        });
       }
       e.target.value = '';
     }
@@ -271,7 +264,7 @@ export const CameraScanScreen: React.FC = () => {
               {isNative ? (
                 <button
                   type="button"
-                  onClick={() => handleCaptureNativePhoto(false)}
+                  onClick={handleCaptureNativePhoto}
                   className="flex-shrink-0 w-16 h-16 rounded-xl border-2 border-dashed border-slate-700 hover:border-amber-400/70 bg-slate-800/60 hover:bg-slate-800 flex flex-col items-center justify-center text-slate-400 hover:text-amber-300 transition-all"
                   title="Snap another panel"
                 >
@@ -325,10 +318,10 @@ export const CameraScanScreen: React.FC = () => {
 
           {isNative && (
             <button
-              onClick={() => handleCaptureNativePhoto(selectedImages.length === 0)}
+              onClick={handleCaptureNativePhoto}
               disabled={isLoading}
               className="p-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 active:scale-95 border border-slate-700 text-amber-400 transition-colors flex items-center justify-center"
-              title="Snap another panel with camera"
+              title="Snap panel with camera"
             >
               <Aperture className="w-5 h-5" />
             </button>
@@ -336,8 +329,14 @@ export const CameraScanScreen: React.FC = () => {
 
           <button
             onClick={() => {
-              if (isNative && selectedImages.length === 0) {
-                handleCaptureNativePhoto(true);
+              if (selectedImages.length === 0 && !rawText.trim()) {
+                if (isNative) {
+                  handleCaptureNativePhoto();
+                } else {
+                  // Trigger file input click if no images selected
+                  const fileInput = document.getElementById('camera-scan-file-input');
+                  if (fileInput) fileInput.click();
+                }
               } else {
                 runScan();
               }
@@ -345,6 +344,14 @@ export const CameraScanScreen: React.FC = () => {
             disabled={isLoading}
             className="flex-1 py-3.5 px-4 rounded-2xl bg-gradient-to-r from-manak-orange to-orange-600 hover:from-orange-500 hover:to-orange-700 active:scale-[0.98] text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-2 shadow-lg transition-all disabled:opacity-50"
           >
+            <input
+              id="camera-scan-file-input"
+              type="file"
+              accept="image/*"
+              multiple
+              onChange={handleCustomUpload}
+              className="hidden"
+            />
             {isLoading ? (
               <Loader2 className="w-5 h-5 animate-spin" />
             ) : (
@@ -354,7 +361,7 @@ export const CameraScanScreen: React.FC = () => {
               {isLoading
                 ? 'Analyzing Declarations...'
                 : selectedImages.length === 0
-                ? 'Capture / Select High-Res Photos'
+                ? 'Select or Capture Photos'
                 : selectedImages.length === 1
                 ? 'Scan 1 Panel & Review Declarations →'
                 : `Scan ${selectedImages.length} Panels (Front + Back) →`}

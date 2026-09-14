@@ -83,20 +83,35 @@ export const ExtractedTextReviewScreen: React.FC = () => {
   // Sync state if currentExtraction updates
   useEffect(() => {
     if (currentExtraction) {
-      setRawOcrText(currentExtraction.raw_ocr_text || '');
-      setGenericName(currentExtraction.generic_name?.value || '');
-      setManufacturer(currentExtraction.manufacturer?.value || '');
-      setNetQtyAmount(currentExtraction.net_quantity?.value?.amount ? String(currentExtraction.net_quantity.value.amount) : '');
-      setNetQtyUnit(currentExtraction.net_quantity?.value?.unit || 'g');
-      setMrpAmount(currentExtraction.mrp?.value?.amount ? String(currentExtraction.mrp.value.amount) : '');
-      setIsInclusiveTaxes(currentExtraction.mrp?.value?.is_inclusive_taxes ?? true);
-      setMfgDate(currentExtraction.mfg_date?.value || '');
-      setExpiryDate(currentExtraction.expiry_date?.value || '');
-      setConsumerCarePhone(currentExtraction.consumer_care?.value?.phone || '');
-      setConsumerCareEmail(currentExtraction.consumer_care?.value?.email || '');
-      setConsumerCareAddress(currentExtraction.consumer_care?.value?.address || '');
-      setCountryOfOrigin(currentExtraction.country_of_origin?.value || 'India');
-      setNumeralHeightMm(currentExtraction.numeral_height_mm?.value ? String(currentExtraction.numeral_height_mm.value) : '2.5');
+      const rawTextStr = currentExtraction.raw_ocr_text || '';
+      const hasRawText = rawTextStr.trim().length > 0;
+      const hasFields = !!(currentExtraction.generic_name?.value || currentExtraction.manufacturer?.value || currentExtraction.mrp?.value?.amount);
+
+      // If extraction fields are empty but raw text exists, auto re-parse
+      const activeExtraction = (!hasFields && hasRawText) ? parseLabelText(rawTextStr) : currentExtraction;
+
+      setRawOcrText(activeExtraction.raw_ocr_text || '');
+      setGenericName(activeExtraction.generic_name?.value || '');
+      setManufacturer(activeExtraction.manufacturer?.value || '');
+      setNetQtyAmount(
+        activeExtraction.net_quantity?.value?.amount !== undefined && activeExtraction.net_quantity?.value?.amount !== null && activeExtraction.net_quantity.value.amount > 0
+          ? String(activeExtraction.net_quantity.value.amount)
+          : ''
+      );
+      setNetQtyUnit(activeExtraction.net_quantity?.value?.unit || 'g');
+      setMrpAmount(
+        activeExtraction.mrp?.value?.amount !== undefined && activeExtraction.mrp?.value?.amount !== null && activeExtraction.mrp.value.amount > 0
+          ? String(activeExtraction.mrp.value.amount)
+          : ''
+      );
+      setIsInclusiveTaxes(activeExtraction.mrp?.value?.is_inclusive_taxes ?? true);
+      setMfgDate(activeExtraction.mfg_date?.value || '');
+      setExpiryDate(activeExtraction.expiry_date?.value || '');
+      setConsumerCarePhone(activeExtraction.consumer_care?.value?.phone || '');
+      setConsumerCareEmail(activeExtraction.consumer_care?.value?.email || '');
+      setConsumerCareAddress(activeExtraction.consumer_care?.value?.address || '');
+      setCountryOfOrigin(activeExtraction.country_of_origin?.value || 'India');
+      setNumeralHeightMm(activeExtraction.numeral_height_mm?.value ? String(activeExtraction.numeral_height_mm.value) : '2.5');
     }
   }, [currentExtraction]);
 
@@ -188,13 +203,15 @@ export const ExtractedTextReviewScreen: React.FC = () => {
     setIsEvaluating(true);
     const updatedExtraction = buildCurrentExtraction();
     
-    const updatedProduct: Product = currentProduct || {
-      id: `prod-${Date.now().toString().slice(-6)}`,
-      title: genericName.trim() ? `${genericName.trim()} Pack` : 'Packaged Commodity',
-      brand: manufacturer.trim() ? manufacturer.trim().split(',')[0].trim() : 'Declared Manufacturer',
-      category: 'Packaged Retail Commodity',
-      source_type: 'store',
-      image_url: currentProduct?.image_url
+    const updatedProduct: Product = {
+      ...(currentProduct || {}),
+      id: currentProduct?.id || `prod-${Date.now().toString().slice(-6)}`,
+      title: genericName.trim() ? `${genericName.trim()} Pack` : (currentProduct?.title || 'Packaged Commodity'),
+      brand: manufacturer.trim() ? manufacturer.trim().split(',')[0].trim() : (currentProduct?.brand || 'Declared Manufacturer'),
+      category: currentProduct?.category || 'Packaged Retail Commodity',
+      source_type: currentProduct?.source_type || 'store',
+      image_url: currentProduct?.image_url,
+      images: currentProduct?.images
     };
 
     try {
@@ -208,8 +225,13 @@ export const ExtractedTextReviewScreen: React.FC = () => {
       });
 
       if (res?.record) {
+        const finalProd = {
+          ...res.record.product,
+          image_url: res.record.product?.image_url || currentProduct?.image_url,
+          images: res.record.product?.images || currentProduct?.images
+        };
         setAnalysisData(
-          res.record.product,
+          finalProd,
           res.record.extraction,
           res.record.evaluations,
           res.record.id

@@ -127,31 +127,42 @@ Return ONLY a single valid JSON object:
           const netQtyUnit = parsed.net_quantity?.unit || '';
           const rawOcr = parsed.raw_ocr_text || '';
 
+          // Run regex fallback over raw OCR text stream
+          const regexExtraction = parseLabelText(rawOcr);
+
+          const finalGenericName = parsed.generic_name || regexExtraction.generic_name.value || '';
+          const finalManufacturer = parsed.manufacturer || regexExtraction.manufacturer.value || '';
+          const finalMrpAmt = mrpAmt > 0 ? mrpAmt : regexExtraction.mrp.value.amount;
+          const finalNetQtyAmt = netQtyAmt > 0 ? netQtyAmt : regexExtraction.net_quantity.value.amount;
+          const finalNetQtyUnit = netQtyUnit || regexExtraction.net_quantity.value.unit || 'g';
+          const finalMfgDate = parsed.mfg_date || regexExtraction.mfg_date.value || '';
+          const finalExpDate = parsed.expiry_date || regexExtraction.expiry_date?.value || '';
+
           const extraction: ExtractionResult = {
-            generic_name: { value: parsed.generic_name || '', source: 'ocr', confidence: 0.96 },
-            manufacturer: { value: parsed.manufacturer || '', source: 'ocr', confidence: 0.95 },
+            generic_name: { value: finalGenericName, source: 'ocr', confidence: 0.96 },
+            manufacturer: { value: finalManufacturer, source: 'ocr', confidence: 0.95 },
             mrp: {
               value: {
-                amount: mrpAmt,
-                raw_text: parsed.mrp?.raw_text || (mrpAmt > 0 ? `MRP Rs. ${mrpAmt.toFixed(2)} (Incl. of all taxes)` : ''),
-                is_inclusive_taxes: parsed.mrp?.is_inclusive_taxes ?? true
+                amount: finalMrpAmt,
+                raw_text: parsed.mrp?.raw_text || (finalMrpAmt > 0 ? `MRP Rs. ${finalMrpAmt.toFixed(2)} (Incl. of all taxes)` : '') || regexExtraction.mrp.value.raw_text || '',
+                is_inclusive_taxes: parsed.mrp?.is_inclusive_taxes ?? regexExtraction.mrp.value.is_inclusive_taxes
               },
               source: 'ocr',
               confidence: 0.98
             },
             net_quantity: {
-              value: { amount: netQtyAmt, unit: netQtyUnit || 'g' },
+              value: { amount: finalNetQtyAmt, unit: finalNetQtyUnit },
               source: 'ocr',
               confidence: 0.97
             },
-            mfg_date: { value: parsed.mfg_date || '', source: 'ocr', confidence: 0.95 },
-            expiry_date: parsed.expiry_date ? { value: parsed.expiry_date, source: 'ocr', confidence: 0.95 } : undefined,
-            country_of_origin: { value: parsed.country_of_origin || 'India', source: 'ocr', confidence: 0.98 },
+            mfg_date: { value: finalMfgDate, source: 'ocr', confidence: 0.95 },
+            expiry_date: finalExpDate ? { value: finalExpDate, source: 'ocr', confidence: 0.95 } : undefined,
+            country_of_origin: { value: parsed.country_of_origin || regexExtraction.country_of_origin.value || 'India', source: 'ocr', confidence: 0.98 },
             consumer_care: {
               value: {
-                phone: parsed.consumer_care?.phone || '',
-                email: parsed.consumer_care?.email || '',
-                address: parsed.consumer_care?.address || ''
+                phone: parsed.consumer_care?.phone || regexExtraction.consumer_care.value.phone || '',
+                email: parsed.consumer_care?.email || regexExtraction.consumer_care.value.email || '',
+                address: parsed.consumer_care?.address || regexExtraction.consumer_care.value.address || ''
               },
               source: 'ocr',
               confidence: 0.94

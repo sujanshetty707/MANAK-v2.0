@@ -19,10 +19,10 @@ export const OcrExtractionScreen: React.FC = () => {
     let isMounted = true;
     let stageInterval: any = null;
 
-    // Animate OCR stages while calling API
+    // Animate OCR stages fast while calling API
     stageInterval = setInterval(() => {
       setCurrentStageIdx(prev => (prev < OCR_STAGES.length - 1 ? prev + 1 : prev));
-    }, 700);
+    }, 150);
 
     const runExtraction = async () => {
       try {
@@ -56,7 +56,7 @@ export const OcrExtractionScreen: React.FC = () => {
               );
               navigateTo('review_extraction');
             }
-          }, 400);
+          }, 50);
         } else {
           setErrorMsg('OCR service did not return valid text. Please retry.');
         }

@@ -35,6 +35,8 @@ jobs:
         run: npm ci
 
       - name: Build Web Application
+        env:
+          VITE_GEMINI_API_KEY: ${{ secrets.VITE_GEMINI_API_KEY }}
         run: npm run build
 
       - name: Sync Capacitor Android

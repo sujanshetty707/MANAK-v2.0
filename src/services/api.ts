@@ -1,14 +1,24 @@
 import { InspectionRecord, ConsumerReport, Product, ExtractionResult, RuleEvaluation } from '../types';
 import { parseLabelText } from './labelParser';
 import { evaluateExtractionAgainstRules } from './ruleEngine';
+import { extractLabelClientSide } from './clientGeminiVision';
+import { checkUrlClientSide } from './clientUrlCheck';
 
-const API_BASE_URL = (import.meta as any).env?.VITE_API_BASE_URL || 'http://localhost:5000';
+export function getApiBaseUrl(): string {
+  if (typeof localStorage !== 'undefined') {
+    const saved = localStorage.getItem('MANAK_SERVER_URL');
+    if (saved && saved.trim()) return saved.trim().replace(/\/+$/, '');
+  }
+  const envUrl = (import.meta as any).env?.VITE_API_BASE_URL;
+  if (envUrl && envUrl.trim()) return envUrl.trim().replace(/\/+$/, '');
+  return 'http://localhost:5000';
+}
 
 // ─── Auth ────────────────────────────────────────────────────────────────────
 
 export async function loginApi(role: 'officer' | 'consumer', idOrPhone: string, passOrOtp: string) {
   try {
-    const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
+    const res = await fetch(`${getApiBaseUrl()}/api/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -41,7 +51,7 @@ export async function extractLabelApi(payload: {
   raw_text?: string;
 }): Promise<{ success: boolean; extraction: ExtractionResult; product: Product }> {
   try {
-    const res = await fetch(`${API_BASE_URL}/api/extract`, {
+    const res = await fetch(`${getApiBaseUrl()}/api/extract`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
@@ -49,24 +59,9 @@ export async function extractLabelApi(payload: {
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return await res.json();
-  } catch {
-    console.log('[MANAK] Backend extract unreachable — running client-side label parser.');
-    const extraction = parseLabelText(payload.raw_text || '');
-    const firstImg = Array.isArray(payload.images_base64)
-      ? payload.images_base64[0]
-      : (payload.image_base64 || (typeof payload.images_base64 === 'string' ? payload.images_base64 : undefined));
-    const allImages = Array.isArray(payload.images_base64) ? payload.images_base64 : (firstImg ? [firstImg] : []);
-
-    const product: Product = {
-      id: `prod-${Date.now().toString().slice(-6)}`,
-      title: extraction.generic_name.value ? `${extraction.generic_name.value} Pack` : 'Packaged Commodity',
-      brand: extraction.manufacturer.value ? extraction.manufacturer.value.split(',')[0].trim() : 'Declared Manufacturer',
-      category: 'Packaged Retail Commodity',
-      source_type: 'store',
-      image_url: firstImg,
-      images: allImages
-    };
-    return { success: true, extraction, product };
+  } catch (err) {
+    console.log('[MANAK] Backend extract unreachable — running direct client-side extraction:', (err as Error).message);
+    return await extractLabelClientSide(payload);
   }
 }
 
@@ -81,7 +76,7 @@ export async function evaluateComplianceApi(payload: {
   mode?: 'scan' | 'url_check';
 }): Promise<{ success: boolean; record: InspectionRecord }> {
   try {
-    const res = await fetch(`${API_BASE_URL}/api/evaluate`, {
+    const res = await fetch(`${getApiBaseUrl()}/api/evaluate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
@@ -147,7 +142,7 @@ export async function scanProductApi(payload: {
   performed_by?: any;
 }): Promise<{ success: boolean; record: any }> {
   try {
-    const res = await fetch(`${API_BASE_URL}/api/scan`, {
+    const res = await fetch(`${getApiBaseUrl()}/api/scan`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
@@ -156,7 +151,6 @@ export async function scanProductApi(payload: {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return await res.json();
   } catch {
-    // Client-side fallback: run the deterministic PCR-2011 label parser
     console.log('[MANAK] Backend unreachable — running client-side label analysis.');
     return buildLocalScanRecord(payload.raw_text || '', payload.image_base64, payload.performed_by, 'scan', payload.geo);
   }
@@ -171,7 +165,7 @@ export async function checkUrlApi(payload: {
   performed_by?: any;
 }): Promise<{ success: boolean; record: any }> {
   try {
-    const res = await fetch(`${API_BASE_URL}/api/url-check`, {
+    const res = await fetch(`${getApiBaseUrl()}/api/url-check`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
@@ -183,9 +177,8 @@ export async function checkUrlApi(payload: {
     }
     return await res.json();
   } catch (err) {
-    console.warn('[MANAK] Backend checkUrl error or unreachable:', (err as Error).message);
-    const rawText = `E-Commerce Product Listing. URL: ${payload.url || ''}.`;
-    return buildLocalScanRecord(rawText, undefined, payload.performed_by, 'url_check', undefined, payload.url, payload.platform);
+    console.warn('[MANAK] Backend checkUrl unreachable — running direct client-side URL check:', (err as Error).message);
+    return await checkUrlClientSide(payload);
   }
 }
 
@@ -193,7 +186,7 @@ export async function checkUrlApi(payload: {
 
 export async function fetchHistoryApi(): Promise<InspectionRecord[]> {
   try {
-    const res = await fetch(`${API_BASE_URL}/api/history`, { signal: AbortSignal.timeout(5000) });
+    const res = await fetch(`${getApiBaseUrl()}/api/history`, { signal: AbortSignal.timeout(5000) });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     return data.inspections || [];
@@ -206,7 +199,7 @@ export async function fetchHistoryApi(): Promise<InspectionRecord[]> {
 
 export async function fetchConsumerReportsApi(): Promise<ConsumerReport[]> {
   try {
-    const res = await fetch(`${API_BASE_URL}/api/consumer-reports`, { signal: AbortSignal.timeout(5000) });
+    const res = await fetch(`${getApiBaseUrl()}/api/consumer-reports`, { signal: AbortSignal.timeout(5000) });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     return data.reports || [];
@@ -217,7 +210,7 @@ export async function fetchConsumerReportsApi(): Promise<ConsumerReport[]> {
 
 export async function submitConsumerReportApi(report: Partial<ConsumerReport>): Promise<ConsumerReport> {
   try {
-    const res = await fetch(`${API_BASE_URL}/api/consumer-report`, {
+    const res = await fetch(`${getApiBaseUrl()}/api/consumer-report`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(report),
@@ -247,7 +240,7 @@ export async function submitConsumerReportApi(report: Partial<ConsumerReport>): 
 // ─── Sync ─────────────────────────────────────────────────────────────────────
 
 export async function syncQueueApi(queuedInspections: InspectionRecord[]) {
-  const res = await fetch(`${API_BASE_URL}/api/sync`, {
+  const res = await fetch(`${getApiBaseUrl()}/api/sync`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ queued_inspections: queuedInspections }),
@@ -261,7 +254,7 @@ export async function syncQueueApi(queuedInspections: InspectionRecord[]) {
 
 export async function askComplianceChatApi(question: string) {
   try {
-    const res = await fetch(`${API_BASE_URL}/api/chat`, {
+    const res = await fetch(`${getApiBaseUrl()}/api/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ question }),

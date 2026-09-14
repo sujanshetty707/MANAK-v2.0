@@ -30,9 +30,9 @@
     "semantic_hash": ""
   },
   "src/components/common/Header.tsx": {
-    "mtime": 1789293865.1084278,
-    "seen": 1789314509.1534436,
-    "ast_hash": "ad5bdffb49807186dc697e019b08ddfa",
+    "mtime": 1789382218.3745878,
+    "seen": 1789382341.1515539,
+    "ast_hash": "a42bfdeb97c85377f2862c3b4f942759",
     "semantic_hash": ""
   },
   "src/components/screens/AnalysisResultsScreen.tsx": {
@@ -612,9 +612,9 @@
     "semantic_hash": ""
   },
   ".github/workflows/build-apk.yml": {
-    "mtime": 1789244584.9030693,
-    "seen": 1789244675.0424578,
-    "ast_hash": "01803c4aadd20eb592a6c3eb19ed2d29",
+    "mtime": 1789382240.011843,
+    "seen": 1789382341.165952,
+    "ast_hash": "df1aab27bafecb24d9bd261fc74f65d5",
     "semantic_hash": ""
   },
   "server/index.js": {
@@ -630,9 +630,9 @@
     "semantic_hash": ""
   },
   "src/services/api.ts": {
-    "mtime": 1789378975.5550573,
-    "seen": 1789380327.9957473,
-    "ast_hash": "c50e8aeee947f35c9972208bbd29ec56",
+    "mtime": 1789382266.115749,
+    "seen": 1789382341.1587424,
+    "ast_hash": "12472f00d71872cc21d1794fe0007fa7",
     "semantic_hash": ""
   },
   "server/services/geminiExtraction.ts": {
@@ -705,6 +705,24 @@
     "mtime": 1789377839.1541264,
     "seen": 1789380327.9885807,
     "ast_hash": "458d0472037fc8f0bd45849f19528b16",
+    "semantic_hash": ""
+  },
+  "src/components/common/ServerSettingsModal.tsx": {
+    "mtime": 1789382192.2013707,
+    "seen": 1789382341.1515586,
+    "ast_hash": "bfc84ff2fc44352aa3957c6416eaa072",
+    "semantic_hash": ""
+  },
+  "src/services/clientGeminiVision.ts": {
+    "mtime": 1789382279.712669,
+    "seen": 1789382341.1587493,
+    "ast_hash": "28e651db097ea7368441c0df381094ee",
+    "semantic_hash": ""
+  },
+  "src/services/clientUrlCheck.ts": {
+    "mtime": 1789382292.6734755,
+    "seen": 1789382341.1587548,
+    "ast_hash": "1f5e6e6b0970c8a1779ce33bfcf59ce7",
     "semantic_hash": ""
   }
 }

@@ -17,6 +17,32 @@
       "source_location": "L8"
     },
     {
+      "id": "server_services_ecommerceauditservice_ecommerceauditinput",
+      "label": "EcommerceAuditInput",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "server/index.ts",
+      "file_type": "code",
+      "norm_label": "ecommerceauditinput",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "server_services_ecommerceauditservice_extractedlistingdata",
+      "label": "ExtractedListingData",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "server/index.ts",
+      "file_type": "code",
+      "norm_label": "extractedlistingdata",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L12"
+    },
+    {
       "id": "android_app_src_androidtest_java_com_getcapacitor_myapp_exampleinstrumentedtest_exampleinstrumentedtest",
       "label": "ExampleInstrumentedTest",
       "_callable": true,
@@ -56,19 +82,6 @@
       "source_location": "L16"
     },
     {
-      "id": "src_services_ocrsimulation_pipelinestage",
-      "label": "PipelineStage",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "AppContext.tsx",
-      "file_type": "code",
-      "norm_label": "pipelinestage",
-      "source_file": "src/services/ocrSimulation.ts",
-      "source_location": "L7"
-    },
-    {
       "id": "src_types_index_appscreen",
       "label": "AppScreen",
       "_callable": true,
@@ -106,19 +119,6 @@
       "norm_label": "consumerreport",
       "source_file": "src/types/index.ts",
       "source_location": "L135"
-    },
-    {
-      "id": "src_types_index_extractionfield",
-      "label": "ExtractionField",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "AppContext.tsx",
-      "file_type": "code",
-      "norm_label": "extractionfield",
-      "source_file": "src/types/index.ts",
-      "source_location": "L45"
     },
     {
       "id": "src_types_index_inspectionrecord",
@@ -199,32 +199,6 @@
       "source_location": "L7"
     },
     {
-      "id": "server_services_ecommerceauditservice_ecommerceauditinput",
-      "label": "EcommerceAuditInput",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "ecommerceauditinput",
-      "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "server_services_ecommerceauditservice_extractedlistingdata",
-      "label": "ExtractedListingData",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "extractedlistingdata",
-      "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L12"
-    },
-    {
       "id": "server_services_googlevisionocr_googlevisionocrresult",
       "label": "GoogleVisionOcrResult",
       "_callable": true,
@@ -236,6 +210,32 @@
       "norm_label": "googlevisionocrresult",
       "source_file": "server/services/googleVisionOcr.ts",
       "source_location": "L7"
+    },
+    {
+      "id": "src_services_ocrsimulation_pipelinestage",
+      "label": "PipelineStage",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "code",
+      "norm_label": "pipelinestage",
+      "source_file": "src/services/ocrSimulation.ts",
+      "source_location": "L7"
+    },
+    {
+      "id": "src_types_index_extractionfield",
+      "label": "ExtractionField",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "code",
+      "norm_label": "extractionfield",
+      "source_file": "src/types/index.ts",
+      "source_location": "L45"
     },
     {
       "id": "src_types_index_extractionresult",
@@ -611,6 +611,66 @@
       "source_location": "L7"
     },
     {
+      "id": "server_services_ecommerceauditservice_auditecommerceurl",
+      "label": "auditEcommerceUrl()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "server/index.ts",
+      "file_type": "code",
+      "norm_label": "auditecommerceurl()",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L284"
+    },
+    {
+      "id": "server_services_ecommerceauditservice_extractdeclarationswithgemini",
+      "label": "extractDeclarationsWithGemini()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "server/index.ts",
+      "file_type": "code",
+      "norm_label": "extractdeclarationswithgemini()",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L159"
+    },
+    {
+      "id": "server_services_ecommerceauditservice_fetchlistingcontent",
+      "label": "fetchListingContent()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "server/index.ts",
+      "file_type": "code",
+      "norm_label": "fetchlistingcontent()",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L77"
+    },
+    {
+      "id": "server_services_ecommerceauditservice_normalizeecommerceurl",
+      "label": "normalizeEcommerceUrl()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "server/index.ts",
+      "file_type": "code",
+      "norm_label": "normalizeecommerceurl()",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L27"
+    },
+    {
+      "id": "server_services_ecommerceauditservice_resolveredirects",
+      "label": "resolveRedirects()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "server/index.ts",
+      "file_type": "code",
+      "norm_label": "resolveredirects()",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L60"
+    },
+    {
       "id": "android_app_src_androidtest_java_com_getcapacitor_myapp_exampleinstrumentedtest_exampleinstrumentedtest_useappcontext",
       "label": ".useAppContext()",
       "_callable": true,
@@ -783,18 +843,6 @@
       "source_location": "L249"
     },
     {
-      "id": "src_services_ocrsimulation_simulateextractionpipeline",
-      "label": "simulateExtractionPipeline()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "AppContext.tsx",
-      "file_type": "code",
-      "norm_label": "simulateextractionpipeline()",
-      "source_file": "src/services/ocrSimulation.ts",
-      "source_location": "L22"
-    },
-    {
       "id": "src_services_offlinestorage_addtoofflinequeue",
       "label": "addToOfflineQueue()",
       "_callable": true,
@@ -949,54 +997,6 @@
       "source_location": "L8"
     },
     {
-      "id": "server_services_ecommerceauditservice_auditecommerceurl",
-      "label": "auditEcommerceUrl()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "auditecommerceurl()",
-      "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L336"
-    },
-    {
-      "id": "server_services_ecommerceauditservice_extractdeclarationswithgemini",
-      "label": "extractDeclarationsWithGemini()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "extractdeclarationswithgemini()",
-      "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L186"
-    },
-    {
-      "id": "server_services_ecommerceauditservice_fetchlistingcontent",
-      "label": "fetchListingContent()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "fetchlistingcontent()",
-      "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L81"
-    },
-    {
-      "id": "server_services_ecommerceauditservice_normalizeecommerceurl",
-      "label": "normalizeEcommerceUrl()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "normalizeecommerceurl()",
-      "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L41"
-    },
-    {
       "id": "server_services_geminiextraction_extractlabelwithgemini",
       "label": "extractLabelWithGemini()",
       "_callable": true,
@@ -1066,7 +1066,7 @@
       "file_type": "code",
       "norm_label": "extractconsumeraddress()",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L158"
+      "source_location": "L165"
     },
     {
       "id": "src_services_labelparser_extractdate",
@@ -1174,7 +1174,7 @@
       "file_type": "code",
       "norm_label": "extractorigin()",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L150"
+      "source_location": "L153"
     },
     {
       "id": "src_services_labelparser_extractphone",
@@ -1222,7 +1222,19 @@
       "file_type": "code",
       "norm_label": "parselabeltext()",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L173"
+      "source_location": "L180"
+    },
+    {
+      "id": "src_services_ocrsimulation_simulateextractionpipeline",
+      "label": "simulateExtractionPipeline()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "code",
+      "norm_label": "simulateextractionpipeline()",
+      "source_file": "src/services/ocrSimulation.ts",
+      "source_location": "L22"
     },
     {
       "id": "src_services_pdfreportgenerator_generateinspectionpdf",
@@ -1613,6 +1625,17 @@
       "norm_label": "imageutils.ts",
       "source_file": "src/utils/imageUtils.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "ref_capacitor_camera",
+      "label": "@capacitor/camera",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "App.tsx",
+      "file_type": "concept",
+      "norm_label": "@capacitor/camera",
+      "source_file": "package.json",
+      "source_location": "L20"
     },
     {
       "id": "ref_capacitor_core",
@@ -2316,6 +2339,171 @@
       "source_location": "L1"
     },
     {
+      "id": "server_index_js_server_index",
+      "label": "index.js",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "server/index.ts",
+      "file_type": "code",
+      "norm_label": "index.js",
+      "source_file": "server/index.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "server_index_js_server_index_app",
+      "label": "app",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "server/index.ts",
+      "file_type": "code",
+      "norm_label": "app",
+      "source_file": "server/index.js",
+      "source_location": "L6"
+    },
+    {
+      "id": "server_index_js_server_index_db",
+      "label": "db",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "server/index.ts",
+      "file_type": "code",
+      "norm_label": "db",
+      "source_file": "server/index.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "server_index_ts_server_index",
+      "label": "server/index.ts",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "server/index.ts",
+      "file_type": "code",
+      "norm_label": "server/index.ts",
+      "source_file": "server/index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "server_index_ts_server_index_app",
+      "label": "app",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "server/index.ts",
+      "file_type": "code",
+      "norm_label": "app",
+      "source_file": "server/index.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "server_index_ts_server_index_db",
+      "label": "db",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "server/index.ts",
+      "file_type": "code",
+      "norm_label": "db",
+      "source_file": "server/index.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "server_services_ecommerceauditservice",
+      "label": "ecommerceAuditService.ts",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "server/index.ts",
+      "file_type": "code",
+      "norm_label": "ecommerceauditservice.ts",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "server_services_supabaseadmin",
+      "label": "supabaseAdmin.ts",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "server/index.ts",
+      "file_type": "code",
+      "norm_label": "supabaseadmin.ts",
+      "source_file": "server/services/supabaseAdmin.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "server_services_supabaseadmin_supabaseadmin",
+      "label": "supabaseAdmin",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "server/index.ts",
+      "file_type": "code",
+      "norm_label": "supabaseadmin",
+      "source_file": "server/services/supabaseAdmin.ts",
+      "source_location": "L9"
+    },
+    {
+      "id": "src_lib_supabase",
+      "label": "supabase.ts",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "server/index.ts",
+      "file_type": "code",
+      "norm_label": "supabase.ts",
+      "source_file": "src/lib/supabase.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_lib_supabase_supabase",
+      "label": "supabase",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "server/index.ts",
+      "file_type": "code",
+      "norm_label": "supabase",
+      "source_file": "src/lib/supabase.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "ref_cors",
+      "label": "cors",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "server/index.ts",
+      "file_type": "concept",
+      "norm_label": "cors",
+      "source_file": "package.json",
+      "source_location": "L28"
+    },
+    {
+      "id": "ref_dotenv",
+      "label": "dotenv",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "server/index.ts",
+      "file_type": "concept",
+      "norm_label": "dotenv",
+      "source_file": "package.json",
+      "source_location": "L29"
+    },
+    {
+      "id": "ref_express",
+      "label": "express",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "server/index.ts",
+      "file_type": "concept",
+      "norm_label": "express",
+      "source_file": "package.json",
+      "source_location": "L30"
+    },
+    {
+      "id": "ref_supabase_supabase_js",
+      "label": "@supabase/supabase-js",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "server/index.ts",
+      "file_type": "concept",
+      "norm_label": "@supabase/supabase-js",
+      "source_file": "package.json",
+      "source_location": "L24"
+    },
+    {
       "id": "agents_skills_ponytail_debt_skill",
       "label": "ponytail-debt/SKILL.md",
       "_origin": "ast",
@@ -2929,17 +3117,6 @@
       "source_location": "L19"
     },
     {
-      "id": "ref_capacitor_camera",
-      "label": "@capacitor/camera",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "@capacitor/camera",
-      "source_file": "package.json",
-      "source_location": "L20"
-    },
-    {
       "id": "ref_capacitor_cli",
       "label": "@capacitor/cli",
       "_origin": "ast",
@@ -3037,6 +3214,17 @@
       "norm_label": "tailwindcss",
       "source_file": "package.json",
       "source_location": "L46"
+    },
+    {
+      "id": "ref_tesseract_js",
+      "label": "tesseract.js",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "package.json",
+      "file_type": "concept",
+      "norm_label": "tesseract.js",
+      "source_file": "package.json",
+      "source_location": "L37"
     },
     {
       "id": "ref_tsx",
@@ -3182,17 +3370,6 @@
       "source_location": ""
     },
     {
-      "id": "src_components_screens_extractionprocessingscreen",
-      "label": "ExtractionProcessingScreen.tsx",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "AppContext.tsx",
-      "file_type": "code",
-      "norm_label": "extractionprocessingscreen.tsx",
-      "source_file": "src/components/screens/ExtractionProcessingScreen.tsx",
-      "source_location": "L1"
-    },
-    {
       "id": "src_context_appcontext",
       "label": "AppContext.tsx",
       "_origin": "ast",
@@ -3213,61 +3390,6 @@
       "norm_label": "appcontext",
       "source_file": "src/context/AppContext.tsx",
       "source_location": "L62"
-    },
-    {
-      "id": "src_data_mockdata",
-      "label": "mockData.ts",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "AppContext.tsx",
-      "file_type": "code",
-      "norm_label": "mockdata.ts",
-      "source_file": "src/data/mockData.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_mockdata_mock_consumer_reports",
-      "label": "MOCK_CONSUMER_REPORTS",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "AppContext.tsx",
-      "file_type": "code",
-      "norm_label": "mock_consumer_reports",
-      "source_file": "src/data/mockData.ts",
-      "source_location": "L12"
-    },
-    {
-      "id": "src_data_mockdata_mock_history",
-      "label": "MOCK_HISTORY",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "AppContext.tsx",
-      "file_type": "code",
-      "norm_label": "mock_history",
-      "source_file": "src/data/mockData.ts",
-      "source_location": "L10"
-    },
-    {
-      "id": "src_data_mockdata_repeat_violator_heatmap",
-      "label": "REPEAT_VIOLATOR_HEATMAP",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "AppContext.tsx",
-      "file_type": "code",
-      "norm_label": "repeat_violator_heatmap",
-      "source_file": "src/data/mockData.ts",
-      "source_location": "L14"
-    },
-    {
-      "id": "src_data_mockdata_sample_products",
-      "label": "SAMPLE_PRODUCTS",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "AppContext.tsx",
-      "file_type": "code",
-      "norm_label": "sample_products",
-      "source_file": "src/data/mockData.ts",
-      "source_location": "L3"
     },
     {
       "id": "src_data_rules",
@@ -3312,28 +3434,6 @@
       "norm_label": "api.ts",
       "source_file": "src/services/api.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "src_services_ocrsimulation",
-      "label": "ocrSimulation.ts",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "AppContext.tsx",
-      "file_type": "code",
-      "norm_label": "ocrsimulation.ts",
-      "source_file": "src/services/ocrSimulation.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_services_ocrsimulation_pipeline_stages",
-      "label": "PIPELINE_STAGES",
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "AppContext.tsx",
-      "file_type": "code",
-      "norm_label": "pipeline_stages",
-      "source_file": "src/services/ocrSimulation.ts",
-      "source_location": "L14"
     },
     {
       "id": "src_services_offlinestorage",
@@ -4444,83 +4544,6 @@
       "source_location": "L1"
     },
     {
-      "id": "server_index_js_server_index",
-      "label": "index.js",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "index.js",
-      "source_file": "server/index.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "server_index_js_server_index_app",
-      "label": "app",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "app",
-      "source_file": "server/index.js",
-      "source_location": "L6"
-    },
-    {
-      "id": "server_index_js_server_index_db",
-      "label": "db",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "db",
-      "source_file": "server/index.js",
-      "source_location": "L13"
-    },
-    {
-      "id": "server_index_ts_server_index",
-      "label": "server/index.ts",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "server/index.ts",
-      "source_file": "server/index.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "server_index_ts_server_index_app",
-      "label": "app",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "app",
-      "source_file": "server/index.ts",
-      "source_location": "L12"
-    },
-    {
-      "id": "server_index_ts_server_index_db",
-      "label": "db",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "db",
-      "source_file": "server/index.ts",
-      "source_location": "L19"
-    },
-    {
-      "id": "server_services_ecommerceauditservice",
-      "label": "ecommerceAuditService.ts",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "ecommerceauditservice.ts",
-      "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "server_services_geminiextraction",
       "label": "geminiExtraction.ts",
       "_origin": "ast",
@@ -4554,48 +4577,70 @@
       "source_location": "L1"
     },
     {
-      "id": "server_services_supabaseadmin",
-      "label": "supabaseAdmin.ts",
+      "id": "src_components_screens_extractionprocessingscreen",
+      "label": "ExtractionProcessingScreen.tsx",
       "_origin": "ast",
       "community": 43,
       "community_name": "labelParser.ts",
       "file_type": "code",
-      "norm_label": "supabaseadmin.ts",
-      "source_file": "server/services/supabaseAdmin.ts",
+      "norm_label": "extractionprocessingscreen.tsx",
+      "source_file": "src/components/screens/ExtractionProcessingScreen.tsx",
       "source_location": "L1"
     },
     {
-      "id": "server_services_supabaseadmin_supabaseadmin",
-      "label": "supabaseAdmin",
+      "id": "src_data_mockdata",
+      "label": "mockData.ts",
       "_origin": "ast",
       "community": 43,
       "community_name": "labelParser.ts",
       "file_type": "code",
-      "norm_label": "supabaseadmin",
-      "source_file": "server/services/supabaseAdmin.ts",
-      "source_location": "L9"
-    },
-    {
-      "id": "src_lib_supabase",
-      "label": "supabase.ts",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "code",
-      "norm_label": "supabase.ts",
-      "source_file": "src/lib/supabase.ts",
+      "norm_label": "mockdata.ts",
+      "source_file": "src/data/mockData.ts",
       "source_location": "L1"
     },
     {
-      "id": "src_lib_supabase_supabase",
-      "label": "supabase",
+      "id": "src_data_mockdata_mock_consumer_reports",
+      "label": "MOCK_CONSUMER_REPORTS",
       "_origin": "ast",
       "community": 43,
       "community_name": "labelParser.ts",
       "file_type": "code",
-      "norm_label": "supabase",
-      "source_file": "src/lib/supabase.ts",
-      "source_location": "L6"
+      "norm_label": "mock_consumer_reports",
+      "source_file": "src/data/mockData.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "src_data_mockdata_mock_history",
+      "label": "MOCK_HISTORY",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "code",
+      "norm_label": "mock_history",
+      "source_file": "src/data/mockData.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "src_data_mockdata_repeat_violator_heatmap",
+      "label": "REPEAT_VIOLATOR_HEATMAP",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "code",
+      "norm_label": "repeat_violator_heatmap",
+      "source_file": "src/data/mockData.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "src_data_mockdata_sample_products",
+      "label": "SAMPLE_PRODUCTS",
+      "_origin": "ast",
+      "community": 43,
+      "community_name": "labelParser.ts",
+      "file_type": "code",
+      "norm_label": "sample_products",
+      "source_file": "src/data/mockData.ts",
+      "source_location": "L3"
     },
     {
       "id": "src_services_labelparser",
@@ -4609,59 +4654,26 @@
       "source_location": "L1"
     },
     {
-      "id": "ref_cors",
-      "label": "cors",
+      "id": "src_services_ocrsimulation",
+      "label": "ocrSimulation.ts",
       "_origin": "ast",
       "community": 43,
       "community_name": "labelParser.ts",
-      "file_type": "concept",
-      "norm_label": "cors",
-      "source_file": "package.json",
-      "source_location": "L28"
+      "file_type": "code",
+      "norm_label": "ocrsimulation.ts",
+      "source_file": "src/services/ocrSimulation.ts",
+      "source_location": "L1"
     },
     {
-      "id": "ref_dotenv",
-      "label": "dotenv",
+      "id": "src_services_ocrsimulation_pipeline_stages",
+      "label": "PIPELINE_STAGES",
       "_origin": "ast",
       "community": 43,
       "community_name": "labelParser.ts",
-      "file_type": "concept",
-      "norm_label": "dotenv",
-      "source_file": "package.json",
-      "source_location": "L29"
-    },
-    {
-      "id": "ref_express",
-      "label": "express",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "concept",
-      "norm_label": "express",
-      "source_file": "package.json",
-      "source_location": "L30"
-    },
-    {
-      "id": "ref_supabase_supabase_js",
-      "label": "@supabase/supabase-js",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "concept",
-      "norm_label": "@supabase/supabase-js",
-      "source_file": "package.json",
-      "source_location": "L24"
-    },
-    {
-      "id": "ref_tesseract_js",
-      "label": "tesseract.js",
-      "_origin": "ast",
-      "community": 43,
-      "community_name": "labelParser.ts",
-      "file_type": "concept",
-      "norm_label": "tesseract.js",
-      "source_file": "package.json",
-      "source_location": "L37"
+      "file_type": "code",
+      "norm_label": "pipeline_stages",
+      "source_file": "src/services/ocrSimulation.ts",
+      "source_location": "L14"
     },
     {
       "id": "prd",
@@ -5905,7 +5917,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L340",
+      "source_location": "L285",
       "weight": 1.0
     },
     {
@@ -5917,7 +5929,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L345",
+      "source_location": "L288",
       "weight": 1.0
     },
     {
@@ -5929,7 +5941,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L348",
+      "source_location": "L298",
+      "weight": 1.0
+    },
+    {
+      "source": "server_services_ecommerceauditservice_fetchlistingcontent",
+      "target": "server_services_ecommerceauditservice_resolveredirects",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L83",
       "weight": 1.0
     },
     {
@@ -5953,7 +5977,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server/services/googleVisionOcr.ts",
-      "source_location": "L230",
+      "source_location": "L231",
       "weight": 1.0
     },
     {
@@ -5989,7 +6013,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server/services/ocrService.ts",
-      "source_location": "L89",
+      "source_location": "L75",
       "weight": 1.0
     },
     {
@@ -6001,7 +6025,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server/services/ocrService.ts",
-      "source_location": "L98",
+      "source_location": "L84",
       "weight": 1.0
     },
     {
@@ -6685,7 +6709,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L174",
+      "source_location": "L181",
       "weight": 1.0
     },
     {
@@ -6697,7 +6721,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L176",
+      "source_location": "L183",
       "weight": 1.0
     },
     {
@@ -6709,7 +6733,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L177",
+      "source_location": "L184",
       "weight": 1.0
     },
     {
@@ -6721,7 +6745,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L178",
+      "source_location": "L185",
       "weight": 1.0
     },
     {
@@ -6733,7 +6757,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L179",
+      "source_location": "L186",
       "weight": 1.0
     },
     {
@@ -6745,7 +6769,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L180",
+      "source_location": "L187",
       "weight": 1.0
     },
     {
@@ -6757,7 +6781,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L181",
+      "source_location": "L188",
       "weight": 1.0
     },
     {
@@ -6769,7 +6793,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L182",
+      "source_location": "L189",
       "weight": 1.0
     },
     {
@@ -6781,7 +6805,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L183",
+      "source_location": "L190",
       "weight": 1.0
     },
     {
@@ -6793,7 +6817,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L184",
+      "source_location": "L191",
       "weight": 1.0
     },
     {
@@ -6805,7 +6829,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L185",
+      "source_location": "L192",
       "weight": 1.0
     },
     {
@@ -6817,7 +6841,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L188",
+      "source_location": "L195",
       "weight": 1.0
     },
     {
@@ -13963,18 +13987,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L186",
-      "weight": 1.0
-    },
-    {
-      "source": "server_services_ecommerceauditservice",
-      "target": "server_services_ecommerceauditservice_auditecommerceurl",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L336",
+      "source_location": "L159",
       "weight": 1.0
     },
     {
@@ -13985,7 +13998,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L41",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "server_services_ecommerceauditservice",
+      "target": "server_services_ecommerceauditservice_auditecommerceurl",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L284",
       "weight": 1.0
     },
     {
@@ -14001,13 +14025,24 @@
     },
     {
       "source": "server_services_ecommerceauditservice",
+      "target": "server_services_ecommerceauditservice_resolveredirects",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L60",
+      "weight": 1.0
+    },
+    {
+      "source": "server_services_ecommerceauditservice",
       "target": "server_services_ecommerceauditservice_fetchlistingcontent",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L81",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
@@ -14810,7 +14845,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L150",
+      "source_location": "L153",
       "weight": 1.0
     },
     {
@@ -14821,7 +14856,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L158",
+      "source_location": "L165",
       "weight": 1.0
     },
     {
@@ -14832,7 +14867,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/labelParser.ts",
-      "source_location": "L173",
+      "source_location": "L180",
       "weight": 1.0
     },
     {
@@ -15749,5 +15784,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "4a56158b37e766f2709d2d97c1fd52c35212a5fe"
+  "built_at_commit": "157b81dc06a6fd066532acc98de89ca6a8ce84c3"
 }

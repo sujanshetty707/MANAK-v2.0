@@ -52,20 +52,7 @@ export async function extractLabelFromImage(
   if (hasKey && hasImage) {
     try {
       const visionRes = await processGoogleVisionOcr(imagesList, rawTextHint);
-      // Check if Google Lens Vision AI extracted meaningful data
-      const hasExtractedData =
-        visionRes.engine.includes('Google Lens') &&
-        (
-          visionRes.raw_ocr_text.trim().length > 0 ||
-          !!visionRes.extraction?.generic_name?.value ||
-          !!visionRes.extraction?.manufacturer?.value ||
-          (visionRes.extraction?.mrp?.value?.amount ?? 0) > 0 ||
-          (visionRes.extraction?.net_quantity?.value?.amount ?? 0) > 0 ||
-          !!visionRes.extraction?.mfg_date?.value ||
-          !!visionRes.extraction?.consumer_care?.value?.phone
-        );
-
-      if (hasExtractedData) {
+      if (visionRes && visionRes.engine.includes('Google Lens')) {
         console.log(`[OCR] Successfully processed ${imagesList.length} image(s) with ${visionRes.engine}`);
         return {
           extraction: visionRes.extraction,
@@ -74,9 +61,8 @@ export async function extractLabelFromImage(
           category:   visionRes.product_category,
         };
       }
-      console.warn('[OCR] Google Lens returned empty result, falling back to Tesseract');
     } catch (err) {
-      console.warn('[OCR] Google Lens failed, falling back to Tesseract:', (err as Error).message);
+      console.warn('[OCR] Google Lens failed:', (err as Error).message);
     }
   }
 

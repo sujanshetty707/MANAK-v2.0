@@ -5,6 +5,7 @@ import { parseLabelText } from '../src/services/labelParser';
 import { evaluateExtractionAgainstRules } from '../src/services/ruleEngine';
 import { extractLabelFromImage } from './services/ocrService';
 import { supabaseAdmin } from './services/supabaseAdmin';
+import { auditEcommerceUrl } from './services/ecommerceAuditService';
 
 dotenv.config();
 
@@ -371,55 +372,69 @@ app.post('/api/url-check', async (req, res) => {
     return res.status(400).json({ error: 'Provide a product page URL.' });
   }
 
-  const title = dom_extract?.title || 'E-Commerce Product Listing';
-  let rawText = '';
-  if (dom_extract) {
-    rawText = `${dom_extract.title || ''} ${dom_extract.mrp_text || ''} ${dom_extract.net_quantity_text || ''} ${dom_extract.manufacturer_text || ''}`;
-  } else {
-    rawText = `Listing URL: ${url}. Audit of statutory declarations.`;
-  }
+  try {
+    let product: any;
+    let extraction: any;
 
-  const extraction = parseLabelText(rawText);
-  const evalResult = evaluateExtractionAgainstRules(extraction);
-  const inspectionId = `insp-url-${Date.now().toString().slice(-6)}`;
+    if (dom_extract) {
+      const title = dom_extract?.title || 'E-Commerce Product Listing';
+      const rawText = `${dom_extract.title || ''} ${dom_extract.mrp_text || ''} ${dom_extract.net_quantity_text || ''} ${dom_extract.manufacturer_text || ''}`;
+      extraction = parseLabelText(rawText);
+      product = {
+        id: `prod-url-${Date.now().toString().slice(-6)}`,
+        title,
+        brand: dom_extract?.manufacturer_text ? dom_extract.manufacturer_text.split(',')[0] : 'Online Marketplace Listing',
+        category: 'E-Commerce Commodity',
+        source_type: 'ecommerce',
+        ecommerce_platform: platform || 'other',
+        ecommerce_url: url,
+        image_url: dom_extract?.images?.[0] || ''
+      };
+    } else {
+      // End-to-end Fetch & Gemini Statutory Extraction Pipeline
+      const auditResult = await auditEcommerceUrl({ url, platform, performed_by });
+      product = auditResult.product;
+      extraction = auditResult.extraction;
+    }
 
-  const record = {
-    id: inspectionId,
-    product: {
-      id: `prod-url-${Date.now().toString().slice(-6)}`,
-      title,
-      brand: dom_extract?.manufacturer_text ? dom_extract.manufacturer_text.split(',')[0] : 'Online Marketplace Listing',
-      category: 'E-Commerce Commodity',
-      source_type: 'ecommerce',
-      ecommerce_platform: platform || 'other',
-      ecommerce_url: url,
-      image_url: dom_extract?.images?.[0] || ''
-    },
-    performed_by: performed_by || { name: 'Enforcement Official', badge_id: 'LM-OFFICER-01' },
-    mode: 'url_check',
-    status: 'verified',
-    geo: { lat: 0, lng: 0, address: 'Online Audit Session' },
-    timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19),
-    evidence_image: dom_extract?.images?.[0] || '',
-    evidence_hash: `sha256-url-${Math.random().toString(36).substring(2, 15)}`,
-    extraction,
-    evaluations: evalResult.evaluations,
-    is_compliant: evalResult.is_compliant,
-    total_violations: evalResult.total_violations,
-    total_penalty: evalResult.total_penalty,
-    is_signed: true,
-    signature_details: {
-      signed_by: `${performed_by?.name || 'Officer'} (Digital DSC)`,
+    const evalResult = evaluateExtractionAgainstRules(extraction);
+    const inspectionId = `insp-url-${Date.now().toString().slice(-6)}`;
+
+    const record = {
+      id: inspectionId,
+      product,
+      performed_by: performed_by || { name: 'Enforcement Official', badge_id: 'LM-OFFICER-01' },
+      mode: 'url_check',
+      status: 'verified',
+      geo: { lat: 0, lng: 0, address: 'Online Audit Session' },
       timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19),
-      provider: 'documenso',
-      certificate_id: `DSC-IN-LM-${Date.now().toString().slice(-6)}`
-    },
-    report_id: `MANAK-REP-2026-${Date.now().toString().slice(-5)}`,
-    synced: true
-  };
+      evidence_image: product.image_url || '',
+      evidence_hash: `sha256-url-${Math.random().toString(36).substring(2, 15)}`,
+      extraction,
+      evaluations: evalResult.evaluations,
+      is_compliant: evalResult.is_compliant,
+      total_violations: evalResult.total_violations,
+      total_penalty: evalResult.total_penalty,
+      is_signed: true,
+      signature_details: {
+        signed_by: `${performed_by?.name || 'Officer'} (Digital DSC)`,
+        timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19),
+        provider: 'documenso',
+        certificate_id: `DSC-IN-LM-${Date.now().toString().slice(-6)}`
+      },
+      report_id: `MANAK-REP-2026-${Date.now().toString().slice(-5)}`,
+      synced: true
+    };
 
-  db.inspections.unshift(record);
-  res.json({ success: true, record });
+    db.inspections.unshift(record);
+    return res.json({ success: true, record });
+  } catch (err) {
+    console.error('[url-check] Error during e-commerce audit:', err);
+    return res.status(500).json({
+      error: 'Failed to complete e-commerce audit.',
+      details: (err as Error).message
+    });
+  }
 });
 
 // ─── Inspection History ──────────────────────────────────────────────────────

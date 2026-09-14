@@ -110,8 +110,8 @@ Rules:
 4. Keep raw_ocr_text complete and comprehensive from all panels.
 5. Return ONLY pure JSON without markdown tags or backticks.`;
 
-      // Models list with fallback: Gemini 3.7 Flash -> Gemini Flash Lite -> Gemini 3.5 Flash Lite -> Gemini 3.6 Flash
-      const models = ['models/gemini-3.7-flash', 'models/gemini-flash-lite-latest', 'models/gemini-3.5-flash-lite', 'models/gemini-3.6-flash'];
+      // Models list: gemini-3.6-flash (fast, standard Vision) -> gemini-flash-lite-latest (lite fallback)
+      const models = ['models/gemini-3.6-flash', 'models/gemini-flash-lite-latest'];
       let response: Response | null = null;
 
       // Build image parts for all provided images
@@ -174,8 +174,9 @@ Rules:
         const jsonText = data.candidates?.[0]?.content?.parts?.[0]?.text;
         if (jsonText) {
           try {
-            // Clean potential markdown wrapper
-            const cleanJson = jsonText.replace(/```json/gi, '').replace(/```/g, '').trim();
+            // Robust JSON extraction using regex matching for outermost object
+            const jsonMatch = jsonText.match(/\{[\s\S]*\}/);
+            const cleanJson = jsonMatch ? jsonMatch[0] : jsonText.replace(/```json/gi, '').replace(/```/g, '').trim();
             geminiExtracted = JSON.parse(cleanJson);
             console.log('[Google Lens] Gemini Vision extracted JSON successfully!');
             if (geminiExtracted) {

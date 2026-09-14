@@ -130,7 +130,10 @@ function extractGenericName(text: string): string | null {
   const m = text.match(
     /(?:generic\s+name|product\s+name|commodity|item\s+name|name\s+of\s+commodity|name\s+of\s+the\s+commodity|article)\s*[.:=-]?\s*([A-Za-z0-9][^\n]{2,60})/i
   );
-  if (m) return m[1].trim();
+  if (m) {
+    const rawVal = m[1].trim();
+    return rawVal.replace(/^(?:generic\s+name|product\s+name|commodity|item\s+name|name\s+of\s+commodity|name\s+of\s+the\s+commodity|article)\s*[.:=-]?\s*/i, '').trim();
+  }
 
   // Fallback: check candidate lines for product title
   const lines = text.split('\n').map(l => l.trim()).filter(Boolean);
@@ -151,7 +154,11 @@ function extractOrigin(text: string): string {
   const m = text.match(
     /(?:country\s+of\s+origin|made\s+in|origin)\s*[.:=-]?\s*([A-Za-z][\w\s]{2,25})/i
   );
-  if (m) return m[1].trim().replace(/[.,]$/, '');
+  if (m) {
+    const line = m[1].split('\n')[0].trim().replace(/[.,]$/, '');
+    if (/india/i.test(line)) return 'India';
+    return line;
+  }
   return /\bindia\b/i.test(text) ? 'India' : '';
 }
 

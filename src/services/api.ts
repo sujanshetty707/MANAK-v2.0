@@ -45,7 +45,7 @@ export async function extractLabelApi(payload: {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(20000)
+      signal: AbortSignal.timeout(30000)
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return await res.json();
@@ -175,12 +175,15 @@ export async function checkUrlApi(payload: {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(15000)
+      signal: AbortSignal.timeout(30000)
     });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    if (!res.ok) {
+      const errJson = await res.json().catch(() => ({}));
+      throw new Error(errJson.error || `HTTP ${res.status}`);
+    }
     return await res.json();
-  } catch {
-    console.log('[MANAK] Backend unreachable — running client-side URL check analysis.');
+  } catch (err) {
+    console.warn('[MANAK] Backend checkUrl error or unreachable:', (err as Error).message);
     const rawText = `E-Commerce Product Listing. URL: ${payload.url || ''}.`;
     return buildLocalScanRecord(rawText, undefined, payload.performed_by, 'url_check', undefined, payload.url, payload.platform);
   }

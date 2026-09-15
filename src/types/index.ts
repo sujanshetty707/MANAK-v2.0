@@ -70,6 +70,8 @@ export interface ExtractionResult {
   }>;
 }
 
+export type EvaluationChannel = 'physical_label' | 'online_listing';
+
 export interface ComplianceRule {
   rule_id: string;
   rule_source: string;
@@ -80,6 +82,9 @@ export interface ComplianceRule {
   penalty_amount: number;
   legal_citation: string;
   explanation_template: string;
+  online_required?: boolean;
+  exemption_rule?: string;
+  verification_note?: string;
 }
 
 export interface RuleEvaluation {

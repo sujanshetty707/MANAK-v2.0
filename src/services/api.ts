@@ -1,4 +1,4 @@
-import { InspectionRecord, ConsumerReport, Product, ExtractionResult, RuleEvaluation } from '../types';
+import { InspectionRecord, ConsumerReport, Product, ExtractionResult, RuleEvaluation, EvaluationChannel } from '../types';
 import { parseLabelText } from './labelParser';
 import { evaluateExtractionAgainstRules } from './ruleEngine';
 import { extractLabelClientSide } from './clientGeminiVision';
@@ -79,12 +79,14 @@ export async function evaluateComplianceApi(payload: {
   geo?: any;
   performed_by?: any;
   mode?: 'scan' | 'url_check';
+  channel?: EvaluationChannel;
 }): Promise<{ success: boolean; record: InspectionRecord }> {
+  const channel = payload.channel || (payload.mode === 'url_check' ? 'online_listing' : 'physical_label');
   try {
     const res = await fetch(`${getApiBaseUrl()}/api/evaluate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({ ...payload, channel }),
       signal: AbortSignal.timeout(15000)
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -95,7 +97,7 @@ export async function evaluateComplianceApi(payload: {
     return data;
   } catch {
     console.log('[MANAK] Backend evaluate unreachable — running client-side rule evaluation.');
-    const evalResult = evaluateExtractionAgainstRules(payload.extraction);
+    const evalResult = evaluateExtractionAgainstRules(payload.extraction, channel);
     const inspectionId = crypto.randomUUID();
     const finalProduct: Product = payload.product || {
       id: crypto.randomUUID(),
@@ -185,7 +187,7 @@ export async function checkUrlApi(payload: {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(30000)
+      signal: AbortSignal.timeout(60000)
     });
     if (!res.ok) {
       const errJson = await res.json().catch(() => ({}));

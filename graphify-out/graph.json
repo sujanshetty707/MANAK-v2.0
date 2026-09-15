@@ -118,7 +118,7 @@
       "file_type": "code",
       "norm_label": "compliancerule",
       "source_file": "src/types/index.ts",
-      "source_location": "L73"
+      "source_location": "L75"
     },
     {
       "id": "src_types_index_consumerreport",
@@ -131,7 +131,20 @@
       "file_type": "code",
       "norm_label": "consumerreport",
       "source_file": "src/types/index.ts",
-      "source_location": "L135"
+      "source_location": "L140"
+    },
+    {
+      "id": "src_types_index_evaluationchannel",
+      "label": "EvaluationChannel",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "api.ts",
+      "file_type": "code",
+      "norm_label": "evaluationchannel",
+      "source_file": "src/types/index.ts",
+      "source_location": "L73"
     },
     {
       "id": "src_types_index_extractionresult",
@@ -157,7 +170,7 @@
       "file_type": "code",
       "norm_label": "inspectionrecord",
       "source_file": "src/types/index.ts",
-      "source_location": "L99"
+      "source_location": "L104"
     },
     {
       "id": "src_types_index_product",
@@ -196,7 +209,7 @@
       "file_type": "code",
       "norm_label": "ruleevaluation",
       "source_file": "src/types/index.ts",
-      "source_location": "L85"
+      "source_location": "L90"
     },
     {
       "id": "src_types_index_userrole",
@@ -334,7 +347,7 @@
       "file_type": "code",
       "norm_label": "analysisresultsscreen()",
       "source_file": "src/components/screens/AnalysisResultsScreen.tsx",
-      "source_location": "L7"
+      "source_location": "L25"
     },
     {
       "id": "src_components_screens_camerascanscreen_camerascanscreen",
@@ -637,18 +650,6 @@
       "source_location": "L7"
     },
     {
-      "id": "vite_config_transformindexhtml",
-      "label": "transformIndexHtml()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "transformindexhtml()",
-      "source_file": "vite.config.ts",
-      "source_location": "L9"
-    },
-    {
       "id": "android_app_src_androidtest_java_com_getcapacitor_myapp_exampleinstrumentedtest_exampleinstrumentedtest_useappcontext",
       "label": ".useAppContext()",
       "_callable": true,
@@ -710,7 +711,7 @@
       "file_type": "code",
       "norm_label": "askcompliancechatapi()",
       "source_file": "src/services/api.ts",
-      "source_location": "L299"
+      "source_location": "L301"
     },
     {
       "id": "src_services_api_buildlocalscanrecord",
@@ -722,7 +723,7 @@
       "file_type": "code",
       "norm_label": "buildlocalscanrecord()",
       "source_file": "src/services/api.ts",
-      "source_location": "L316"
+      "source_location": "L318"
     },
     {
       "id": "src_services_api_checkurlapi",
@@ -734,7 +735,7 @@
       "file_type": "code",
       "norm_label": "checkurlapi()",
       "source_file": "src/services/api.ts",
-      "source_location": "L177"
+      "source_location": "L179"
     },
     {
       "id": "src_services_api_evaluatecomplianceapi",
@@ -770,7 +771,7 @@
       "file_type": "code",
       "norm_label": "fetchconsumerreportsapi()",
       "source_file": "src/services/api.ts",
-      "source_location": "L227"
+      "source_location": "L229"
     },
     {
       "id": "src_services_api_fetchhistoryapi",
@@ -782,7 +783,7 @@
       "file_type": "code",
       "norm_label": "fetchhistoryapi()",
       "source_file": "src/services/api.ts",
-      "source_location": "L211"
+      "source_location": "L213"
     },
     {
       "id": "src_services_api_getapibaseurl",
@@ -806,7 +807,7 @@
       "file_type": "code",
       "norm_label": "getlocalchatanswer()",
       "source_file": "src/services/api.ts",
-      "source_location": "L369"
+      "source_location": "L371"
     },
     {
       "id": "src_services_api_loginapi",
@@ -830,7 +831,7 @@
       "file_type": "code",
       "norm_label": "scanproductapi()",
       "source_file": "src/services/api.ts",
-      "source_location": "L148"
+      "source_location": "L150"
     },
     {
       "id": "src_services_api_submitconsumerreportapi",
@@ -842,7 +843,7 @@
       "file_type": "code",
       "norm_label": "submitconsumerreportapi()",
       "source_file": "src/services/api.ts",
-      "source_location": "L241"
+      "source_location": "L243"
     },
     {
       "id": "src_services_api_syncqueueapi",
@@ -854,7 +855,7 @@
       "file_type": "code",
       "norm_label": "syncqueueapi()",
       "source_file": "src/services/api.ts",
-      "source_location": "L275"
+      "source_location": "L277"
     },
     {
       "id": "src_services_clientgeminivision_extractlabelclientside",
@@ -890,7 +891,7 @@
       "file_type": "code",
       "norm_label": "checkurlclientside()",
       "source_file": "src/services/clientUrlCheck.ts",
-      "source_location": "L5"
+      "source_location": "L6"
     },
     {
       "id": "src_services_ocrsimulation_simulateextractionpipeline",
@@ -1011,138 +1012,6 @@
       "source_location": "L8"
     },
     {
-      "id": "src_context_appcontext_appprovider",
-      "label": "AppProvider()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "appprovider()",
-      "source_file": "src/context/AppContext.tsx",
-      "source_location": "L66"
-    },
-    {
-      "id": "src_services_offlinestorage_addtoofflinequeue",
-      "label": "addToOfflineQueue()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "addtoofflinequeue()",
-      "source_file": "src/services/offlineStorage.ts",
-      "source_location": "L57"
-    },
-    {
-      "id": "src_services_offlinestorage_clearofflinequeue",
-      "label": "clearOfflineQueue()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "clearofflinequeue()",
-      "source_file": "src/services/offlineStorage.ts",
-      "source_location": "L64"
-    },
-    {
-      "id": "src_services_offlinestorage_getofflinequeue",
-      "label": "getOfflineQueue()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "getofflinequeue()",
-      "source_file": "src/services/offlineStorage.ts",
-      "source_location": "L48"
-    },
-    {
-      "id": "src_services_offlinestorage_getstoredconsumerreports",
-      "label": "getStoredConsumerReports()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "getstoredconsumerreports()",
-      "source_file": "src/services/offlineStorage.ts",
-      "source_location": "L28"
-    },
-    {
-      "id": "src_services_offlinestorage_getstoredinspections",
-      "label": "getStoredInspections()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "getstoredinspections()",
-      "source_file": "src/services/offlineStorage.ts",
-      "source_location": "L8"
-    },
-    {
-      "id": "src_services_offlinestorage_saveconsumerreport",
-      "label": "saveConsumerReport()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "saveconsumerreport()",
-      "source_file": "src/services/offlineStorage.ts",
-      "source_location": "L38"
-    },
-    {
-      "id": "src_services_offlinestorage_saveinspection",
-      "label": "saveInspection()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "saveinspection()",
-      "source_file": "src/services/offlineStorage.ts",
-      "source_location": "L18"
-    },
-    {
-      "id": "src_services_offlinestorage_savestoredconsumerreports",
-      "label": "saveStoredConsumerReports()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "savestoredconsumerreports()",
-      "source_file": "src/services/offlineStorage.ts",
-      "source_location": "L44"
-    },
-    {
-      "id": "src_services_offlinestorage_savestoredinspections",
-      "label": "saveStoredInspections()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "savestoredinspections()",
-      "source_file": "src/services/offlineStorage.ts",
-      "source_location": "L24"
-    },
-    {
-      "id": "src_services_offlinestorage_syncofflinequeuetoserver",
-      "label": "syncOfflineQueueToServer()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "syncofflinequeuetoserver()",
-      "source_file": "src/services/offlineStorage.ts",
-      "source_location": "L72"
-    },
-    {
       "id": "server_index_ensureuuid",
       "label": "ensureUUID()",
       "_callable": true,
@@ -1176,7 +1045,7 @@
       "file_type": "code",
       "norm_label": "auditecommerceurl()",
       "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L284"
+      "source_location": "L337"
     },
     {
       "id": "server_services_ecommerceauditservice_extractdeclarationswithgemini",
@@ -1188,7 +1057,7 @@
       "file_type": "code",
       "norm_label": "extractdeclarationswithgemini()",
       "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L159"
+      "source_location": "L176"
     },
     {
       "id": "server_services_ecommerceauditservice_fetchlistingcontent",
@@ -1200,7 +1069,7 @@
       "file_type": "code",
       "norm_label": "fetchlistingcontent()",
       "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L77"
+      "source_location": "L76"
     },
     {
       "id": "server_services_ecommerceauditservice_normalizeecommerceurl",
@@ -1212,7 +1081,7 @@
       "file_type": "code",
       "norm_label": "normalizeecommerceurl()",
       "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L27"
+      "source_location": "L28"
     },
     {
       "id": "server_services_ecommerceauditservice_resolveredirects",
@@ -1224,7 +1093,7 @@
       "file_type": "code",
       "norm_label": "resolveredirects()",
       "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L60"
+      "source_location": "L61"
     },
     {
       "id": "server_services_geminiextraction_extractlabelwithgemini",
@@ -1455,6 +1324,18 @@
       "source_location": "L280"
     },
     {
+      "id": "vite_config_transformindexhtml",
+      "label": "transformIndexHtml()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "vite.config.ts",
+      "file_type": "code",
+      "norm_label": "transformindexhtml()",
+      "source_file": "vite.config.ts",
+      "source_location": "L9"
+    },
+    {
       "id": "src_services_pdfreportgenerator_generateinspectionpdf",
       "label": "generateInspectionPDF()",
       "_callable": true,
@@ -1513,6 +1394,138 @@
       "norm_label": "sanitizetext()",
       "source_file": "src/services/pdfReportGenerator.ts",
       "source_location": "L4"
+    },
+    {
+      "id": "src_context_appcontext_appprovider",
+      "label": "AppProvider()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "AppProvider",
+      "file_type": "code",
+      "norm_label": "appprovider()",
+      "source_file": "src/context/AppContext.tsx",
+      "source_location": "L66"
+    },
+    {
+      "id": "src_services_offlinestorage_addtoofflinequeue",
+      "label": "addToOfflineQueue()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "AppProvider",
+      "file_type": "code",
+      "norm_label": "addtoofflinequeue()",
+      "source_file": "src/services/offlineStorage.ts",
+      "source_location": "L57"
+    },
+    {
+      "id": "src_services_offlinestorage_clearofflinequeue",
+      "label": "clearOfflineQueue()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "AppProvider",
+      "file_type": "code",
+      "norm_label": "clearofflinequeue()",
+      "source_file": "src/services/offlineStorage.ts",
+      "source_location": "L64"
+    },
+    {
+      "id": "src_services_offlinestorage_getofflinequeue",
+      "label": "getOfflineQueue()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "AppProvider",
+      "file_type": "code",
+      "norm_label": "getofflinequeue()",
+      "source_file": "src/services/offlineStorage.ts",
+      "source_location": "L48"
+    },
+    {
+      "id": "src_services_offlinestorage_getstoredconsumerreports",
+      "label": "getStoredConsumerReports()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "AppProvider",
+      "file_type": "code",
+      "norm_label": "getstoredconsumerreports()",
+      "source_file": "src/services/offlineStorage.ts",
+      "source_location": "L28"
+    },
+    {
+      "id": "src_services_offlinestorage_getstoredinspections",
+      "label": "getStoredInspections()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "AppProvider",
+      "file_type": "code",
+      "norm_label": "getstoredinspections()",
+      "source_file": "src/services/offlineStorage.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "src_services_offlinestorage_saveconsumerreport",
+      "label": "saveConsumerReport()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "AppProvider",
+      "file_type": "code",
+      "norm_label": "saveconsumerreport()",
+      "source_file": "src/services/offlineStorage.ts",
+      "source_location": "L38"
+    },
+    {
+      "id": "src_services_offlinestorage_saveinspection",
+      "label": "saveInspection()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "AppProvider",
+      "file_type": "code",
+      "norm_label": "saveinspection()",
+      "source_file": "src/services/offlineStorage.ts",
+      "source_location": "L18"
+    },
+    {
+      "id": "src_services_offlinestorage_savestoredconsumerreports",
+      "label": "saveStoredConsumerReports()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "AppProvider",
+      "file_type": "code",
+      "norm_label": "savestoredconsumerreports()",
+      "source_file": "src/services/offlineStorage.ts",
+      "source_location": "L44"
+    },
+    {
+      "id": "src_services_offlinestorage_savestoredinspections",
+      "label": "saveStoredInspections()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "AppProvider",
+      "file_type": "code",
+      "norm_label": "savestoredinspections()",
+      "source_file": "src/services/offlineStorage.ts",
+      "source_location": "L24"
+    },
+    {
+      "id": "src_services_offlinestorage_syncofflinequeuetoserver",
+      "label": "syncOfflineQueueToServer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "AppProvider",
+      "file_type": "code",
+      "norm_label": "syncofflinequeuetoserver()",
+      "source_file": "src/services/offlineStorage.ts",
+      "source_location": "L72"
     },
     {
       "id": "src_app",
@@ -3115,28 +3128,6 @@
       "source_location": "L9"
     },
     {
-      "id": "capacitor_config",
-      "label": "capacitor.config.ts",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "capacitor.config.ts",
-      "source_file": "capacitor.config.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "capacitor_config_config",
-      "label": "config",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "config",
-      "source_file": "capacitor.config.ts",
-      "source_location": "L3"
-    },
-    {
       "id": "package",
       "label": "package.json",
       "_origin": "ast",
@@ -3170,127 +3161,6 @@
       "source_location": "L3"
     },
     {
-      "id": "package_scripts",
-      "label": "scripts",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "scripts",
-      "source_file": "package.json",
-      "source_location": "L6"
-    },
-    {
-      "id": "package_scripts_adb_reverse",
-      "label": "adb:reverse",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "adb:reverse",
-      "source_file": "package.json",
-      "source_location": "L16"
-    },
-    {
-      "id": "package_scripts_build",
-      "label": "build",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "build",
-      "source_file": "package.json",
-      "source_location": "L10"
-    },
-    {
-      "id": "package_scripts_cap_add",
-      "label": "cap:add",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "cap:add",
-      "source_file": "package.json",
-      "source_location": "L12"
-    },
-    {
-      "id": "package_scripts_cap_live",
-      "label": "cap:live",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "cap:live",
-      "source_file": "package.json",
-      "source_location": "L15"
-    },
-    {
-      "id": "package_scripts_cap_open",
-      "label": "cap:open",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "cap:open",
-      "source_file": "package.json",
-      "source_location": "L14"
-    },
-    {
-      "id": "package_scripts_cap_sync",
-      "label": "cap:sync",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "cap:sync",
-      "source_file": "package.json",
-      "source_location": "L13"
-    },
-    {
-      "id": "package_scripts_dev",
-      "label": "dev",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "dev",
-      "source_file": "package.json",
-      "source_location": "L7"
-    },
-    {
-      "id": "package_scripts_preview",
-      "label": "preview",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "preview",
-      "source_file": "package.json",
-      "source_location": "L11"
-    },
-    {
-      "id": "package_scripts_server",
-      "label": "server",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "server",
-      "source_file": "package.json",
-      "source_location": "L8"
-    },
-    {
-      "id": "package_scripts_start",
-      "label": "start",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "start",
-      "source_file": "package.json",
-      "source_location": "L9"
-    },
-    {
       "id": "package_type",
       "label": "type",
       "_origin": "ast",
@@ -3313,39 +3183,6 @@
       "source_location": "L4"
     },
     {
-      "id": "src_lib_supabase",
-      "label": "supabase.ts",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "supabase.ts",
-      "source_file": "src/lib/supabase.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_lib_supabase_supabase",
-      "label": "supabase",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "supabase",
-      "source_file": "src/lib/supabase.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "vite_config",
-      "label": "vite.config.ts",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "vite.config.ts",
-      "source_file": "vite.config.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "ref_autoprefixer",
       "label": "autoprefixer",
       "_origin": "ast",
@@ -3366,17 +3203,6 @@
       "norm_label": "@capacitor/android",
       "source_file": "package.json",
       "source_location": "L19"
-    },
-    {
-      "id": "ref_capacitor_cli",
-      "label": "@capacitor/cli",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "@capacitor/cli",
-      "source_file": "package.json",
-      "source_location": "L21"
     },
     {
       "id": "ref_clsx",
@@ -3443,17 +3269,6 @@
       "norm_label": "react-dom",
       "source_file": "package.json",
       "source_location": "L35"
-    },
-    {
-      "id": "ref_supabase_supabase_js",
-      "label": "@supabase/supabase-js",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "@supabase/supabase-js",
-      "source_file": "package.json",
-      "source_location": "L24"
     },
     {
       "id": "ref_tailwind_merge",
@@ -3542,28 +3357,6 @@
       "norm_label": "typescript",
       "source_file": "package.json",
       "source_location": "L48"
-    },
-    {
-      "id": "ref_vite",
-      "label": "vite",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "vite",
-      "source_file": "package.json",
-      "source_location": "L49"
-    },
-    {
-      "id": "ref_vitejs_plugin_react",
-      "label": "@vitejs/plugin-react",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "@vitejs/plugin-react",
-      "source_file": "package.json",
-      "source_location": "L42"
     },
     {
       "id": "android_app_src_androidtest_java_com_getcapacitor_myapp_exampleinstrumentedtest",
@@ -3717,7 +3510,7 @@
       "file_type": "code",
       "norm_label": "rule_32_penalty_rate",
       "source_file": "src/data/rules.ts",
-      "source_location": "L94"
+      "source_location": "L97"
     },
     {
       "id": "src_services_api",
@@ -4654,15 +4447,340 @@
       "source_location": "L26"
     },
     {
-      "id": "src_services_offlinestorage",
-      "label": "offlineStorage.ts",
+      "id": "senior_engineer_overview",
+      "label": "SENIOR_ENGINEER_OVERVIEW.md",
       "_origin": "ast",
       "community": 41,
-      "community_name": "AppProvider",
-      "file_type": "code",
-      "norm_label": "offlinestorage.ts",
-      "source_file": "src/services/offlineStorage.ts",
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "senior_engineer_overview.md",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
       "source_location": "L1"
+    },
+    {
+      "id": "senior_engineer_overview_1_executive_summary_what_manak_is",
+      "label": "1. Executive Summary & What MANAK Is",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "1. executive summary & what manak is",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L9"
+    },
+    {
+      "id": "senior_engineer_overview_1_rule_7_numeral_height_measurement_constraints",
+      "label": "1. Rule 7 Numeral Height Measurement Constraints",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "1. rule 7 numeral height measurement constraints",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L172"
+    },
+    {
+      "id": "senior_engineer_overview_2_cylindrical_curved_metallic_surface_ocr",
+      "label": "2. Cylindrical, Curved & Metallic Surface OCR",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2. cylindrical, curved & metallic surface ocr",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L176"
+    },
+    {
+      "id": "senior_engineer_overview_2_system_architecture_components",
+      "label": "2. System Architecture & Components",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2. system architecture & components",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L37"
+    },
+    {
+      "id": "senior_engineer_overview_3_e_commerce_dom_selector_drift",
+      "label": "3. E-Commerce DOM Selector Drift",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "3. e-commerce dom selector drift",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L180"
+    },
+    {
+      "id": "senior_engineer_overview_3_technology_stack_tools",
+      "label": "3. Technology Stack & Tools",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "3. technology stack & tools",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L80"
+    },
+    {
+      "id": "senior_engineer_overview_4_end_to_end_system_pipeline",
+      "label": "4. End-to-End System Pipeline",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "4. end-to-end system pipeline",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L109"
+    },
+    {
+      "id": "senior_engineer_overview_4_offline_client_ocr_performance_accuracy",
+      "label": "4. Offline Client OCR Performance & Accuracy",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "4. offline client ocr performance & accuracy",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L184"
+    },
+    {
+      "id": "senior_engineer_overview_5_current_implementation_progress_status",
+      "label": "5. Current Implementation Progress & Status",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "5. current implementation progress & status",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L151"
+    },
+    {
+      "id": "senior_engineer_overview_5_esign_documenso_digilocker_api_credentials",
+      "label": "5. eSign (Documenso / DigiLocker) API Credentials",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "5. esign (documenso / digilocker) api credentials",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L188"
+    },
+    {
+      "id": "senior_engineer_overview_6_technical_limitations_known_challenges",
+      "label": "6. Technical Limitations & Known Challenges",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "6. technical limitations & known challenges",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L170"
+    },
+    {
+      "id": "senior_engineer_overview_7_developer_quickstart_repository_navigation",
+      "label": "7. Developer Quickstart & Repository Navigation",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "7. developer quickstart & repository navigation",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L194"
+    },
+    {
+      "id": "senior_engineer_overview_ai_computer_vision_integrations",
+      "label": "AI & Computer Vision Integrations",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "ai & computer vision integrations",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L100"
+    },
+    {
+      "id": "senior_engineer_overview_backend_api",
+      "label": "Backend & API",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "backend & api",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L89"
+    },
+    {
+      "id": "senior_engineer_overview_codebase_intelligence_knowledge_graph",
+      "label": "Codebase Intelligence & Knowledge Graph",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "codebase intelligence & knowledge graph",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L104"
+    },
+    {
+      "id": "senior_engineer_overview_commands",
+      "label": "Commands",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "commands",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L203"
+    },
+    {
+      "id": "senior_engineer_overview_database_auth_cloud_infrastructure",
+      "label": "Database, Auth & Cloud Infrastructure",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "database, auth & cloud infrastructure",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L94"
+    },
+    {
+      "id": "senior_engineer_overview_frontend_native_mobile",
+      "label": "Frontend & Native Mobile",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "frontend & native mobile",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L82"
+    },
+    {
+      "id": "senior_engineer_overview_key_design_invariant_strict_separation_of_extraction_evaluation",
+      "label": "Key Design Invariant: Strict Separation of Extraction & Evaluation",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "key design invariant: strict separation of extraction & evaluation",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L73"
+    },
+    {
+      "id": "senior_engineer_overview_key_project_directories",
+      "label": "Key Project Directories",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "key project directories",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L196"
+    },
+    {
+      "id": "senior_engineer_overview_manak_technical_architecture_system_pipeline_progress_overview",
+      "label": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "manak \u2014 technical architecture, system pipeline & progress overview",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "senior_engineer_overview_phase_1_input_data_capture",
+      "label": "Phase 1: Input & Data Capture",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "phase 1: input & data capture",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L117"
+    },
+    {
+      "id": "senior_engineer_overview_phase_2_multimodal_ocr_entity_extraction",
+      "label": "Phase 2: Multimodal OCR & Entity Extraction",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "phase 2: multimodal ocr & entity extraction",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L122"
+    },
+    {
+      "id": "senior_engineer_overview_phase_3_human_in_the_loop_review_extractedtextreviewscreen_tsx_file_c_users_shett_desktop_manak_src_components_screens_extractedtextreviewscreen_tsx",
+      "label": "Phase 3: Human-in-the-Loop Review ([`ExtractedTextReviewScreen.tsx`](file:///c:/Users/shett/Desktop/MANAK/src/components/screens/ExtractedTextReviewScreen.tsx))",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "phase 3: human-in-the-loop review ([`extractedtextreviewscreen.tsx`](file:///c:/users/shett/desktop/manak/src/components/screens/extractedtextreviewscreen.tsx))",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L136"
+    },
+    {
+      "id": "senior_engineer_overview_phase_4_deterministic_compliance_audit_sec_65b_pdf_generation",
+      "label": "Phase 4: Deterministic Compliance Audit & Sec 65B PDF Generation",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "phase 4: deterministic compliance audit & sec 65b pdf generation",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L141"
+    },
+    {
+      "id": "senior_engineer_overview_the_core_problem",
+      "label": "The Core Problem",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "the core problem",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L13"
+    },
+    {
+      "id": "senior_engineer_overview_the_manak_solution",
+      "label": "The MANAK Solution",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "MANAK \u2014 Technical Architecture, System Pipeline & Progress Overview",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "the manak solution",
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L27"
     },
     {
       "id": "api_keys_and_setup",
@@ -5092,6 +5210,277 @@
       "source_location": "L1"
     },
     {
+      "id": "package_scripts",
+      "label": "scripts",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "scripts",
+      "source_file": "package.json",
+      "source_location": "L6"
+    },
+    {
+      "id": "package_scripts_adb_reverse",
+      "label": "adb:reverse",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "adb:reverse",
+      "source_file": "package.json",
+      "source_location": "L16"
+    },
+    {
+      "id": "package_scripts_build",
+      "label": "build",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "build",
+      "source_file": "package.json",
+      "source_location": "L10"
+    },
+    {
+      "id": "package_scripts_cap_add",
+      "label": "cap:add",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "cap:add",
+      "source_file": "package.json",
+      "source_location": "L12"
+    },
+    {
+      "id": "package_scripts_cap_live",
+      "label": "cap:live",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "cap:live",
+      "source_file": "package.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "package_scripts_cap_open",
+      "label": "cap:open",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "cap:open",
+      "source_file": "package.json",
+      "source_location": "L14"
+    },
+    {
+      "id": "package_scripts_cap_sync",
+      "label": "cap:sync",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "cap:sync",
+      "source_file": "package.json",
+      "source_location": "L13"
+    },
+    {
+      "id": "package_scripts_dev",
+      "label": "dev",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "dev",
+      "source_file": "package.json",
+      "source_location": "L7"
+    },
+    {
+      "id": "package_scripts_preview",
+      "label": "preview",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "preview",
+      "source_file": "package.json",
+      "source_location": "L11"
+    },
+    {
+      "id": "package_scripts_server",
+      "label": "server",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "server",
+      "source_file": "package.json",
+      "source_location": "L8"
+    },
+    {
+      "id": "package_scripts_start",
+      "label": "start",
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "start",
+      "source_file": "package.json",
+      "source_location": "L9"
+    },
+    {
+      "id": "vite_config",
+      "label": "vite.config.ts",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "vite.config.ts",
+      "file_type": "code",
+      "norm_label": "vite.config.ts",
+      "source_file": "vite.config.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "ref_vite",
+      "label": "vite",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "vite.config.ts",
+      "file_type": "concept",
+      "norm_label": "vite",
+      "source_file": "package.json",
+      "source_location": "L49"
+    },
+    {
+      "id": "ref_vitejs_plugin_react",
+      "label": "@vitejs/plugin-react",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "vite.config.ts",
+      "file_type": "concept",
+      "norm_label": "@vitejs/plugin-react",
+      "source_file": "package.json",
+      "source_location": "L42"
+    },
+    {
+      "id": "capacitor_config",
+      "label": "capacitor.config.ts",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "capacitor.config.ts",
+      "file_type": "code",
+      "norm_label": "capacitor.config.ts",
+      "source_file": "capacitor.config.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "capacitor_config_config",
+      "label": "config",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "capacitor.config.ts",
+      "file_type": "code",
+      "norm_label": "config",
+      "source_file": "capacitor.config.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "ref_capacitor_cli",
+      "label": "@capacitor/cli",
+      "_origin": "ast",
+      "community": 47,
+      "community_name": "capacitor.config.ts",
+      "file_type": "concept",
+      "norm_label": "@capacitor/cli",
+      "source_file": "package.json",
+      "source_location": "L21"
+    },
+    {
+      "id": "manak_channel_gate_addendum",
+      "label": "MANAK_CHANNEL_GATE_ADDENDUM.md",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Addendum: Channel-Gate the Online-Required / Package-Only Split",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "manak_channel_gate_addendum.md",
+      "source_file": "MANAK_CHANNEL_GATE_ADDENDUM.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "manak_channel_gate_addendum_1_add_a_channel_parameter_and_thread_it_through",
+      "label": "1. Add a `channel` parameter and thread it through",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Addendum: Channel-Gate the Online-Required / Package-Only Split",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "1. add a `channel` parameter and thread it through",
+      "source_file": "MANAK_CHANNEL_GATE_ADDENDUM.md",
+      "source_location": "L19"
+    },
+    {
+      "id": "manak_channel_gate_addendum_2_where_channel_gets_set_manak_backend_entry_points",
+      "label": "2. Where `channel` gets set (MANAK backend entry points)",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Addendum: Channel-Gate the Online-Required / Package-Only Split",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2. where `channel` gets set (manak backend entry points)",
+      "source_file": "MANAK_CHANNEL_GATE_ADDENDUM.md",
+      "source_location": "L76"
+    },
+    {
+      "id": "manak_channel_gate_addendum_3_analyze_seller_upload_note",
+      "label": "3. `analyze_seller_upload` note",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Addendum: Channel-Gate the Online-Required / Package-Only Split",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "3. `analyze_seller_upload` note",
+      "source_file": "MANAK_CHANNEL_GATE_ADDENDUM.md",
+      "source_location": "L98"
+    },
+    {
+      "id": "manak_channel_gate_addendum_4_test_to_add",
+      "label": "4. Test to add",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Addendum: Channel-Gate the Online-Required / Package-Only Split",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "4. test to add",
+      "source_file": "MANAK_CHANNEL_GATE_ADDENDUM.md",
+      "source_location": "L104"
+    },
+    {
+      "id": "manak_channel_gate_addendum_5_non_goal",
+      "label": "5. Non-goal",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Addendum: Channel-Gate the Online-Required / Package-Only Split",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "5. non-goal",
+      "source_file": "MANAK_CHANNEL_GATE_ADDENDUM.md",
+      "source_location": "L113"
+    },
+    {
+      "id": "manak_channel_gate_addendum_addendum_channel_gate_the_online_required_package_only_split",
+      "label": "Addendum: Channel-Gate the Online-Required / Package-Only Split",
+      "_origin": "ast",
+      "community": 48,
+      "community_name": "Addendum: Channel-Gate the Online-Required / Package-Only Split",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "addendum: channel-gate the online-required / package-only split",
+      "source_file": "MANAK_CHANNEL_GATE_ADDENDUM.md",
+      "source_location": "L1"
+    },
+    {
       "id": "src_services_pdfreportgenerator",
       "label": "pdfReportGenerator.ts",
       "_origin": "ast",
@@ -5416,6 +5805,50 @@
       "norm_label": "what you must do when invoked",
       "source_file": ".agents/skills/graphify/SKILL.md",
       "source_location": "L49"
+    },
+    {
+      "id": "src_services_offlinestorage",
+      "label": "offlineStorage.ts",
+      "_origin": "ast",
+      "community": 50,
+      "community_name": "AppProvider",
+      "file_type": "code",
+      "norm_label": "offlinestorage.ts",
+      "source_file": "src/services/offlineStorage.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_lib_supabase",
+      "label": "supabase.ts",
+      "_origin": "ast",
+      "community": 51,
+      "community_name": "@supabase/supabase-js",
+      "file_type": "code",
+      "norm_label": "supabase.ts",
+      "source_file": "src/lib/supabase.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_lib_supabase_supabase",
+      "label": "supabase",
+      "_origin": "ast",
+      "community": 51,
+      "community_name": "@supabase/supabase-js",
+      "file_type": "code",
+      "norm_label": "supabase",
+      "source_file": "src/lib/supabase.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "ref_supabase_supabase_js",
+      "label": "@supabase/supabase-js",
+      "_origin": "ast",
+      "community": 51,
+      "community_name": "@supabase/supabase-js",
+      "file_type": "concept",
+      "norm_label": "@supabase/supabase-js",
+      "source_file": "package.json",
+      "source_location": "L24"
     },
     {
       "id": "tsconfig",
@@ -6213,7 +6646,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L285",
+      "source_location": "L338",
       "weight": 1.0
     },
     {
@@ -6225,7 +6658,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L288",
+      "source_location": "L341",
       "weight": 1.0
     },
     {
@@ -6237,7 +6670,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L298",
+      "source_location": "L350",
       "weight": 1.0
     },
     {
@@ -6249,7 +6682,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L83",
+      "source_location": "L82",
       "weight": 1.0
     },
     {
@@ -6405,7 +6838,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/screens/AnalysisResultsScreen.tsx",
-      "source_location": "L16",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -6417,7 +6850,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/components/screens/AnalysisResultsScreen.tsx",
-      "source_location": "L23",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -6957,7 +7390,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L301",
+      "source_location": "L303",
       "weight": 1.0
     },
     {
@@ -6969,7 +7402,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L310",
+      "source_location": "L312",
       "weight": 1.0
     },
     {
@@ -6981,7 +7414,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L325",
+      "source_location": "L327",
       "weight": 1.0
     },
     {
@@ -6993,7 +7426,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L326",
+      "source_location": "L328",
       "weight": 1.0
     },
     {
@@ -7005,7 +7438,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L184",
+      "source_location": "L186",
       "weight": 1.0
     },
     {
@@ -7017,7 +7450,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L196",
+      "source_location": "L198",
       "weight": 1.0
     },
     {
@@ -7029,31 +7462,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L201",
-      "weight": 1.0
-    },
-    {
-      "source": "src_services_api_evaluatecomplianceapi",
-      "target": "src_services_api_getapibaseurl",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/services/api.ts",
-      "source_location": "L84",
-      "weight": 1.0
-    },
-    {
-      "source": "src_services_api_evaluatecomplianceapi",
-      "target": "src_services_supabaseservice_saveinspectiondirecttosupabase",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/services/api.ts",
-      "source_location": "L93",
+      "source_location": "L203",
       "weight": 1.0
     },
     {
@@ -7065,7 +7474,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L98",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_api_evaluatecomplianceapi",
+      "target": "src_services_api_getapibaseurl",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/services/api.ts",
+      "source_location": "L86",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_api_evaluatecomplianceapi",
+      "target": "src_services_supabaseservice_saveinspectiondirecttosupabase",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/services/api.ts",
+      "source_location": "L95",
       "weight": 1.0
     },
     {
@@ -7101,7 +7534,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L229",
+      "source_location": "L231",
       "weight": 1.0
     },
     {
@@ -7113,7 +7546,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L238",
+      "source_location": "L240",
       "weight": 1.0
     },
     {
@@ -7125,7 +7558,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L213",
+      "source_location": "L215",
       "weight": 1.0
     },
     {
@@ -7137,7 +7570,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L222",
+      "source_location": "L224",
       "weight": 1.0
     },
     {
@@ -7161,7 +7594,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L155",
+      "source_location": "L157",
       "weight": 1.0
     },
     {
@@ -7173,7 +7606,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L164",
+      "source_location": "L166",
       "weight": 1.0
     },
     {
@@ -7185,7 +7618,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L169",
+      "source_location": "L171",
       "weight": 1.0
     },
     {
@@ -7197,7 +7630,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L244",
+      "source_location": "L246",
       "weight": 1.0
     },
     {
@@ -7209,7 +7642,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L269",
+      "source_location": "L271",
       "weight": 1.0
     },
     {
@@ -7221,7 +7654,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L277",
+      "source_location": "L279",
       "weight": 1.0
     },
     {
@@ -7233,7 +7666,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/api.ts",
-      "source_location": "L286",
+      "source_location": "L288",
       "weight": 1.0
     },
     {
@@ -7262,18 +7695,6 @@
     },
     {
       "source": "src_services_clienturlcheck_checkurlclientside",
-      "target": "src_services_clientgeminivision_getgeminiapikey",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/services/clientUrlCheck.ts",
-      "source_location": "L11",
-      "weight": 1.0
-    },
-    {
-      "source": "src_services_clienturlcheck_checkurlclientside",
       "target": "src_services_ruleengine_evaluateextractionagainstrules",
       "relation": "calls",
       "_origin": "ast",
@@ -7281,7 +7702,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/services/clientUrlCheck.ts",
-      "source_location": "L112",
+      "source_location": "L113",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_clienturlcheck_checkurlclientside",
+      "target": "src_services_clientgeminivision_getgeminiapikey",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/services/clientUrlCheck.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_clienturlcheck_checkurlclientside",
+      "target": "src_services_labelparser_parselabeltext",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/services/clientUrlCheck.ts",
+      "source_location": "L158",
       "weight": 1.0
     },
     {
@@ -7774,6 +8219,19 @@
       "context": "generic_arg",
       "source_file": "src/context/AppContext.tsx",
       "source_location": "L59",
+      "weight": 1.0
+    },
+    {
+      "source": "server_services_ecommerceauditservice_extractdeclarationswithgemini",
+      "target": "src_services_labelparser",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "deferred": true,
+      "source_file": "server/services/ecommerceAuditService.ts",
+      "source_location": "L186",
       "weight": 1.0
     },
     {
@@ -9878,6 +10336,18 @@
     },
     {
       "source": "src_services_api",
+      "target": "src_types_index_evaluationchannel",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/services/api.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_api",
       "target": "src_types_index_extractionresult",
       "relation": "imports",
       "_origin": "ast",
@@ -10117,6 +10587,18 @@
       "weight": 1.0
     },
     {
+      "source": "src_services_clienturlcheck",
+      "target": "src_services_labelparser_parselabeltext",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/services/clientUrlCheck.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
       "source": "src_services_labelparser",
       "target": "src_types_index_extractionfield",
       "relation": "imports",
@@ -10234,6 +10716,18 @@
       "context": "import",
       "source_file": "src/services/pdfReportGenerator.ts",
       "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "src_services_ruleengine",
+      "target": "src_types_index_evaluationchannel",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/services/ruleEngine.ts",
+      "source_location": "L1",
       "weight": 1.0
     },
     {
@@ -12709,6 +13203,18 @@
       "weight": 1.0
     },
     {
+      "source": "src_services_clienturlcheck",
+      "target": "src_services_labelparser",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/services/clientUrlCheck.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
       "source": "src_services_labelparser",
       "target": "src_types_index",
       "relation": "imports_from",
@@ -14133,6 +14639,72 @@
       "weight": 1.0
     },
     {
+      "source": "manak_channel_gate_addendum",
+      "target": "manak_channel_gate_addendum_addendum_channel_gate_the_online_required_package_only_split",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "MANAK_CHANNEL_GATE_ADDENDUM.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "manak_channel_gate_addendum_addendum_channel_gate_the_online_required_package_only_split",
+      "target": "manak_channel_gate_addendum_4_test_to_add",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "MANAK_CHANNEL_GATE_ADDENDUM.md",
+      "source_location": "L104",
+      "weight": 1.0
+    },
+    {
+      "source": "manak_channel_gate_addendum_addendum_channel_gate_the_online_required_package_only_split",
+      "target": "manak_channel_gate_addendum_5_non_goal",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "MANAK_CHANNEL_GATE_ADDENDUM.md",
+      "source_location": "L113",
+      "weight": 1.0
+    },
+    {
+      "source": "manak_channel_gate_addendum_addendum_channel_gate_the_online_required_package_only_split",
+      "target": "manak_channel_gate_addendum_1_add_a_channel_parameter_and_thread_it_through",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "MANAK_CHANNEL_GATE_ADDENDUM.md",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "manak_channel_gate_addendum_addendum_channel_gate_the_online_required_package_only_split",
+      "target": "manak_channel_gate_addendum_2_where_channel_gets_set_manak_backend_entry_points",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "MANAK_CHANNEL_GATE_ADDENDUM.md",
+      "source_location": "L76",
+      "weight": 1.0
+    },
+    {
+      "source": "manak_channel_gate_addendum_addendum_channel_gate_the_online_required_package_only_split",
+      "target": "manak_channel_gate_addendum_3_analyze_seller_upload_note",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "MANAK_CHANNEL_GATE_ADDENDUM.md",
+      "source_location": "L98",
+      "weight": 1.0
+    },
+    {
       "source": "package",
       "target": "package_dependencies",
       "relation": "contains",
@@ -15145,6 +15717,303 @@
       "weight": 1.0
     },
     {
+      "source": "senior_engineer_overview",
+      "target": "senior_engineer_overview_manak_technical_architecture_system_pipeline_progress_overview",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_1_executive_summary_what_manak_is",
+      "target": "senior_engineer_overview_the_core_problem",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_1_executive_summary_what_manak_is",
+      "target": "senior_engineer_overview_the_manak_solution",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_2_system_architecture_components",
+      "target": "senior_engineer_overview_key_design_invariant_strict_separation_of_extraction_evaluation",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_3_technology_stack_tools",
+      "target": "senior_engineer_overview_ai_computer_vision_integrations",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_3_technology_stack_tools",
+      "target": "senior_engineer_overview_codebase_intelligence_knowledge_graph",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L104",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_3_technology_stack_tools",
+      "target": "senior_engineer_overview_frontend_native_mobile",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L82",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_3_technology_stack_tools",
+      "target": "senior_engineer_overview_backend_api",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L89",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_3_technology_stack_tools",
+      "target": "senior_engineer_overview_database_auth_cloud_infrastructure",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L94",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_4_end_to_end_system_pipeline",
+      "target": "senior_engineer_overview_phase_1_input_data_capture",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L117",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_4_end_to_end_system_pipeline",
+      "target": "senior_engineer_overview_phase_2_multimodal_ocr_entity_extraction",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L122",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_4_end_to_end_system_pipeline",
+      "target": "senior_engineer_overview_phase_3_human_in_the_loop_review_extractedtextreviewscreen_tsx_file_c_users_shett_desktop_manak_src_components_screens_extractedtextreviewscreen_tsx",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L136",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_4_end_to_end_system_pipeline",
+      "target": "senior_engineer_overview_phase_4_deterministic_compliance_audit_sec_65b_pdf_generation",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L141",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_6_technical_limitations_known_challenges",
+      "target": "senior_engineer_overview_1_rule_7_numeral_height_measurement_constraints",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L172",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_6_technical_limitations_known_challenges",
+      "target": "senior_engineer_overview_2_cylindrical_curved_metallic_surface_ocr",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L176",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_6_technical_limitations_known_challenges",
+      "target": "senior_engineer_overview_3_e_commerce_dom_selector_drift",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L180",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_6_technical_limitations_known_challenges",
+      "target": "senior_engineer_overview_4_offline_client_ocr_performance_accuracy",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L184",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_6_technical_limitations_known_challenges",
+      "target": "senior_engineer_overview_5_esign_documenso_digilocker_api_credentials",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L188",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_7_developer_quickstart_repository_navigation",
+      "target": "senior_engineer_overview_key_project_directories",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L196",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_7_developer_quickstart_repository_navigation",
+      "target": "senior_engineer_overview_commands",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L203",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_manak_technical_architecture_system_pipeline_progress_overview",
+      "target": "senior_engineer_overview_4_end_to_end_system_pipeline",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L109",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_manak_technical_architecture_system_pipeline_progress_overview",
+      "target": "senior_engineer_overview_5_current_implementation_progress_status",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L151",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_manak_technical_architecture_system_pipeline_progress_overview",
+      "target": "senior_engineer_overview_6_technical_limitations_known_challenges",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L170",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_manak_technical_architecture_system_pipeline_progress_overview",
+      "target": "senior_engineer_overview_7_developer_quickstart_repository_navigation",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L194",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_manak_technical_architecture_system_pipeline_progress_overview",
+      "target": "senior_engineer_overview_2_system_architecture_components",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_manak_technical_architecture_system_pipeline_progress_overview",
+      "target": "senior_engineer_overview_3_technology_stack_tools",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L80",
+      "weight": 1.0
+    },
+    {
+      "source": "senior_engineer_overview_manak_technical_architecture_system_pipeline_progress_overview",
+      "target": "senior_engineer_overview_1_executive_summary_what_manak_is",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "SENIOR_ENGINEER_OVERVIEW.md",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
       "source": "server_index_js_server_index",
       "target": "server_index_js_server_index_db",
       "relation": "contains",
@@ -15229,7 +16098,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L159",
+      "source_location": "L176",
       "weight": 1.0
     },
     {
@@ -15240,7 +16109,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -15251,7 +16120,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L284",
+      "source_location": "L337",
       "weight": 1.0
     },
     {
@@ -15273,7 +16142,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L60",
+      "source_location": "L61",
       "weight": 1.0
     },
     {
@@ -15284,7 +16153,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "server/services/ecommerceAuditService.ts",
-      "source_location": "L77",
+      "source_location": "L76",
       "weight": 1.0
     },
     {
@@ -15526,7 +16395,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/screens/AnalysisResultsScreen.tsx",
-      "source_location": "L7",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -15911,7 +16780,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/data/rules.ts",
-      "source_location": "L94",
+      "source_location": "L97",
       "weight": 1.0
     },
     {
@@ -15944,7 +16813,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L148",
+      "source_location": "L150",
       "weight": 1.0
     },
     {
@@ -15955,7 +16824,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L177",
+      "source_location": "L179",
       "weight": 1.0
     },
     {
@@ -15966,7 +16835,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L211",
+      "source_location": "L213",
       "weight": 1.0
     },
     {
@@ -15977,7 +16846,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L227",
+      "source_location": "L229",
       "weight": 1.0
     },
     {
@@ -15988,7 +16857,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L241",
+      "source_location": "L243",
       "weight": 1.0
     },
     {
@@ -16010,7 +16879,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L275",
+      "source_location": "L277",
       "weight": 1.0
     },
     {
@@ -16021,7 +16890,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L299",
+      "source_location": "L301",
       "weight": 1.0
     },
     {
@@ -16032,7 +16901,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L316",
+      "source_location": "L318",
       "weight": 1.0
     },
     {
@@ -16043,7 +16912,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/api.ts",
-      "source_location": "L369",
+      "source_location": "L371",
       "weight": 1.0
     },
     {
@@ -16098,7 +16967,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/services/clientUrlCheck.ts",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -16587,13 +17456,24 @@
     },
     {
       "source": "src_types_index",
+      "target": "src_types_index_inspectionrecord",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/types/index.ts",
+      "source_location": "L104",
+      "weight": 1.0
+    },
+    {
+      "source": "src_types_index",
       "target": "src_types_index_consumerreport",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/types/index.ts",
-      "source_location": "L135",
+      "source_location": "L140",
       "weight": 1.0
     },
     {
@@ -16653,7 +17533,7 @@
     },
     {
       "source": "src_types_index",
-      "target": "src_types_index_compliancerule",
+      "target": "src_types_index_evaluationchannel",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -16664,24 +17544,24 @@
     },
     {
       "source": "src_types_index",
+      "target": "src_types_index_compliancerule",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/types/index.ts",
+      "source_location": "L75",
+      "weight": 1.0
+    },
+    {
+      "source": "src_types_index",
       "target": "src_types_index_ruleevaluation",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/types/index.ts",
-      "source_location": "L85",
-      "weight": 1.0
-    },
-    {
-      "source": "src_types_index",
-      "target": "src_types_index_inspectionrecord",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/types/index.ts",
-      "source_location": "L99",
+      "source_location": "L90",
       "weight": 1.0
     },
     {
@@ -17004,6 +17884,15 @@
       "weight": 1.0
     },
     {
+      "source": "server_services_ecommerceauditservice",
+      "target": "src_services_labelparser",
+      "relation": "dynamic_import",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "server/services/ecommerceAuditService.ts"
+    },
+    {
       "source": "tailwind_config",
       "target": "tailwindcss",
       "relation": "dynamic_import",
@@ -17213,5 +18102,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "18819aed7e27945d7d6be4b79f10c63f5961118e"
+  "built_at_commit": "0e959402087cb75da3de238293ca86b85bfd6201"
 }

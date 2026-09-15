@@ -308,7 +308,8 @@ app.post('/api/evaluate', async (req, res) => {
     return res.status(400).json({ error: 'Extraction data is required for evaluation.' });
   }
 
-  const evalResult = evaluateExtractionAgainstRules(extraction);
+  const channel = body.channel || (mode === 'url_check' ? 'online_listing' : 'physical_label');
+  const evalResult = evaluateExtractionAgainstRules(extraction, channel);
   const inspectionId = ensureUUID(body.id || `insp-${Date.now().toString().slice(-6)}`);
   const finalProduct = product || {
     id: crypto.randomUUID(),
@@ -369,7 +370,7 @@ app.post('/api/scan', async (req, res) => {
 
   const ocrRes = await extractLabelFromImage(images_base64, raw_text);
   const extraction = ocrRes.extraction;
-  const evalResult = evaluateExtractionAgainstRules(extraction);
+  const evalResult = evaluateExtractionAgainstRules(extraction, 'physical_label');
 
   const inspectionId = crypto.randomUUID();
   const productId = crypto.randomUUID();
@@ -449,7 +450,7 @@ app.post('/api/url-check', async (req, res) => {
       extraction = auditResult.extraction;
     }
 
-    const evalResult = evaluateExtractionAgainstRules(extraction);
+    const evalResult = evaluateExtractionAgainstRules(extraction, 'online_listing');
     const inspectionId = crypto.randomUUID();
 
     const record = {

@@ -36,14 +36,17 @@ export const COMPLIANCE_RULES: ComplianceRule[] = [
   },
   {
     rule_id: 'rule_6_1_d_mfg_date',
-    rule_source: 'Legal Metrology Rules 2011, Rule 6(1)(d)',
+    rule_source: 'Legal Metrology Rules 2011, Rule 6(1)(d) & Rule 6(10)',
     category: 'Date Marking',
     requirement_name: 'Month and Year of Manufacture / Packing / Import',
     check_type: 'presence',
     severity_default: 'major',
     penalty_amount: 2000,
-    legal_citation: 'Rule 6(1)(d): The month and year in which the commodity is manufactured or packed or imported shall be mentioned.',
-    explanation_template: 'Date of manufacturing/packing is required for tracking freshness and legal validity.'
+    legal_citation: 'Rule 6(1)(d): Mandatory on physical packages. Rule 6(10): Digital e-commerce listings are exempt from declaring manufacturing/packing date.',
+    explanation_template: 'Date of manufacturing/packing is required on physical package labels, but exempt on digital e-commerce listings under Rule 6(10).',
+    online_required: false,
+    exemption_rule: 'Rule 6(10) E-Commerce Exemption',
+    verification_note: 'Not required to appear on the online listing under Rule 6(10).'
   },
   {
     rule_id: 'rule_6_1_e_mrp_format',

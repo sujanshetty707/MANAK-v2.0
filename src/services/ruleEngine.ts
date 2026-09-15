@@ -1,7 +1,10 @@
-import { ExtractionResult, RuleEvaluation } from '../types';
+import { ExtractionResult, RuleEvaluation, EvaluationChannel } from '../types';
 import { COMPLIANCE_RULES, RULE_32_PENALTY_RATE } from '../data/rules';
 
-export function evaluateExtractionAgainstRules(extraction: ExtractionResult): {
+export function evaluateExtractionAgainstRules(
+  extraction: ExtractionResult,
+  channel: EvaluationChannel = 'physical_label'
+): {
   evaluations: RuleEvaluation[];
   is_compliant: boolean;
   total_violations: number;
@@ -14,6 +17,8 @@ export function evaluateExtractionAgainstRules(extraction: ExtractionResult): {
     let found_value: string | null = null;
     let expected_value = '';
     let explanation = '';
+
+    const isExemptOnline = rule.online_required === false && channel === 'online_listing';
 
     switch (rule.rule_id) {
       case 'rule_6_1_a_mfg_details': {
@@ -77,8 +82,14 @@ export function evaluateExtractionAgainstRules(extraction: ExtractionResult): {
         found_value = mfgDate;
 
         if (!mfgDate || mfgDate.trim() === '') {
-          status = 'violation';
-          explanation = 'Month and year of manufacture/packing is missing.';
+          if (isExemptOnline) {
+            status = 'exempt';
+            expected_value = 'Exempt on digital listings under Rule 6(10)';
+            explanation = rule.verification_note || 'Not required to appear on the online listing under Rule 6(10).';
+          } else {
+            status = 'violation';
+            explanation = 'Month and year of manufacture/packing is missing from the physical package label.';
+          }
         } else {
           status = 'compliant';
           explanation = `Manufacturing date declared as '${mfgDate}'.`;
